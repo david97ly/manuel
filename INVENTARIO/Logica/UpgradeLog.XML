@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="pjtProADUS">
+</Property><Property Name="Archivo de la solución" Value="D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\pjtProADUS.sln">
+</Property><Property Name="Archivo de opciones de usuario" Value="D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\pjtProADUS.suo">
+</Property><Property Name="Date" Value="domingo, 21 de octubre de 2012">
+</Property><Property Name="Time" Value="22:55 p.m. ">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="pjtProADUS.sln" Description="La copia D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\pjtProADUS.sln del archivo se ha realizado correctamente">
+</Event><Event ErrorLevel="0" Project="" Source="pjtProADUS.suo" Description="La copia D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\pjtProADUS.suo del archivo se ha realizado correctamente">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="pjtProAdus.vbproj" Description="Se realizó correctamente la copia de seguridad del archivo de proyecto D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\pjtProAdus.vbproj">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="pjtProAdus.vbproj.user" Description="La copia de seguridad D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\pjtProAdus.vbproj.user del archivo se ha creado correctamente">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="clsConexionBD.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\clsConexionBD.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="clsMaestros.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\clsMaestros.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="clsNomTab.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\clsNomTab.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="clsOperaciones.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\clsOperaciones.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="clsProcesos.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\clsProcesos.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="clsUtilerias.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\clsUtilerias.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="My Project\AssemblyInfo.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\My Project\AssemblyInfo.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="My Project\Application.Designer.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\My Project\Application.Designer.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="My Project\Resources.Designer.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\My Project\Resources.Designer.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="My Project\Settings.Designer.vb" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\My Project\Settings.Designer.vb">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="My Project\Application.myapp" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\My Project\Application.myapp">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="My Project\Settings.settings" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\My Project\Settings.settings">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="My Project\Resources.resx" Description="Se realizó correctamente la copia de seguridad del archivo D:\SISTEMAS DE LA UNIVERSIDAD\PROGRAMACION II\PROYECTO ADUS\ADUS\ADUS\pjtProADUS\Backup\My Project\Resources.resx">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="pjtProAdus.vbproj" Description="Proyecto convertido correctamente">
+</Event><Event ErrorLevel="3" Project="pjtProAdus" Source="pjtProAdus.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="pjtProADUS.sln" Description="La solución se convirtió correctamente">
+</Event><Event ErrorLevel="3" Project="" Source="pjtProADUS.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="pjtProAdus" Source="pjtProAdus.vbproj" Description="Examen completo: no es necesario actualizar los archivos de proyecto.">
+</Event></UpgradeLog>

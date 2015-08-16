@@ -1,0 +1,13 @@
+Mayo 2 del 2011
+
+Hay dos carpetas, una pjtAdus y la otra pjtProAdus, una
+para el proyecto windows application y la otra para el
+proyecto de clases. Tambien contiene un archivo sql
+donde esta el script que genera la base de datos con el
+contenido.
+
+1. El primer paso es ejecutar el script en mysql
+2. Para ingresar al sistema utilice el usuario
+   admin y la contraseña admin
+3. Apareceran un menu con la opcion maestros y configuracion
+

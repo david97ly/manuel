@@ -1,0 +1,17 @@
+E:\PROYECTO\validaciones\validaciones\bin\Debug\validaciones.dll
+E:\PROYECTO\validaciones\validaciones\bin\Debug\validaciones.pdb
+E:\PROYECTO\validaciones\validaciones\bin\Debug\validaciones.xml
+E:\PROYECTO\validaciones\validaciones\obj\Debug\ResolveAssemblyReference.cache
+E:\PROYECTO\validaciones\validaciones\obj\Debug\validaciones.Resources.resources
+E:\PROYECTO\validaciones\validaciones\obj\Debug\validaciones.vbproj.GenerateResource.Cache
+E:\PROYECTO\validaciones\validaciones\obj\Debug\validaciones.dll
+E:\PROYECTO\validaciones\validaciones\obj\Debug\validaciones.xml
+E:\PROYECTO\validaciones\validaciones\obj\Debug\validaciones.pdb
+D:\SISTEMAS DE LA UNIVERSIDAD\IMPLANTACION DE SISTEMAS\SISTEMA DE INVENTARIO MULTIEMPRESAS\INVENTARIO\validaciones\bin\Debug\validaciones.dll
+D:\SISTEMAS DE LA UNIVERSIDAD\IMPLANTACION DE SISTEMAS\SISTEMA DE INVENTARIO MULTIEMPRESAS\INVENTARIO\validaciones\bin\Debug\validaciones.pdb
+D:\SISTEMAS DE LA UNIVERSIDAD\IMPLANTACION DE SISTEMAS\SISTEMA DE INVENTARIO MULTIEMPRESAS\INVENTARIO\validaciones\bin\Debug\validaciones.xml
+D:\SISTEMAS DE LA UNIVERSIDAD\IMPLANTACION DE SISTEMAS\SISTEMA DE INVENTARIO MULTIEMPRESAS\INVENTARIO\validaciones\obj\Debug\validaciones.Resources.resources
+D:\SISTEMAS DE LA UNIVERSIDAD\IMPLANTACION DE SISTEMAS\SISTEMA DE INVENTARIO MULTIEMPRESAS\INVENTARIO\validaciones\obj\Debug\validaciones.vbproj.GenerateResource.Cache
+D:\SISTEMAS DE LA UNIVERSIDAD\IMPLANTACION DE SISTEMAS\SISTEMA DE INVENTARIO MULTIEMPRESAS\INVENTARIO\validaciones\obj\Debug\validaciones.dll
+D:\SISTEMAS DE LA UNIVERSIDAD\IMPLANTACION DE SISTEMAS\SISTEMA DE INVENTARIO MULTIEMPRESAS\INVENTARIO\validaciones\obj\Debug\validaciones.xml
+D:\SISTEMAS DE LA UNIVERSIDAD\IMPLANTACION DE SISTEMAS\SISTEMA DE INVENTARIO MULTIEMPRESAS\INVENTARIO\validaciones\obj\Debug\validaciones.pdb

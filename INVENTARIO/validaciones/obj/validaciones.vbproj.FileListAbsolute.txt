@@ -1,0 +1,9 @@
+F:\parcial 2 mio\validaciones\validaciones\bin\Debug\validaciones.dll
+F:\parcial 2 mio\validaciones\validaciones\bin\Debug\validaciones.pdb
+F:\parcial 2 mio\validaciones\validaciones\bin\Debug\validaciones.xml
+F:\parcial 2 mio\validaciones\validaciones\obj\Debug\ResolveAssemblyReference.cache
+F:\parcial 2 mio\validaciones\validaciones\obj\Debug\validaciones.Resources.resources
+F:\parcial 2 mio\validaciones\validaciones\obj\Debug\validaciones.vbproj.GenerateResource.Cache
+F:\parcial 2 mio\validaciones\validaciones\obj\Debug\validaciones.dll
+F:\parcial 2 mio\validaciones\validaciones\obj\Debug\validaciones.xml
+F:\parcial 2 mio\validaciones\validaciones\obj\Debug\validaciones.pdb

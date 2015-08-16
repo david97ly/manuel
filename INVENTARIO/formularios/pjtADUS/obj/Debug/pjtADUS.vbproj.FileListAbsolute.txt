@@ -1,0 +1,17 @@
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\bin\Debug\pjtADUS.exe
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\bin\Debug\pjtADUS.pdb
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\bin\Debug\pjtADUS.xml
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\bin\Debug\pjtProADUS.dll
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\bin\Debug\pjtProADUS.pdb
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\bin\Debug\pjtProADUS.xml
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\obj\Debug\ResolveAssemblyReference.cache
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\obj\Debug\pjtADUS.frmLogin.resources
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\obj\Debug\pjtADUS.Resources.resources
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\obj\Debug\pjtADUS.vbproj.GenerateResource.Cache
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\obj\Debug\pjtADUS.exe
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\obj\Debug\pjtADUS.xml
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\obj\Debug\pjtADUS.pdb
+D:\Administracion de Usuarios\pjtADUS\pjtADUS\obj\Debug\pjtADUS.mdiMain.resources
+C:\ADUS\pjtADUS\pjtADUS\obj\Debug\pjtADUS.exe
+C:\ADUS\pjtADUS\pjtADUS\obj\Debug\pjtADUS.xml
+C:\ADUS\pjtADUS\pjtADUS\obj\Debug\pjtADUS.pdb

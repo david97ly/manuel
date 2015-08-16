@@ -1,0 +1,9 @@
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\obj\Debug\ResolveAssemblyReference.cache
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\obj\Debug\pjtProADUS.Resources.resources
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\obj\Debug\pjtProADUS.vbproj.GenerateResource.Cache
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\bin\Debug\pjtProADUS.dll
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\bin\Debug\pjtProADUS.pdb
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\bin\Debug\pjtProADUS.xml
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\obj\Debug\pjtProADUS.dll
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\obj\Debug\pjtProADUS.xml
+D:\Administracion de Usuarios\pjtProADUS\pjtProADUS\obj\Debug\pjtProADUS.pdb

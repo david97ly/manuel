@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PerformanceReport>
+  <ModuleSummary>
+    <Module Name="ntdll.dll" InclSamples="191" ExclSamples="182" InclSamplesPercent="61.22" ExclSamplesPercent="58.33" />
+    <Module Name="msvcr120_clr0400.dll" InclSamples="118" ExclSamples="118" InclSamplesPercent="37.82" ExclSamplesPercent="37.82" />
+    <Module Name="RTSSHooks64.dll" InclSamples="190" ExclSamples="6" InclSamplesPercent="60.90" ExclSamplesPercent="1.92" />
+    <Module Name="KernelBase.dll" InclSamples="184" ExclSamples="2" InclSamplesPercent="58.97" ExclSamplesPercent="0.64" />
+    <Module Name="user32.dll" InclSamples="193" ExclSamples="2" InclSamplesPercent="61.86" ExclSamplesPercent="0.64" />
+    <Module Name="clrjit.dll" InclSamples="1" ExclSamples="1" InclSamplesPercent="0.32" ExclSamplesPercent="0.32" />
+    <Module Name="GdiPlus.dll" InclSamples="1" ExclSamples="1" InclSamplesPercent="0.32" ExclSamplesPercent="0.32" />
+    <Module Name="clr.dll" InclSamples="191" ExclSamples="0" InclSamplesPercent="61.22" ExclSamplesPercent="0.00" />
+    <Module Name="comctl32.dll" InclSamples="14" ExclSamples="0" InclSamplesPercent="4.49" ExclSamplesPercent="0.00" />
+    <Module Name="DevComponents.DotNetBar2.dll" InclSamples="43" ExclSamples="0" InclSamplesPercent="13.78" ExclSamplesPercent="0.00" />
+    <Module Name="kernel32.dll" InclSamples="124" ExclSamples="0" InclSamplesPercent="39.74" ExclSamplesPercent="0.00" />
+    <Module Name="Microsoft.VisualBasic.ni.dll" InclSamples="124" ExclSamples="0" InclSamplesPercent="39.74" ExclSamplesPercent="0.00" />
+    <Module Name="mscoree.dll" InclSamples="124" ExclSamples="0" InclSamplesPercent="39.74" ExclSamplesPercent="0.00" />
+    <Module Name="mscoreei.dll" InclSamples="124" ExclSamples="0" InclSamplesPercent="39.74" ExclSamplesPercent="0.00" />
+    <Module Name="mscorlib.ni.dll" InclSamples="4" ExclSamples="0" InclSamplesPercent="1.28" ExclSamplesPercent="0.00" />
+    <Module Name="Nvd3d9wrapx.dll" InclSamples="94" ExclSamples="0" InclSamplesPercent="30.13" ExclSamplesPercent="0.00" />
+    <Module Name="pjtAdus.exe" InclSamples="145" ExclSamples="0" InclSamplesPercent="46.47" ExclSamplesPercent="0.00" />
+    <Module Name="System.Drawing.ni.dll" InclSamples="1" ExclSamples="0" InclSamplesPercent="0.32" ExclSamplesPercent="0.00" />
+    <Module Name="System.ni.dll" InclSamples="8" ExclSamples="0" InclSamplesPercent="2.56" ExclSamplesPercent="0.00" />
+    <Module Name="System.Windows.Forms.ni.dll" InclSamples="191" ExclSamples="0" InclSamplesPercent="61.22" ExclSamplesPercent="0.00" />
+    <Module Name="uxtheme.dll" InclSamples="8" ExclSamples="0" InclSamplesPercent="2.56" ExclSamplesPercent="0.00" />
+  </ModuleSummary>
+</PerformanceReport>

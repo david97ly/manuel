@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PerformanceReport>
+  <ThreadSummary>
+    <Thread UPID="0" PID="6440" UTID="0" TID="6352" ThreadName="Desconocido" ThreadBeginTime="0.00" ThreadEndTime="233,838.72" ThreadStartAddress="713315,319,808" LifeTime="233,838.72" />
+    <Thread UPID="0" PID="6440" UTID="1" TID="6052" ThreadName="Desconocido" ThreadBeginTime="0.00" ThreadEndTime="233,838.72" ThreadStartAddress="140716146,437,488" LifeTime="233,838.72" />
+    <Thread UPID="0" PID="6440" UTID="2" TID="4200" ThreadName="Desconocido" ThreadBeginTime="0.00" ThreadEndTime="233,838.72" ThreadStartAddress="140716146,944,064" LifeTime="233,838.72" />
+    <Thread UPID="0" PID="6440" UTID="3" TID="1684" ThreadName="Desconocido" ThreadBeginTime="0.00" ThreadEndTime="66,698.27" ThreadStartAddress="140717008,326,192" LifeTime="66,698.27" />
+    <Thread UPID="0" PID="6440" UTID="4" TID="992" ThreadName="Desconocido" ThreadBeginTime="0.00" ThreadEndTime="126,640.51" ThreadStartAddress="140717008,326,192" LifeTime="126,640.51" />
+    <Thread UPID="0" PID="6440" UTID="5" TID="3180" ThreadName="Desconocido" ThreadBeginTime="0.00" ThreadEndTime="122,392.07" ThreadStartAddress="140716999,574,288" LifeTime="122,392.07" />
+    <Thread UPID="0" PID="6440" UTID="6" TID="6944" ThreadName="Desconocido" ThreadBeginTime="0.00" ThreadEndTime="233,838.72" ThreadStartAddress="140716893,546,356" LifeTime="233,838.71" />
+    <Thread UPID="0" PID="6440" UTID="7" TID="6844" ThreadName="Desconocido" ThreadBeginTime="0.00" ThreadEndTime="67,027.26" ThreadStartAddress="140717008,326,192" LifeTime="67,027.26" />
+    <Thread UPID="0" PID="6440" UTID="8" TID="2972" ThreadName="Desconocido" ThreadBeginTime="1,144.01" ThreadEndTime="233,838.72" ThreadStartAddress="140716145,408,556" LifeTime="232,694.71" />
+    <Thread UPID="0" PID="6440" UTID="9" TID="5032" ThreadName="Desconocido" ThreadBeginTime="1,199.40" ThreadEndTime="233,838.72" ThreadStartAddress="140716147,131,504" LifeTime="232,639.32" />
+    <Thread UPID="0" PID="6440" UTID="10" TID="5664" ThreadName="Desconocido" ThreadBeginTime="1,199.63" ThreadEndTime="233,838.72" ThreadStartAddress="140716954,058,408" LifeTime="232,639.09" />
+    <Thread UPID="0" PID="6440" UTID="11" TID="5552" ThreadName="Desconocido" ThreadBeginTime="2,204.89" ThreadEndTime="233,838.72" ThreadStartAddress="140716146,944,064" LifeTime="231,633.83" />
+    <Thread UPID="0" PID="6440" UTID="12" TID="6644" ThreadName="Desconocido" ThreadBeginTime="2,205.02" ThreadEndTime="3,705.70" ThreadStartAddress="140716146,082,612" LifeTime="1,500.68" />
+    <Thread UPID="0" PID="6440" UTID="13" TID="6460" ThreadName="Desconocido" ThreadBeginTime="2,205.05" ThreadEndTime="17,204.87" ThreadStartAddress="140716146,944,064" LifeTime="14,999.81" />
+    <Thread UPID="0" PID="6440" UTID="14" TID="3700" ThreadName="Desconocido" ThreadBeginTime="189,144.57" ThreadEndTime="209,149.53" ThreadStartAddress="140716146,944,064" LifeTime="20,004.96" />
+    <Thread UPID="0" PID="6440" UTID="15" TID="6284" ThreadName="Desconocido" ThreadBeginTime="189,144.61" ThreadEndTime="190,644.99" ThreadStartAddress="140716146,082,612" LifeTime="1,500.38" />
+    <Thread UPID="0" PID="6440" UTID="16" TID="4936" ThreadName="Desconocido" ThreadBeginTime="189,148.59" ThreadEndTime="209,149.48" ThreadStartAddress="140716146,944,064" LifeTime="20,000.89" />
+    <Thread UPID="0" PID="6440" UTID="17" TID="7068" ThreadName="Desconocido" ThreadBeginTime="212,971.92" ThreadEndTime="233,176.22" ThreadStartAddress="140716146,944,064" LifeTime="20,204.30" />
+    <Thread UPID="0" PID="6440" UTID="18" TID="6508" ThreadName="Desconocido" ThreadBeginTime="212,971.94" ThreadEndTime="214,472.44" ThreadStartAddress="140716146,082,612" LifeTime="1,500.49" />
+    <Thread UPID="0" PID="6440" UTID="19" TID="6452" ThreadName="Desconocido" ThreadBeginTime="212,972.13" ThreadEndTime="233,838.72" ThreadStartAddress="140716146,944,064" LifeTime="20,866.59" />
+  </ThreadSummary>
+</PerformanceReport>

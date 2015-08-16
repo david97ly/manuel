@@ -1,0 +1,3 @@
+D:\ADUS\pjtProAdus\obj\Release\ResolveAssemblyReference.cache
+D:\ADUS\pjtProAdus\obj\Release\pjtProAdus.Resources.resources
+D:\ADUS\pjtProAdus\obj\Release\pjtProAdus.vbproj.GenerateResource.Cache

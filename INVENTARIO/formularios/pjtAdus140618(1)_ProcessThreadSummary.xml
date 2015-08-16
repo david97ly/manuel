@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PerformanceReport>
+  <ProcessThreadSummary>
+    <ProcessThread ProcessThreadType="Process" UID="0" ID="6440" ProcThreadName="pjtAdus.exe" BeginTime="0.00" EndTime="233,838.72" LifeTime="233,838.72" />
+    <ProcessThread ProcessThreadType="Thread" UID="0" ID="6352" ProcThreadName="Desconocido" BeginTime="0.00" EndTime="233,838.72" LifeTime="233,838.72" />
+    <ProcessThread ProcessThreadType="Thread" UID="1" ID="6052" ProcThreadName="Desconocido" BeginTime="0.00" EndTime="233,838.72" LifeTime="233,838.72" />
+    <ProcessThread ProcessThreadType="Thread" UID="2" ID="4200" ProcThreadName="Desconocido" BeginTime="0.00" EndTime="233,838.72" LifeTime="233,838.72" />
+    <ProcessThread ProcessThreadType="Thread" UID="3" ID="1684" ProcThreadName="Desconocido" BeginTime="0.00" EndTime="66,698.27" LifeTime="66,698.27" />
+    <ProcessThread ProcessThreadType="Thread" UID="4" ID="992" ProcThreadName="Desconocido" BeginTime="0.00" EndTime="126,640.51" LifeTime="126,640.51" />
+    <ProcessThread ProcessThreadType="Thread" UID="5" ID="3180" ProcThreadName="Desconocido" BeginTime="0.00" EndTime="122,392.07" LifeTime="122,392.07" />
+    <ProcessThread ProcessThreadType="Thread" UID="6" ID="6944" ProcThreadName="Desconocido" BeginTime="0.00" EndTime="233,838.72" LifeTime="233,838.71" />
+    <ProcessThread ProcessThreadType="Thread" UID="7" ID="6844" ProcThreadName="Desconocido" BeginTime="0.00" EndTime="67,027.26" LifeTime="67,027.26" />
+    <ProcessThread ProcessThreadType="Thread" UID="8" ID="2972" ProcThreadName="Desconocido" BeginTime="1,144.01" EndTime="233,838.72" LifeTime="232,694.71" />
+    <ProcessThread ProcessThreadType="Thread" UID="9" ID="5032" ProcThreadName="Desconocido" BeginTime="1,199.40" EndTime="233,838.72" LifeTime="232,639.32" />
+    <ProcessThread ProcessThreadType="Thread" UID="10" ID="5664" ProcThreadName="Desconocido" BeginTime="1,199.63" EndTime="233,838.72" LifeTime="232,639.09" />
+    <ProcessThread ProcessThreadType="Thread" UID="11" ID="5552" ProcThreadName="Desconocido" BeginTime="2,204.89" EndTime="233,838.72" LifeTime="231,633.83" />
+    <ProcessThread ProcessThreadType="Thread" UID="12" ID="6644" ProcThreadName="Desconocido" BeginTime="2,205.02" EndTime="3,705.70" LifeTime="1,500.68" />
+    <ProcessThread ProcessThreadType="Thread" UID="13" ID="6460" ProcThreadName="Desconocido" BeginTime="2,205.05" EndTime="17,204.87" LifeTime="14,999.81" />
+    <ProcessThread ProcessThreadType="Thread" UID="14" ID="3700" ProcThreadName="Desconocido" BeginTime="189,144.57" EndTime="209,149.53" LifeTime="20,004.96" />
+    <ProcessThread ProcessThreadType="Thread" UID="15" ID="6284" ProcThreadName="Desconocido" BeginTime="189,144.61" EndTime="190,644.99" LifeTime="1,500.38" />
+    <ProcessThread ProcessThreadType="Thread" UID="16" ID="4936" ProcThreadName="Desconocido" BeginTime="189,148.59" EndTime="209,149.48" LifeTime="20,000.89" />
+    <ProcessThread ProcessThreadType="Thread" UID="17" ID="7068" ProcThreadName="Desconocido" BeginTime="212,971.92" EndTime="233,176.22" LifeTime="20,204.30" />
+    <ProcessThread ProcessThreadType="Thread" UID="18" ID="6508" ProcThreadName="Desconocido" BeginTime="212,971.94" EndTime="214,472.44" LifeTime="1,500.49" />
+    <ProcessThread ProcessThreadType="Thread" UID="19" ID="6452" ProcThreadName="Desconocido" BeginTime="212,972.13" EndTime="233,838.72" LifeTime="20,866.59" />
+  </ProcessThreadSummary>
+</PerformanceReport>

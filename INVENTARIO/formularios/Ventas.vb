@@ -22,7 +22,6 @@ Public Class Ventas
     Private consultar As New clsProcesos
     Private clsvalidar As validar
 
-    Public tdescuento As New clsMaestros(clsNomTab.eTbl.Descuentos)
     Public dtdecuento As DataTable
 
     Private subtotal1 = 0, subtotal2 = 0, subtotal3 = 0, iva = 0, descuentof = 0, totalf As Double
@@ -58,11 +57,6 @@ Public Class Ventas
     'aqui termina
 
 
-    ' Para los tanques
-    Dim ttanques As New clsMaestros(clsNomTab.eTbl.Tanques)
-    Dim dttanques As DataTable
-    Dim tbombas As New clsMaestros(clsNomTab.eTbl.Bombas)
-    Dim dtbombas As DataTable
 
     Dim guardado As Boolean = False
 
@@ -315,7 +309,7 @@ Public Class Ventas
 
     Private Sub insertardetalle()
         Try
-            dtdecuento = tdescuento.Consultar(" where codproducto = " & idproducto)
+
 
             Dim prereal, totalfactura, canti As Double
             If dtdecuento.Rows(0).Item(2).ToString = "True" Then
@@ -410,7 +404,7 @@ Public Class Ventas
 
 
 
-                    dtdecuento = tdescuento.Consultar(" where codproducto = " & dtproducto.Rows(0).Item(0))
+
 
                     cantidadproducto = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3)), 2)
                     totalproducto = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(9)), 2)
@@ -452,7 +446,7 @@ Public Class Ventas
 
 
 
-                    dtdecuento = tdescuento.Consultar(" where codproducto = " & dtproducto.Rows(0).Item(0))
+
 
                     cantidadproducto = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3)), 3)
                     totalproducto = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(9)), 3)
@@ -637,50 +631,7 @@ Public Class Ventas
     End Sub
 
 
-    Private Sub guardartanques()
-        Dim t1, t2, t3, t4, t5, t6 As Double
-        dtdetallefacturaventas = tdetalleventa.Consultar(" where codfacturav = " & codfactura)
-        For i As Integer = 0 To dtdetallefacturaventas.Rows.Count - 1
 
-            If dtdetallefacturaventas.Rows(i).Item(2).ToString = "1" Then
-                t6 = CDbl(dtdetallefacturaventas.Rows(i).Item(3))
-                tanquesybombas(6, t6, i)
-            ElseIf dtdetallefacturaventas.Rows(i).Item(2).ToString = "2" Then
-                If chekregular1.Checked = True Then
-                    t2 = CDbl(dtdetallefacturaventas.Rows(i).Item(3))
-                    tanquesybombas(2, t2, i)
-                Else
-                    t4 = CDbl(dtdetallefacturaventas.Rows(i).Item(3))
-                    tanquesybombas(4, t4, i)
-                End If
-            ElseIf dtdetallefacturaventas.Rows(i).Item(2).ToString = "3" Then
-                If checdiesel1.Checked = True Then
-                    t1 = CDbl(dtdetallefacturaventas.Rows(i).Item(3))
-                    tanquesybombas(1, t1, i)
-                ElseIf chekdiesel2.Checked = True Then
-                    t3 = CDbl(dtdetallefacturaventas.Rows(i).Item(3))
-                    tanquesybombas(3, t3, i)
-                Else
-                    t5 = CDbl(dtdetallefacturaventas.Rows(i).Item(3))
-                    tanquesybombas(5, t5, i)
-                End If
-            End If
-        Next
-    End Sub
-
-    Private Sub tanquesybombas(ByVal bom As Short, ByVal t As Double, ByVal indice As Integer)
-
-        Dim vs As Double = 0
-        Dim v As Double = 0
-        dtbombas = tbombas.Consultar(" where idbombas = " & bom)
-
-        vs = CDbl(dtbombas.Rows(0).Item(3)) + t
-        v = CDbl(dtbombas.Rows(0).Item(2)) + CDbl(dtdetallefacturaventas.Rows(indice).Item(9))
-
-        consultar.Consultar("update bombas set ventasdiarias = " & v & ", ventasdiariasgalon = " & vs & " where idbombas = " & bom)
-
-     
-    End Sub
 
 
     Private Sub imprimir()
@@ -1198,7 +1149,6 @@ Public Class Ventas
                     frmvr.hacerconsulta()
                     Me.Close()
                 End If
-                guardartanques()
             Else
 
                 If MsgBox(ella & combotipo.Text & " se guardo exitozamente!!" & vbCrLf _
@@ -1762,7 +1712,4 @@ Public Class Ventas
         End If
     End Sub
 
-    Private Sub texcliente_TextChanged(sender As Object, e As EventArgs) Handles texcliente.TextChanged
-
-    End Sub
 End Class

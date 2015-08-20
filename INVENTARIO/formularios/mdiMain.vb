@@ -6,7 +6,6 @@ Public Class mdiMain
     Public usuario As String
     Public mMenu As New System.Windows.Forms.MainMenu
     Public codigoempresa As String
-    Private empresa As New clsMaestros(clsNomTab.eTbl.Empresa)
     Private dtempresas As DataTable
 
 
@@ -69,20 +68,16 @@ Public Class mdiMain
     Private Sub mdiMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Form1.Close()
         Me.WindowState() = FormWindowState.Maximized
-        dtempresas = empresa.Consultar()
-        If dtempresas.Rows.Count = 1 Then
-            Me.codigoempresa = dtempresas.Rows(0).Item(0)
-            cargarmenu()
-        Else
-            Me.Opacity = 0
-            Inicio.Show()
-        End If
+
+        cargarmenu()
+       
+
 
     End Sub
 
     Public Sub cargarmenu()
-        dtempresas = empresa.Consultar(" where codempresa = " & codigoempresa.ToString)
-        Me.Text = "Empresa: " & dtempresas.Rows(0).Item(1)
+
+        Me.Text = "FerroElectrina Manuel"
         Dim operacion As New clsUtilerias
         Me.Menu = mMenu
 

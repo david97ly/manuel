@@ -4,7 +4,6 @@ Imports pjtAdus.Empresas
 Public Class DetalleEmpresa
     Public dtempresa As DataRow
     Private empresa As New Empresas
-    Private tempresa As New clsMaestros(clsNomTab.eTbl.Empresa)
     Private tproveedores As New clsMaestros(clsNomTab.eTbl.Proveedores)
     Private tclientes As New clsMaestros(clsNomTab.eTbl.Clientes)
     Public frmp As Proveedores

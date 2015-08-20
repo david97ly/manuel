@@ -9,7 +9,6 @@ Public Class Reportes
     Private dtproductos As DataTable
     Private tproductos As New clsMaestros(clsNomTab.eTbl.Productos)
     Private dtempresa As DataTable
-    Private tempresa As New clsMaestros(clsNomTab.eTbl.Empresa)
     Private nombre As String
     Private dtfactaracompra As DataTable
     Private tfacturacompra As New clsMaestros(clsNomTab.eTbl.FacturaCompra)
@@ -27,7 +26,7 @@ Public Class Reportes
 
             'Dim imagendemo As ItextSharp.text.Image 'Declaracion de una imagen
             Dim tablademo As New PdfPTable(6) 'declara la tabla con 4 Columnas
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             nombre = "InventarioGeneral" + dtempresa.Rows(0).Item(1).ToString + ".pdf"
 
 
@@ -114,7 +113,7 @@ Public Class Reportes
 
     Private Sub botcomprascontribuyentes_Click(sender As Object, e As EventArgs)
         Try
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             nombre = "LibroComprasContribuyente" + dtempresa.Rows(0).Item(1).ToString + ".pdf"
 
             Dim Documento As New Document 'Declaracion del documento
@@ -278,7 +277,7 @@ Public Class Reportes
 
             'Dim imagendemo As ItextSharp.text.Image 'Declaracion de una imagen
             Dim tablademo As New PdfPTable(6) 'declara la tabla con 4 Columnas
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             nombre = "InventarioExistencias" + dtempresa.Rows(0).Item(1).ToString + ".pdf"
 
 
@@ -363,7 +362,7 @@ Public Class Reportes
 
     Private Sub botcomprascontribuyentes_Click_1(sender As Object, e As EventArgs) Handles botcomprascontribuyentes.Click
         Try
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             nombre = "ComprasContribuyente" + dtempresa.Rows(0).Item(1).ToString + ".pdf"
 
             Dim Documento As New Document 'Declaracion del documento
@@ -520,7 +519,7 @@ Public Class Reportes
 
     Private Sub botcomprasfinal_Click(sender As Object, e As EventArgs) Handles botcomprasfinal.Click
         Try
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             nombre = "VentasConsumidor" + dtempresa.Rows(0).Item(1).ToString + ".pdf"
 
             Dim Documento As New Document 'Declaracion del documento
@@ -676,7 +675,7 @@ Public Class Reportes
 
     Private Sub botventascontribuyente_Click(sender As Object, e As EventArgs) Handles botventascontribuyente.Click
         Try
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             nombre = "LibroVentasContribuyente" + dtempresa.Rows(0).Item(1).ToString + ".pdf"
 
             Dim Documento As New Document 'Declaracion del documento
@@ -853,7 +852,7 @@ Public Class Reportes
 
     Private Sub botventasfinal_Click_1(sender As Object, e As EventArgs) Handles botventasfinal.Click
         Try
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             nombre = "LibroVentasfinal" + dtempresa.Rows(0).Item(1).ToString + ".pdf"
 
             Dim Documento As New Document 'Declaracion del documento
@@ -1021,7 +1020,7 @@ Public Class Reportes
 
     Private Sub Botimprimir1_Click(sender As Object, e As EventArgs) Handles texmostrar1.Click
         Try
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             If Me.textitulo1.Text.Trim.ToString <> "" Then
                 Dim f1, f2, f3, d1, m1, a1, d2, m2, a2, d3, m3, a3 As String
 

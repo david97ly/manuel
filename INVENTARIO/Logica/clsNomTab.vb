@@ -8,27 +8,20 @@
         Permisos = 5
         Proveedores = 6
         Clientes = 7
-        Empresa = 8
-        Despachador = 9
-        FacturaCompra = 10
-        FacturaVenta = 11
-        DetalleFacturaC = 12
-        DetalleFacturaV = 13
-        RegistroUltimo = 14
-        TablasInventario = 15
-        DetalleTablasInventario = 16
-        Departamentos = 17
-        Municipios = 18
-        Tablas = 19
-        Categorias = 20
-        Productos = 21
-        Descuentos = 22
-        Numeros = 23
-        Tanques = 24
-        Bombas = 25
-        clientescf = 26
-        tiraje = 27
-        Respaldo = 28
+        FacturaCompra = 8
+        FacturaVenta = 9
+        DetalleFacturaC = 10
+        DetalleFacturaV = 11
+        Departamentos = 12
+        Municipios = 13
+        Categorias = 14
+        Productos = 15
+        Numeros = 16
+        clientescf = 17
+        tiraje = 18
+        Respaldo = 19
+        Configuraciones = 20
+        Direccion = 21
     End Enum
     Protected Property tbl()
         Get
@@ -89,47 +82,33 @@
             Case 7
                 Resultado = "cliente"
             Case 8
-                Resultado = "empresa"
-            Case 9
-                Resultado = "despachador"
-            Case 10
                 Resultado = "facturacompra"
-            Case 11
+            Case 9
                 Resultado = "facturaventa"
-            Case 12
+            Case 10
                 Resultado = "detallecompra"
-            Case 13
+            Case 11
                 Resultado = "detalleventa"
-            Case 14
-                Resultado = "registro_ultimo"
-            Case 15
-                Resultado = "tablas_inventario"
-            Case 16
-                Resultado = "tablas_detalle_inventario"
-            Case 17
+            Case 12
                 Resultado = "departamentos"
-            Case 18
+            Case 13
                 Resultado = "municipios"
-            Case 19
-                Resultado = "tablas"
-            Case 20
+            Case 14
                 Resultado = "categoria"
-            Case 21
+            Case 15
                 Resultado = "productos"
-            Case 22
-                Resultado = "descuentos"
-            Case 23
+            Case 16
                 Resultado = "numeros"
-            Case 24
-                Resultado = "tanques"
-            Case 25
-                Resultado = "bombas"
-            Case 26
+            Case 17
                 Resultado = "clientescf"
-            Case 27
+            Case 18
                 Resultado = "tirajes"
-            Case 28
+            Case 19
                 Resultado = "respaldos"
+            Case 20
+                Resultado = "configuraciones"
+            Case 21
+                Resultado = "direccion"
         End Select
         Return Resultado
     End Function
@@ -147,51 +126,37 @@
             Case 5
                 Resultado = "IdPermiso,IdGrp,IdOpc"
             Case 6
-                Resultado = "codproveedor,nombre,nit,nrc,giro,direccionN,propietario,telefonoN,tipo,razon_social,direccionO,telefonoO,faxN,faxO,e_mail,numpropietario,codempresa,estado"
+                Resultado = "codproveedor,nombre,nit,nrc,giro,direccion,telefono,fax,e_mail,estado"
             Case 7
-                Resultado = "codcliente,nombre,nit,nrc,giro,direccionN,propietario,telefonoN,tipo,razon_social,direccionO,telefonoO,faxN,faxO,e_mail,numpropietario,codempresa,estado"
+                Resultado = "codcliente,nombre,nit,nrc,giro,direccion,telefono,fax,e_mail,estado"
             Case 8
-                Resultado = "codempresa,nombre,nit,nrc,giro,direccionN,propietario,telefonoN,tipo,razon_social,direccionO,telefonoO,faxN,faxO,e_mail"
+                Resultado = "codfacturac,numfacturac,tipo,codproveedor,fecha,sumas,descuento,iva,nosujeta,exentas,total,formadepago,unoretencion,estado,tiraje"
             Case 9
-                Resultado = "coddespachador,nombres,apellidos,codempresa"
+                Resultado = "codfacturav,numfacturav,tipo,codcliente,fecha,sumas,descuento,iva,nosujeta,exentas,total,formadepago,estado,tiraje"
             Case 10
-                Resultado = "codfacturac,numfacturac,tipo,codproveedor,codempresa,fecha,sumas,descuento,iva,nosujeta,fovial,cotrans,exentas,total,formadepago,unoretencion,estado,tiraje,td1,td2,tr,ts"
+                Resultado = "coddetallefacturac,codfacturac,codproducto,cantidadunit,descuento,precioreal,preciodescuento,total,total1,preciopublico"
             Case 11
-                Resultado = "codfacturav,numfacturav,tipo,codcliente,codempresa,fecha,sumas,descuento,iva,nosujeta,fovial,cotrans,exentas,total,formadepago,estado,tiraje"
+                Resultado = "coddetallefacturav,codfacturav,codproducto,cantidadunit,descuento,precioreal,preciodescuento,total,total1,preciopublico"
             Case 12
-                Resultado = "coddetallefacturac,codfacturac,codproducto,cantidadunit,descuento,precioreal,preciodescuento,codempresa,total,total1,preciopublico"
-            Case 13
-                Resultado = "coddetallefacturav,codfacturav,codproducto,cantidadunit,descuento,precioreal,preciodescuento,codempresa,total,total1,preciopublico"
-            Case 14
-                Resultado = "id_registroultimo,fecha,hora,IdUsr,duracionSecion,codempresa,codfactura"
-            Case 15
-                Resultado = "id_tablas_inventario,codempresa,id_inventario,cod_empresa,cantidad_articulos,iva_articulos,total_con_iva,total_sin_iva"
-            Case 16
-                Resultado = "id_Tablas_detalle_inventario,id_tablas_inventario,id_inventario,id_articulo,nombre,descripcion,preciounit,preciopublic,existencias,idempresa,idcategoria,idproveedor,idunidmed"
-            Case 17
                 Resultado = "cod_departamento,departamentos"
-            Case 18
+            Case 13
                 Resultado = "id_municipio,municipio,cod_departamento"
-            Case 19
-                Resultado = "idtablas,nombretabla,codtabla,nombre,descripcion,preciounit,precio_public,existencias,codempresa,id_categoria,codproveedor,unid_med"
-            Case 20
-                Resultado = "id_categoria,nombre,descripcion,codempresa"
-            Case 21
-                Resultado = "codproducto,nombre,descripcion,precio_unit,precioindi,preciopublico,existencias,codempresa,id_categoria,codproveedor,unid_med"
-            Case 22
-                Resultado = "iddescuento,iva,cotrans,fovial,codproducto"
-            Case 23
+            Case 14
+                Resultado = "id_categoria,nombre,descripcion"
+            Case 15
+                Resultado = "codproducto,nombre,descripcion,precio_unit,precioindi,preciopublico,existencias,id_categoria,unid_med"
+            Case 16
                 Resultado = "idnumeros,numero,nombre"
-            Case 24
-                Resultado = "codtanque,nombre,contiene,cantidad,capacidad,porcentaje"
-            Case 25
-                Resultado = "idbombas,nombre,ventasdiarias,ventasdiariasgalon,codtanque"
-            Case 26
+            Case 17
                 Resultado = "idclientescf,cliente"
-            Case 27
+            Case 18
                 Resultado = "idtiraje,tirajefs,tirajefd,tirajefh,tirajefa,tirajecs,tirajecd,tirajech,tirajeca"
-            Case 28
+            Case 19
                 Resultado = "idrespaldo,fecha,nombrearchivo,automatico"
+            Case 20
+                Resultado = "id_config,tirage_fact,tirage_compro,tirage_fact_actual,tirage_compro_actual,numfact,numcompro,iva,cotrans,porce_iva_ret"
+            Case 21
+                Resultado = "id_direcciones,direccion,id_municipio"
         End Select
         Return Resultado
     End Function
@@ -209,51 +174,37 @@
             Case 5
                 Resultado = "IdGrp,IdOpc"
             Case 6
-                Resultado = "codproveedor,nombre,nit,nrc,giro,direccionN,propietario,telefonoN,tipo,razon_social,direccionO,telefonoO,faxN,faxO,e_mail,numpropietario,codempresa,estado"
+                Resultado = "nombre,nit,nrc,giro,direccion,telefono,fax,e_mail,estado"
             Case 7
-                Resultado = "codcliente,nombre,nit,nrc,giro,direccionN,propietario,telefonoN,tipo,razon_social,direccionO,telefonoO,faxN,faxO,e_mail,numpropietario,codempresa,estado"
+                Resultado = "nombre,nit,nrc,giro,direccion,telefono,fax,e_mail,estado"
             Case 8
-                Resultado = "codempresa,nombre,nit,nrc,giro,direccionN,propietario,telefonoN,tipo,razon_social,direccionO,telefonoO,faxN,faxO,e_mail,numpropietario,estado"
+                Resultado = "numfacturac,tipo,codproveedor,fecha,sumas,descuento,iva,nosujeta,exentas,total,formadepago,unoretencion,estado,tiraje"
             Case 9
-                Resultado = "nombres,apellidos,codempresa"
+                Resultado = "numfacturav,tipo,codcliente,fecha,sumas,descuento,iva,nosujeta,exentas,total,formadepago,estado,tiraje"
             Case 10
-                Resultado = "numfacturac,tipo,codproveedor,codempresa,fecha,sumas,descuento,iva,nosujeta,fovial,cotrans,exentas,total,formadepago,unoretencion,estado,tiraje,td1,td2,tr,ts"
+                Resultado = "codfacturac,codproducto,cantidadunit,descuento,precioreal,preciodescuento,total,total1,preciopublico"
             Case 11
-                Resultado = "numfacturav,tipo,codcliente,codempresa,fecha,sumas,descuento,iva,nosujeta,fovial,cotrans,exentas,total,formadepago,estado,tiraje"
+                Resultado = "codfacturav,codproducto,cantidadunit,descuento,precioreal,preciodescuento,total,total1,preciopublico"
             Case 12
-                Resultado = "codfacturac,codproducto,cantidadunit,descuento,precioreal,preciodescuento,codempresa,total,total1,preciopublico"
+                Resultado = "cod_departamento,departamentos"
             Case 13
-                Resultado = "codfacturav,codproducto,cantidadunit,descuento,precioreal,preciodescuento,codempresa,total,total1,preciopublico"
+                Resultado = "id_municipio,municipio,cod_departamento"
             Case 14
-                Resultado = "fecha,hora,IdUsr,duracionSecion,codempresa,codfactura"
+                Resultado = "nombre,descripcion"
             Case 15
-                Resultado = "codempresa,id_inventario,cod_empresa,cantidad_articulos,iva_articulos,total_con_iva,total_sin_iva"
+                Resultado = "codproducto,nombre,descripcion,precio_unit,precioindi,preciopublico,existencias,id_categoria,unid_med"
             Case 16
-                Resultado = "id_tablas_inventario,id_inventario,id_articulo,nombre,descripcion,preciounit,preciopublic,existencias,idempresa,idcategoria,idproveedor,idunidmed"
+                Resultado = "idnumeros,numero,nombre"
             Case 17
-                Resultado = "id_departamento,departamento"
-            Case 18
-                Resultado = "id_municipio,municipio,id_departamento"
-            Case 19
-                Resultado = "nombretabla,codtabla,nombre,descripcion,preciounit,precio_public,existencias,codempresa,idcategoria,codproveedor,unit_med,codempresa1"
-            Case 20
-                Resultado = "nombre,descripcion,codempresa"
-            Case 21
-                Resultado = "codproducto,nombre,descripcion,precio_unit,precioindi,preciopublico,existencias,codempresa,id_categoria,codproveedor,unid_med"
-            Case 22
-                Resultado = "iva,cotrans,fovial,codproducto"
-            Case 23
-                Resultado = "numero,nombre"
-            Case 24
-                Resultado = "codtanque,nombre,contiene,cantidad,capacidad,porcentaje"
-            Case 25
-                Resultado = "idbombas,nombre,ventasdiarias,ventasdiariasgalon,codtanque"
-            Case 26
                 Resultado = "cliente"
-            Case 27
+            Case 18
                 Resultado = "tirajefs,tirajefd,tirajefh,tirajefa,tirajecs,tirajecd,tirajech,tirajeca"
-            Case 28
+            Case 19
                 Resultado = "fecha,nombrearchivo,automatico"
+            Case 20
+                Resultado = "id_config,tirage_fact,tirage_compro,tirage_fact_actual,tirage_compro_actual,numfact,numcompro,iva,cotrans,porce_iva_ret"
+            Case 21
+                Resultado = "direccion,id_municipio"
         End Select
         Return Resultado
     End Function
@@ -288,18 +239,10 @@
                 Resultado.Add("nit")
                 Resultado.Add("nrc")
                 Resultado.Add("giro")
-                Resultado.Add("direccionN")
-                Resultado.Add("propietario")
-                Resultado.Add("telefonoN")
-                Resultado.Add("tipo")
-                Resultado.Add("razon_social")
-                Resultado.Add("direccionO")
-                Resultado.Add("telefonoO")
-                Resultado.Add("faxN")
-                Resultado.Add("faxO")
+                Resultado.Add("direccion")
+                Resultado.Add("telefono")
+                Resultado.Add("fax")
                 Resultado.Add("e_mail")
-                Resultado.Add("numpropietario")
-                Resultado.Add("codempresa")
                 Resultado.Add("estado")
             Case 7
                 Resultado.Add("codcliente")
@@ -307,83 +250,44 @@
                 Resultado.Add("nit")
                 Resultado.Add("nrc")
                 Resultado.Add("giro")
-                Resultado.Add("direccionN")
-                Resultado.Add("propietario")
-                Resultado.Add("telefonoN")
-                Resultado.Add("tipo")
-                Resultado.Add("razon_social")
-                Resultado.Add("direccionO")
-                Resultado.Add("telefonoO")
-                Resultado.Add("faxN")
-                Resultado.Add("faxO")
+                Resultado.Add("direccion")
+                Resultado.Add("telefono")
+                Resultado.Add("fax")
                 Resultado.Add("e_mail")
-                Resultado.Add("numpropietario")
-                Resultado.Add("codempresa")
                 Resultado.Add("estado")
+          
             Case 8
-                Resultado.Add("codempresa")
-                Resultado.Add("nombre")
-                Resultado.Add("nit")
-                Resultado.Add("nrc")
-                Resultado.Add("giro")
-                Resultado.Add("direccionN")
-                Resultado.Add("propietario")
-                Resultado.Add("telefonoN")
-                Resultado.Add("tipo")
-                Resultado.Add("razon_social")
-                Resultado.Add("direccionO")
-                Resultado.Add("telefonoO")
-                Resultado.Add("faxN")
-                Resultado.Add("faxO")
-                Resultado.Add("e_mail")
-                Resultado.Add("numpropietario")
-                Resultado.Add("estado")
-            Case 9
-                Resultado.Add("nombres")
-                Resultado.Add("apellidos")
-                Resultado.Add("codempresa")
-            Case 10
                 Resultado.Add("codfacturac")
                 Resultado.Add("numfacturac")
                 Resultado.Add("tipo")
                 Resultado.Add("codproveedor")
-                Resultado.Add("codempresa")
                 Resultado.Add("fecha")
                 Resultado.Add("sumas")
                 Resultado.Add("descuento")
                 Resultado.Add("iva")
                 Resultado.Add("nosujeta")
-                Resultado.Add("fovial")
-                Resultado.Add("cotrans")
                 Resultado.Add("exentas")
                 Resultado.Add("total")
                 Resultado.Add("formadepago")
                 Resultado.Add("unoretencion")
                 Resultado.Add("estado")
                 Resultado.Add("tiraje")
-                Resultado.Add("td1")
-                Resultado.Add("td2")
-                Resultado.Add("tr")
-                Resultado.Add("ts")
-            Case 11
+            Case 9
                 Resultado.Add("codfacturav")
                 Resultado.Add("numfacturav")
                 Resultado.Add("tipo")
                 Resultado.Add("codcliente")
-                Resultado.Add("codempresa")
                 Resultado.Add("fecha")
                 Resultado.Add("sumas")
                 Resultado.Add("descuento")
                 Resultado.Add("iva")
                 Resultado.Add("nosujeta")
-                Resultado.Add("fovial")
-                Resultado.Add("cotrans")
                 Resultado.Add("exentas")
                 Resultado.Add("total")
                 Resultado.Add("formadepago")
                 Resultado.Add("estado")
                 Resultado.Add("tiraje")
-            Case 12
+            Case 10
                 Resultado.Add("coddetallefacturac")
                 Resultado.Add("codfacturac")
                 Resultado.Add("codarticulo")
@@ -395,7 +299,7 @@
                 Resultado.Add("total")
                 Resultado.Add("total1")
                 Resultado.Add("preciopublico")
-            Case 13
+            Case 11
                 Resultado.Add("coddetallefacturav")
                 Resultado.Add("codfacturav")
                 Resultado.Add("codarticulo")
@@ -407,62 +311,21 @@
                 Resultado.Add("total")
                 Resultado.Add("total1")
                 Resultado.Add("preciopublico")
-            Case 14
-                Resultado.Add("fecha")
-                Resultado.Add("hora")
-                Resultado.Add("IdUsr")
-                Resultado.Add("duracionSecion")
-                Resultado.Add("codempresa")
-                Resultado.Add("codfactura")
-            Case 15
-                Resultado.Add("codempresa")
-                Resultado.Add("id_inventario")
-                Resultado.Add("cod_empresa")
-                Resultado.Add("cantidad_articulos")
-                Resultado.Add("iva_articulos")
-                Resultado.Add("total_con_iva")
-                Resultado.Add("total_sin_iva")
-            Case 16
-                Resultado.Add("id_tablas_inventario")
-                Resultado.Add("id_inventario")
-                Resultado.Add("id_articulo")
-                Resultado.Add("nombre")
-                Resultado.Add("descripcion")
-                Resultado.Add("preciounit")
-                Resultado.Add("preciopublic")
-                Resultado.Add("existencias")
-                Resultado.Add("idempresa")
-                Resultado.Add("idcategoria")
-                Resultado.Add("idproveedor")
-                Resultado.Add("idunidmed")
-            Case 17
+
+            Case 12
                 Resultado.Add("cod_departamento")
                 Resultado.Add("departamentos")
-            Case 18
+            Case 13
                 Resultado.Add("id_municipio")
                 Resultado.Add("municipio")
                 Resultado.Add("cod_departamento")
-
-            Case 19
-                Resultado.Add("idtablas")
-                Resultado.Add("nombretabla")
-                Resultado.Add("codtabla")
-                Resultado.Add("nombre")
-                Resultado.Add("descripcion")
-                Resultado.Add("preciounit")
-                Resultado.Add("precio_public")
-                Resultado.Add("existencias")
-                Resultado.Add("codempresa")
-                Resultado.Add("idcategoria")
-                Resultado.Add("codproveedor")
-                Resultado.Add("unit_med")
-                Resultado.Add("codempresa1")
-            Case 20
+            
+      
+            Case 14
                 Resultado.Add("id_categoria")
                 Resultado.Add("nombre")
                 Resultado.Add("descripcion")
-                Resultado.Add("codempresa")
-            Case 21
+            Case 15
                 Resultado.Add("codproducto")
                 Resultado.Add("nombre")
                 Resultado.Add("descripcion")
@@ -472,37 +335,17 @@
                 Resultado.Add("existencias")
                 Resultado.Add("codempresa")
                 Resultado.Add("id_categoria")
-                Resultado.Add("codproveedor")
                 Resultado.Add("unid_med")
-            Case 22
-
-                Resultado.Add("iddescuento")
-                Resultado.Add("iva")
-                Resultado.Add("cotras")
-                Resultado.Add("fovil")
-                Resultado.Add("codproducto")
-            Case 23
+            Case 16
                 Resultado.Add("idnumeros")
                 Resultado.Add("numero")
                 Resultado.Add("nombre")
-
-            Case 24
-                Resultado.Add("codtanque")
-                Resultado.Add("nombre")
-                Resultado.Add("contiene")
-                Resultado.Add("cantidad")
-                Resultado.Add("capacidad")
-                Resultado.Add("porcentaje")
-            Case 25
-                Resultado.Add("idbombas")
-                Resultado.Add("nombre")
-                Resultado.Add("ventasdiarias")
-                Resultado.Add("ventasdiariasgalon")
-                Resultado.Add("codtanque")
-            Case 26
+            Case 17
                 Resultado.Add("idclientescf")
                 Resultado.Add("cliente")
-            Case 27
+
+         
+            Case 18
                 Resultado.Add("idtiraje")
                 Resultado.Add("tirajefs")
                 Resultado.Add("tirajefd")
@@ -512,11 +355,27 @@
                 Resultado.Add("tirajecd")
                 Resultado.Add("tirajech")
                 Resultado.Add("tirajeca")
-            Case 28
+            Case 19
                 Resultado.Add("idrespaldo")
                 Resultado.Add("fecha")
                 Resultado.Add("nombrearchivo")
                 Resultado.Add("automatico")
+
+            Case 20
+                Resultado.Add("id_config")
+                Resultado.Add("tirage_fact")
+                Resultado.Add("tirage_compro")
+                Resultado.Add("tirage_fact_actual")
+                Resultado.Add("tirage_compro_actual")
+                Resultado.Add("numfact")
+                Resultado.Add("numcompro")
+                Resultado.Add("iva")
+                Resultado.Add("cotrans")
+                Resultado.Add("porce_iva_ret")
+            Case 21
+                Resultado.Add("id_direccion")
+                Resultado.Add("direccion")
+                Resultado.Add("idmunicipio")
         End Select
         Return Resultado
     End Function

@@ -33,7 +33,6 @@ Public Class compra
 
     'para el descuento
     Private fldescuento As Boolean = False
-    Private tdescuento As New clsMaestros(clsNomTab.eTbl.Descuentos)
     Private dtdescuento As DataTable
     'hasta qui
 
@@ -63,11 +62,7 @@ Public Class compra
     'aqui termina
 
 
-    ' Para los tanques
-    Dim ttanques As New clsMaestros(clsNomTab.eTbl.Tanques)
-    Dim dttanques As DataTable
-    Dim tbombas As New clsMaestros(clsNomTab.eTbl.Bombas)
-    Dim dtbombas As DataTable
+   
     ' aqui termina
 
     'para el uno por ciento retencio
@@ -281,7 +276,7 @@ Public Class compra
     Private Sub insertardetalle()
         Try
 
-            dtdescuento = tdescuento.Consultar(" where codproducto = " & idproducto)
+
             Dim prereal, totalfactura, canti As Double
             If dtdescuento.Rows(0).Item(2).ToString = "True" Then
                 Dim prereal1, treal As Decimal
@@ -396,7 +391,7 @@ Public Class compra
                 If Me.combotipo.Text <> "Factura" Then
                     dtproducto = tproductos.Consultar(" where codproducto = " + CInt(dtdetallefacturacompra.Rows(i).Item(2)).ToString)
 
-                    dtdescuento = tdescuento.Consultar(" where codproducto = " & dtproducto.Rows(0).Item(0))
+
 
                     cantidadproducto = Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(3)), 2)
                     totalproducto = Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(9)), 2)
@@ -452,8 +447,7 @@ Public Class compra
 
 
 
-                    dtdescuento = tdescuento.Consultar(" where codproducto = " & dtproducto.Rows(0).Item(0))
-
+                  
                     cantidadproducto = Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(3)), 2)
                     totalproducto = Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(9)), 2)
 
@@ -739,31 +733,7 @@ Public Class compra
         End Try
 
     End Sub
-    Private Sub cargartanques()
-        Dim t1 = 0, t2 = 0, t3 = 0, t4 As Double = 0
-        'para el tanque de super
-        dttanques = ttanques.Consultar(" Where codtanque = 4")
-        t4 = CDbl(dttanques.Rows(0).Item(3))
-        t4 += CDbl(Me.texs.Text)
-        consultar.Consultar(" update tanques set cantidad = " & t4 & " where codtanque = 4")
-
-        'para el tanque de regular
-        dttanques = ttanques.Consultar(" Where codtanque = 3")
-        t3 = CDbl(dttanques.Rows(0).Item(3))
-        t3 += CDbl(Me.texr.Text)
-        consultar.Consultar(" update tanques set cantidad = " & t3 & " where codtanque = 3")
-
-        'para los tanques de Diesel
-        dttanques = ttanques.Consultar(" Where codtanque = 1")
-        t1 = CDbl(dttanques.Rows(0).Item(3))
-        t1 += CDbl(Me.texd1.Text)
-        consultar.Consultar(" update tanques set cantidad = " & t1 & " where codtanque = 1")
-
-        dttanques = ttanques.Consultar(" Where codtanque = 2")
-        t2 = CDbl(dttanques.Rows(0).Item(3))
-        t2 += CDbl(Me.texd2.Text)
-        consultar.Consultar(" update tanques set cantidad = " & t2 & " where codtanque = 2")
-    End Sub
+  
     Private Sub botguardar_Click_1(sender As Object, e As EventArgs) Handles botguardar.Click
         Try
             Dim ella As String = ""
@@ -782,7 +752,7 @@ Public Class compra
                 Next
                 Me.totalfactu = Me.textotal.Text
                 consultar.Consultar(" update facturacompra set sumas = " & Me.texsumas.Text.ToString & ", iva = " & Me.texiva.Text.ToString & ", fovial = " & Me.texfovial.Text.ToString & ", cotrans = " & Me.texcotrans.Text.ToString & ", descuento = " & descuentof.ToString & ", total = " & Me.textotal.Text.ToString & ", unoretencion = " & Me.texivauno.Text.ToString & ", td1 = " & Me.texd1.Text.Trim.ToString & ", td2 = " & Me.texd2.Text.Trim.ToString & ", tr = " & Me.texr.Text.Trim.ToString & ", ts = " & Me.texs.Text.Trim.ToString & " where codfacturac = " & codfacturac)
-                cargartanques()
+
                 If MsgBox(ella & combotipo.Text.ToString & " Se ingreso exitozamente" & vbCrLf _
                           & " Desea agregar otra compra?", MsgBoxStyle.YesNo, "Compra") = MsgBoxResult.Yes Then
                     mdiMain.llama = "compra"

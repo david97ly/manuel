@@ -133,7 +133,6 @@ Partial Class Empresas
         Me.grubempresas.Controls.Add(Me.grubbotones)
         Me.grubempresas.Controls.Add(Me.GroupBox1)
         Me.grubempresas.Controls.Add(Me.gridempresas)
-        Me.grubempresas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.grubempresas.Location = New System.Drawing.Point(0, 0)
         Me.grubempresas.Name = "grubempresas"
         Me.grubempresas.Size = New System.Drawing.Size(788, 504)

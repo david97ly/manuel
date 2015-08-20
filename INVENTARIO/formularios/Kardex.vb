@@ -6,7 +6,6 @@ Imports System.IO
 Imports logica
 Public Class Kardex
     Dim dtempresa As DataTable
-    Dim tempresa As New clsMaestros(clsNomTab.eTbl.Empresa)
     Dim nombre As String
     Public dtrproductos As DataRow
 
@@ -66,7 +65,7 @@ Public Class Kardex
 
             'Dim imagendemo As ItextSharp.text.Image 'Declaracion de una imagen
             Dim tabla1 As New PdfPTable(4) 'declara la tabla con 4 Columnas
-            dtempresa = tempresa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+
             nombre = "Kardex" & dtrproductos.Item(1).ToString & ".pdf"
 
           

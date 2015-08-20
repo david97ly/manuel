@@ -20,7 +20,6 @@ Public Class DatosEmpresa
     Private frm As Empresas
     Private faxN As String
     Private faxO As String
-    Private Empresa As New clsMaestros(clsNomTab.eTbl.Empresa)
     Private Proveedores As New clsMaestros(clsNomTab.eTbl.Proveedores)
     Private Clientes As New clsMaestros(clsNomTab.eTbl.Clientes)
     Private Creartabla As New clsProcesos
@@ -66,7 +65,7 @@ Public Class DatosEmpresa
     Public Function Insertar() As Boolean
         Try
             If donde = "here" Then
-                Empresa.Insertar("'" + cempresa + "','" + nombreE + "','" + nit + "','" + nrc + "','" + giro + "','" + Me.direccionN + "','" + Me.propietario + "','" + Me.telefonoN + "','" + Me.tipo + "','" + Me.razon + "','" + Me.direccionO + "','" + Me.telefonoO + "','" + Me.faxN + "','" + Me.faxO + "','" + Me.email + "','" + Me.telefonoP + "','Activo'")
+
             
                 MsgBox("La empresa se guardo con exito", MsgBoxStyle.Information, "Exito")
             ElseIf donde = "proveedores" Then
@@ -84,7 +83,7 @@ Public Class DatosEmpresa
     Public Function Actualizar(ByVal co As String) As Boolean
         Try
             If donde = "here" Then
-                Empresa.Actualizar(codigo & "|'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.propietario + "'|'" + Me.telefonoN + "'|'" + Me.tipo + "'|'" + Me.razon + "'|'" + Me.direccionO + "'|'" + Me.telefonoO + "'|'" + Me.faxN + "'|'" + Me.faxO + "'|'" + Me.email + "'|'" + Me.telefonoP + "'|'Activo'")
+
                 MsgBox("La empresa se actualizo con exito", MsgBoxStyle.Information, "Exito")
             ElseIf donde = "proveedores" Then
                 Proveedores.Actualizar(codigo + "|'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.propietario + "'|'" + Me.telefonoN + "'|'" + Me.tipo + "'|'" + Me.razon + "'|'" + Me.direccionO + "'|'" + Me.telefonoO + "'|'" + Me.faxN + "'|'" + Me.faxO + "'|'" + Me.email + "'|'" + Me.telefonoP + "'|" + co + "|'Activo'")
@@ -101,7 +100,7 @@ Public Class DatosEmpresa
 
     Public Sub eliminar(ByVal id As String, ByVal donde As String)
         If donde = "here" Then
-            Empresa.Eliminar(id)
+
             MsgBox("La empresa se actualizo con exito", MsgBoxStyle.Information, "Exito")
         ElseIf donde = "proveedores" Then
             Proveedores.Eliminar(id)

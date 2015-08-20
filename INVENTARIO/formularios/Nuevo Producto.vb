@@ -27,7 +27,6 @@ Public Class Nuevo_Producto
     Dim idcategoria As String
     Dim codpreovee As String
 
-    Private tdescuentos As New clsMaestros(clsNomTab.eTbl.Descuentos)
     Private dtdescuentos As DataTable
 
     Private Sub Nuevo_Producto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -68,7 +67,6 @@ Public Class Nuevo_Producto
                 Me.texcategoria.Text = dtcateedit.Rows(0).Item(1)
                 Me.texproveedor.Text = dtprovedit.Rows(0).Item(1)
             End If
-            dtdescuentos = tdescuentos.Consultar(" where codproducto = " & dtrprodedit.Item(0))
             If dtdescuentos.Rows(0).Item(2).ToString = "True" Then
                 Me.checcotrans.Checked = True
             Else
@@ -179,7 +177,7 @@ Public Class Nuevo_Producto
                 Dim unidmede As String = texunidaddemedida.Text.ToString.Trim
 
                 If editar = False Then
-                    tdescuentos.Insertar("'" & Me.checiva.Checked.ToString & "','" & Me.checcotrans.Checked.ToString & "','" & Me.checfovial.Checked.ToString & "'," & idprod)
+
                     tproductos.Insertar("'" & idprod + "','" & nombre & "','" & descripcion & "'," & preciounit & ",0" & "," & preciopublic & "," & existencias & ",'" & codempresa & "'," & idcategoria & ",'" & codpreovee & "','" & unidmede & "'")
                     MsgBox("El producto se ingreso exitozamente", MsgBoxStyle.Information, "Exito")
                 Else

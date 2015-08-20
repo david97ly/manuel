@@ -1,7 +1,6 @@
 ﻿Imports logica
 Imports System.Windows.Forms
 Public Class Inicio
-    Dim empresa As New clsMaestros(clsNomTab.eTbl.Empresa)
     Dim dtempresa As DataTable
     Dim codigoe As String
     Private Sub Inicio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -10,7 +9,6 @@ Public Class Inicio
 
     Private Sub cargargrid()
 
-        dtempresa = empresa.Consultar()
 
         Dim nf As Short
 

@@ -319,41 +319,12 @@ Public Class Compras_realizadas
                         End If
                     Next
 
-                    Dim ct As Decimal
-                    Dim ttanques As New clsMaestros(clsNomTab.eTbl.Tanques)
-                    Dim dttanques As DataTable
                     Dim cd1 As Decimal = CDec(dtfacturacompra.Rows(id).Item(18))
                     Dim cd2 As Decimal = CDec(dtfacturacompra.Rows(id).Item(19))
                     Dim cr As Decimal = CDec(dtfacturacompra.Rows(id).Item(20))
                     Dim cs As Decimal = CDec(dtfacturacompra.Rows(id).Item(21))
 
-                    'Para el tanque de diesel 1
-                    dttanques = ttanques.Consultar(" where codtanque = 1")
-                    ct = CDbl(dttanques.Rows(0).Item(3))
-                    ct -= cd1
-
-                    c.Consultar("UPDATE tanques SET cantidad = " & ct & " where codtanque = 1 ")
-
-                    ' Para el tanque de diesel 2
-                    dttanques = ttanques.Consultar(" where codtanque = 2")
-                    ct = CDbl(dttanques.Rows(0).Item(3))
-                    ct -= cd2
-
-                    c.Consultar("UPDATE tanques SET cantidad = " & ct & " where codtanque = 2 ")
-
-                    'Para el tanque de regular
-                    dttanques = ttanques.Consultar(" where codtanque = 3")
-                    ct = CDbl(dttanques.Rows(0).Item(3))
-                    ct -= cr
-
-                    c.Consultar("UPDATE tanques SET cantidad = " & ct & " where codtanque = 3 ")
-
-                    'Para el tanque de Super
-                    dttanques = ttanques.Consultar(" where codtanque = 4")
-                    ct = CDbl(dttanques.Rows(0).Item(3))
-                    ct -= cs
-
-                    c.Consultar("UPDATE tanques SET cantidad = " & ct & " where codtanque = 4 ")
+                   
 
 
                     'para eliminanar la compra por completo

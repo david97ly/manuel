@@ -23,7 +23,7 @@ Partial Class compra
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(compra))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.texprod6 = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.texco6 = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -702,10 +702,10 @@ Partial Class compra
         'mayorigual200
         '
         Me.mayorigual200.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.mayorigual200.Location = New System.Drawing.Point(0, 0)
+        Me.mayorigual200.Location = New System.Drawing.Point(0, 29)
         Me.mayorigual200.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.mayorigual200.Name = "mayorigual200"
-        Me.mayorigual200.Size = New System.Drawing.Size(508, 287)
+        Me.mayorigual200.Size = New System.Drawing.Size(508, 258)
         Me.mayorigual200.TabIndex = 0
         Me.mayorigual200.TabItem = Me.SuperTabItem2
         '
@@ -1261,14 +1261,14 @@ Partial Class compra
         Me.gridcompra.AllowUserToDeleteRows = False
         Me.gridcompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gridcompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cantida, Me.nombr, Me.preciu, Me.preciod, Me.exentas, Me.tota})
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle2
         Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.gridcompra.Location = New System.Drawing.Point(550, 169)
         Me.gridcompra.Name = "gridcompra"

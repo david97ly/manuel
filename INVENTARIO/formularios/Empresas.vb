@@ -7,7 +7,6 @@ Public Class Empresas
     Public donde As String = "here"
     Dim Departamento As New clsMaestros(clsNomTab.eTbl.Departamentos)
     Dim Municipio As New clsMaestros(clsNomTab.eTbl.Municipios)
-    Dim Empresa As New clsMaestros(clsNomTab.eTbl.Empresa)
     Dim dtempresa As DataTable
     Dim dtDepartamento As DataTable
     Dim dtMunicipio As DataTable
@@ -46,7 +45,7 @@ Public Class Empresas
                 actualizagrid()
             Else
                 Me.grubempresas.Visible = False
-                dtempresa = Empresa.Consultar(" where codempresa = " & mdiMain.codigoempresa)
+
                 Me.lbempresa.Text = dtempresa.Rows(0).Item(1).ToString
 
                 If edit = True Then
@@ -62,7 +61,7 @@ Public Class Empresas
 
     Public Sub actualizagrid()
 
-        dtempresa = Empresa.Consultar()
+
         Dim nf As Short
 
         nf = dtempresa.Rows.Count
@@ -301,7 +300,7 @@ Public Class Empresas
             id = dtempresa.Rows(id).Item(0).ToString
 
             If MsgBox("Seguro que quiere eliminar la empresa", MsgBoxStyle.YesNo, "___....:::: AVISO :::...___") = MsgBoxResult.Yes Then
-                Empresa.Eliminar(id.ToString)
+
                 actualizagrid()
                 MsgBox("La empresa fue eliminada", MsgBoxStyle.Information, "___....:::: EXITO :::...___")
             End If

@@ -226,7 +226,7 @@ Public Class Proveedores
             Dim dtrpro As DataRow = dtproveedores.Rows(id)
             If donde = "producto" Then
                 frm.dtrprove = dtrpro
-                frm.texproveedor.Text = dtrpro.Item(1)
+
                 Me.Close()
             End If
 

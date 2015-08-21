@@ -32,13 +32,11 @@ Partial Class Nuevo_Producto
         Me.Label3 = New System.Windows.Forms.Label()
         Me.texpreciounitario = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.texpreciopublico = New System.Windows.Forms.TextBox()
+        Me.texprecioindi = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.texcantidad = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.texproveedor = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.texunidaddemedida = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -51,17 +49,11 @@ Partial Class Nuevo_Producto
         Me.lnombre = New System.Windows.Forms.Label()
         Me.ldescripcion = New System.Windows.Forms.Label()
         Me.lunitmed = New System.Windows.Forms.Label()
-        Me.lproveedor = New System.Windows.Forms.Label()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.ExpandablePanel1 = New DevComponents.DotNetBar.ExpandablePanel()
-        Me.checfovial = New DevComponents.DotNetBar.Controls.CheckBoxX()
-        Me.checcotrans = New DevComponents.DotNetBar.Controls.CheckBoxX()
-        Me.checiva = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.picno = New System.Windows.Forms.PictureBox()
         Me.picsi = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
-        Me.ExpandablePanel1.SuspendLayout()
         CType(Me.picno, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picsi, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -144,22 +136,22 @@ Partial Class Nuevo_Producto
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Precio Unitario"
         '
-        'texpreciopublico
+        'texprecioindi
         '
-        Me.texpreciopublico.Location = New System.Drawing.Point(137, 192)
-        Me.texpreciopublico.Name = "texpreciopublico"
-        Me.texpreciopublico.Size = New System.Drawing.Size(82, 22)
-        Me.texpreciopublico.TabIndex = 10
+        Me.texprecioindi.Location = New System.Drawing.Point(137, 192)
+        Me.texprecioindi.Name = "texprecioindi"
+        Me.texprecioindi.Size = New System.Drawing.Size(82, 22)
+        Me.texprecioindi.TabIndex = 10
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
-        Me.Label5.Location = New System.Drawing.Point(37, 192)
+        Me.Label5.Location = New System.Drawing.Point(21, 192)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(95, 16)
+        Me.Label5.Size = New System.Drawing.Size(107, 16)
         Me.Label5.TabIndex = 9
-        Me.Label5.Text = "Precio Publico"
+        Me.Label5.Text = "Precio Individual"
         '
         'texcantidad
         '
@@ -188,23 +180,6 @@ Partial Class Nuevo_Producto
         Me.Label7.TabIndex = 13
         Me.Label7.Text = "Categoria"
         '
-        'texproveedor
-        '
-        Me.texproveedor.Location = New System.Drawing.Point(469, 48)
-        Me.texproveedor.Name = "texproveedor"
-        Me.texproveedor.Size = New System.Drawing.Size(279, 22)
-        Me.texproveedor.TabIndex = 16
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Location = New System.Drawing.Point(388, 48)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(72, 16)
-        Me.Label8.TabIndex = 15
-        Me.Label8.Text = "Proveedor"
-        '
         'texunidaddemedida
         '
         Me.texunidaddemedida.Location = New System.Drawing.Point(137, 248)
@@ -228,15 +203,15 @@ Partial Class Nuevo_Producto
         Me.GroupBox1.Controls.Add(Me.botguardar)
         Me.GroupBox1.Controls.Add(Me.botsalir)
         Me.GroupBox1.Controls.Add(Me.botborrar)
-        Me.GroupBox1.Location = New System.Drawing.Point(460, 189)
+        Me.GroupBox1.Location = New System.Drawing.Point(466, 9)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(329, 90)
+        Me.GroupBox1.Size = New System.Drawing.Size(99, 273)
         Me.GroupBox1.TabIndex = 19
         Me.GroupBox1.TabStop = False
         '
         'botguardar
         '
-        Me.botguardar.Location = New System.Drawing.Point(6, 37)
+        Me.botguardar.Location = New System.Drawing.Point(6, 21)
         Me.botguardar.Name = "botguardar"
         Me.botguardar.Size = New System.Drawing.Size(87, 35)
         Me.botguardar.TabIndex = 2
@@ -245,7 +220,7 @@ Partial Class Nuevo_Producto
         '
         'botsalir
         '
-        Me.botsalir.Location = New System.Drawing.Point(236, 38)
+        Me.botsalir.Location = New System.Drawing.Point(6, 232)
         Me.botsalir.Name = "botsalir"
         Me.botsalir.Size = New System.Drawing.Size(87, 35)
         Me.botsalir.TabIndex = 1
@@ -254,7 +229,7 @@ Partial Class Nuevo_Producto
         '
         'botborrar
         '
-        Me.botborrar.Location = New System.Drawing.Point(143, 37)
+        Me.botborrar.Location = New System.Drawing.Point(6, 191)
         Me.botborrar.Name = "botborrar"
         Me.botborrar.Size = New System.Drawing.Size(87, 35)
         Me.botborrar.TabIndex = 0
@@ -323,30 +298,16 @@ Partial Class Nuevo_Producto
         Me.lunitmed.TabIndex = 25
         Me.lunitmed.Text = "*"
         '
-        'lproveedor
-        '
-        Me.lproveedor.AutoSize = True
-        Me.lproveedor.BackColor = System.Drawing.Color.Transparent
-        Me.lproveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lproveedor.Location = New System.Drawing.Point(751, 45)
-        Me.lproveedor.Name = "lproveedor"
-        Me.lproveedor.Size = New System.Drawing.Size(16, 20)
-        Me.lproveedor.TabIndex = 26
-        Me.lproveedor.Text = "*"
-        '
         'GroupPanel1
         '
         Me.GroupPanel1.BackColor = System.Drawing.Color.Transparent
         Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GroupPanel1.Controls.Add(Me.ExpandablePanel1)
         Me.GroupPanel1.Controls.Add(Me.GroupBox1)
         Me.GroupPanel1.Controls.Add(Me.lbcamposobligatorios)
-        Me.GroupPanel1.Controls.Add(Me.lproveedor)
         Me.GroupPanel1.Controls.Add(Me.ldescripcion)
         Me.GroupPanel1.Controls.Add(Me.lunitmed)
         Me.GroupPanel1.Controls.Add(Me.lcat)
-        Me.GroupPanel1.Controls.Add(Me.Label8)
         Me.GroupPanel1.Controls.Add(Me.lnombre)
         Me.GroupPanel1.Controls.Add(Me.Label7)
         Me.GroupPanel1.Controls.Add(Me.Label1)
@@ -360,7 +321,7 @@ Partial Class Nuevo_Producto
         Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(804, 297)
+        Me.GroupPanel1.Size = New System.Drawing.Size(579, 297)
         '
         '
         '
@@ -394,80 +355,6 @@ Partial Class Nuevo_Producto
         Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel1.TabIndex = 39
         '
-        'ExpandablePanel1
-        '
-        Me.ExpandablePanel1.CanvasColor = System.Drawing.SystemColors.Control
-        Me.ExpandablePanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ExpandablePanel1.Controls.Add(Me.checfovial)
-        Me.ExpandablePanel1.Controls.Add(Me.checcotrans)
-        Me.ExpandablePanel1.Controls.Add(Me.checiva)
-        Me.ExpandablePanel1.Expanded = False
-        Me.ExpandablePanel1.ExpandedBounds = New System.Drawing.Rectangle(466, 83, 279, 100)
-        Me.ExpandablePanel1.Location = New System.Drawing.Point(466, 83)
-        Me.ExpandablePanel1.Name = "ExpandablePanel1"
-        Me.ExpandablePanel1.Size = New System.Drawing.Size(279, 26)
-        Me.ExpandablePanel1.Style.Alignment = System.Drawing.StringAlignment.Center
-        Me.ExpandablePanel1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.ExpandablePanel1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.ExpandablePanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine
-        Me.ExpandablePanel1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
-        Me.ExpandablePanel1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText
-        Me.ExpandablePanel1.Style.GradientAngle = 90
-        Me.ExpandablePanel1.TabIndex = 27
-        Me.ExpandablePanel1.TitleStyle.Alignment = System.Drawing.StringAlignment.Center
-        Me.ExpandablePanel1.TitleStyle.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
-        Me.ExpandablePanel1.TitleStyle.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
-        Me.ExpandablePanel1.TitleStyle.Border = DevComponents.DotNetBar.eBorderType.RaisedInner
-        Me.ExpandablePanel1.TitleStyle.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder
-        Me.ExpandablePanel1.TitleStyle.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText
-        Me.ExpandablePanel1.TitleStyle.GradientAngle = 90
-        Me.ExpandablePanel1.TitleText = "Descuentos"
-        '
-        'checfovial
-        '
-        '
-        '
-        '
-        Me.checfovial.BackgroundStyle.Class = ""
-        Me.checfovial.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.checfovial.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.checfovial.Location = New System.Drawing.Point(174, 47)
-        Me.checfovial.Name = "checfovial"
-        Me.checfovial.Size = New System.Drawing.Size(89, 23)
-        Me.checfovial.TabIndex = 3
-        Me.checfovial.Text = "FOVIAL"
-        '
-        'checcotrans
-        '
-        '
-        '
-        '
-        Me.checcotrans.BackgroundStyle.Class = ""
-        Me.checcotrans.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.checcotrans.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.checcotrans.Location = New System.Drawing.Point(67, 47)
-        Me.checcotrans.Name = "checcotrans"
-        Me.checcotrans.Size = New System.Drawing.Size(89, 23)
-        Me.checcotrans.TabIndex = 2
-        Me.checcotrans.Text = "COTRANS"
-        '
-        'checiva
-        '
-        '
-        '
-        '
-        Me.checiva.BackgroundStyle.Class = ""
-        Me.checiva.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.checiva.Checked = True
-        Me.checiva.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.checiva.CheckValue = "Y"
-        Me.checiva.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.checiva.Location = New System.Drawing.Point(4, 47)
-        Me.checiva.Name = "checiva"
-        Me.checiva.Size = New System.Drawing.Size(57, 23)
-        Me.checiva.TabIndex = 1
-        Me.checiva.Text = "IVA"
-        '
         'picno
         '
         Me.picno.Image = CType(resources.GetObject("picno.Image"), System.Drawing.Image)
@@ -490,15 +377,14 @@ Partial Class Nuevo_Producto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(804, 297)
+        Me.ClientSize = New System.Drawing.Size(579, 297)
         Me.Controls.Add(Me.picno)
         Me.Controls.Add(Me.picsi)
         Me.Controls.Add(Me.lcodigo)
         Me.Controls.Add(Me.texcategoria)
         Me.Controls.Add(Me.texunidaddemedida)
-        Me.Controls.Add(Me.texproveedor)
         Me.Controls.Add(Me.texcantidad)
-        Me.Controls.Add(Me.texpreciopublico)
+        Me.Controls.Add(Me.texprecioindi)
         Me.Controls.Add(Me.texpreciounitario)
         Me.Controls.Add(Me.texdescripcion)
         Me.Controls.Add(Me.texnombre)
@@ -512,7 +398,6 @@ Partial Class Nuevo_Producto
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
         Me.GroupPanel1.PerformLayout()
-        Me.ExpandablePanel1.ResumeLayout(False)
         CType(Me.picno, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picsi, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -528,13 +413,11 @@ Partial Class Nuevo_Producto
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents texpreciounitario As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents texpreciopublico As System.Windows.Forms.TextBox
+    Friend WithEvents texprecioindi As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents texcantidad As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents texproveedor As System.Windows.Forms.TextBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents texunidaddemedida As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -547,12 +430,7 @@ Partial Class Nuevo_Producto
     Friend WithEvents lnombre As System.Windows.Forms.Label
     Friend WithEvents ldescripcion As System.Windows.Forms.Label
     Friend WithEvents lunitmed As System.Windows.Forms.Label
-    Friend WithEvents lproveedor As System.Windows.Forms.Label
     Friend WithEvents picno As System.Windows.Forms.PictureBox
     Friend WithEvents picsi As System.Windows.Forms.PictureBox
     Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
-    Friend WithEvents ExpandablePanel1 As DevComponents.DotNetBar.ExpandablePanel
-    Friend WithEvents checfovial As DevComponents.DotNetBar.Controls.CheckBoxX
-    Friend WithEvents checcotrans As DevComponents.DotNetBar.Controls.CheckBoxX
-    Friend WithEvents checiva As DevComponents.DotNetBar.Controls.CheckBoxX
 End Class

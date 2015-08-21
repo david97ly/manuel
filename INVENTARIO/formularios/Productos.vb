@@ -31,13 +31,15 @@ Public Class Productos
 
 
     Private Sub Productos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.gridproductos.Select()
+
         Me.botanalizar.Visible = False
         Me.botSeguir.Visible = False
-
+        MdiParent = mdiMain
+        Me.texbusquedacodigonombre.Select()
+        dtproductos = tproductos.Consultar()
         Try
 
-            Me.comboprovee.Visible = False
+
             If donde = "ventas" Or donde = "compras" Or donde = "cambio" Or donde = "kardex" Then
                 ocultar()
             End If
@@ -55,18 +57,7 @@ Public Class Productos
         Me.botanalizar.Visible = False
     End Sub
     Public Sub cargargrid()
-        Try
-            If f Then
-                If radioproveedor.Checked = True Then
-                    dtproductos = tproductos.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and codproveedor = '" + codproveedor + "'")
-                ElseIf radiotodos.Checked = True Then
-                    dtproductos = tproductos.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
-                End If
-                f = False
-            End If
-        Catch ex As Exception
-
-        End Try
+     
 
 
         Try
@@ -82,26 +73,23 @@ Public Class Productos
                 Me.gridproductos.Rows(0).Cells(3).Value = ""
                 Me.gridproductos.Rows(0).Cells(4).Value = ""
                 Me.gridproductos.Rows(0).Cells(5).Value = ""
-                Me.gridproductos.Rows(0).Cells(6).Value = ""
             Else
                 Me.gridproductos.RowCount = nf
             End If
 
             For i As Integer = 0 To dtproductos.Rows.Count - 1
-
-                Me.gridproductos.Rows(i).Cells(0).Value = dtproductos.Rows(i).Item(0).ToString
-                Me.gridproductos.Rows(i).Cells(1).Value = dtproductos.Rows(i).Item(1).ToString
-                Me.gridproductos.Rows(i).Cells(2).Value = dtproductos.Rows(i).Item(2).ToString
-                dtproveedor = tproveedor.Consultar(" where codproveedor = " + dtproductos.Rows(i).Item(9).ToString)
-                If dtproveedor.Rows(0).Item(17) = "inactivo" Then
-                    Me.gridproductos.Rows(i).Cells(3).Style.BackColor = Color.Red
+                If Not CBool(dtproductos.Rows(i).Item(9)) Then
+                    Me.gridproductos.Rows(i).Visible = False
                 Else
-                    Me.gridproductos.Rows(i).Cells(3).Style.BackColor = Color.White
+
+                    Me.gridproductos.Rows(i).Cells(0).Value = dtproductos.Rows(i).Item(0).ToString 'para el codigo
+                    Me.gridproductos.Rows(i).Cells(1).Value = dtproductos.Rows(i).Item(1).ToString 'para el nombre
+                    Me.gridproductos.Rows(i).Cells(2).Value = dtproductos.Rows(i).Item(2).ToString 'para la descripcion
+                    Me.gridproductos.Rows(i).Cells(3).Value = dtproductos.Rows(i).Item(8).ToString 'para la unidad de medida
+                    Me.gridproductos.Rows(i).Cells(4).Value = dtproductos.Rows(i).Item(3).ToString 'para el precio
+                    Me.gridproductos.Rows(i).Cells(5).Value = dtproductos.Rows(i).Item(6).ToString 'para las existencias
                 End If
-                Me.gridproductos.Rows(i).Cells(3).Value = dtproveedor.Rows(0).Item(1)
-                Me.gridproductos.Rows(i).Cells(4).Value = dtproductos.Rows(i).Item(10).ToString
-                Me.gridproductos.Rows(i).Cells(5).Value = dtproductos.Rows(i).Item(5).ToString
-                Me.gridproductos.Rows(i).Cells(6).Value = dtproductos.Rows(i).Item(6).ToString
+
             Next
         Catch ex As Exception
             MsgBox("Ocurrio el siguiente error a la hora de llenar el grid: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
@@ -115,76 +103,34 @@ Public Class Productos
         Me.botseleccionar.Visible = True
     End Sub
 
-    Private Sub radioproveedor_CheckedChanged(sender As Object, e As EventArgs) Handles radioproveedor.CheckedChanged
-        If radioproveedor.Checked = True Then
-            Me.comboprovee.Visible = True
-            cargarprov()
-        Else
-            Me.comboprovee.Visible = False
-        End If
-    End Sub
-
-    Private Sub cargarprov()
-        Try
-            dtproveedor1 = tproveedor.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "'")
-            Me.comboprovee.Items.Clear()
-            For i As Integer = 0 To dtproveedor1.Rows.Count - 1
-                Me.comboprovee.Items.Add(dtproveedor1.Rows(i).Item(1))
-            Next
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
+ 
   
 
 
-    Private Sub radiotodos_Click(sender As Object, e As EventArgs) Handles radiotodos.Click
+    Private Sub radiotodos_Click(sender As Object, e As EventArgs)
         f = True
         cargargrid()
     End Sub
 
-    Private Sub checporprecio_CheckedChanged(sender As Object, e As EventArgs) Handles checporprecio.CheckedChanged
-        If Me.checporprecio.Checked = True Then
-            Me.grubprecios.Visible = True
-        Else
-            Me.grubprecios.Visible = False
-        End If
-    End Sub
+   
 
-    Private Sub botbuscar_Click(sender As Object, e As EventArgs) Handles botbuscar.Click
-        Try
-            f = False
-            If radioproveedor.Checked = True Then
-                dtproductos = tproductos.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and precio_unit >= " + CDbl(Me.tesdesde.Text).ToString + " and precio_unit <= " + CDbl(Me.texhasta.Text).ToString + " and codproveedor = " + codproveedor)
-            Else
-                dtproductos = tproductos.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and precio_unit >= " + CDbl(Me.tesdesde.Text).ToString + " and precio_unit <= " + CDbl(Me.texhasta.Text).ToString)
-            End If
-
-            cargargrid()
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
     Dim varbus As String
     Private Sub texbusquedacodigonombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles texbusquedacodigonombre.KeyPress
         Try
             f = False
-            Me.radiotodos.Checked = True
             If (Asc(e.KeyChar) = 13) Then
             Else
                 If (Asc(e.KeyChar)) = System.Windows.Forms.Keys.Back Then
                     Dim contvarbus As Short
                     If varbus = "" Then
-                        dtproductos = tproductos.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+                        dtproductos = tproductos.Consultar()
                         cargargrid()
                     Else
                         contvarbus = varbus.Length
                         varbus = varbus.Remove(contvarbus - 1, 1)
                     End If
                     If varbus <> "" Then
-                        dtproductos = tproductos.Consultar(" where (codproducto like '%" + varbus + "%' or nombre like '%" + varbus + "%') and  codempresa = " + mdiMain.codigoempresa.ToString)
+                        dtproductos = tproductos.Consultar(" where (codproducto like '%" + varbus + "%' or nombre like '%" + varbus + "%') ")
                     End If
 
                     If dtproductos.Rows.Count <> 0 Then
@@ -194,7 +140,7 @@ Public Class Productos
                 Else
                     varbus += e.KeyChar
 
-                    dtproductos = tproductos.Consultar(" where (codproducto like '%" + varbus + "%' or nombre like '%" + varbus + "%') and  codempresa = " + mdiMain.codigoempresa.ToString)
+                    dtproductos = tproductos.Consultar(" where (codproducto like '%" + varbus + "%' or nombre like '%" + varbus + "%') ")
 
                     If dtproductos.Rows.Count <> 0 Then
                         cargargrid()
@@ -210,17 +156,12 @@ Public Class Productos
    
 
 
-    Private Sub comboprovee_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles comboprovee.SelectedIndexChanged
-        Me.codproveedor = dtproveedor1.Rows(comboprovee.SelectedIndex).Item(0).ToString
-        f = True
-        cargargrid()
-    End Sub
-
 
     Private Sub botnuevo_Click(sender As Object, e As EventArgs) Handles botnuevo.Click
         Nuevo_Producto.donde = "productos"
         Nuevo_Producto.frmp = Me
         Nuevo_Producto.Show()
+        Me.Hide()
     End Sub
 
     Private Sub botdetalle_Click(sender As Object, e As EventArgs) Handles botdetalle.Click
@@ -229,7 +170,7 @@ Public Class Productos
             Dim dtrproducto1 As DataRow = dtproductos.Rows(id)
             DetalleProducto.donde = "productos"
             DetalleProducto.dtrproducto = dtrproducto1
-            DetalleProducto.dtproveedor = Me.dtproveedor
+
             DetalleProducto.frmp = Me
             DetalleProducto.Show()
         Catch ex As Exception
@@ -354,4 +295,7 @@ Public Class Productos
 
 
 
+    Private Sub botbuscar_Click(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

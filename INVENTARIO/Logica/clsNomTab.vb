@@ -144,7 +144,7 @@
             Case 14
                 Resultado = "id_categoria,nombre,descripcion"
             Case 15
-                Resultado = "codproducto,nombre,descripcion,precio_unit,precioindi,preciopublico,existencias,id_categoria,unid_med"
+                Resultado = "codproducto,nombre,descripcion,precio_unit,precioindi,preciopublico,existencias,id_categoria,unid_med,valida"
             Case 16
                 Resultado = "idnumeros,numero,nombre"
             Case 17
@@ -192,7 +192,7 @@
             Case 14
                 Resultado = "nombre,descripcion"
             Case 15
-                Resultado = "codproducto,nombre,descripcion,precio_unit,precioindi,preciopublico,existencias,id_categoria,unid_med"
+                Resultado = "codproducto,nombre,descripcion,precio_unit,precioindi,preciopublico,existencias,id_categoria,unid_med,valida"
             Case 16
                 Resultado = "idnumeros,numero,nombre"
             Case 17
@@ -333,9 +333,9 @@
                 Resultado.Add("precioindi")
                 Resultado.Add("preciopublico")
                 Resultado.Add("existencias")
-                Resultado.Add("codempresa")
                 Resultado.Add("id_categoria")
                 Resultado.Add("unid_med")
+                Resultado.Add("valida")
             Case 16
                 Resultado.Add("idnumeros")
                 Resultado.Add("numero")
@@ -382,7 +382,7 @@
     Private Function getCamposDelete(ByVal Tabla As Short) As String
         Dim Resultado As String = ""
         Select Case Tabla
-            Case 1
+              Case 1
                 Resultado = "IdGrp"
             Case 2
                 Resultado = "IdUsr"
@@ -397,47 +397,33 @@
             Case 7
                 Resultado = "codcliente"
             Case 8
-                Resultado = "codempresa"
+                Resultado = "codfacturac"
             Case 9
-                Resultado = "coddespachador"
+                Resultado = "codfacturav"
             Case 10
-                Resultado = "idtablafacturac"
-            Case 11
-                Resultado = "idtablafarcurav"
-            Case 12
                 Resultado = "coddetallefacturac"
-            Case 13
+            Case 11
                 Resultado = "coddetallefacturav"
-            Case 14
-                Resultado = "id_registroultimo"
-            Case 15
-                Resultado = "id_tablas_inventario"
-            Case 16
-                Resultado = "id_Tablas_detalle_inventario"
-            Case 17
+            Case 12
                 Resultado = "cod_departamento"
-            Case 18
+            Case 13
                 Resultado = "id_municipio"
-            Case 19
-                Resultado = "idtablas"
-            Case 20
+            Case 14
                 Resultado = "id_categoria"
-            Case 21
+            Case 15
                 Resultado = "codproducto"
-            Case 22
-                Resultado = "iddescuento"
-            Case 23
+            Case 16
                 Resultado = "idnumeros"
-            Case 24
-                Resultado = "codtanque"
-            Case 25
-                Resultado = "idbombas"
-            Case 26
+            Case 17
                 Resultado = "idclientescf"
-            Case 27
+            Case 18
                 Resultado = "idtiraje"
-            Case 28
+            Case 19
                 Resultado = "idrespaldo"
+            Case 20
+                Resultado = "id_config"
+            Case 21
+                Resultado = "id_direcciones"
         End Select
         Return Resultado
     End Function

@@ -13,7 +13,7 @@ Public Class Categoria
 
     Private Sub cargargrid()
         Try
-            dtcategoria = categoria.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+            dtcategoria = categoria.Consultar()
             Dim nf As Short
             nf = dtcategoria.Rows.Count
 
@@ -106,7 +106,7 @@ Public Class Categoria
     End Function
     Private Sub insertardatos()
         Try
-            categoria.Insertar("'" + Me.texnombre.Text.ToString.Trim + "','" + Me.texdescripcion.Text.ToString.Trim + "','" + mdiMain.codigoempresa.ToString + "'")
+            categoria.Insertar("'" + Me.texnombre.Text.ToString.Trim + "','" + Me.texdescripcion.Text.ToString.Trim + "'")
             MsgBox("La categoria se inserto Exitozamente", MsgBoxStyle.Information, "Exito")
         Catch ex As Exception
             MsgBox("Ocurrio un error al insertar la categoria razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
@@ -115,7 +115,7 @@ Public Class Categoria
     End Sub
     Private Sub actualizardatos()
         Try
-            categoria.Actualizar(idmod + "|'" + Me.texnombre.Text.ToString.Trim + "'|'" + Me.texdescripcion.Text.ToString.Trim + "'|'" + mdiMain.codigoempresa.ToString + "'")
+            categoria.Actualizar(idmod + "|'" + Me.texnombre.Text.ToString.Trim + "'|'" + Me.texdescripcion.Text.ToString.Trim + "'")
             MsgBox("La categoria se modifico Exitozamente", MsgBoxStyle.Information, "Exito")
         Catch ex As Exception
             MsgBox("Ocurrio un error al modificar la categoria razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
@@ -144,7 +144,7 @@ Public Class Categoria
                 MsgBox("La Categoria se elimino exitozamente: ", MsgBoxStyle.Information, "Exito")
             End If
         Catch ex As Exception
-            MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
+            MsgBox("Ocurrio un error a la hora de eliminar la caterogira", MsgBoxStyle.OkOnly, "Avise")
         End Try
 
     End Sub

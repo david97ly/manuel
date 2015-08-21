@@ -24,15 +24,15 @@ Partial Class DetalleProducto
     Private Sub InitializeComponent()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.botsalir = New System.Windows.Forms.Button()
+        Me.boteditar = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.texunidmed = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.texpreciounit = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.texpreciopublic = New System.Windows.Forms.TextBox()
+        Me.texprecioindi = New System.Windows.Forms.TextBox()
         Me.texexistencias = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -45,8 +45,7 @@ Partial Class DetalleProducto
         Me.Label9 = New System.Windows.Forms.Label()
         Me.texcategoria = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.texproveedor = New System.Windows.Forms.TextBox()
+        Me.boteliminar = New System.Windows.Forms.Button()
         Me.GroupPanel1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -102,33 +101,34 @@ Partial Class DetalleProducto
         'GroupBox4
         '
         Me.GroupBox4.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox4.Controls.Add(Me.Button4)
-        Me.GroupBox4.Controls.Add(Me.Button2)
+        Me.GroupBox4.Controls.Add(Me.boteliminar)
+        Me.GroupBox4.Controls.Add(Me.botsalir)
+        Me.GroupBox4.Controls.Add(Me.boteditar)
         Me.GroupBox4.Location = New System.Drawing.Point(550, 9)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(110, 408)
         Me.GroupBox4.TabIndex = 23
         Me.GroupBox4.TabStop = False
         '
-        'Button4
+        'botsalir
         '
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Location = New System.Drawing.Point(11, 363)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(88, 37)
-        Me.Button4.TabIndex = 3
-        Me.Button4.Text = "Salir"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.botsalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botsalir.Location = New System.Drawing.Point(11, 363)
+        Me.botsalir.Name = "botsalir"
+        Me.botsalir.Size = New System.Drawing.Size(88, 37)
+        Me.botsalir.TabIndex = 3
+        Me.botsalir.Text = "Salir"
+        Me.botsalir.UseVisualStyleBackColor = True
         '
-        'Button2
+        'boteditar
         '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(11, 14)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(88, 37)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Editar"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.boteditar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boteditar.Location = New System.Drawing.Point(11, 14)
+        Me.boteditar.Name = "boteditar"
+        Me.boteditar.Size = New System.Drawing.Size(88, 37)
+        Me.boteditar.TabIndex = 1
+        Me.boteditar.Text = "Editar"
+        Me.boteditar.UseVisualStyleBackColor = True
         '
         'GroupBox3
         '
@@ -138,7 +138,7 @@ Partial Class DetalleProducto
         Me.GroupBox3.Controls.Add(Me.texpreciounit)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Controls.Add(Me.texpreciopublic)
+        Me.GroupBox3.Controls.Add(Me.texprecioindi)
         Me.GroupBox3.Controls.Add(Me.texexistencias)
         Me.GroupBox3.Controls.Add(Me.Label6)
         Me.GroupBox3.Location = New System.Drawing.Point(8, 251)
@@ -175,11 +175,11 @@ Partial Class DetalleProducto
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(59, 66)
+        Me.Label5.Location = New System.Drawing.Point(47, 66)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(95, 16)
+        Me.Label5.Size = New System.Drawing.Size(107, 16)
         Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Precio Publico"
+        Me.Label5.Text = "Precio Individual"
         '
         'Label8
         '
@@ -190,13 +190,13 @@ Partial Class DetalleProducto
         Me.Label8.TabIndex = 14
         Me.Label8.Text = "Unidad de medida"
         '
-        'texpreciopublic
+        'texprecioindi
         '
-        Me.texpreciopublic.Enabled = False
-        Me.texpreciopublic.Location = New System.Drawing.Point(160, 63)
-        Me.texpreciopublic.Name = "texpreciopublic"
-        Me.texpreciopublic.Size = New System.Drawing.Size(77, 22)
-        Me.texpreciopublic.TabIndex = 9
+        Me.texprecioindi.Enabled = False
+        Me.texprecioindi.Location = New System.Drawing.Point(160, 63)
+        Me.texprecioindi.Name = "texprecioindi"
+        Me.texprecioindi.Size = New System.Drawing.Size(77, 22)
+        Me.texprecioindi.TabIndex = 9
         '
         'texexistencias
         '
@@ -269,11 +269,9 @@ Partial Class DetalleProducto
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.texcategoria)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.texproveedor)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 9)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(525, 113)
+        Me.GroupBox1.Size = New System.Drawing.Size(525, 93)
         Me.GroupBox1.TabIndex = 20
         Me.GroupBox1.TabStop = False
         '
@@ -311,22 +309,15 @@ Partial Class DetalleProducto
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Categoria del producto"
         '
-        'Label7
+        'boteliminar
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(82, 88)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(72, 16)
-        Me.Label7.TabIndex = 12
-        Me.Label7.Text = "Proveedor"
-        '
-        'texproveedor
-        '
-        Me.texproveedor.Enabled = False
-        Me.texproveedor.Location = New System.Drawing.Point(160, 85)
-        Me.texproveedor.Name = "texproveedor"
-        Me.texproveedor.Size = New System.Drawing.Size(318, 22)
-        Me.texproveedor.TabIndex = 13
+        Me.boteliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boteliminar.Location = New System.Drawing.Point(11, 320)
+        Me.boteliminar.Name = "boteliminar"
+        Me.boteliminar.Size = New System.Drawing.Size(88, 37)
+        Me.boteliminar.TabIndex = 4
+        Me.boteliminar.Text = "Eliminar"
+        Me.boteliminar.UseVisualStyleBackColor = True
         '
         'DetalleProducto
         '
@@ -352,15 +343,15 @@ Partial Class DetalleProducto
     End Sub
     Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents botsalir As System.Windows.Forms.Button
+    Friend WithEvents boteditar As System.Windows.Forms.Button
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents texunidmed As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents texpreciounit As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents texpreciopublic As System.Windows.Forms.TextBox
+    Friend WithEvents texprecioindi As System.Windows.Forms.TextBox
     Friend WithEvents texexistencias As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
@@ -373,6 +364,5 @@ Partial Class DetalleProducto
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents texcategoria As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents texproveedor As System.Windows.Forms.TextBox
+    Friend WithEvents boteliminar As System.Windows.Forms.Button
 End Class

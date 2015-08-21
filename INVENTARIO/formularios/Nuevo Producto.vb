@@ -39,7 +39,6 @@ Public Class Nuevo_Producto
             If donde = "detalleproductos" Or flp = True Then
                 Me.texcantidad.Enabled = False
                 cargardatos()
-                Me.texcodigo.Enabled = False
             End If
         Catch ex As Exception
 
@@ -53,33 +52,20 @@ Public Class Nuevo_Producto
             Me.texnombre.Text = dtrprodedit.Item(1)
             Me.texdescripcion.Text = dtrprodedit.Item(2)
             Me.texpreciounitario.Text = dtrprodedit.Item(3)
-            Me.texpreciopublico.Text = dtrprodedit.Item(5)
+            Me.texprecioindi.Text = dtrprodedit.Item(4)
             Me.texcantidad.Text = dtrprodedit.Item(6)
             If flp = True Then
-                dtcategoria = consultar.Consultar(" Select id_categoria,nombre from categoria where id_categoria = " & dtrprodedit.Item(8).ToString)
+                dtcategoria = consultar.Consultar(" Select id_categoria,nombre from categoria where id_categoria = " & dtrprodedit.Item(7).ToString)
                 Me.texcategoria.Text = dtcategoria.Rows(0).Item(1).ToString
                 idcategoria = dtcategoria.Rows(0).Item(0)
-                dtproveedores = consultar.Consultar(" Select codproveedor,nombre from proveedor where codproveedor = " & dtrprodedit.Item(9))
-                Me.texproveedor.Text = dtproveedores.Rows(0).Item(1)
-                dtrprove = dtproveedores.Rows(0)
-                codpreovee = dtproveedores.Rows(0).Item(0)
+
             Else
                 Me.texcategoria.Text = dtcateedit.Rows(0).Item(1)
-                Me.texproveedor.Text = dtprovedit.Rows(0).Item(1)
-            End If
-            If dtdescuentos.Rows(0).Item(2).ToString = "True" Then
-                Me.checcotrans.Checked = True
-            Else
-                Me.checcotrans.Checked = False
+
             End If
 
-            If dtdescuentos.Rows(0).Item(3).ToString = "True" Then
-                Me.checfovial.Checked = True
-            Else
-                Me.checfovial.Checked = False
-            End If
 
-            Me.texunidaddemedida.Text = dtrprodedit.Item(10)
+            Me.texunidaddemedida.Text = dtrprodedit.Item(8)
             Me.editar = True
         Catch ex As Exception
 
@@ -95,6 +81,7 @@ Public Class Nuevo_Producto
                     If llenos Then
                         frmp.cargargrid()
                         frmp.f = True
+                        frmp.Show()
                         Me.Close()
                     End If
 
@@ -141,10 +128,10 @@ Public Class Nuevo_Producto
                     preciounit = Me.texpreciounitario.Text.ToString.Trim
                 End If
 
-                If Me.texpreciopublico.Text.Trim = "" Then
+                If Me.texprecioindi.Text.Trim = "" Then
                     preciopublic = 0
                 Else
-                    preciopublic = Me.texpreciopublico.Text.ToString.Trim
+                    preciopublic = Me.texprecioindi.Text.ToString.Trim
                 End If
 
 
@@ -154,8 +141,7 @@ Public Class Nuevo_Producto
                     existencias = Me.texcantidad.Text.ToString.Trim
                 End If
 
-              
-                Dim codempresa As String = mdiMain.codigoempresa.ToString
+
 
                 If flagc = True Then
                     idcategoria = dtrcate.Item(0).ToString
@@ -166,24 +152,18 @@ Public Class Nuevo_Producto
 
                 End If
 
-                If flagp = True Then
-                    codpreovee = dtrprove.Item(0).ToString
-                Else
-                    If donde <> "productos" Then
-                        codpreovee = dtprovedit.Rows(0).Item(0).ToString
-                    End If
-                End If
+
 
                 Dim unidmede As String = texunidaddemedida.Text.ToString.Trim
 
                 If editar = False Then
 
-                    tproductos.Insertar("'" & idprod + "','" & nombre & "','" & descripcion & "'," & preciounit & ",0" & "," & preciopublic & "," & existencias & ",'" & codempresa & "'," & idcategoria & ",'" & codpreovee & "','" & unidmede & "'")
+                    tproductos.Insertar("'" & idprod + "','" & nombre & "','" & descripcion & "'," & preciounit & "," & preciopublic & ",0," & existencias & "," & idcategoria & ",'" & unidmede & "',1")
                     MsgBox("El producto se ingreso exitozamente", MsgBoxStyle.Information, "Exito")
                 Else
-                    tproductos.Actualizar(dtrprodedit.Item(0) & "|'" & nombre.ToString & "'|'" & descripcion.ToString & "'|" & preciounit.ToString & "|" & "0 |" & preciopublic.ToString & "|" & existencias.ToString & "|'" & mdiMain.codigoempresa.ToString & "'|" & idcategoria.ToString & "|'" & codpreovee & "'|'" & unidmede.ToString & "'")
+                    tproductos.Actualizar(dtrprodedit.Item(0) & "|'" & nombre.ToString & "'|'" & descripcion.ToString & "'|" & preciounit.ToString & "|" & preciopublic.ToString & "|0|" & existencias.ToString & "|" & idcategoria.ToString & "|'" & unidmede.ToString & "'|1")
 
-                    consultar.Consultar(" update descuentos set iva = '" & Me.checiva.Checked.ToString & "',cotrans ='" & Me.checcotrans.Checked.ToString & "',fovial = '" & Me.checfovial.Checked.ToString & "' where codproducto =" & dtrprodedit.Item(0))
+
                     MsgBox("El producto se actualizo exitozamente", MsgBoxStyle.Information, "Exito")
                     If flp = False Then
                         dtproducto = tproductos.Consultar(" where codproducto = '" & dtrprodedit.Item(0) & "'")
@@ -221,13 +201,7 @@ Public Class Nuevo_Producto
             Me.lcat.ForeColor = Color.Black
         End If
 
-        If Me.texproveedor.Text.Trim = "" Then
-            Me.lbcamposobligatorios.ForeColor = Color.Red
-            Me.lproveedor.ForeColor = Color.Red
-            llenos = False
-        Else
-            Me.lproveedor.ForeColor = Color.Black
-        End If
+
 
         If Me.texdescripcion.Text.Trim = "" Then
             Me.lbcamposobligatorios.ForeColor = Color.Red
@@ -270,8 +244,8 @@ Public Class Nuevo_Producto
         Me.texdescripcion.Text = ""
         Me.texcantidad.Text = ""
         Me.texcodigo.Text = ""
-        Me.texproveedor.Text = ""
-        Me.texpreciopublico.Text = ""
+
+        Me.texprecioindi.Text = ""
         Me.texpreciounitario.Text = ""
         Me.texunidaddemedida.Text = ""
     End Sub
@@ -283,7 +257,7 @@ Public Class Nuevo_Producto
         Categoria.Show()
     End Sub
 
-    Private Sub texproveedor_Click(sender As Object, e As EventArgs) Handles texproveedor.Click
+    Private Sub texproveedor_Click(sender As Object, e As EventArgs)
         Me.flagp = True
         Proveedores.donde = "producto"
         Proveedores.frm = Me
@@ -309,7 +283,5 @@ Public Class Nuevo_Producto
     End Sub
 
    
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
-
-    End Sub
+    
 End Class

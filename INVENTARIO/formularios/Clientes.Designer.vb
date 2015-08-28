@@ -36,16 +36,14 @@ Partial Class Clientes
         Me.radionombre = New System.Windows.Forms.RadioButton()
         Me.radiojuridico = New System.Windows.Forms.RadioButton()
         Me.radionatural = New System.Windows.Forms.RadioButton()
-        Me.radiotodo = New System.Windows.Forms.RadioButton()
         Me.texbusqueda = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.gridclientes = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.co = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nomp = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.proi = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ttnn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tip = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.grubbusquedaprov.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -131,7 +129,6 @@ Partial Class Clientes
         Me.grubbusquedaprov.Controls.Add(Me.GroupBox2)
         Me.grubbusquedaprov.Controls.Add(Me.radiojuridico)
         Me.grubbusquedaprov.Controls.Add(Me.radionatural)
-        Me.grubbusquedaprov.Controls.Add(Me.radiotodo)
         Me.grubbusquedaprov.Controls.Add(Me.texbusqueda)
         Me.grubbusquedaprov.Controls.Add(Me.Label2)
         Me.grubbusquedaprov.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -181,7 +178,7 @@ Partial Class Clientes
         '
         Me.radiojuridico.AutoSize = True
         Me.radiojuridico.Checked = True
-        Me.radiojuridico.Location = New System.Drawing.Point(176, 40)
+        Me.radiojuridico.Location = New System.Drawing.Point(5, 29)
         Me.radiojuridico.Margin = New System.Windows.Forms.Padding(5)
         Me.radiojuridico.Name = "radiojuridico"
         Me.radiojuridico.Size = New System.Drawing.Size(81, 24)
@@ -193,25 +190,13 @@ Partial Class Clientes
         'radionatural
         '
         Me.radionatural.AutoSize = True
-        Me.radionatural.Location = New System.Drawing.Point(88, 40)
+        Me.radionatural.Location = New System.Drawing.Point(100, 29)
         Me.radionatural.Margin = New System.Windows.Forms.Padding(5)
         Me.radionatural.Name = "radionatural"
         Me.radionatural.Size = New System.Drawing.Size(78, 24)
         Me.radionatural.TabIndex = 3
         Me.radionatural.Text = "Natural"
         Me.radionatural.UseVisualStyleBackColor = True
-        '
-        'radiotodo
-        '
-        Me.radiotodo.AutoSize = True
-        Me.radiotodo.Location = New System.Drawing.Point(9, 40)
-        Me.radiotodo.Margin = New System.Windows.Forms.Padding(5)
-        Me.radiotodo.Name = "radiotodo"
-        Me.radiotodo.Size = New System.Drawing.Size(71, 24)
-        Me.radiotodo.TabIndex = 2
-        Me.radiotodo.Text = "Todos"
-        Me.radiotodo.UseVisualStyleBackColor = True
-        Me.radiotodo.Visible = False
         '
         'texbusqueda
         '
@@ -236,7 +221,7 @@ Partial Class Clientes
         Me.gridclientes.AllowUserToAddRows = False
         Me.gridclientes.AllowUserToDeleteRows = False
         Me.gridclientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridclientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.co, Me.nomp, Me.proi, Me.ttnn, Me.tip})
+        Me.gridclientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.co, Me.nomp, Me.tip, Me.direccion})
         Me.gridclientes.Cursor = System.Windows.Forms.Cursors.Hand
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
@@ -254,41 +239,6 @@ Partial Class Clientes
         Me.gridclientes.Size = New System.Drawing.Size(705, 262)
         Me.gridclientes.TabIndex = 8
         '
-        'co
-        '
-        Me.co.HeaderText = "Codigo"
-        Me.co.Name = "co"
-        Me.co.ReadOnly = True
-        Me.co.Width = 75
-        '
-        'nomp
-        '
-        Me.nomp.HeaderText = "Nombre del Proveedor"
-        Me.nomp.Name = "nomp"
-        Me.nomp.ReadOnly = True
-        Me.nomp.Width = 225
-        '
-        'proi
-        '
-        Me.proi.HeaderText = "N.R.C"
-        Me.proi.Name = "proi"
-        Me.proi.ReadOnly = True
-        Me.proi.Width = 125
-        '
-        'ttnn
-        '
-        Me.ttnn.HeaderText = "N.I.T"
-        Me.ttnn.Name = "ttnn"
-        Me.ttnn.ReadOnly = True
-        Me.ttnn.Width = 125
-        '
-        'tip
-        '
-        Me.tip.HeaderText = "Tipo"
-        Me.tip.Name = "tip"
-        Me.tip.ReadOnly = True
-        Me.tip.Width = 150
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -300,6 +250,38 @@ Partial Class Clientes
         Me.Label1.Size = New System.Drawing.Size(292, 25)
         Me.Label1.TabIndex = 20
         Me.Label1.Text = "REGISTRO DE CLIENTES"
+        '
+        'co
+        '
+        Me.co.Frozen = True
+        Me.co.HeaderText = "Codigo"
+        Me.co.Name = "co"
+        Me.co.ReadOnly = True
+        Me.co.Width = 75
+        '
+        'nomp
+        '
+        Me.nomp.Frozen = True
+        Me.nomp.HeaderText = "Nombre del Cliente"
+        Me.nomp.Name = "nomp"
+        Me.nomp.ReadOnly = True
+        Me.nomp.Width = 225
+        '
+        'tip
+        '
+        Me.tip.Frozen = True
+        Me.tip.HeaderText = "Telefono"
+        Me.tip.Name = "tip"
+        Me.tip.ReadOnly = True
+        Me.tip.Width = 150
+        '
+        'direccion
+        '
+        Me.direccion.Frozen = True
+        Me.direccion.HeaderText = "Direccion"
+        Me.direccion.Name = "direccion"
+        Me.direccion.ReadOnly = True
+        Me.direccion.Width = 250
         '
         'Clientes
         '
@@ -331,7 +313,6 @@ Partial Class Clientes
     Friend WithEvents grubbusquedaprov As System.Windows.Forms.GroupBox
     Friend WithEvents radiojuridico As System.Windows.Forms.RadioButton
     Friend WithEvents radionatural As System.Windows.Forms.RadioButton
-    Friend WithEvents radiotodo As System.Windows.Forms.RadioButton
     Friend WithEvents texbusqueda As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
@@ -346,7 +327,6 @@ Partial Class Clientes
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents co As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents nomp As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents proi As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ttnn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tip As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents direccion As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

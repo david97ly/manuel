@@ -40,7 +40,7 @@ Public Class Clientes
 
     Private Sub Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-
+            MdiParent = mdiMain
             If donde = "ventas" Then
                 ocultar()
             End If
@@ -66,10 +66,9 @@ Public Class Clientes
     Public Sub cargargrid()
         Try
             If f Then
-                If radiotodo.Checked = True Then
-                    dtclientes = tclientes.Consultar(" where codempresa = " & mdiMain.codigoempresa)
-                ElseIf radiojuridico.Checked = True Then
-                    dtclientes = tclientes.Consultar(" where codempresa = " & mdiMain.codigoempresa + " and tipo ='Contribuyente'")
+
+                If radiojuridico.Checked = True Then
+                    dtclientes = tclientes.Consultar()
                 ElseIf radionatural.Checked = True Then
                     dtclientes = tclientesf.Consultar()
                 End If
@@ -78,7 +77,7 @@ Public Class Clientes
 
             If Me.radionatural.Checked <> True Then
                 For z As Integer = 0 To dtclientes.Rows.Count - 1
-                    If dtclientes.Rows(z).Item(17) = "inactivo" Then
+                    If dtclientes.Rows(z).Item(9) = "inactivo" Then
                         conativos += 1
                     End If
                 Next
@@ -100,26 +99,23 @@ Public Class Clientes
                 Me.gridclientes.Rows(0).Cells(1).Value = ""
                 Me.gridclientes.Rows(0).Cells(2).Value = ""
                 Me.gridclientes.Rows(0).Cells(3).Value = ""
-                Me.gridclientes.Rows(0).Cells(4).Value = ""
             Else
                 Me.gridclientes.RowCount = nf
             End If
             Dim i As Integer = 0
             For e As Integer = 0 To nf - 1
                 If Me.radionatural.Checked <> True Then
-                    If dtclientes.Rows(i).Item(17) <> "inactivo" Then
+                    If dtclientes.Rows(i).Item(9) <> "inactivo" Then
                         Me.gridclientes.Rows(e).Cells(0).Value = dtclientes.Rows(i).Item(0).ToString
                         Me.gridclientes.Rows(e).Cells(1).Value = dtclientes.Rows(i).Item(1).ToString
-                        Me.gridclientes.Rows(e).Cells(2).Value = dtclientes.Rows(i).Item(3).ToString
-                        Me.gridclientes.Rows(e).Cells(3).Value = dtclientes.Rows(i).Item(2).ToString
-                        Me.gridclientes.Rows(e).Cells(4).Value = dtclientes.Rows(i).Item(8).ToString
+                        Me.gridclientes.Rows(e).Cells(2).Value = dtclientes.Rows(i).Item(6).ToString
+                        Me.gridclientes.Rows(e).Cells(3).Value = dtclientes.Rows(i).Item(5).ToString
                     Else
                         i += 1
                         Me.gridclientes.Rows(e).Cells(0).Value = dtclientes.Rows(i).Item(0).ToString
                         Me.gridclientes.Rows(e).Cells(1).Value = dtclientes.Rows(i).Item(1).ToString
-                        Me.gridclientes.Rows(e).Cells(2).Value = dtclientes.Rows(i).Item(3).ToString
-                        Me.gridclientes.Rows(e).Cells(3).Value = dtclientes.Rows(i).Item(2).ToString
-                        Me.gridclientes.Rows(e).Cells(4).Value = dtclientes.Rows(i).Item(8).ToString
+                        Me.gridclientes.Rows(e).Cells(2).Value = dtclientes.Rows(i).Item(6).ToString
+                        Me.gridclientes.Rows(e).Cells(3).Value = dtclientes.Rows(i).Item(5).ToString
                     End If
                     i += 1
                 Else
@@ -127,7 +123,6 @@ Public Class Clientes
                     Me.gridclientes.Rows(e).Cells(1).Value = dtclientes.Rows(i).Item(1).ToString
                     Me.gridclientes.Rows(e).Cells(2).Value = ""
                     Me.gridclientes.Rows(e).Cells(3).Value = ""
-                    Me.gridclientes.Rows(e).Cells(4).Value = ""
                     i += 1
                 End If
 
@@ -140,7 +135,7 @@ Public Class Clientes
 
 
 
-    Private Sub radiotodo_Click(sender As Object, e As EventArgs) Handles radiotodo.Click
+    Private Sub radiotodo_Click(sender As Object, e As EventArgs)
         Try
             f = True
             cargargrid()
@@ -176,7 +171,6 @@ Public Class Clientes
     Private Sub texbusqueda_KeyPress(sender As Object, e As KeyPressEventArgs) Handles texbusqueda.KeyPress
         Try
             f = False
-            Me.radiotodo.Checked = True
             If (Asc(e.KeyChar) = 13) Then
             Else
                 If (Asc(e.KeyChar)) = System.Windows.Forms.Keys.Back Then
@@ -187,9 +181,9 @@ Public Class Clientes
                         varbus = varbus.Remove(contvarbus - 1, 1)
                     End If
                     If radiocodigo.Checked = True Then
-                        dtclientes = tclientes.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "' and codcliente like '%" + varbus + "%'")
+                        dtclientes = tclientes.Consultar(" where codcliente like '%" + varbus + "%'")
                     Else
-                        dtclientes = tclientes.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "' and nombre like '%" + varbus + "%'")
+                        dtclientes = tclientes.Consultar(" where nombre like '%" + varbus + "%'")
                     End If
 
 
@@ -200,9 +194,9 @@ Public Class Clientes
                 Else
                     varbus += e.KeyChar
                     If radiocodigo.Checked = True Then
-                        dtclientes = tclientes.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "' and codcliente like '%" + varbus + "%'")
+                        dtclientes = tclientes.Consultar(" where codcliente like '%" + varbus + "%'")
                     Else
-                        dtclientes = tclientes.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "' and nombre like '%" + varbus + "%'")
+                        dtclientes = tclientes.Consultar(" where  nombre like '%" + varbus + "%'")
                     End If
                     If dtclientes.Rows.Count <> 0 Then
                      
@@ -310,6 +304,7 @@ Public Class Clientes
     'End Sub
 
    
+    
     Private Sub texbusqueda_TextChanged(sender As Object, e As EventArgs) Handles texbusqueda.TextChanged
 
     End Sub

@@ -33,28 +33,18 @@ Public Class DatosEmpresa
     Private detallefacturac As New clsMaestros(clsNomTab.eTbl.DetalleFacturaC)
     'hasta aqui la factura
 
-    Public Sub New(ByRef f As Empresas, ByVal d As String, ByVal cod As String)
+    Public Sub New(ByRef f As Empresas, ByVal d As String)
 
         frm = f
         donde = d
-        Me.codigo = cod
-        cempresa = f.texcodigo.Text.ToString.Trim
         Me.nombreE = f.texnomempresa.Text.ToString.Trim
         Me.nit = f.texnit.Text.ToString.Trim
         Me.nrc = f.texnrc.Text.ToString.Trim
         Me.giro = f.texgiro.Text.ToString.Trim
         Me.direccionN = f.texdireccionN.Text.ToString.Trim + " " + f.combomuniN.Text.ToString.Trim + " " + f.combodeparN.Text.ToString.Trim
-        Me.direccionO = f.texdireccionO.Text.ToString.Trim + " " + f.combomuniO.Text.ToString.Trim + " " + f.combodeparO.Text.ToString.Trim
-        Me.TelefonoPorpietario = f.texnumeroP.Text.ToString.Trim
-        Me.tipo = f.combotipo.Text.ToString.Trim
-        Me.telefonoO = f.texnumeroO.Text.ToString.Trim
         Me.telefonoN = f.texnumeroN.Text.ToString.Trim
         Me.email = f.texemail.Text.ToString.Trim
-        Me.razon = f.texrazon.Text.ToString.Trim
-        Me.propietario = f.texpropietario.Text.ToString.Trim
         Me.faxN = f.texfaxN.Text.ToString.Trim
-        Me.faxO = f.texfaxO.Text.ToString.Trim
-        Me.telefonoP = f.texnumeroP.Text.ToString.Trim
 
     End Sub
 
@@ -64,15 +54,13 @@ Public Class DatosEmpresa
 
     Public Function Insertar() As Boolean
         Try
-            If donde = "here" Then
+           
 
-            
-                MsgBox("La empresa se guardo con exito", MsgBoxStyle.Information, "Exito")
-            ElseIf donde = "proveedores" Then
-                Proveedores.Insertar("'" + cempresa + "','" + nombreE + "','" + nit + "','" + nrc + "','" + giro + "','" + Me.direccionN + "','" + Me.propietario + "','" + Me.telefonoN + "','" + Me.tipo + "','" + Me.razon + "','" + Me.direccionO + "','" + Me.telefonoO + "','" + Me.faxN + "','" + Me.faxO + "','" + Me.email + "','" + Me.telefonoP + "'," + codigo + ",'Activo'")
+            If donde = "proveedores" Then
+                Proveedores.Insertar("'" + nombreE + "','" + nit + "','" + nrc + "','" + giro + "','" + Me.direccionN + "','" + Me.telefonoN + "','" + Me.faxN + "','" + Me.email + "','Activo'")
                 MsgBox("El proveedor se guardo con exito", MsgBoxStyle.Information, "Exito")
             ElseIf donde = "clientes" Then
-                Clientes.Insertar("'" + cempresa + "','" + nombreE + "','" + nit + "','" + nrc + "','" + giro + "','" + Me.direccionN + "','" + Me.propietario + "','" + Me.telefonoN + "','" + Me.tipo + "','" + Me.razon + "','" + Me.direccionO + "','" + Me.telefonoO + "','" + Me.faxN + "','" + Me.faxO + "','" + Me.email + "','" + Me.telefonoP + "'," + codigo + ",'Activo'")
+                Clientes.Insertar("'" + nombreE + "','" + nit + "','" + nrc + "','" + giro + "','" + Me.direccionN + "','" + Me.telefonoN + "','" + Me.faxN + "','" + Me.email + "','Activo'")
                 MsgBox("El cliente se guardo con exito", MsgBoxStyle.Information, "Exito")
             End If
         Catch ex As Exception
@@ -80,16 +68,16 @@ Public Class DatosEmpresa
         End Try
     End Function
 
-    Public Function Actualizar(ByVal co As String) As Boolean
+    Public Function Actualizar() As Boolean
         Try
-            If donde = "here" Then
 
-                MsgBox("La empresa se actualizo con exito", MsgBoxStyle.Information, "Exito")
-            ElseIf donde = "proveedores" Then
-                Proveedores.Actualizar(codigo + "|'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.propietario + "'|'" + Me.telefonoN + "'|'" + Me.tipo + "'|'" + Me.razon + "'|'" + Me.direccionO + "'|'" + Me.telefonoO + "'|'" + Me.faxN + "'|'" + Me.faxO + "'|'" + Me.email + "'|'" + Me.telefonoP + "'|" + co + "|'Activo'")
+
+            MsgBox("La empresa se actualizo con exito", MsgBoxStyle.Information, "Exito")
+            If donde = "proveedores" Then
+                Proveedores.Actualizar("'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.telefonoN + "'|'" + Me.faxN + "'|'" + Me.email + "'|'Activo'")
                 MsgBox("El proveedor se actualizo con exito", MsgBoxStyle.Information, "Exito")
             ElseIf donde = "clientes" Then
-                Clientes.Actualizar(codigo + "|'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.propietario + "'|'" + Me.telefonoN + "'|'" + Me.tipo + "'|'" + Me.razon + "'|'" + Me.direccionO + "'|'" + Me.telefonoO + "'|'" + Me.faxN + "'|'" + Me.faxO + "'|'" + Me.email + "'|'" + Me.telefonoP + "'|" + co + "|'Activo'")
+                Clientes.Actualizar("'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.telefonoN + "'|'" + Me.faxN + "'|'" + Me.email + "'|'Activo'")
                 MsgBox("El cliente se actualizo con exito", MsgBoxStyle.Information, "Exito")
             End If
         Catch ex As Exception

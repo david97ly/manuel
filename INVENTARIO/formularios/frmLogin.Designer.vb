@@ -55,6 +55,7 @@ Partial Class frmLogin
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(177, 205)
         Me.PictureBox2.Name = "PictureBox2"
@@ -76,6 +77,7 @@ Partial Class frmLogin
         'PictureBox4
         '
         Me.PictureBox4.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
         Me.PictureBox4.Location = New System.Drawing.Point(417, 5)
         Me.PictureBox4.Name = "PictureBox4"
@@ -88,11 +90,11 @@ Partial Class frmLogin
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(91, 167)
+        Me.Label3.Location = New System.Drawing.Point(78, 156)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(91, 13)
+        Me.Label3.Size = New System.Drawing.Size(129, 20)
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "CONTRASEÑA"
         '
@@ -100,11 +102,11 @@ Partial Class frmLogin
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(102, 120)
+        Me.Label4.Location = New System.Drawing.Point(89, 109)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(80, 13)
+        Me.Label4.Size = New System.Drawing.Size(115, 20)
         Me.Label4.TabIndex = 13
         Me.Label4.Text = "ID USUARIO"
         '
@@ -112,7 +114,7 @@ Partial Class frmLogin
         '
         Me.PictureBox5.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(57, 102)
+        Me.PictureBox5.Location = New System.Drawing.Point(43, 93)
         Me.PictureBox5.Name = "PictureBox5"
         Me.PictureBox5.Size = New System.Drawing.Size(61, 51)
         Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -123,7 +125,7 @@ Partial Class frmLogin
         '
         Me.PictureBox6.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
-        Me.PictureBox6.Location = New System.Drawing.Point(46, 150)
+        Me.PictureBox6.Location = New System.Drawing.Point(34, 142)
         Me.PictureBox6.Name = "PictureBox6"
         Me.PictureBox6.Size = New System.Drawing.Size(60, 49)
         Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -133,21 +135,21 @@ Partial Class frmLogin
         'texcontraseña
         '
         Me.texcontraseña.BackColor = System.Drawing.SystemColors.InactiveBorder
-        Me.texcontraseña.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texcontraseña.Location = New System.Drawing.Point(188, 167)
+        Me.texcontraseña.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.texcontraseña.Location = New System.Drawing.Point(205, 149)
         Me.texcontraseña.Name = "texcontraseña"
         Me.texcontraseña.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.texcontraseña.ShortcutsEnabled = False
-        Me.texcontraseña.Size = New System.Drawing.Size(155, 22)
+        Me.texcontraseña.Size = New System.Drawing.Size(155, 31)
         Me.texcontraseña.TabIndex = 18
         '
         'texidusuario
         '
         Me.texidusuario.BackColor = System.Drawing.SystemColors.InactiveBorder
-        Me.texidusuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texidusuario.Location = New System.Drawing.Point(188, 120)
+        Me.texidusuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.texidusuario.Location = New System.Drawing.Point(205, 102)
         Me.texidusuario.Name = "texidusuario"
-        Me.texidusuario.Size = New System.Drawing.Size(155, 22)
+        Me.texidusuario.Size = New System.Drawing.Size(155, 31)
         Me.texidusuario.TabIndex = 17
         '
         'Label1
@@ -158,9 +160,10 @@ Partial Class frmLogin
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(6, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(371, 50)
+        Me.Label1.Size = New System.Drawing.Size(364, 50)
         Me.Label1.TabIndex = 19
-        Me.Label1.Text = "    INGRESAR AL SISTEMA DE" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "INVENTARIO MULTIEMPRESAS"
+        Me.Label1.Text = "AUTENTICACION DEL SITEMA " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FERROELECTRICA ""SAN JOSE"""
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'frmLogin
         '

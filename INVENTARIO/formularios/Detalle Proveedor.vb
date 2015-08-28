@@ -24,21 +24,14 @@ Public Class DetalleEmpresa
                 Me.Text = "Detalle de la empresa: " + dtempresa.Item(1).ToString
             End If
             Me.texcodigo.Text = dtempresa.Item(0)
-            Me.texrazon.Text = dtempresa.Item(9)
             Me.texnomempresa.Text = dtempresa.Item(1)
-            Me.texpropietario.Text = dtempresa.Item(6)
             Me.texgiro.Text = dtempresa.Item(4)
-            Me.textipo.Text = dtempresa.Item(8)
-            Me.texdireccionO.Text = dtempresa.Item(10)
-            Me.textelfonoO.Text = dtempresa.Item(11)
-            Me.texfaxO.Text = dtempresa.Item(13)
-            Me.texdireccionN.Text = dtempresa.Item(5)
-            Me.textelefonoN.Text = dtempresa.Item(7)
-            Me.texfaxN.Text = dtempresa.Item(12)
+            Me.texdireccionO.Text = dtempresa.Item(5)
+            Me.textelfonoO.Text = dtempresa.Item(6)
+            Me.texfaxO.Text = dtempresa.Item(7)
             Me.texnit.Text = dtempresa.Item(2)
             Me.texnrc.Text = dtempresa.Item(3)
-            Me.texemail.Text = dtempresa.Item(14)
-            Me.texnumP.Text = dtempresa.Item(15)
+            Me.texemail.Text = dtempresa.Item(8)
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try
@@ -123,5 +116,9 @@ Public Class DetalleEmpresa
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
     End Sub
 End Class

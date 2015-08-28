@@ -187,7 +187,7 @@ Partial Class DetalleEmpresa
         Me.TabPage1.Controls.Add(Me.Label7)
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1.Size = New System.Drawing.Size(763, 121)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Direccion"
@@ -260,7 +260,7 @@ Partial Class DetalleEmpresa
         Me.TabPage3.Controls.Add(Me.Label13)
         Me.TabPage3.Location = New System.Drawing.Point(4, 25)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage3.Size = New System.Drawing.Size(763, 121)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Documentos"

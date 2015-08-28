@@ -33,10 +33,11 @@ Public Class DatosEmpresa
     Private detallefacturac As New clsMaestros(clsNomTab.eTbl.DetalleFacturaC)
     'hasta aqui la factura
 
-    Public Sub New(ByRef f As Empresas, ByVal d As String)
+    Public Sub New(ByRef f As Empresas, ByVal d As String, ByVal c As String)
 
         frm = f
         donde = d
+        Me.codigo = c
         Me.nombreE = f.texnomempresa.Text.ToString.Trim
         Me.nit = f.texnit.Text.ToString.Trim
         Me.nrc = f.texnrc.Text.ToString.Trim
@@ -71,13 +72,11 @@ Public Class DatosEmpresa
     Public Function Actualizar() As Boolean
         Try
 
-
-            MsgBox("La empresa se actualizo con exito", MsgBoxStyle.Information, "Exito")
             If donde = "proveedores" Then
-                Proveedores.Actualizar("'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.telefonoN + "'|'" + Me.faxN + "'|'" + Me.email + "'|'Activo'")
+                Proveedores.Actualizar("'" + Me.codigo + "'|'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.telefonoN + "'|'" + Me.faxN + "'|'" + Me.email + "'|'Activo'")
                 MsgBox("El proveedor se actualizo con exito", MsgBoxStyle.Information, "Exito")
             ElseIf donde = "clientes" Then
-                Clientes.Actualizar("'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.telefonoN + "'|'" + Me.faxN + "'|'" + Me.email + "'|'Activo'")
+                Clientes.Actualizar("'" + Me.codigo + "'|'" + nombreE + "'|'" + nit + "'|'" + nrc + "'|'" + giro + "'|'" + Me.direccionN + "'|'" + Me.telefonoN + "'|'" + Me.faxN + "'|'" + Me.email + "'|'Activo'")
                 MsgBox("El cliente se actualizo con exito", MsgBoxStyle.Information, "Exito")
             End If
         Catch ex As Exception

@@ -52,18 +52,14 @@ Public Class Proveedores
     Public Sub cargargrid()
         Try
             If f Then
-                If radiotodo.Checked = True Then
-                    dtproveedores = proveedores.Consultar(" where codempresa = " & mdiMain.codigoempresa)
-                ElseIf radiojuridico.Checked = True Then
-                    dtproveedores = proveedores.Consultar(" where codempresa = " & mdiMain.codigoempresa + " and tipo = 'Contribuyente'")
-                ElseIf radionatural.Checked = True Then
-                    dtproveedores = proveedores.Consultar(" where codempresa = " & mdiMain.codigoempresa + " and tipo = 'Final'")
-                End If
-                f = False
+
+                dtproveedores = proveedores.Consultar()
+           
+            f = False
             End If
             Dim conativos As Short
             For i As Integer = 0 To dtproveedores.Rows.Count - 1
-                If dtproveedores.Rows(i).Item(17) = "inactivo" Then
+                If dtproveedores.Rows(i).Item(9) = "inactivo" Then
                     conativos += 1
                 End If
             Next
@@ -78,20 +74,20 @@ Public Class Proveedores
                 Me.gridproveedores.Rows(0).Cells(1).Value = ""
                 Me.gridproveedores.Rows(0).Cells(2).Value = ""
                 Me.gridproveedores.Rows(0).Cells(3).Value = ""
-                Me.gridproveedores.Rows(0).Cells(4).Value = ""
             Else
-                Me.gridproveedores.RowCount = nf + 1
+                Me.gridproveedores.RowCount = nf
 
             End If
-
-            For i As Integer = 0 To dtproveedores.Rows.Count - 1
+            Dim e As Integer = dtproveedores.Rows.Count - 1
+            For i As Integer = 0 To e
                 'para el codigo
-                If dtproveedores.Rows(i).Item(17) <> "inactivo" Then
+                If dtproveedores.Rows(i).Item(9) <> "inactivo" Then
                     Me.gridproveedores.Rows(i).Cells(0).Value = dtproveedores.Rows(i).Item(0).ToString
                     Me.gridproveedores.Rows(i).Cells(1).Value = dtproveedores.Rows(i).Item(1).ToString
                     Me.gridproveedores.Rows(i).Cells(2).Value = dtproveedores.Rows(i).Item(6).ToString
-                    Me.gridproveedores.Rows(i).Cells(3).Value = dtproveedores.Rows(i).Item(7).ToString
-                    Me.gridproveedores.Rows(i).Cells(4).Value = dtproveedores.Rows(i).Item(8).ToString
+                    Me.gridproveedores.Rows(i).Cells(3).Value = dtproveedores.Rows(i).Item(5).ToString
+                Else
+                    i = i - 1
                 End If
             Next
 
@@ -120,17 +116,17 @@ Public Class Proveedores
 
 
 
-    Private Sub radionatural_Click(sender As Object, e As EventArgs) Handles radionatural.Click
+    Private Sub radionatural_Click(sender As Object, e As EventArgs)
         f = True
         cargargrid()
     End Sub
 
-    Private Sub radiojuridico_Click(sender As Object, e As EventArgs) Handles radiojuridico.Click
+    Private Sub radiojuridico_Click(sender As Object, e As EventArgs)
         f = True
         cargargrid()
     End Sub
 
-    Private Sub radiotodo_Click(sender As Object, e As EventArgs) Handles radiotodo.Click
+    Private Sub radiotodo_Click(sender As Object, e As EventArgs)
         f = True
         cargargrid()
     End Sub
@@ -141,7 +137,6 @@ Public Class Proveedores
     Private Sub texbusqueda_KeyPress(sender As Object, e As KeyPressEventArgs) Handles texbusqueda.KeyPress
         Try
             f = False
-            Me.radiotodo.Checked = True
             If (Asc(e.KeyChar) = 13) Then
             Else
                 If (Asc(e.KeyChar)) = System.Windows.Forms.Keys.Back Then
@@ -152,9 +147,9 @@ Public Class Proveedores
                         varbus = varbus.Remove(contvarbus - 1, 1)
                     End If
                     If radiocodigo.Checked = True Then
-                        dtproveedores = proveedores.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "' and codproveedor like '%" + varbus + "%'")
+                        dtproveedores = proveedores.Consultar(" where codproveedor like '%" + varbus + "%'")
                     Else
-                        dtproveedores = proveedores.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "' and nombre like '%" + varbus + "%'")
+                        dtproveedores = proveedores.Consultar(" where  nombre like '%" + varbus + "%'")
                     End If
 
                     If dtproveedores.Rows.Count <> 0 Then
@@ -164,9 +159,9 @@ Public Class Proveedores
                 Else
                     varbus += e.KeyChar
                     If radiocodigo.Checked = True Then
-                        dtproveedores = proveedores.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "' and codproveedor like '%" + varbus + "%'")
+                        dtproveedores = proveedores.Consultar(" where codproveedor like '%" + varbus + "%'")
                     Else
-                        dtproveedores = proveedores.Consultar(" where codempresa = '" + mdiMain.codigoempresa.ToString + "' and nombre like '%" + varbus + "%'")
+                        dtproveedores = proveedores.Consultar(" where nombre like '%" + varbus + "%'")
                     End If
                     If dtproveedores.Rows.Count <> 0 Then
                         cargargrid()
@@ -269,18 +264,18 @@ Public Class Proveedores
     'End Sub
 
 
-    Private Sub gridproveedores_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gridproveedores.CellDoubleClick
+    Private Sub gridproveedores_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs)
         botseleccionar_Click_1(sender, e)
     End Sub
 
 
     Dim idglobal As Short
-    Private Sub gridproveedores_KeyPress(sender As Object, e As KeyPressEventArgs) Handles gridproveedores.KeyPress
+    Private Sub gridproveedores_KeyPress(sender As Object, e As KeyPressEventArgs)
         If (Asc(e.KeyChar)) = 13 Then
             If donde = "compras" Then
 
                 Dim id As Short = Me.gridproveedores.CurrentCell.RowIndex - 1
-              
+
 
                 Dim dtrpro As DataRow = dtproveedores.Rows(id)
                 frmc.dtrproveedor = dtrpro

@@ -84,8 +84,6 @@ Public Class Clientes
             End If
 
 
-
-
             Dim nf As Short
             If Me.radionatural.Checked = True Then
                 nf = dtclientes.Rows.Count
@@ -215,10 +213,11 @@ Public Class Clientes
 
         Try
             Empresas.donde = "clientes"
+            Empresas.frmc = Me
             Empresas.controlgrub = 1
             Empresas.Text = "Nuevo Cliente"
-            Empresas.frmc = Me
             Empresas.Show()
+            Me.Visible = False
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try
@@ -231,8 +230,10 @@ Public Class Clientes
             Empresas.dtempresas = dtrclientes
             Empresas.controlgrub = 1
             Empresas.donde = "clientes"
+            Empresas.frmc = Me
             Empresas.edit = True
             Empresas.Show()
+            Me.Visible = False
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try
@@ -245,8 +246,8 @@ Public Class Clientes
             dtrclientes = dtclientes.Rows(id)
             DetalleEmpresa.dtempresa = dtrclientes
             DetalleEmpresa.donde = "clientes"
-            DetalleEmpresa.Show()
             DetalleEmpresa.frmc = Me
+            DetalleEmpresa.Show()
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try

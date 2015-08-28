@@ -33,9 +33,6 @@ Partial Class Proveedores
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.radiocodigo = New System.Windows.Forms.RadioButton()
         Me.radionombre = New System.Windows.Forms.RadioButton()
-        Me.radiojuridico = New System.Windows.Forms.RadioButton()
-        Me.radionatural = New System.Windows.Forms.RadioButton()
-        Me.radiotodo = New System.Windows.Forms.RadioButton()
         Me.texbusqueda = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -48,11 +45,10 @@ Partial Class Proveedores
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.gridproveedores = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nomprov = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.pro = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.telneg = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tipo11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.co = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nomp = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tip = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menuproveedores.SuspendLayout()
         Me.grubbusquedaprov.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -90,9 +86,6 @@ Partial Class Proveedores
         '
         Me.grubbusquedaprov.BackColor = System.Drawing.Color.Transparent
         Me.grubbusquedaprov.Controls.Add(Me.GroupBox2)
-        Me.grubbusquedaprov.Controls.Add(Me.radiojuridico)
-        Me.grubbusquedaprov.Controls.Add(Me.radionatural)
-        Me.grubbusquedaprov.Controls.Add(Me.radiotodo)
         Me.grubbusquedaprov.Controls.Add(Me.texbusqueda)
         Me.grubbusquedaprov.Controls.Add(Me.Label2)
         Me.grubbusquedaprov.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -108,7 +101,7 @@ Partial Class Proveedores
         '
         Me.GroupBox2.Controls.Add(Me.radiocodigo)
         Me.GroupBox2.Controls.Add(Me.radionombre)
-        Me.GroupBox2.Location = New System.Drawing.Point(469, 8)
+        Me.GroupBox2.Location = New System.Drawing.Point(233, 7)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(229, 35)
         Me.GroupBox2.TabIndex = 6
@@ -138,53 +131,18 @@ Partial Class Proveedores
         Me.radionombre.Text = "Nombre"
         Me.radionombre.UseVisualStyleBackColor = True
         '
-        'radiojuridico
-        '
-        Me.radiojuridico.AutoSize = True
-        Me.radiojuridico.Location = New System.Drawing.Point(234, 27)
-        Me.radiojuridico.Margin = New System.Windows.Forms.Padding(4)
-        Me.radiojuridico.Name = "radiojuridico"
-        Me.radiojuridico.Size = New System.Drawing.Size(81, 24)
-        Me.radiojuridico.TabIndex = 4
-        Me.radiojuridico.Text = "Juridico"
-        Me.radiojuridico.UseVisualStyleBackColor = True
-        '
-        'radionatural
-        '
-        Me.radionatural.AutoSize = True
-        Me.radionatural.Location = New System.Drawing.Point(116, 27)
-        Me.radionatural.Margin = New System.Windows.Forms.Padding(4)
-        Me.radionatural.Name = "radionatural"
-        Me.radionatural.Size = New System.Drawing.Size(78, 24)
-        Me.radionatural.TabIndex = 3
-        Me.radionatural.Text = "Natural"
-        Me.radionatural.UseVisualStyleBackColor = True
-        '
-        'radiotodo
-        '
-        Me.radiotodo.AutoSize = True
-        Me.radiotodo.Checked = True
-        Me.radiotodo.Location = New System.Drawing.Point(19, 27)
-        Me.radiotodo.Margin = New System.Windows.Forms.Padding(4)
-        Me.radiotodo.Name = "radiotodo"
-        Me.radiotodo.Size = New System.Drawing.Size(71, 24)
-        Me.radiotodo.TabIndex = 2
-        Me.radiotodo.TabStop = True
-        Me.radiotodo.Text = "Todos"
-        Me.radiotodo.UseVisualStyleBackColor = True
-        '
         'texbusqueda
         '
-        Me.texbusqueda.Location = New System.Drawing.Point(469, 46)
+        Me.texbusqueda.Location = New System.Drawing.Point(94, 43)
         Me.texbusqueda.Margin = New System.Windows.Forms.Padding(4)
         Me.texbusqueda.Name = "texbusqueda"
-        Me.texbusqueda.Size = New System.Drawing.Size(229, 26)
+        Me.texbusqueda.Size = New System.Drawing.Size(597, 26)
         Me.texbusqueda.TabIndex = 1
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(379, 49)
+        Me.Label2.Location = New System.Drawing.Point(4, 46)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(82, 20)
@@ -303,7 +261,8 @@ Partial Class Proveedores
         Me.gridproveedores.AllowUserToAddRows = False
         Me.gridproveedores.AllowUserToDeleteRows = False
         Me.gridproveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridproveedores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.Nomprov, Me.pro, Me.telneg, Me.tipo11})
+        Me.gridproveedores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.co, Me.nomp, Me.tip, Me.direccion})
+        Me.gridproveedores.Cursor = System.Windows.Forms.Cursors.Hand
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -313,46 +272,44 @@ Partial Class Proveedores
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.gridproveedores.DefaultCellStyle = DataGridViewCellStyle1
         Me.gridproveedores.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
-        Me.gridproveedores.Location = New System.Drawing.Point(10, 155)
-        Me.gridproveedores.MultiSelect = False
+        Me.gridproveedores.Location = New System.Drawing.Point(12, 155)
         Me.gridproveedores.Name = "gridproveedores"
         Me.gridproveedores.ReadOnly = True
         Me.gridproveedores.RowHeadersVisible = False
-        Me.gridproveedores.Size = New System.Drawing.Size(703, 218)
+        Me.gridproveedores.Size = New System.Drawing.Size(693, 218)
         Me.gridproveedores.TabIndex = 22
         '
-        'codigo
+        'co
         '
-        Me.codigo.HeaderText = "Código"
-        Me.codigo.Name = "codigo"
-        Me.codigo.ReadOnly = True
-        Me.codigo.Width = 75
+        Me.co.Frozen = True
+        Me.co.HeaderText = "Codigo"
+        Me.co.Name = "co"
+        Me.co.ReadOnly = True
+        Me.co.Width = 75
         '
-        'Nomprov
+        'nomp
         '
-        Me.Nomprov.HeaderText = "Nombre del Proveedor"
-        Me.Nomprov.Name = "Nomprov"
-        Me.Nomprov.ReadOnly = True
-        Me.Nomprov.Width = 225
+        Me.nomp.Frozen = True
+        Me.nomp.HeaderText = "Nombre del Proveedor"
+        Me.nomp.Name = "nomp"
+        Me.nomp.ReadOnly = True
+        Me.nomp.Width = 225
         '
-        'pro
+        'tip
         '
-        Me.pro.HeaderText = "Propietario"
-        Me.pro.Name = "pro"
-        Me.pro.ReadOnly = True
-        Me.pro.Width = 200
+        Me.tip.Frozen = True
+        Me.tip.HeaderText = "Telefono"
+        Me.tip.Name = "tip"
+        Me.tip.ReadOnly = True
+        Me.tip.Width = 150
         '
-        'telneg
+        'direccion
         '
-        Me.telneg.HeaderText = "Telefono Negocio"
-        Me.telneg.Name = "telneg"
-        Me.telneg.ReadOnly = True
-        '
-        'tipo11
-        '
-        Me.tipo11.HeaderText = "Tipo"
-        Me.tipo11.Name = "tipo11"
-        Me.tipo11.ReadOnly = True
+        Me.direccion.Frozen = True
+        Me.direccion.HeaderText = "Direccion"
+        Me.direccion.Name = "direccion"
+        Me.direccion.ReadOnly = True
+        Me.direccion.Width = 250
         '
         'Proveedores
         '
@@ -393,9 +350,6 @@ Partial Class Proveedores
     Friend WithEvents texbusqueda As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents radiojuridico As System.Windows.Forms.RadioButton
-    Friend WithEvents radionatural As System.Windows.Forms.RadioButton
-    Friend WithEvents radiotodo As System.Windows.Forms.RadioButton
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents radiocodigo As System.Windows.Forms.RadioButton
     Friend WithEvents radionombre As System.Windows.Forms.RadioButton
@@ -408,9 +362,8 @@ Partial Class Proveedores
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents gridproveedores As DevComponents.DotNetBar.Controls.DataGridViewX
-    Friend WithEvents codigo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Nomprov As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents pro As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents telneg As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents tipo11 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents co As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents nomp As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents tip As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents direccion As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

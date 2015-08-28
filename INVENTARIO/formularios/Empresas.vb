@@ -233,19 +233,19 @@ Public Class Empresas
             Else
                 If edit = True Then
                     If donde = "proveedores" Then
-                        clsDAtos = New DatosEmpresa(Me, donde)
+                        clsDAtos = New DatosEmpresa(Me, donde, dtempresas.Item(0))
                         clsDAtos.Actualizar()
                     ElseIf donde = "clientes" Then
-                        clsDAtos = New DatosEmpresa(Me, donde)
+                        clsDAtos = New DatosEmpresa(Me, donde, dtempresas.Item(0))
                         clsDAtos.Actualizar()
                     Else
-                        clsDAtos = New DatosEmpresa(Me, donde)
+                        clsDAtos = New DatosEmpresa(Me, donde, dtempresas.Item(0))
                         clsDAtos.Actualizar()
                     End If
 
 
                 Else
-                    clsDAtos = New DatosEmpresa(Me, Me.donde)
+                    clsDAtos = New DatosEmpresa(Me, Me.donde, "nada")
                     clsDAtos.Insertar()
 
                 End If
@@ -260,8 +260,11 @@ Public Class Empresas
                         frmp.cargargrid()
                         Me.Close()
                     Else
-                        frmc.f = True
-                        frmc.cargargrid()
+                        Dim frmc1 As New Clientes
+                        frmc1.f = True
+                        frmc.Close()
+                        frmc1.cargargrid()
+                        frmc1.Show()
                         Me.Close()
                     End If
                 End If
@@ -279,6 +282,7 @@ Public Class Empresas
     End Sub
 
     Private Sub botsalirdatos_Click_2(sender As Object, e As EventArgs) Handles botsalirdatos.Click
+        frmc.Visible = True
         Me.Close()
     End Sub
 

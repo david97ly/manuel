@@ -39,11 +39,11 @@ Partial Class Clientes
         Me.texbusqueda = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.gridclientes = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.co = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nomp = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tip = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.grubbusquedaprov.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -231,25 +231,13 @@ Partial Class Clientes
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.gridclientes.DefaultCellStyle = DataGridViewCellStyle1
-        Me.gridclientes.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
+        Me.gridclientes.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.gridclientes.Location = New System.Drawing.Point(12, 158)
         Me.gridclientes.Name = "gridclientes"
         Me.gridclientes.ReadOnly = True
         Me.gridclientes.RowHeadersVisible = False
         Me.gridclientes.Size = New System.Drawing.Size(705, 262)
         Me.gridclientes.TabIndex = 8
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Verdana", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(191, 13)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(292, 25)
-        Me.Label1.TabIndex = 20
-        Me.Label1.Text = "REGISTRO DE CLIENTES"
         '
         'co
         '
@@ -282,6 +270,18 @@ Partial Class Clientes
         Me.direccion.Name = "direccion"
         Me.direccion.ReadOnly = True
         Me.direccion.Width = 250
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Verdana", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(191, 13)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(292, 25)
+        Me.Label1.TabIndex = 20
+        Me.Label1.Text = "REGISTRO DE CLIENTES"
         '
         'Clientes
         '
@@ -319,14 +319,14 @@ Partial Class Clientes
     Friend WithEvents radiocodigo As System.Windows.Forms.RadioButton
     Friend WithEvents radionombre As System.Windows.Forms.RadioButton
     Friend WithEvents gridclientes As DevComponents.DotNetBar.Controls.DataGridViewX
-    Friend WithEvents botdetalle As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents boteliminar As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents boteditar As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents botseleccionar As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents botnuevo As DevComponents.DotNetBar.ButtonX
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents co As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents nomp As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tip As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents direccion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Private WithEvents botdetalle As DevComponents.DotNetBar.ButtonX
+    Private WithEvents boteliminar As DevComponents.DotNetBar.ButtonX
+    Private WithEvents boteditar As DevComponents.DotNetBar.ButtonX
+    Private WithEvents botseleccionar As DevComponents.DotNetBar.ButtonX
+    Private WithEvents botnuevo As DevComponents.DotNetBar.ButtonX
 End Class

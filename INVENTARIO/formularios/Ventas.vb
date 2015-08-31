@@ -86,33 +86,7 @@ Public Class Ventas
     End Sub
 
     Private Sub Ventas_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
-        If guardado = False Then
-            If (e.KeyChar) = "c" Or (e.KeyChar) = "C" Then
-                Button1.Select()
-            ElseIf (e.KeyChar) = "A" Or (e.KeyChar) = "a" Then
-                Button4.Select()
-            ElseIf (e.KeyChar) = "B" Or (e.KeyChar) = "b" Then
-                Me.controlbombas.Select()
-            ElseIf (e.KeyChar) = "g" Or (e.KeyChar) = "G" Then
-                botguardar_Click(sender, e)
-            End If
-        Else
-            If (e.KeyChar) = "1" Then
-                checdiesel1.Checked = True
-            ElseIf (e.KeyChar) = "2" Then
-                chekregular1.Checked = True
-            ElseIf (e.KeyChar) = "3" Then
-                chekdiesel2.Checked = True
-            ElseIf (e.KeyChar) = "4" Then
-                chekregular2.Checked = True
-            ElseIf (e.KeyChar) = "5" Then
-                chekdiesel3.Checked = True
-            ElseIf (e.KeyChar) = "6" Then
-                cheksuper.Checked = True
-            ElseIf (e.KeyChar) = "g" Or (e.KeyChar) = "G" Then
-                botguardar_Click(sender, e)
-            End If
-        End If
+    
 
     End Sub
     Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -141,38 +115,12 @@ Public Class Ventas
 
 
 
-        If nfp1 >= 1 Then
-            Me.texco1.Text = dtclientes11.Rows(0).Item(0)
-            Me.texprovee1.Text = dtclientes11.Rows(0).Item(1)
-            If nfp1 >= 2 Then
-                Me.texco2.Text = dtclientes11.Rows(1).Item(0)
-                Me.texprovee2.Text = dtclientes11.Rows(1).Item(1)
-                If nfp1 >= 3 Then
-                    Me.texco3.Text = dtclientes11.Rows(2).Item(0)
-                    Me.texprovee3.Text = dtclientes11.Rows(2).Item(1)
-                End If
-            End If
-        End If
 
 
 
 
 
 
-
-        If nfp2 >= 1 Then
-            Me.texco4.Text = dtproductos1.Rows(0).Item(0)
-            Me.texprod4.Text = dtproductos1.Rows(0).Item(1)
-            If nfp2 >= 2 Then
-                Me.texco5.Text = dtproductos1.Rows(1).Item(0)
-                Me.texprod5.Text = dtproductos1.Rows(1).Item(1)
-                If nfp2 >= 3 Then
-                    Me.texco6.Text = dtproductos1.Rows(2).Item(0)
-                    Me.texprod6.Text = dtproductos1.Rows(2).Item(1)
-                  
-                End If
-            End If
-        End If
 
 
     End Sub
@@ -281,31 +229,7 @@ Public Class Ventas
 
     End Sub
 
-    Private Sub activarcheques(ByVal t As Short)
-        If t = 1 Or t = 3 Or t = 5 Then
-            Me.checdiesel1.Visible = True
-            Me.checdiesel1.Checked = True
-            Me.chekdiesel3.Visible = True
-            Me.chekdiesel2.Visible = True
-        ElseIf t = 2 Or t = 4 Then
-            Me.chekregular1.Visible = True
-            Me.chekregular2.Visible = True
-            Me.chekregular1.Checked = True
-        Else
-            Me.cheksuper.Visible = True
-        End If
-    End Sub
-
-    Private Sub llenartanque(ByVal id As Short)
-        If id = 1 Then
-            activarcheques(6)
-            Me.cheksuper.Checked = True
-        ElseIf id = 2 Then
-            activarcheques(2)
-        ElseIf id = 3 Then
-            activarcheques(1)
-        End If
-    End Sub
+  
 
     Private Sub insertardetalle()
         Try
@@ -334,7 +258,7 @@ Public Class Ventas
                 
             End If
 
-            llenartanque(idproducto)
+
             prereal = Math.Round(prereal, 2)
             totalfactura = Math.Round(totalfactura, 2)
             canti = Math.Round(canti, 2)
@@ -1312,7 +1236,6 @@ Public Class Ventas
             cotrans2 = 0
             fovial2 = 0
             totalproducto2 = 0
-            Button4.Select()
 
 
             Dim tcodf As New clsProcesos
@@ -1414,143 +1337,7 @@ Public Class Ventas
 
     End Sub
 
-
-    Private Sub invalidarprov()
-        Me.Button1.Enabled = False
-        Me.Button2.Enabled = False
-        Me.Button3.Enabled = False
-    End Sub
-
-    Dim dtprov As DataTable
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.idcliente = Me.texco1.Text
-        Me.texcliente.Text = Me.texprovee1.Text
-        If Me.combotipo.Text.Trim <> "Factura" Then
-            dtprov = consultar.Consultar("SELECT nrc FROM cliente where codcliente = " & Me.idcliente)
-            Me.texnrc.Text = dtprov.Rows(0).Item(0)
-        End If
-        Me.Button4.Select()
-
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.idcliente = Me.texco2.Text
-        Me.texcliente.Text = Me.texprovee2.Text
-        If Me.combotipo.Text.Trim <> "Factura" Then
-            dtprov = consultar.Consultar("SELECT nrc FROM cliente where codcliente = " & Me.idcliente)
-            Me.texnrc.Text = dtprov.Rows(0).Item(0)
-        End If
-        Me.Button4.Select()
-
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Me.idcliente = Me.texco3.Text
-        Me.texcliente.Text = Me.texprovee3.Text
-        If Me.combotipo.Text.Trim <> "Factura" Then
-            dtprov = consultar.Consultar("SELECT nrc FROM cliente where codcliente = " & Me.idcliente)
-            Me.texnrc.Text = dtprov.Rows(0).Item(0)
-        End If
-        Me.Button4.Select()
-
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Me.idproducto = Me.texco4.Text
-        Me.texnombrep.Text = Me.texprod4.Text
-        Me.texprecio.Text = Me.dtproductos1.Rows(0).Item(5)
-        Me.dtrproductos = Me.dtproductos1.Rows(0)
-
-        Me.textotalp.Select()
-    End Sub
-
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Me.idproducto = Me.texco5.Text
-        Me.texnombrep.Text = Me.texprod5.Text
-        Me.texprecio.Text = Me.dtproductos1.Rows(1).Item(5)
-        Me.dtrproductos = Me.dtproductos1.Rows(1)
-        Me.textotalp.Select()
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        Me.idproducto = Me.texco6.Text
-        Me.texnombrep.Text = Me.texprod6.Text
-        Me.texprecio.Text = Me.dtproductos1.Rows(2).Item(5)
-        Me.dtrproductos = Me.dtproductos1.Rows(2)
-        Me.textotalp.Select()
-    End Sub
-
-    Private Sub Button7_Click(sender As Object, e As EventArgs)
-
-        Me.texprecio.Text = Me.dtproductos1.Rows(3).Item(5)
-        Me.dtrproductos = Me.dtproductos1.Rows(3)
-        Me.texcantidad.Select()
-    End Sub
-
-
-
-    Private Sub Button1_GotFocus(sender As Object, e As EventArgs) Handles Button1.GotFocus
-        Me.Button1.Height = 40
-        Me.Button1.Width = 175
-    End Sub
-
-
-    Private Sub Button1_LostFocus(sender As Object, e As EventArgs) Handles Button1.LostFocus
-        Me.Button1.Height = 37
-        Me.Button1.Width = 147
-    End Sub
-
-    Private Sub Button2_GotFocus(sender As Object, e As EventArgs) Handles Button2.GotFocus
-        Me.Button2.Height = 40
-        Me.Button2.Width = 175
-    End Sub
-
-    Private Sub Button2_LostFocus(sender As Object, e As EventArgs) Handles Button2.LostFocus
-        Me.Button2.Height = 37
-        Me.Button2.Width = 147
-    End Sub
-
-    Private Sub Button3_GotFocus(sender As Object, e As EventArgs) Handles Button3.GotFocus
-        Me.Button3.Height = 40
-        Me.Button3.Width = 175
-    End Sub
-
-    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles Button3.LostFocus
-        Me.Button3.Height = 37
-        Me.Button3.Width = 147
-    End Sub
-
-    Private Sub Button4_GotFocus(sender As Object, e As EventArgs) Handles Button4.GotFocus
-        Me.Button4.Height = 40
-        Me.Button4.Width = 175
-    End Sub
-
-    Private Sub Button4_LostFocus(sender As Object, e As EventArgs) Handles Button4.LostFocus
-        Me.Button4.Height = 37
-        Me.Button4.Width = 147
-    End Sub
-
-    Private Sub Button5_GotFocus(sender As Object, e As EventArgs) Handles Button5.GotFocus
-        Me.Button5.Height = 40
-        Me.Button5.Width = 175
-    End Sub
-
-
-    Private Sub Button5_LostFocus(sender As Object, e As EventArgs) Handles Button5.LostFocus
-        Me.Button5.Height = 37
-        Me.Button5.Width = 147
-    End Sub
-
-    Private Sub Button6_GotFocus(sender As Object, e As EventArgs) Handles Button6.GotFocus
-        Me.Button6.Height = 40
-        Me.Button6.Width = 175
-    End Sub
-
-    Private Sub Button6_LostFocus(sender As Object, e As EventArgs) Handles Button6.LostFocus
-        Me.Button6.Height = 37
-        Me.Button6.Width = 147
-    End Sub
-
+  
 
 
     Dim contasegundos As Short = 0
@@ -1583,96 +1370,7 @@ Public Class Ventas
     '  
     'End Sub
 
-    Private Sub texcliente_KeyUp(sender As Object, e As KeyEventArgs) Handles texcliente.KeyUp
-        Try
-            Me.texco1.Text = ""
-            Me.texco2.Text = ""
-            Me.texco3.Text = ""
-            Me.texprovee1.Text = ""
-            Me.texprovee2.Text = ""
-            Me.texprovee3.Text = ""
-
-            Dim nomc As String = Me.texcliente.Text.Trim.ToString
-
-            If Me.texcliente.Text.Trim.ToString = "" Then
-                Me.texnrc.Text = ""
-            End If
-            If Me.combotipo.Text = "Factura" Then
-                dtclcf = consultar.Consultar("Select idclientescf, cliente from clientescf where cliente like '%" & nomc & "%'")
-                If dtclcf.Rows.Count <> 0 Then
-
-                    Me.idcliente = dtclcf.Rows(0).Item(0)
-
-
-                    If dtclcf.Rows.Count > 0 Then
-                        Me.texco1.Text = dtclcf.Rows(0).Item(0).ToString
-                        Me.texprovee1.Text = dtclcf.Rows(0).Item(1).ToString
-
-                        If dtclcf.Rows.Count > 1 Then
-                            Me.texco2.Text = dtclcf.Rows(1).Item(0).ToString
-                            Me.texprovee2.Text = dtclcf.Rows(1).Item(1).ToString
-
-                            If dtclcf.Rows.Count > 2 Then
-                                Me.texco3.Text = dtclcf.Rows(2).Item(0).ToString
-                                Me.texprovee3.Text = dtclcf.Rows(2).Item(1).ToString
-                            End If
-                        End If
-                    Else
-                        llenara = False
-                        Me.texco1.Text = ""
-                        Me.texco2.Text = ""
-                        Me.texco3.Text = ""
-                        Me.texprovee1.Text = ""
-                        Me.texprovee2.Text = ""
-                        Me.texprovee3.Text = ""
-                    End If
-
-
-
-
-
-
-
-                End If
-            Else
-                dtcli = consultar.Consultar("Select codcliente, nombre,nrc from cliente where nombre like '%" & nomc & "%'")
-                If dtcli.Rows.Count <> 0 Then
-
-                    Me.idcliente = dtcli.Rows(0).Item(0)
-
-                    If dtcli.Rows.Count > 0 Then
-                        Me.texco1.Text = dtcli.Rows(0).Item(0).ToString
-                        Me.texprovee1.Text = dtcli.Rows(0).Item(1).ToString
-
-                        If dtcli.Rows.Count > 1 Then
-                            Me.texco2.Text = dtcli.Rows(1).Item(0).ToString
-                            Me.texprovee2.Text = dtcli.Rows(1).Item(1).ToString
-
-                            If dtcli.Rows.Count > 2 Then
-                                Me.texco3.Text = dtcli.Rows(2).Item(0).ToString
-                                Me.texprovee3.Text = dtcli.Rows(2).Item(1).ToString
-                            End If
-                        End If
-                    Else
-                        llenara = False
-                        Me.texco1.Text = ""
-                        Me.texco2.Text = ""
-                        Me.texco3.Text = ""
-                        Me.texprovee1.Text = ""
-                        Me.texprovee2.Text = ""
-                        Me.texprovee3.Text = ""
-                    End If
-
-                End If
-            End If
-
-        Catch ex As Exception
-
-        End Try
-
-
-    End Sub
-
+  
 
     Private Sub texcliente_KeyPress(sender As Object, e As KeyPressEventArgs) Handles texcliente.KeyPress
         If (Asc(e.KeyChar)) = 13 Then
@@ -1695,8 +1393,6 @@ Public Class Ventas
                 Me.idcliente = dtcli.Rows(0).Item(0)
             End If
             entert = True
-            Button4.Select()
-
         Catch ex As Exception
 
         End Try
@@ -1712,4 +1408,7 @@ Public Class Ventas
         End If
     End Sub
 
+    Private Sub GroupPanel1_Click(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

@@ -34,14 +34,16 @@ Public Class Productos
 
         Me.botanalizar.Visible = False
         Me.botSeguir.Visible = False
-        MdiParent = mdiMain
+
         Me.texbusquedacodigonombre.Select()
-        dtproductos = tproductos.Consultar()
+
         Try
 
 
             If donde = "ventas" Or donde = "compras" Or donde = "cambio" Or donde = "kardex" Then
                 ocultar()
+            Else
+                MdiParent = mdiMain
             End If
             cargargrid()
         Catch ex As Exception
@@ -57,7 +59,7 @@ Public Class Productos
         Me.botanalizar.Visible = False
     End Sub
     Public Sub cargargrid()
-     
+        dtproductos = tproductos.Consultar()
 
 
         Try
@@ -73,21 +75,80 @@ Public Class Productos
                 Me.gridproductos.Rows(0).Cells(3).Value = ""
                 Me.gridproductos.Rows(0).Cells(4).Value = ""
                 Me.gridproductos.Rows(0).Cells(5).Value = ""
+                Me.gridproductos.Rows(0).Cells(5).Value = ""
             Else
                 Me.gridproductos.RowCount = nf
             End If
+
+
+            'variable para la categoria
+            Dim cate As New clsMaestros(clsNomTab.eTbl.Categorias)
+            Dim datecate As DataTable
 
             For i As Integer = 0 To dtproductos.Rows.Count - 1
                 If Not CBool(dtproductos.Rows(i).Item(9)) Then
                     Me.gridproductos.Rows(i).Visible = False
                 Else
-
                     Me.gridproductos.Rows(i).Cells(0).Value = dtproductos.Rows(i).Item(0).ToString 'para el codigo
                     Me.gridproductos.Rows(i).Cells(1).Value = dtproductos.Rows(i).Item(1).ToString 'para el nombre
                     Me.gridproductos.Rows(i).Cells(2).Value = dtproductos.Rows(i).Item(2).ToString 'para la descripcion
-                    Me.gridproductos.Rows(i).Cells(3).Value = dtproductos.Rows(i).Item(8).ToString 'para la unidad de medida
-                    Me.gridproductos.Rows(i).Cells(4).Value = dtproductos.Rows(i).Item(3).ToString 'para el precio
-                    Me.gridproductos.Rows(i).Cells(5).Value = dtproductos.Rows(i).Item(6).ToString 'para las existencias
+
+                    datecate = cate.Consultar(" where id_categoria = " & dtproductos.Rows(i).Item(7))
+                    Me.gridproductos.Rows(i).Cells(3).Value = datecate.Rows(0).Item(1) 'para la categoria
+
+                    Me.gridproductos.Rows(i).Cells(4).Value = dtproductos.Rows(i).Item(8).ToString 'para la unidad de medida
+                    Me.gridproductos.Rows(i).Cells(5).Value = "$ " & dtproductos.Rows(i).Item(3).ToString 'para el precio
+                    Me.gridproductos.Rows(i).Cells(6).Value = dtproductos.Rows(i).Item(6).ToString 'para las existencias
+                End If
+
+            Next
+        Catch ex As Exception
+            MsgBox("Ocurrio el siguiente error a la hora de llenar el grid: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
+        End Try
+
+    End Sub
+
+
+    Public Sub cargargrid1()
+
+
+        Try
+
+            Dim nf As Short
+            nf = dtproductos.Rows.Count
+
+            If nf = 0 Then
+                Me.gridproductos.RowCount = 1
+                Me.gridproductos.Rows(0).Cells(0).Value = ""
+                Me.gridproductos.Rows(0).Cells(1).Value = ""
+                Me.gridproductos.Rows(0).Cells(2).Value = ""
+                Me.gridproductos.Rows(0).Cells(3).Value = ""
+                Me.gridproductos.Rows(0).Cells(4).Value = ""
+                Me.gridproductos.Rows(0).Cells(5).Value = ""
+                Me.gridproductos.Rows(0).Cells(5).Value = ""
+            Else
+                Me.gridproductos.RowCount = nf
+            End If
+
+
+            'variable para la categoria
+            Dim cate As New clsMaestros(clsNomTab.eTbl.Categorias)
+            Dim datecate As DataTable
+
+            For i As Integer = 0 To dtproductos.Rows.Count - 1
+                If Not CBool(dtproductos.Rows(i).Item(9)) Then
+                    Me.gridproductos.Rows(i).Visible = False
+                Else
+                    Me.gridproductos.Rows(i).Cells(0).Value = dtproductos.Rows(i).Item(0).ToString 'para el codigo
+                    Me.gridproductos.Rows(i).Cells(1).Value = dtproductos.Rows(i).Item(1).ToString 'para el nombre
+                    Me.gridproductos.Rows(i).Cells(2).Value = dtproductos.Rows(i).Item(2).ToString 'para la descripcion
+
+                    datecate = cate.Consultar(" where id_categoria = " & dtproductos.Rows(i).Item(7))
+                    Me.gridproductos.Rows(i).Cells(3).Value = datecate.Rows(0).Item(1) 'para la categoria
+
+                    Me.gridproductos.Rows(i).Cells(4).Value = dtproductos.Rows(i).Item(8).ToString 'para la unidad de medida
+                    Me.gridproductos.Rows(i).Cells(5).Value = "$ " & dtproductos.Rows(i).Item(3).ToString 'para el precio
+                    Me.gridproductos.Rows(i).Cells(6).Value = dtproductos.Rows(i).Item(6).ToString 'para las existencias
                 End If
 
             Next
@@ -134,7 +195,7 @@ Public Class Productos
                     End If
 
                     If dtproductos.Rows.Count <> 0 Then
-                        cargargrid()
+                        cargargrid1()
                     End If
 
                 Else
@@ -143,12 +204,12 @@ Public Class Productos
                     dtproductos = tproductos.Consultar(" where (codproducto like '%" + varbus + "%' or nombre like '%" + varbus + "%') ")
 
                     If dtproductos.Rows.Count <> 0 Then
-                        cargargrid()
+                        cargargrid1()
                     End If
                 End If
             End If
         Catch ex As Exception
-
+            MsgBox("ocurrio algo")
         End Try
 
     End Sub
@@ -158,10 +219,9 @@ Public Class Productos
 
 
     Private Sub botnuevo_Click(sender As Object, e As EventArgs) Handles botnuevo.Click
-        Nuevo_Producto.donde = "productos"
-        Nuevo_Producto.frmp = Me
-        Nuevo_Producto.Show()
-        Me.Hide()
+        pjtAdus.Nuevo_Producto.donde = "productos"
+        pjtAdus.Nuevo_Producto.frmp = Me
+        pjtAdus.Nuevo_Producto.Show()
     End Sub
 
     Private Sub botdetalle_Click(sender As Object, e As EventArgs) Handles botdetalle.Click
@@ -208,10 +268,10 @@ Public Class Productos
             ElseIf donde = "ventas" Then
                 frmv.dtrproductos = dtrproducto1
                 frmv.texnombrep.Text = dtrproducto1.Item(1)
-                frmv.texprecio.Text = dtrproducto1.Item(5)
+                frmv.texprecio.Text = dtrproducto1.Item(3)
                 frmv.textotalp.SelectAll()
                 frmv.idproducto = dtrproducto1.Item(0)
-                Me.Close()
+                Me.Hide()
             ElseIf donde = "kardex" Then
                 frmk.dtrproductos = dtrproducto1
                 frmk.texnombrep.Text = dtrproducto1.Item(1)
@@ -291,11 +351,8 @@ Public Class Productos
 
     End Sub
 
-  
 
-
-
-    Private Sub botbuscar_Click(sender As Object, e As EventArgs)
-
+    Private Sub botacutalizar_Click(sender As Object, e As EventArgs) Handles botacutalizar.Click
+        cargargrid()
     End Sub
 End Class

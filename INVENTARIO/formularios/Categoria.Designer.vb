@@ -22,11 +22,6 @@ Partial Class Categoria
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.botseleccionar = New System.Windows.Forms.Button()
-        Me.botsalir = New System.Windows.Forms.Button()
-        Me.boteliminar = New System.Windows.Forms.Button()
-        Me.botmodificar = New System.Windows.Forms.Button()
-        Me.botnuevo = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.idcategoria = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -39,63 +34,13 @@ Partial Class Categoria
         Me.lcamposobligatorios = New System.Windows.Forms.Label()
         Me.ln = New System.Windows.Forms.Label()
         Me.ld = New System.Windows.Forms.Label()
+        Me.botseleccionar = New System.Windows.Forms.Button()
+        Me.botsalir = New System.Windows.Forms.Button()
+        Me.boteliminar = New System.Windows.Forms.Button()
+        Me.botmodificar = New System.Windows.Forms.Button()
+        Me.botnuevo = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'botseleccionar
-        '
-        Me.botseleccionar.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.botseleccionar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botseleccionar.Location = New System.Drawing.Point(12, 177)
-        Me.botseleccionar.Name = "botseleccionar"
-        Me.botseleccionar.Size = New System.Drawing.Size(119, 33)
-        Me.botseleccionar.TabIndex = 13
-        Me.botseleccionar.Text = "Seleccionar"
-        Me.botseleccionar.UseVisualStyleBackColor = True
-        '
-        'botsalir
-        '
-        Me.botsalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.botsalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botsalir.Location = New System.Drawing.Point(506, 177)
-        Me.botsalir.Name = "botsalir"
-        Me.botsalir.Size = New System.Drawing.Size(93, 33)
-        Me.botsalir.TabIndex = 12
-        Me.botsalir.Text = "Salir"
-        Me.botsalir.UseVisualStyleBackColor = True
-        '
-        'boteliminar
-        '
-        Me.boteliminar.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.boteliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.boteliminar.Location = New System.Drawing.Point(407, 177)
-        Me.boteliminar.Name = "boteliminar"
-        Me.boteliminar.Size = New System.Drawing.Size(93, 33)
-        Me.boteliminar.TabIndex = 11
-        Me.boteliminar.Text = "Eliminar"
-        Me.boteliminar.UseVisualStyleBackColor = True
-        '
-        'botmodificar
-        '
-        Me.botmodificar.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.botmodificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botmodificar.Location = New System.Drawing.Point(246, 177)
-        Me.botmodificar.Name = "botmodificar"
-        Me.botmodificar.Size = New System.Drawing.Size(93, 33)
-        Me.botmodificar.TabIndex = 10
-        Me.botmodificar.Text = "Modificar"
-        Me.botmodificar.UseVisualStyleBackColor = True
-        '
-        'botnuevo
-        '
-        Me.botnuevo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.botnuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botnuevo.Location = New System.Drawing.Point(137, 177)
-        Me.botnuevo.Name = "botnuevo"
-        Me.botnuevo.Size = New System.Drawing.Size(93, 33)
-        Me.botnuevo.TabIndex = 9
-        Me.botnuevo.Text = "Nueva"
-        Me.botnuevo.UseVisualStyleBackColor = True
         '
         'DataGridView1
         '
@@ -109,7 +54,7 @@ Partial Class Categoria
         Me.DataGridView1.Location = New System.Drawing.Point(5, 12)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(594, 150)
+        Me.DataGridView1.Size = New System.Drawing.Size(594, 444)
         Me.DataGridView1.TabIndex = 8
         '
         'idcategoria
@@ -207,11 +152,71 @@ Partial Class Categoria
         Me.ld.TabIndex = 21
         Me.ld.Text = "*"
         '
+        'botseleccionar
+        '
+        Me.botseleccionar.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.botseleccionar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botseleccionar.Location = New System.Drawing.Point(3, 469)
+        Me.botseleccionar.Name = "botseleccionar"
+        Me.botseleccionar.Size = New System.Drawing.Size(119, 33)
+        Me.botseleccionar.TabIndex = 26
+        Me.botseleccionar.Text = "Seleccionar"
+        Me.botseleccionar.UseVisualStyleBackColor = True
+        '
+        'botsalir
+        '
+        Me.botsalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.botsalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botsalir.Location = New System.Drawing.Point(497, 469)
+        Me.botsalir.Name = "botsalir"
+        Me.botsalir.Size = New System.Drawing.Size(93, 33)
+        Me.botsalir.TabIndex = 25
+        Me.botsalir.Text = "Salir"
+        Me.botsalir.UseVisualStyleBackColor = True
+        '
+        'boteliminar
+        '
+        Me.boteliminar.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.boteliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boteliminar.Location = New System.Drawing.Point(398, 469)
+        Me.boteliminar.Name = "boteliminar"
+        Me.boteliminar.Size = New System.Drawing.Size(93, 33)
+        Me.boteliminar.TabIndex = 24
+        Me.boteliminar.Text = "Eliminar"
+        Me.boteliminar.UseVisualStyleBackColor = True
+        '
+        'botmodificar
+        '
+        Me.botmodificar.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.botmodificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botmodificar.Location = New System.Drawing.Point(237, 469)
+        Me.botmodificar.Name = "botmodificar"
+        Me.botmodificar.Size = New System.Drawing.Size(93, 33)
+        Me.botmodificar.TabIndex = 23
+        Me.botmodificar.Text = "Modificar"
+        Me.botmodificar.UseVisualStyleBackColor = True
+        '
+        'botnuevo
+        '
+        Me.botnuevo.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.botnuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botnuevo.Location = New System.Drawing.Point(128, 469)
+        Me.botnuevo.Name = "botnuevo"
+        Me.botnuevo.Size = New System.Drawing.Size(93, 33)
+        Me.botnuevo.TabIndex = 22
+        Me.botnuevo.Text = "Nueva"
+        Me.botnuevo.UseVisualStyleBackColor = True
+        '
         'Categoria
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(604, 220)
+        Me.ClientSize = New System.Drawing.Size(604, 514)
+        Me.Controls.Add(Me.botseleccionar)
+        Me.Controls.Add(Me.botsalir)
+        Me.Controls.Add(Me.boteliminar)
+        Me.Controls.Add(Me.botmodificar)
+        Me.Controls.Add(Me.botnuevo)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.ld)
         Me.Controls.Add(Me.ln)
@@ -221,11 +226,6 @@ Partial Class Categoria
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.texnombre)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.botseleccionar)
-        Me.Controls.Add(Me.botsalir)
-        Me.Controls.Add(Me.boteliminar)
-        Me.Controls.Add(Me.botmodificar)
-        Me.Controls.Add(Me.botnuevo)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Categoria"
@@ -235,11 +235,6 @@ Partial Class Categoria
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents botseleccionar As System.Windows.Forms.Button
-    Friend WithEvents botsalir As System.Windows.Forms.Button
-    Friend WithEvents boteliminar As System.Windows.Forms.Button
-    Friend WithEvents botmodificar As System.Windows.Forms.Button
-    Friend WithEvents botnuevo As System.Windows.Forms.Button
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents idcategoria As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents nombre As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -252,4 +247,9 @@ Partial Class Categoria
     Friend WithEvents lcamposobligatorios As System.Windows.Forms.Label
     Friend WithEvents ln As System.Windows.Forms.Label
     Friend WithEvents ld As System.Windows.Forms.Label
+    Friend WithEvents botseleccionar As System.Windows.Forms.Button
+    Friend WithEvents botsalir As System.Windows.Forms.Button
+    Friend WithEvents boteliminar As System.Windows.Forms.Button
+    Friend WithEvents botmodificar As System.Windows.Forms.Button
+    Friend WithEvents botnuevo As System.Windows.Forms.Button
 End Class

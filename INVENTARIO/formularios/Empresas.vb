@@ -211,7 +211,7 @@ Public Class Empresas
 
 
     Private Sub botborrar1_Click_1(sender As Object, e As EventArgs) Handles botborrar1.Click
-        limpiar(2)
+        limpiar(1)
     End Sub
 
     Private Sub botborrar4_Click_1(sender As Object, e As EventArgs) Handles botborrar4.Click
@@ -224,9 +224,9 @@ Public Class Empresas
 
                 
                 If donde = "clientes" Then
-                    MsgBox("El codigo del cliente ya existe", MsgBoxStyle.Critical, "Aviso")
+                    MsgBox("Todabia faltan campos que llenar", MsgBoxStyle.Critical, "Aviso")
                 ElseIf donde = "proveedores" Then
-                    MsgBox("El codigo del proveedor ya existe", MsgBoxStyle.Critical, "Aviso")
+                    MsgBox("Todabia faltan campos que llenar", MsgBoxStyle.Critical, "Aviso")
                 End If
 
 

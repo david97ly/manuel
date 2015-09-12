@@ -121,6 +121,7 @@ Public Class Categoria
             MsgBox("Ocurrio un error al modificar la categoria razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try
     End Sub
+
     Private Sub botmodificar_Click(sender As Object, e As EventArgs) Handles botmodificar.Click
         Try
             Dim id As Short = Me.DataGridView1.CurrentCell.RowIndex
@@ -173,4 +174,6 @@ Public Class Categoria
     Private Sub botsalir_Click(sender As Object, e As EventArgs) Handles botsalir.Click
         Me.Close()
     End Sub
+
+    
 End Class

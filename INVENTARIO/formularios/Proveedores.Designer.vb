@@ -62,24 +62,24 @@ Partial Class Proveedores
         '
         Me.menuproveedores.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mdetalle, Me.EliminarToolStripMenuItem, Me.ModificarToolStripMenuItem})
         Me.menuproveedores.Name = "menuproveedores"
-        Me.menuproveedores.Size = New System.Drawing.Size(133, 70)
+        Me.menuproveedores.Size = New System.Drawing.Size(126, 70)
         '
         'mdetalle
         '
         Me.mdetalle.Name = "mdetalle"
-        Me.mdetalle.Size = New System.Drawing.Size(132, 22)
+        Me.mdetalle.Size = New System.Drawing.Size(125, 22)
         Me.mdetalle.Text = "Detalle"
         '
         'EliminarToolStripMenuItem
         '
         Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
         Me.EliminarToolStripMenuItem.Text = "Eliminar"
         '
         'ModificarToolStripMenuItem
         '
         Me.ModificarToolStripMenuItem.Name = "ModificarToolStripMenuItem"
-        Me.ModificarToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
+        Me.ModificarToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
         Me.ModificarToolStripMenuItem.Text = "Modificar"
         '
         'grubbusquedaprov
@@ -271,7 +271,7 @@ Partial Class Proveedores
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.gridproveedores.DefaultCellStyle = DataGridViewCellStyle1
-        Me.gridproveedores.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
+        Me.gridproveedores.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.gridproveedores.Location = New System.Drawing.Point(12, 155)
         Me.gridproveedores.Name = "gridproveedores"
         Me.gridproveedores.ReadOnly = True
@@ -353,11 +353,6 @@ Partial Class Proveedores
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents radiocodigo As System.Windows.Forms.RadioButton
     Friend WithEvents radionombre As System.Windows.Forms.RadioButton
-    Friend WithEvents botseleccionar As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents boteliminar As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents botdetalle As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents boteditar As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents botnuevo As DevComponents.DotNetBar.ButtonX
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -366,4 +361,9 @@ Partial Class Proveedores
     Friend WithEvents nomp As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tip As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents direccion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Private WithEvents botseleccionar As DevComponents.DotNetBar.ButtonX
+    Private WithEvents boteliminar As DevComponents.DotNetBar.ButtonX
+    Private WithEvents botdetalle As DevComponents.DotNetBar.ButtonX
+    Private WithEvents boteditar As DevComponents.DotNetBar.ButtonX
+    Private WithEvents botnuevo As DevComponents.DotNetBar.ButtonX
 End Class

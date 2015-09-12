@@ -72,7 +72,7 @@ Public Class Nuevo_Producto
         End Try
 
     End Sub
-    Private Sub botguardar_Click(sender As Object, e As EventArgs) Handles botguardar.Click
+    Private Sub botguardar_Click(sender As Object, e As EventArgs) Handles botguardar.Click, texunidaddemedida.Enter
         Try
             If Me.picno.Visible <> True Or editar = True Then
 
@@ -81,6 +81,7 @@ Public Class Nuevo_Producto
                     If llenos Then
                         frmp.cargargrid()
                         frmp.f = True
+
                         frmp.Show()
                         Me.Close()
                     End If
@@ -161,7 +162,7 @@ Public Class Nuevo_Producto
                     tproductos.Insertar("'" & idprod + "','" & nombre & "','" & descripcion & "'," & preciounit & "," & preciopublic & ",0," & existencias & "," & idcategoria & ",'" & unidmede & "',1")
                     MsgBox("El producto se ingreso exitozamente", MsgBoxStyle.Information, "Exito")
                 Else
-                    tproductos.Actualizar(dtrprodedit.Item(0) & "|'" & nombre.ToString & "'|'" & descripcion.ToString & "'|" & preciounit.ToString & "|" & preciopublic.ToString & "|0|" & existencias.ToString & "|" & idcategoria.ToString & "|'" & unidmede.ToString & "'|1")
+                    tproductos.Actualizar(dtrprodedit.Item(0) & "|'" & nombre.ToString & "'|'" & descripcion.ToString & "'|" & CShort(preciounit.ToString) & "|" & CShort(preciopublic.ToString) & "|0|" & CShort(existencias.ToString) & "|" & idcategoria.ToString & "|'" & unidmede.ToString & "'|1")
 
 
                     MsgBox("El producto se actualizo exitozamente", MsgBoxStyle.Information, "Exito")
@@ -282,6 +283,4 @@ Public Class Nuevo_Producto
         End If
     End Sub
 
-   
-    
 End Class

@@ -84,7 +84,6 @@ Public Class mdiMain
         mMenu = operacion.GeneraMenu(True, usuario, 0, mMenu.MenuItems)
 
         Me.Menu.MenuItems.Add("Salir")
-        Me.Menu.MenuItems.Add("Cambiar Empresa")
         AgregarManejador(Me.Menu.MenuItems, 0)
      
 

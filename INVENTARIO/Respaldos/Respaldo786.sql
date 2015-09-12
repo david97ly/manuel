@@ -35,7 +35,7 @@ CREATE TABLE `categoria` (
   `nombre` varchar(50) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `categoria` (
 
 LOCK TABLES `categoria` WRITE;
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
-INSERT INTO `categoria` VALUES (4,'nueva','nueva');
+INSERT INTO `categoria` VALUES (4,'nueva','nueva'),(5,'nueva1','NUEVA1'),(6,'Cables','para todo tipo de uso'),(7,'Alambre','de acero'),(8,'Pinturas','De aceite'),(9,'Material','para la construccion');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ CREATE TABLE `cliente` (
   `e_mail` varchar(250) DEFAULT NULL,
   `estado` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`codcliente`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,6 +76,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (3,'asdfa','asdf','asdf','adf','asdf Cuisnahuat Sonsonate','asdfas','','','Activo'),(2,'Preuba','adsf','asdfasd','asdf','fasfdsaf Armenia Sonsonate','245234','3452345','2345234','Activo');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +91,7 @@ CREATE TABLE `clientescf` (
   `idclientescf` int(11) NOT NULL AUTO_INCREMENT,
   `cliente` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`idclientescf`)
-) ENGINE=MyISAM AUTO_INCREMENT=5403 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5408 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,6 +100,7 @@ CREATE TABLE `clientescf` (
 
 LOCK TABLES `clientescf` WRITE;
 /*!40000 ALTER TABLE `clientescf` DISABLE KEYS */;
+INSERT INTO `clientescf` VALUES (5403,'Consumidor Final'),(5406,'David Cortez Rivera'),(5407,'Chepepura');
 /*!40000 ALTER TABLE `clientescf` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,17 +203,17 @@ CREATE TABLE `detalleventa` (
   `coddetallefacturav` int(11) NOT NULL AUTO_INCREMENT,
   `codfacturav` int(11) DEFAULT NULL,
   `codproducto` int(11) DEFAULT NULL,
-  `cantidadunit` decimal(6,3) DEFAULT NULL,
-  `descuento` decimal(6,3) DEFAULT NULL,
-  `precioreal` decimal(6,3) DEFAULT NULL,
+  `cantidadunit` double DEFAULT NULL,
+  `descuento` double DEFAULT NULL,
+  `precioreal` double DEFAULT NULL,
   `preciodescuento` decimal(6,3) DEFAULT NULL,
-  `total` decimal(6,3) DEFAULT NULL,
-  `total1` decimal(6,3) DEFAULT NULL,
-  `preciopublico` decimal(6,3) DEFAULT NULL,
+  `total` double DEFAULT NULL,
+  `total1` double DEFAULT NULL,
+  `preciopublico` double DEFAULT NULL,
   PRIMARY KEY (`coddetallefacturav`),
   KEY `codfacturav` (`codfacturav`),
   KEY `codproducto` (`codproducto`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -220,6 +222,7 @@ CREATE TABLE `detalleventa` (
 
 LOCK TABLES `detalleventa` WRITE;
 /*!40000 ALTER TABLE `detalleventa` DISABLE KEYS */;
+INSERT INTO `detalleventa` VALUES (112,69,1,1,0,0,'0.000',4.35,0,5),(113,69,2,5,0,0,'0.000',18.49,0,4.25),(114,69,3,5,0,0,'0.000',10.22,0,2.35),(115,70,1,5,0,0,'0.000',21.75,0,5),(116,70,2,5,0,0,'0.000',18.49,0,4.25),(117,70,3,5,0,0,'0.000',10.22,0,2.35),(118,71,1,10,0,0,'0.000',46.75,0,5),(119,71,2,10,0,0,'0.000',39.74,0,4.25),(120,71,3,10,0,0,'0.000',21.97,0,2.35),(121,72,1,10,0,0,'0.000',43.5,0,5),(122,72,2,10,0,0,'0.000',36.98,0,4.25),(123,72,3,10,0,0,'0.000',20.44,0,2.35),(124,73,1,5,0,0,'0.000',21.75,0,5),(125,74,1,10,0,0,'0.000',46.75,0,5),(126,74,2,10,0,0,'0.000',39.74,0,4.25),(127,74,3,10,0,0,'0.000',21.97,0,2.35),(128,75,1,10,0,0,'0.000',46.75,0,5),(129,75,2,10,0,0,'0.000',39.74,0,4.25),(130,75,3,10,0,0,'0.000',21.97,0,2.35),(131,76,1,10,0,0,'0.000',43.5,0,5),(132,76,2,10,0,0,'0.000',36.98,0,4.25),(133,76,3,10,0,0,'0.000',20.44,0,2.35),(134,77,1,5,0,0,'0.000',21.75,0,5),(135,77,2,5,0,0,'0.000',21.75,0,5),(136,78,1,10,0,0,'0.000',43.5,0,5),(137,78,2,10,0,0,'0.000',46.75,0,5),(138,78,3,10,0,0,'0.000',43.5,0,5),(139,79,1,10,0,0,'0.000',43.5,0,5),(140,79,2,10,0,0,'0.000',87,0,10),(141,80,1,10,0,0,'0.000',87,0,10),(142,81,1,10,0,0,'0.000',93.5,0,10),(143,82,1,10,0,0,'0.000',87,0,10),(144,83,1,20,0,0,'0.000',87,0,5);
 /*!40000 ALTER TABLE `detalleventa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,19 +301,19 @@ CREATE TABLE `facturaventa` (
   `tipo` varchar(100) DEFAULT NULL,
   `codcliente` int(11) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
-  `sumas` decimal(6,3) DEFAULT NULL,
-  `descuento` decimal(6,3) DEFAULT NULL,
-  `iva` decimal(6,3) DEFAULT NULL,
-  `nosujeta` decimal(6,3) DEFAULT NULL,
-  `exentas` decimal(6,3) DEFAULT NULL,
-  `total` decimal(6,3) DEFAULT NULL,
+  `sumas` double DEFAULT NULL,
+  `descuento` double DEFAULT NULL,
+  `iva` double DEFAULT NULL,
+  `nosujeta` double DEFAULT NULL,
+  `exentas` double DEFAULT NULL,
+  `total` double DEFAULT NULL,
   `formadepago` varchar(50) DEFAULT NULL,
-  `unoretencion` decimal(6,3) DEFAULT NULL,
+  `unoretencion` double DEFAULT NULL,
   `estado` varchar(50) DEFAULT NULL,
   `tiraje` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`codfacturav`),
   KEY `codcliente` (`codcliente`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,6 +322,7 @@ CREATE TABLE `facturaventa` (
 
 LOCK TABLES `facturaventa` WRITE;
 /*!40000 ALTER TABLE `facturaventa` DISABLE KEYS */;
+INSERT INTO `facturaventa` VALUES (24,29,'Factura',5403,'2015-09-02 00:00:00',45,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(25,30,'Factura',5403,'2015-09-02 00:00:00',45,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(26,31,'Factura',5403,'2015-09-02 00:00:00',45,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(27,32,'Factura',5403,'2015-09-02 00:00:00',45,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(28,33,'Factura',5403,'2015-09-02 00:00:00',45,0,0,0,0,45,'Contado',NULL,'valida','15HC001F'),(29,34,'Factura',5403,'2015-09-02 00:00:00',90,0,0,0,0,90,'Contado',NULL,'valida','15HC001F'),(30,35,'Factura',5403,'2015-09-02 00:00:00',90,0,0,0,0,90,'Contado',NULL,'valida','15HC001F'),(31,36,'Factura',5403,'2015-09-02 00:00:00',4090,0,0,0,0,4090,'Contado',NULL,'valida','15HC001F'),(32,37,'Factura',5403,'2015-09-02 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(33,38,'Factura',5403,'2015-09-02 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(34,39,'Factura',5403,'2015-09-02 00:00:00',45,0,0,0,0,45,'Contado',NULL,'valida','15HC001F'),(35,40,'Factura',5403,'2015-09-02 00:00:00',45,0,0,0,0,45,'Contado',NULL,'valida','15HC001F'),(36,41,'Factura',5407,'2015-09-06 00:00:00',45,0,0,0,0,45,'Contado',NULL,'valida','15HC001F'),(37,42,'Factura',5403,'2015-09-07 00:00:00',61,0,0,0,0,61,'Contado',NULL,'valida','15HC001F'),(38,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(39,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(40,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(41,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(42,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(43,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(44,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(45,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,4.5,'Contado',NULL,'valida',' 15HC001F'),(46,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(47,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(48,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(49,1,'Comprobante de Credito fiscal',3,'2015-09-08 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(50,43,'Factura',5403,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(51,44,'Factura',5403,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(52,45,'Factura',5403,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(53,46,'Factura',5403,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(54,47,'Factura',5403,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(55,48,'Factura',5403,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(56,49,'Factura',5403,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida','15HC001F'),(57,50,'Factura',5403,'2015-09-09 00:00:00',883,0,0,0,0,883,'Contado',NULL,'valida','15HC001F'),(58,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',18.25,0,0,0,0,18.25,'Contado',NULL,'valida',' 15HC001F'),(59,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',10.75,0,0,0,0,10.75,'Contado',NULL,'valida',' 15HC001F'),(60,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(61,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(62,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',18.49,0,0,0,0,18.49,'Contado',NULL,'valida',' 15HC001F'),(63,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',3.7,0,0,0,0,3.7,'Contado',NULL,'valida',' 15HC001F'),(64,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',14.5,0,0,0,0,14.5,'Contado',NULL,'valida',' 15HC001F'),(65,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',14.5,0,0,0,0,14.5,'Contado',NULL,'valida',' 15HC001F'),(66,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',9.53,0,0,0,0,9.53,'Contado',NULL,'valida',' 15HC001F'),(67,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',62.21,0,0,0,0,62.21,'Contado',NULL,'valida',' 15HC001F'),(68,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(69,1,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(70,2,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(71,3,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',108.46,0,0,0,0,108.46,'Contado',NULL,'valida',' 15HC001F'),(72,4,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(73,5,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(74,6,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',108.46,0,0,0,0,108.46,'Contado',NULL,'valida',' 15HC001F'),(75,7,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',108.46,0,0,0,0,108.46,'Contado',NULL,'valida',' 15HC001F'),(76,8,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',100.92,0,0,0,0,100.92,'Contado',NULL,'valida',' 15HC001F'),(77,9,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',43.5,0,0,0,0,43.5,'Contado',NULL,'valida',' 15HC001F'),(78,10,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(79,11,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',130.5,0,0,0,0,130.5,'Contado',NULL,'valida',' 15HC001F'),(80,12,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',87,0,0,0,0,87,'Contado',NULL,'valida',' 15HC001F'),(81,13,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(82,14,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F'),(83,15,'Comprobante de Credito fiscal',3,'2015-09-09 00:00:00',0,0,0,0,0,0,'Contado',NULL,'valida',' 15HC001F');
 /*!40000 ALTER TABLE `facturaventa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -489,10 +493,10 @@ CREATE TABLE `productos` (
   `codproducto` int(11) NOT NULL,
   `nombre` varchar(500) DEFAULT NULL,
   `descripcion` varchar(500) DEFAULT NULL,
-  `precio_unit` decimal(6,3) DEFAULT NULL,
-  `precioindi` decimal(6,3) DEFAULT NULL,
-  `preciopublico` decimal(6,3) DEFAULT NULL,
-  `existencias` decimal(6,3) DEFAULT NULL,
+  `precio_unit` double DEFAULT NULL,
+  `precioindi` double DEFAULT NULL,
+  `preciopublico` double DEFAULT NULL,
+  `existencias` double DEFAULT NULL,
   `id_categoria` int(11) DEFAULT NULL,
   `unid_med` varchar(50) DEFAULT NULL,
   `valida` varchar(50) DEFAULT NULL,
@@ -507,7 +511,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Producto1','Descripcion del producto 1','5.000','5.000','0.000','0.000',4,'Unidad','1');
+INSERT INTO `productos` VALUES (1,'Martillo','Para carpenteros',5,5,0,1860,4,'Unidad','1'),(2,'Regleta','para correinte alterna',4.25,4.25,0,1645,5,'Unidad','1'),(3,'Cierra','para hierro y acero',2.35,2.35,0,4944,4,'Unidad','1'),(5,'Cable Coaxial','para TV',5.6,5.6,0,0,4,'Yarda','1'),(6,'Cable UTP','para redes de computadoras',0.5,0.5,0,0,6,'Metro','1'),(7,'Alambre de Amarre','para los alvaniles',1.5,1.5,0,0,7,'Libra','1'),(8,'Pintura Corona color Negro','para exteriores',4.5,4.5,0,0,8,'Galon','1'),(9,'Pintura arcor','para interiores',8.6,8.6,0,0,8,'Galon','1'),(10,'Block de 10 pulgadas','para la construccion',0.5,0.5,0,0,9,'Unidad','1'),(11,'Ladrillo','para la construccion',0.4,0.4,0,0,9,'Unidad','1'),(12,'Alambre galvanizado','para amarres',1.2,1.2,0,0,7,'Libra','1');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -530,7 +534,7 @@ CREATE TABLE `proveedor` (
   `e_mail` varchar(250) DEFAULT NULL,
   `estado` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`codproveedor`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -539,6 +543,7 @@ CREATE TABLE `proveedor` (
 
 LOCK TABLES `proveedor` WRITE;
 /*!40000 ALTER TABLE `proveedor` DISABLE KEYS */;
+INSERT INTO `proveedor` VALUES (2,'asldjf','adf','ads','aaasd','sdfads Caluco Sonsonate','asdf','asdf','asdfasdf','Activo'),(3,'asdf','asdf','asdf','adf','asdfasdf Nahuizalco Sonsonate','52648652','df','asdf','Activo'),(5,'fdhjk','kjhlk','hkljh','lkhñhj','jkhklhjh Ahuachapán Ahuachapán','klhklh','kjlhk','lhkljh','Activo');
 /*!40000 ALTER TABLE `proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -555,7 +560,7 @@ CREATE TABLE `respaldos` (
   `nombrearchivo` varchar(150) DEFAULT NULL,
   `automatico` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`idrespaldo`)
-) ENGINE=MyISAM AUTO_INCREMENT=786 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=787 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -564,7 +569,7 @@ CREATE TABLE `respaldos` (
 
 LOCK TABLES `respaldos` WRITE;
 /*!40000 ALTER TABLE `respaldos` DISABLE KEYS */;
-INSERT INTO `respaldos` VALUES (785,'31/08/2015 16:21:05','Respaldo785',' ');
+INSERT INTO `respaldos` VALUES (785,'31/08/2015 16:21:05','Respaldo785','false'),(786,'12/9/2015 1:20:02 a. m.','Respaldo786',' ');
 /*!40000 ALTER TABLE `respaldos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -595,6 +600,7 @@ CREATE TABLE `tirajes` (
 
 LOCK TABLES `tirajes` WRITE;
 /*!40000 ALTER TABLE `tirajes` DISABLE KEYS */;
+INSERT INTO `tirajes` VALUES (1,'15HC001F','15HC001F1','15HC00F750','50',' 15HC001F','15HC001F1','15HC001F750','15');
 /*!40000 ALTER TABLE `tirajes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -634,4 +640,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-31 16:21:11
+-- Dump completed on 2015-09-12  1:20:05

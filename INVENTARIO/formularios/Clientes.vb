@@ -40,9 +40,11 @@ Public Class Clientes
 
     Private Sub Clientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
-            MdiParent = mdiMain
+
             If donde = "ventas" Then
                 ocultar()
+            Else
+                MdiParent = mdiMain
             End If
             cargargrid()
         Catch ex As Exception
@@ -274,11 +276,6 @@ Public Class Clientes
             dtrclientes = dtclientes.Rows(id)
             frmv.dtrclientes = dtrclientes
             frmv.texcliente.Text = dtrclientes.Item(1).ToString
-
-            If Me.radionatural.Checked <> True Then
-                frmv.texnrc.Text = dtrclientes.Item(3).ToString
-            End If
-
             frmv.idcliente = dtrclientes.Item(0).ToString
             Me.Close()
         Catch ex As Exception

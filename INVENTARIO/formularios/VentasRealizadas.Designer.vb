@@ -29,7 +29,8 @@ Partial Class VentasRealizadas
         Me.Nombrproo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tipo1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fecha1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.descuento1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.iva = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.total1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.botbuscar = New System.Windows.Forms.Button()
@@ -38,6 +39,7 @@ Partial Class VentasRealizadas
         Me.dt2 = New System.Windows.Forms.DateTimePicker()
         Me.dt1 = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.boteliminar = New System.Windows.Forms.Button()
         Me.botnuevo = New System.Windows.Forms.Button()
         Me.botsalir = New System.Windows.Forms.Button()
         Me.botdetalle = New System.Windows.Forms.Button()
@@ -48,7 +50,6 @@ Partial Class VentasRealizadas
         Me.radiotodo = New System.Windows.Forms.RadioButton()
         Me.texbusqueda = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.boteliminar = New System.Windows.Forms.Button()
         Me.GroupPanel1.SuspendLayout()
         CType(Me.gridfacturaventas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -67,7 +68,7 @@ Partial Class VentasRealizadas
         Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1008, 570)
+        Me.GroupPanel1.Size = New System.Drawing.Size(937, 570)
         '
         '
         '
@@ -105,7 +106,7 @@ Partial Class VentasRealizadas
         '
         Me.gridfacturaventas.AllowUserToAddRows = False
         Me.gridfacturaventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridfacturaventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.numero, Me.Nombrproo, Me.tipo1, Me.fecha1, Me.descuento1, Me.total1})
+        Me.gridfacturaventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.numero, Me.Nombrproo, Me.tipo1, Me.fecha1, Me.Subtotal, Me.iva, Me.total1})
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -118,7 +119,7 @@ Partial Class VentasRealizadas
         Me.gridfacturaventas.Location = New System.Drawing.Point(23, 76)
         Me.gridfacturaventas.Name = "gridfacturaventas"
         Me.gridfacturaventas.RowHeadersVisible = False
-        Me.gridfacturaventas.Size = New System.Drawing.Size(967, 385)
+        Me.gridfacturaventas.Size = New System.Drawing.Size(879, 385)
         Me.gridfacturaventas.TabIndex = 21
         '
         'numero
@@ -137,24 +138,27 @@ Partial Class VentasRealizadas
         '
         Me.tipo1.HeaderText = "Tipo"
         Me.tipo1.Name = "tipo1"
-        Me.tipo1.Width = 250
         '
         'fecha1
         '
         Me.fecha1.HeaderText = "Fecha"
         Me.fecha1.Name = "fecha1"
-        Me.fecha1.Width = 200
+        Me.fecha1.Width = 150
         '
-        'descuento1
+        'Subtotal
         '
-        Me.descuento1.HeaderText = "Descuentos"
-        Me.descuento1.Name = "descuento1"
+        Me.Subtotal.HeaderText = "Subtotal"
+        Me.Subtotal.Name = "Subtotal"
+        '
+        'iva
+        '
+        Me.iva.HeaderText = "IVA"
+        Me.iva.Name = "iva"
         '
         'total1
         '
         Me.total1.HeaderText = "Total"
         Me.total1.Name = "total1"
-        Me.total1.Width = 80
         '
         'GroupBox2
         '
@@ -168,7 +172,7 @@ Partial Class VentasRealizadas
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(957, 78)
+        Me.GroupBox2.Size = New System.Drawing.Size(879, 78)
         Me.GroupBox2.TabIndex = 20
         Me.GroupBox2.TabStop = False
         '
@@ -225,9 +229,19 @@ Partial Class VentasRealizadas
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(957, 78)
+        Me.GroupBox1.Size = New System.Drawing.Size(879, 78)
         Me.GroupBox1.TabIndex = 19
         Me.GroupBox1.TabStop = False
+        '
+        'boteliminar
+        '
+        Me.boteliminar.Location = New System.Drawing.Point(571, 25)
+        Me.boteliminar.Margin = New System.Windows.Forms.Padding(4)
+        Me.boteliminar.Name = "boteliminar"
+        Me.boteliminar.Size = New System.Drawing.Size(124, 37)
+        Me.boteliminar.TabIndex = 4
+        Me.boteliminar.Text = "Eliminar"
+        Me.boteliminar.UseVisualStyleBackColor = True
         '
         'botnuevo
         '
@@ -338,21 +352,11 @@ Partial Class VentasRealizadas
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Busqueda"
         '
-        'boteliminar
-        '
-        Me.boteliminar.Location = New System.Drawing.Point(571, 25)
-        Me.boteliminar.Margin = New System.Windows.Forms.Padding(4)
-        Me.boteliminar.Name = "boteliminar"
-        Me.boteliminar.Size = New System.Drawing.Size(124, 37)
-        Me.boteliminar.TabIndex = 4
-        Me.boteliminar.Text = "Eliminar"
-        Me.boteliminar.UseVisualStyleBackColor = True
-        '
         'VentasRealizadas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1008, 570)
+        Me.ClientSize = New System.Drawing.Size(937, 570)
         Me.Controls.Add(Me.GroupPanel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
@@ -369,7 +373,6 @@ Partial Class VentasRealizadas
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents botbuscar As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -388,11 +391,13 @@ Partial Class VentasRealizadas
     Friend WithEvents texbusqueda As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents gridfacturaventas As DevComponents.DotNetBar.Controls.DataGridViewX
+    Friend WithEvents boteliminar As System.Windows.Forms.Button
     Friend WithEvents numero As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Nombrproo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tipo1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents fecha1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents descuento1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Subtotal As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents iva As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents total1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents boteliminar As System.Windows.Forms.Button
+    Private WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
 End Class

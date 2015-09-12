@@ -24,9 +24,7 @@ Public Class Ventas
 
     Public dtdecuento As DataTable
 
-    Private subtotal1 = 0, subtotal2 = 0, subtotal3 = 0, iva = 0, descuentof = 0, totalf As Double
-    Private sumas = 0, descuento = 0, iva1 = 0, cotrans = 0, fovial = 0, totalfactu, cantidadproducto, totalproducto As Double
-    Private sumas1 = 0, descuento1 = 0, iva2 = 0, cotrans2 = 0, fovial2 = 0, totalfactu2, cantidadproducto2, totalproducto2 As Double
+  
 
     'para la modificacionde la factura
     Public dtclientes As DataTable
@@ -64,6 +62,18 @@ Public Class Ventas
 
     Dim tclientesfinales As New clsMaestros(clsNomTab.eTbl.clientescf)
 
+    'LAS VARIABLES PARA CARGAR LOS DETALLES FACTURA'
+    Dim sumas As Double
+    Dim iva As Double
+    Dim ventatotal As Double
+
+    'VARIABLE PARA LOS FURMULCIOS (INSTANCIA A ELLOS)'
+    Dim frmp As New Productos
+    Dim frmc As New Clientes
+
+    Dim tipo As Boolean = True
+
+
     Private Sub Ventas_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
         salirnada()
     End Sub
@@ -85,21 +95,11 @@ Public Class Ventas
         End If
     End Sub
 
-    Private Sub Ventas_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
-    
-
-    End Sub
     Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
         Me.texcliente.Select()
         Try
-            MdiParent = mdiMain
-            If donde <> "here" Then
-                cargardatos()
-            Else
                 MdiParent = mdiMain
-                cargarcp()
-            End If
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente razon: " & ex.Message, MsgBoxStyle.OkOnly, "Avise")
         End Try
@@ -112,16 +112,6 @@ Public Class Ventas
 
         Dim nfp1 As Short = dtclientes11.Rows.Count
         Dim nfp2 As Short = dtproductos1.Rows.Count
-
-
-
-
-
-
-
-
-
-
 
     End Sub
 
@@ -140,10 +130,6 @@ Public Class Ventas
 
     End Sub
 
-    Private Sub texproveedor_Click(sender As Object, e As EventArgs) Handles texcliente.Click
-      
-
-    End Sub
 
     Private Sub texnombrep_Click(sender As Object, e As EventArgs)
         Try
@@ -180,14 +166,39 @@ Public Class Ventas
                         Dim dtcf As DataTable
                         Dim ncf As Integer
 
-                        cf.Insertar("'" & Me.texcliente.Text.Trim.ToString & "'")
 
-                        dtcf = consultar.Consultar("SELECT  max(idclientescf) FROM clientescf")
 
-                        ncf = CInt(dtcf.Rows(0).Item(0))
-                        idcliente = ncf
+                        If Not Me.texcliente.Text.ToString = "Consumidor Final" Then
+                            cf.Insertar("'" & Me.texcliente.Text.Trim.ToString & "'")
+                            dtcf = consultar.Consultar("SELECT  max(idclientescf) FROM clientescf")
+                            ncf = CInt(dtcf.Rows(0).Item(0))
+                            idcliente = ncf
+                        End If
+
+
+
+                        'Codigo para el tiraje'
+                        Dim tcodf As New clsProcesos
+
+                        If Me.combotipo.Text.Trim.ToString = "Factura" Then
+                            tcodf.Consultar("update tirajes set tirajefa = '" & Me.texnumfact.Text.Trim.ToString & "'")
+                        Else
+                            tcodf.Consultar("update tirajes set tirajeca = '" & Me.texnumfact.Text.Trim.ToString & "'")
+                        End If
+
+
                     End If
                 Else
+
+                    'Codigo para el tiraje'
+                    Dim tcodf As New clsProcesos
+
+                    If Me.combotipo.Text.Trim.ToString = "Factura" Then
+                        tcodf.Consultar("update tirajes set tirajefa = '" & Me.texnumfact.Text.Trim.ToString & "'")
+                    Else
+                        tcodf.Consultar("update tirajes set tirajeca = '" & Me.texnumfact.Text.Trim.ToString & "'")
+                    End If
+
                     If Me.llenara = False Then
                         Dim ncc As Integer
                         Dim dtncc As DataTable
@@ -195,12 +206,12 @@ Public Class Ventas
                         dtncc = consultar.Consultar(" select max(codcliente) from cliente")
                         ncc = CInt(dtncc.Rows(0).Item(0))
                         ncc += 1
-                        consultar.Consultar("Insert into cliente (codcliente,nombre,nrc,codempresa,estado,tipo) values(" & ncc & ",'" & Me.texcliente.Text.Trim.ToString & "','" & Me.texnrc.Text.Trim.ToString & "','" & mdiMain.codigoempresa.ToString & "','Activo','Contribuyente')")
+
                         idcliente = ncc
                     End If
                 End If
 
-                tventas.Insertar("'" & Me.texnumfact.Text.ToString.Trim & "','" & Me.combotipo.Text.ToString & "','" & idcliente & "','" & mdiMain.codigoempresa.ToString & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0) & ",'" & Me.comboformapago.Text.ToString & "','valida','" & Me.textiraje.Text.ToString & "'")
+                tventas.Insertar("'" & Me.texnumfact.Text.ToString.Trim & "','" & Me.combotipo.Text.ToString & "','" & idcliente & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & Me.comboformapago.Text.ToString & "','valida','" & Me.textiraje.Text.ToString & "'")
                 dtcodfactura = consultar.Consultar("SELECT  Max(codfacturav) FROM facturaventa")
                 codfactura = dtcodfactura.Rows(0).Item(0)
                 insertardetalle()
@@ -234,70 +245,34 @@ Public Class Ventas
     Private Sub insertardetalle()
         Try
 
+            Dim prereal As Double
+            Dim ventatotal As Double = CDbl(Me.textotalp.Text.ToString)
 
-            Dim prereal, totalfactura, canti As Double
-            If dtdecuento.Rows(0).Item(2).ToString = "True" Then
+            If combotipo.Text.ToString <> "Factura" Then
 
-                If Me.combotipo.Text = "Factura" Then
 
-                    prereal = Me.texprecio.Text
-                    prereal = Math.Round((prereal - 0.3), 2)
-                    canti = texcantidad.Text
-                    totalfactura = Math.Round((canti * prereal), 2)
+                ventatotal = Math.Round((ventatotal / 1.13), 2)
 
-                Else
-                    prereal = Me.texprecio.Text
-                    prereal = Math.Round((prereal - 0.3), 2)
-                    prereal = Math.Round(prereal / 1.13, 2)
-                    canti = texcantidad.Text
-                    totalfactura = Math.Round((canti * prereal), 2)
-                End If
-            Else
-                prereal = Math.Round((CDbl(Me.texprecio.Text) / 1.13), 2)
-                totalfactura = Math.Round((CDbl(Me.texcantidad.Text) * prereal), 2)
-                
             End If
 
-
-            prereal = Math.Round(prereal, 2)
-            totalfactura = Math.Round(totalfactura, 2)
-            canti = Math.Round(canti, 2)
-
-
-            ' tdetalleventa.Insertar(CInt(Me.codfactura).ToString + ",'" + dtrproductos.Item(0).ToString + "'," + CInt(Me.texcantidad.Text).ToString + ",0," + CDbl(Me.texprecio.Text).ToString + ",0,'" + mdiMain.codigoempresa.ToString + "'," + CDbl(Me.textotalp.Text).ToString)
-            tdetalleventa.Insertar(CInt(Me.codfactura).ToString & "," & idproducto & "," & CDbl(Me.texcantidad.Text).ToString & ",0," & prereal & ",0,'" & mdiMain.codigoempresa.ToString & "'," & totalfactura & "," & CDbl(Me.textotalp.Text) & "," & CDbl(Me.texprecio.Text))
+            tdetalleventa.Insertar(CInt(Me.codfactura).ToString & "," & idproducto & "," & CDbl(Me.texcantidad.Text).ToString & ",0," & prereal & ",0," & ventatotal & ", 0 ," & CDbl(Me.texprecio.Text))
             privar()
+
             cargarfactura()
 
         Catch ex As Exception
             MsgBox("Ocurrio un error a la hora de insertar el articulo razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try
     End Sub
-    Dim sumaf, sumac As Double
 
     Private Sub cargarfactura()
         Try
-            subtotal1 = 0
-            subtotal2 = 0
-            subtotal3 = 0
-            iva = 0
-            descuentof = 0
-            totalf = 0
-
-            cantidadproducto = 0
-            totalproducto = 0
-            subtotal1 = 0
-            fovial = 0
-            cotrans = 0
-            iva1 = 0
-            sumas = 0
-            sumac = 0
-            sumaf = 0
+            sumas = 0.0
+            iva = 0.0
+            ventatotal = 0.0
 
             Me.texsumas.Text = "0"
-            Me.texfovial.Text = "0"
             Me.texiva.Text = "0"
-            Me.texcotrans.Text = "0"
             Me.textotal.Text = ""
 
 
@@ -306,7 +281,7 @@ Public Class Ventas
             Dim nf As Short
             nf = dtdetalleventa.Rows.Count
 
-            subtotal1 = 0
+
 
             If nf = 0 Then
                 Me.gridcompra.RowCount = 1
@@ -316,112 +291,64 @@ Public Class Ventas
                 Me.gridcompra.Rows(0).Cells(3).Value = ""
                 Me.gridcompra.Rows(0).Cells(4).Value = ""
                 Me.gridcompra.Rows(0).Cells(5).Value = ""
+                Me.gridcompra.Rows(0).Cells(6).Value = ""
 
 
             Else
                 Me.gridcompra.RowCount = nf
             End If
+
             For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
 
                 If Me.combotipo.Text <> "Factura" Then
                     dtproducto = tproductos.Consultar(" where codproducto = " + CInt(dtdetalleventa.Rows(i).Item(2)).ToString)
 
+                    sumas += Math.Round(CDbl(dtdetalleventa.Rows(i).Item(7)), 2)
 
-
-
-
-                    cantidadproducto = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3)), 2)
-                    totalproducto = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(9)), 2)
-
-                    If dtdecuento.Rows(0).Item(2).ToString = "False" Then
-                        sumaf = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3)) * 0.2, 2)
-                        sumac = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3)) * 0.1, 2)
-                    End If
-
-                    fovial = Math.Round(cantidadproducto * 0.2, 2)
-                    cotrans = Math.Round(cantidadproducto * 0.1, 2)
-
-                    fovial -= sumaf
-                    cotrans -= sumac
-
-                    sumas = Math.Round((totalproducto - fovial - cotrans), 2)
-
-                    sumas = Math.Round((sumas / 1.13), 2)
-
-                    iva = Math.Round((sumas * 0.13), 2)
-
-                    consultar.Consultar("UPDATE detalleventa SET total = " & sumas & " where coddetallefacturav = " & dtdetalleventa.Rows(i).Item(0))
-                    dtdetalleventa = tdetalleventa.Consultar(" where codfacturav = '" + codfactura.ToString + "'")
-                    dtproducto = tproductos.Consultar(" where codproducto = " & CInt(dtdetalleventa.Rows(i).Item(2)).ToString)
-                    Me.gridcompra.Rows(i).Cells(0).Value = dtdetalleventa.Rows(i).Item(3)
-                    Me.gridcompra.Rows(i).Cells(1).Value = dtproducto.Rows(0).Item(1)
-                    Me.gridcompra.Rows(i).Cells(2).Value = dtdetalleventa.Rows(i).Item(5)
-                    Me.gridcompra.Rows(i).Cells(3).Value = "0"
+                    Me.gridcompra.Rows(i).Cells(0).Value = dtdetalleventa.Rows(i).Item(2)
+                    Me.gridcompra.Rows(i).Cells(1).Value = dtdetalleventa.Rows(i).Item(3)
+                    Me.gridcompra.Rows(i).Cells(2).Value = dtproducto.Rows(0).Item(1)
+                    Me.gridcompra.Rows(i).Cells(3).Value = dtdetalleventa.Rows(i).Item(9)
                     Me.gridcompra.Rows(i).Cells(4).Value = "0"
-                    Me.gridcompra.Rows(i).Cells(5).Value = dtdetalleventa.Rows(i).Item(8)
+                    Me.gridcompra.Rows(i).Cells(5).Value = "0"
+                    Me.gridcompra.Rows(i).Cells(6).Value = dtdetalleventa.Rows(i).Item(7)
 
-                    sumas1 += sumas
-                    iva2 += iva
-                    cotrans2 += cotrans
-                    fovial2 += fovial
-                    totalproducto2 += totalproducto
+
                 Else
                     dtproducto = tproductos.Consultar(" where codproducto = " + CInt(dtdetalleventa.Rows(i).Item(2)).ToString)
 
+                    sumas += Math.Round(CDbl(dtdetalleventa.Rows(i).Item(7)), 2)
 
-
-
-
-                    cantidadproducto = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3)), 3)
-                    totalproducto = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(9)), 3)
-
-                    If dtdecuento.Rows(0).Item(2).ToString = "False" Then
-                        sumaf = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3)) * 0.2, 3)
-                        sumac = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3)) * 0.1, 3)
-                    End If
-
-                    fovial = Math.Round(cantidadproducto * 0.2, 3)
-                    cotrans = Math.Round(cantidadproducto * 0.1, 3)
-
-                    fovial -= sumaf
-                    cotrans -= sumac
-
-                    sumas = Math.Round((totalproducto - fovial - cotrans), 3)
-
-
-                    consultar.Consultar("UPDATE detalleventa SET total = " & sumas & " where coddetallefacturav = " & dtdetalleventa.Rows(i).Item(0))
-                    dtdetalleventa = tdetalleventa.Consultar(" where codfacturav = '" + codfactura.ToString + "'")
-                    dtproducto = tproductos.Consultar(" where codproducto = " & CInt(dtdetalleventa.Rows(i).Item(2)).ToString)
-                      Me.gridcompra.Rows(i).Cells(0).Value = dtdetalleventa.Rows(i).Item(3)
-                    Me.gridcompra.Rows(i).Cells(1).Value = dtproducto.Rows(0).Item(1)
-                    Me.gridcompra.Rows(i).Cells(2).Value = dtdetalleventa.Rows(i).Item(5)
-                    Me.gridcompra.Rows(i).Cells(3).Value = "0"
+                    Me.gridcompra.Rows(i).Cells(0).Value = dtdetalleventa.Rows(i).Item(2)
+                    Me.gridcompra.Rows(i).Cells(1).Value = dtdetalleventa.Rows(i).Item(3)
+                    Me.gridcompra.Rows(i).Cells(2).Value = dtproducto.Rows(0).Item(1)
+                    Me.gridcompra.Rows(i).Cells(3).Value = dtdetalleventa.Rows(i).Item(9)
                     Me.gridcompra.Rows(i).Cells(4).Value = "0"
-                    Me.gridcompra.Rows(i).Cells(5).Value = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(8)), 2)
+                    Me.gridcompra.Rows(i).Cells(5).Value = "0"
+                    Me.gridcompra.Rows(i).Cells(6).Value = dtdetalleventa.Rows(i).Item(7)
 
-                    sumas1 += sumas
-                    iva2 += iva
-                    cotrans2 += cotrans
-                    fovial2 += fovial
-                    totalproducto2 += totalproducto
+
                 End If
 
 
 
             Next
 
-            Me.texsumas.Text = ""
-            Me.texfovial.Text = ""
-            Me.texiva.Text = ""
-            Me.texcotrans.Text = ""
-            Me.textotal.Text = ""
+            Me.texsumas.Text = CDbl(sumas)
+            If Me.combotipo.Text.ToString <> "Factura" Then
+                iva = Math.Round((sumas * 0.13), 2)
+
+                Me.texiva.Text = iva
+
+                Me.textotal.Text = CDbl(sumas + iva)
+            Else
+                Me.textotal.Text = CDbl(sumas)
+
+            End If
 
 
-            Me.texsumas.Text = Math.Round(sumas1, 2)
-            Me.texfovial.Text = Math.Round(fovial2, 2)
-            Me.texiva.Text = Math.Round(iva2, 2)
-            Me.texcotrans.Text = Math.Round(cotrans2, 2)
-            Me.textotal.Text = Math.Round(totalproducto2, 2)
+
+
 
         Catch ex As Exception
             MsgBox("Ocurrio un error al momento de llenar registrar el articulo en la factura razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
@@ -435,6 +362,7 @@ Public Class Ventas
         pjtAdus.Productos.donde = "ventas"
         pjtAdus.Productos.frmv = Me
         pjtAdus.Productos.Show()
+        Me.textotalp.Select()
     End Sub
 
    
@@ -487,9 +415,7 @@ Public Class Ventas
         End If
     End Sub
 
-    Private Sub botsalir_Click(sender As Object, e As EventArgs)
-        Me.Close()
-    End Sub
+
 
    
     Private Sub combotipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles combotipo.SelectedIndexChanged
@@ -501,22 +427,18 @@ Public Class Ventas
             Dim n As String = ""
             Dim n1 As Integer = 0
 
-            If Me.combotipo.Text.Trim.ToString <> "Factura" Then
-                Me.texnrc.Visible = True
-                Me.lnrc.Visible = True
-            Else
-                Me.texnrc.Visible = False
-                Me.lnrc.Visible = False
-            End If
-
+          
             If Me.combotipo.Text.Trim.ToString = "Factura" Then
                 dtcodf = tcodf.Consultar("select max(tirajefa) from tirajes")
                 dttt = tt.Consultar("select tirajefs from tirajes")
                 Me.textiraje.Text = dttt.Rows(0).Item(0).ToString
+                Me.texcliente.Text = "Consumidor Final"
             Else
                 dtcodf = tcodf.Consultar("select max(tirajeca) from tirajes")
                 dttt = tt.Consultar("select tirajecs from tirajes")
                 Me.textiraje.Text = dttt.Rows(0).Item(0).ToString
+
+                Me.texcliente.Text = ""
             End If
 
 
@@ -534,25 +456,7 @@ Public Class Ventas
 
    
 
-    Private Sub btnaplicar_Click(sender As Object, e As EventArgs) Handles btnaplicar.Click
-
-        Try
-            Dim dtdescuento As Double = 0
-            Dim dttotal As Double = 0
-            For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
-                dtdescuento = CDbl(dtdetalleventa.Rows(i).Item(8)) * CDbl(CDbl(Me.texpdescuento.Text.Trim) / 100)
-
-                dttotal = CDbl(dtdetalleventa.Rows(i).Item(8)) - dtdescuento
-
-                consultar.Consultar(" update detalleventa set descuento = " & dtdescuento.ToString & ", preciodescuento = " & dttotal.ToString & " where codfacturav = " & codfactura.ToString & " and coddetallefacturav = " & dtdetalleventa.Rows(i).Item(0).ToString)
-            Next
-            MsgBox("El descuento se a efectuado exitozamente", MsgBoxStyle.OkOnly, "Exito")
-            cargarfactura()
-        Catch ex As Exception
-            MsgBox("Ocurrio un error al aplicar el descuento" + ex.Message, MsgBoxStyle.Critical, "Aviso")
-        End Try
-
-    End Sub
+  
 
 
 
@@ -605,7 +509,7 @@ Public Class Ventas
 
 
         dtcliente = tclientesfinales.Consultar(" where idclientescf = " & dtfacturaventa.Rows(0).Item(3))
-       
+
 
 
         ' Este evento se producirá cada vez que se imprima una nueva página
@@ -932,7 +836,7 @@ Public Class Ventas
 
 
                 'para el nombre
-               
+
                 dtp = tp.Consultar(" where codproducto = " & dtdetallefacturaventa.Rows(i).Item(2).ToString)
                 xPos += 200
                 If dtp.Rows.Count = 0 Then
@@ -973,7 +877,7 @@ Public Class Ventas
         ' para las numeros letras son
         xPos -= 563
         xPos += 50
-   
+
         Dim numletras1 As New NumeroLetras
         Dim nl As String
         numletras1.setnumero(dtfacturaventa.Rows(0).Item(13).ToString)
@@ -996,7 +900,7 @@ Public Class Ventas
         e.Graphics.DrawString(nl, prfont1, Brushes.Black, xPos, yPos)
 
 
-    
+
         'para el iva
         xPos += 518
         e.Graphics.DrawString(dtfacturaventa.Rows(0).Item(8).ToString, prfont2, Brushes.Black, xPos, yPos)
@@ -1025,97 +929,76 @@ Public Class Ventas
 
     Private Sub botguardar_Click(sender As Object, e As EventArgs) Handles botguardar.Click
         Try
+            Me.guardado = True
             Dim ella As String = ""
-            If guardado = False Then
-                guardado = True
-                If combotipo.Text = "Factura" Then
-                    ella = "La "
-                Else
-                    ella = "El "
-                End If
-                Dim imprimir1 As String = ""
-
-                Dim imprimir2 As String = ella & combotipo.Text.ToString & " esta por imprimirse: Desea continuar?" & vbCrLf _
-                          & " La decisión no podrá revertirse"
-
-             
-
-                MsgBox(imprimir2, MsgBoxStyle.Information)
-
-                Dim c As Double
-                For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
-                    dtproducto = tproductos.Consultar(" where codproducto = '" & dtdetalleventa.Rows(i).Item(2).ToString & "'")
-                    c = CDbl(dtproducto.Rows(0).Item(6)) - CDbl(dtdetalleventa.Rows(i).Item(3))
-                    consultar.Consultar(" update productos set existencias = " & c.ToString & " where codproducto = '" & dtdetalleventa.Rows(i).Item(2).ToString & "'")
-                Next
-                'consultar.Consultar(" update facturaventa set subtotal1 = " + subtotal1.ToString + ", subtotal2 = " + subtotal2.ToString + ", subtotal3 = " + subtotal3.ToString + ", iva = " + iva.ToString + ", descuento = " + descuentof.ToString + ", total = " + totalf.ToString + " where codfacturav = " + codfactura.ToString)
-                totalfactu = Me.textotal.Text
-                consultar.Consultar(" update facturaventa set sumas = " & Me.texsumas.Text.ToString & ", iva = " & Me.texiva.Text.ToString & ", fovial = " & Me.texfovial.Text.ToString & ", cotrans = " & Me.texcotrans.Text.ToString & ", descuento = " & descuentof.ToString & ", total = " & Me.textotal.Text.ToString & " where codfacturav = " & codfactura)
-
-                Me.botguardar.Text = "Guardar"
-
-                If checkimprimir.Checked = True Then
-                    'llamando al metodo imprimir
-                    If Me.combotipo.Text = "Factura" Then
-                        imprimir()
-                    Else
-                        imprimecomprobante()
-                    End If
-                End If
-
-
-
-                'termina la tarea de imprimir
-
-                If donde <> "here" Then
-                    frmdv.modi = True
-                    frmdv.cargarfacturac()
-                    frmvr.hacerconsulta()
-                    Me.Close()
-                End If
+            If combotipo.Text = "Factura" Then
+                ella = "La "
             Else
-
-                If MsgBox(ella & combotipo.Text & " se guardo exitozamente!!" & vbCrLf _
-                          & "Desea ingresar otra venta", MsgBoxStyle.YesNo, "Compra") = MsgBoxResult.Yes Then
-                    mdiMain.llama = "venta"
-                    Me.Close()
-                    mdiMain.timllamar.Enabled = True
-                Else
-                    Me.Close()
-                End If
+                ella = "El "
             End If
+
+            Dim imprimir1 As String = ""
+
+            Dim imprimir2 As String = ella & combotipo.Text.ToString & " esta por imprimirse: Desea continuar?" & vbCrLf _
+                      & " La decisión no podrá revertirse"
+
+
+
+            MsgBox(imprimir2, MsgBoxStyle.Information)
+
+            Dim c As Double
+            For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
+                dtproducto = tproductos.Consultar(" where codproducto = '" & dtdetalleventa.Rows(i).Item(2).ToString & "'")
+                c = CDbl(dtproducto.Rows(0).Item(6)) - CDbl(dtdetalleventa.Rows(i).Item(3))
+                consultar.Consultar(" update productos set existencias = " & c.ToString & " where codproducto = '" & dtdetalleventa.Rows(i).Item(2).ToString & "'")
+            Next
+
+            consultar.Consultar(" update facturaventa set sumas = " & Me.sumas & ", total =  " & Me.sumas & " where codfacturav = " & codfactura)
+
+            Me.botguardar.Text = "Guardar"
+
+
+            'If Me.combotipo.Text = "Factura" Then
+            '    imprimir()
+            'Else
+            '    imprimecomprobante()
+            'End If
+
+            'termina la tarea de imprimir
+
+            If donde <> "here" Then
+                frmdv.modi = True
+                frmdv.cargarfacturac()
+                frmvr.hacerconsulta()
+                Me.Close()
+            End If
+
+
+            If MsgBox(ella & combotipo.Text & " se guardo exitozamente!!" & vbCrLf _
+                      & "Desea ingresar otra venta", MsgBoxStyle.YesNo, "Compra") = MsgBoxResult.Yes Then
+                mdiMain.llama = "venta"
+                Me.Close()
+                mdiMain.timllamar.Enabled = True
+            Else
+                Me.Close()
+            End If
+
 
         Catch ex As Exception
             MsgBox("Ocurrio un error al ingresar la factura razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try
     End Sub
 
-    Private Sub btneliminar_Click(sender As Object, e As EventArgs) Handles btneliminar.Click
+    Private Sub btneliminar_Click(sender As Object, e As EventArgs) Handles boteliminar.Click, HolaToolStripMenuItem.Click
         Try
             Dim id As Short = Me.gridcompra.CurrentCell.RowIndex
             Dim dtrdetalle As DataRow = dtdetalleventa.Rows(id)
-            'Dim canti As Double = 0
-            'dtdecuento = tdescuento.Consultar(" where codproducto " & dtrdetalle.Item(2))
 
-            'limpirando las variables globales
-            sumas1 = 0
-            iva2 = 0
-            cotrans2 = 0
-            fovial2 = 0
-            totalproducto2 = 0
+            If MsgBox("Esta seguro de quitar el producto de la factura? ", MsgBoxStyle.YesNo, "Aviso") = MsgBoxResult.Yes Then
+                consultar.Consultar("delete from detalleventa where coddetallefacturav = " & dtrdetalle.Item(0))
+                cargarfactura()
+            End If
 
-            'If dtdecuento.Rows(0).Item(2).ToString <> "False" Then
-            '    fovial -= Math.Round(dtdetallefacturaventas.Rows(id).Item(3) * 0.2, 2)
-            '    cotrans -= Math.Round(dtdetallefacturaventas.Rows(id).Item(3) * 0.1, 2)
-            '    canti = CDbl(dtdetallefacturaventas.Rows(id).Item(9)) - Math.Round(dtdetallefacturaventas.Rows(id).Item(3) * 0.2, 2) - Math.Round(dtdetallefacturaventas.Rows(id).Item(3) * 0.1, 2)
-            '    canti = Math.Round((canti / 1.13), 2)
-            'Else
-            '    sumas1 -= CDbl(dtdetallefacturaventas.Rows(id).Item(8))
-            '    iva2 -= Math.Round(CDbl(dtdetallefacturaventas.Rows(id).Item(8)) * 0.13, 2)
-            'End If
-
-            consultar.Consultar("delete from detalleventa where coddetallefacturav = " & dtrdetalle.Item(0))
-            cargarfactura()
         Catch ex As Exception
 
         End Try
@@ -1192,37 +1075,12 @@ Public Class Ventas
 
         If Me.combotipo.Text.Trim.ToString <> "Factura" Then
 
-            If Me.texnrc.Text = "" Then
-                Me.texnrc.BackColor = Color.Red
-                fl = False
-            Else
-                Me.texnrc.BackColor = Color.White
-            End If
+            
 
         End If
         Return fl
     End Function
 
-    'Private Function cfactura() As Boolean
-    '    Dim fl As Boolean = True
-    '    If entert = False Then
-
-    '        Dim dt As DataTable
-    '        Dim dtc As New clsMaestros(clsNomTab.eTbl.Clientes)
-    '        Dim dtcf As New clsMaestros(clsNomTab.eTbl.clientescf)
-
-    '        If Me.combotipo.Text <> "Factura" Then
-    '            dt = dtc.Consultar(" where codcliente = " & idcliente)
-    '            If dt.Rows.Count = 0 Then
-    '                fl = False
-    '            Else
-    '                fl = True
-    '            End If
-    '        End If
-    '        Return fl
-    '    End If
-
-    'End Function
     Private Sub botagregar_Click(sender As Object, e As EventArgs) Handles botagregar.Click
 
 
@@ -1230,21 +1088,11 @@ Public Class Ventas
 
         If correcto() <> False Then
             agregarv = True
+
             'limpirando las variables globales
-            sumas1 = 0
-            iva2 = 0
-            cotrans2 = 0
-            fovial2 = 0
-            totalproducto2 = 0
+          
 
 
-            Dim tcodf As New clsProcesos
-
-            If Me.combotipo.Text.Trim.ToString = "Factura" Then
-                tcodf.Consultar("update tirajes set tirajefa = '" & Me.texnumfact.Text.Trim.ToString & "'")
-            Else
-                tcodf.Consultar("update tirajes set tirajeca = '" & Me.texnumfact.Text.Trim.ToString & "'")
-            End If
 
 
 
@@ -1253,17 +1101,27 @@ Public Class Ventas
 
                     Dim can As Double
                     Dim tl As Double
-                    Dim tl1 As Double
                     Dim f As Boolean = False
+
                     For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
                         If idproducto = dtdetalleventa.Rows(i).Item(2).ToString Then
 
-                            can = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
-                            tl = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(9)) + CDbl(Me.textotalp.Text.Trim), 2)
-                            tl1 = Math.Round((CDbl(dtdetalleventa.Rows(i).Item(5)) * can), 2)
+                            If combotipo.Text.Trim.ToString <> "Factura" Then
+                                can = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
 
-                            'consultar.Consultar(" update detalleventa set cantidadunit = " + can.ToString + ", precioreal = " + p.ToString + ", total = " + tl.ToString + " where codfacturav = " + codfactura.ToString + " and coddetallefacturav = " + dtdetalleventa.Rows(i).Item(0).ToString)
-                            consultar.Consultar("update detalleventa set total = " & tl1 & ", cantidadunit = " & can.ToString & ", total1 = " & tl.ToString & " where codfacturav = " & codfactura.ToString & " and coddetallefacturav = " & dtdetalleventa.Rows(i).Item(0).ToString)
+                                Dim pr As Double = (CDbl(Me.texprecio.Text.Trim.ToString) * can)
+
+                                Dim priva As Double = Math.Round((pr / 1.13), 2)
+
+                                tl = priva
+
+                            Else
+                                can = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
+                                tl = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(7)) + CDbl(Me.textotalp.Text.Trim), 2)
+                            End If
+
+                            
+                            consultar.Consultar("update detalleventa set total = " & tl & ", cantidadunit = " & can.ToString & " where codfacturav = " & codfactura.ToString & " and coddetallefacturav = " & dtdetalleventa.Rows(i).Item(0).ToString)
                             f = True
                             privar()
                             cargarfactura()
@@ -1313,11 +1171,11 @@ Public Class Ventas
         Else
             MsgBox("Tiene que llenar todos los campos que esten en rojo", MsgBoxStyle.ApplicationModal, "Aviso")
         End If
- 
+
 
     End Sub
 
-    Private Sub botsalir_Click_1(sender As Object, e As EventArgs) Handles botsalir.Click
+    Private Sub botsalir_Click_1(sender As Object, e As EventArgs)
         salirnada()
     End Sub
 
@@ -1352,9 +1210,9 @@ Public Class Ventas
 
     Private Sub texcliente_DoubleClick(sender As Object, e As EventArgs) Handles texcliente.DoubleClick
         Try
-            Clientes.donde = "ventas"
-            Clientes.frmv = Me
-            Clientes.Show()
+            frmc.donde = "ventas"
+            frmc.frmv = Me
+            frmc.Show()
         Catch ex As Exception
 
         End Try
@@ -1388,9 +1246,7 @@ Public Class Ventas
                 Me.texcliente.Text = dtclcf.Rows(0).Item(1).ToString
                 Me.idcliente = dtclcf.Rows(0).Item(0).ToString
             Else
-                Me.texcliente.Text = dtcli.Rows(0).Item(1).ToString
-                Me.texnrc.Text = dtcli.Rows(0).Item(2).ToString
-                Me.idcliente = dtcli.Rows(0).Item(0)
+             
             End If
             entert = True
         Catch ex As Exception
@@ -1400,15 +1256,17 @@ Public Class Ventas
     End Sub
 
 
-    Private Sub checkimprimir_CheckedChanged(sender As Object, e As EventArgs) Handles checkimprimir.CheckedChanged
-        If Me.checkimprimir.Checked = True Then
-            Me.botguardar.Text = "Imprimir"
-        Else
-            Me.botguardar.Text = "Guardar"
+    Private Sub checkimprimir_CheckedChanged(sender As Object, e As EventArgs)
+
+        Me.botguardar.Text = "Imprimir"
+        Me.botguardar.Text = "Guardar"
+    End Sub
+
+    Private Sub texcliente_LostFocus(sender As Object, e As EventArgs) Handles texcliente.LostFocus
+        If Me.texcliente.Text.ToString = "Consumidor Final".ToString Then
+            Me.idcliente = 5403
         End If
     End Sub
 
-    Private Sub GroupPanel1_Click(sender As Object, e As EventArgs)
-
-    End Sub
+ 
 End Class

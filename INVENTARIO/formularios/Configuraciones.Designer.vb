@@ -633,7 +633,7 @@ Partial Class Configuraciones
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(574, 427)
+        Me.ClientSize = New System.Drawing.Size(573, 424)
         Me.Controls.Add(Me.TabControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
@@ -653,21 +653,11 @@ Partial Class Configuraciones
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TabControl1 As DevComponents.DotNetBar.TabControl
-    Friend WithEvents TabControlPanel1 As DevComponents.DotNetBar.TabControlPanel
-    Friend WithEvents TabItem1 As DevComponents.DotNetBar.TabItem
-    Friend WithEvents TabControlPanel2 As DevComponents.DotNetBar.TabControlPanel
-    Friend WithEvents TabItem2 As DevComponents.DotNetBar.TabItem
-    Friend WithEvents GroupPanel2 As DevComponents.DotNetBar.Controls.GroupPanel
-    Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents texhastaf As System.Windows.Forms.TextBox
     Friend WithEvents texdedef As System.Windows.Forms.TextBox
-    Friend WithEvents ReflectionLabel9 As DevComponents.DotNetBar.Controls.ReflectionLabel
     Friend WithEvents progresf As System.Windows.Forms.ProgressBar
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents botnccf As DevComponents.DotNetBar.ButtonX
-    Friend WithEvents botnfacturas As DevComponents.DotNetBar.ButtonX
     Friend WithEvents texactualccf As System.Windows.Forms.TextBox
     Friend WithEvents texactualf As System.Windows.Forms.TextBox
     Friend WithEvents progresccf As System.Windows.Forms.ProgressBar
@@ -675,24 +665,34 @@ Partial Class Configuraciones
     Friend WithEvents texhastaccf As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents texdesdeccf As System.Windows.Forms.TextBox
-    Friend WithEvents ReflectionLabel1 As DevComponents.DotNetBar.Controls.ReflectionLabel
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents LineShape2 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents LineShape3 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents grubfactura As System.Windows.Forms.GroupBox
-    Friend WithEvents ReflectionLabel2 As DevComponents.DotNetBar.Controls.ReflectionLabel
     Friend WithEvents bothechof As System.Windows.Forms.Button
     Friend WithEvents texndesdef As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents texnhastaf As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents grubcomprobante As System.Windows.Forms.GroupBox
-    Friend WithEvents ReflectionLabel3 As DevComponents.DotNetBar.Controls.ReflectionLabel
     Friend WithEvents bothechoccf As System.Windows.Forms.Button
     Friend WithEvents texndesdeccf As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents texnhastaccf As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents ReflectionLabel4 As DevComponents.DotNetBar.Controls.ReflectionLabel
+    Private WithEvents TabControl1 As DevComponents.DotNetBar.TabControl
+    Private WithEvents TabControlPanel1 As DevComponents.DotNetBar.TabControlPanel
+    Private WithEvents TabItem1 As DevComponents.DotNetBar.TabItem
+    Private WithEvents TabControlPanel2 As DevComponents.DotNetBar.TabControlPanel
+    Private WithEvents TabItem2 As DevComponents.DotNetBar.TabItem
+    Private WithEvents GroupPanel2 As DevComponents.DotNetBar.Controls.GroupPanel
+    Private WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
+    Private WithEvents ReflectionLabel9 As DevComponents.DotNetBar.Controls.ReflectionLabel
+    Private WithEvents botnccf As DevComponents.DotNetBar.ButtonX
+    Private WithEvents botnfacturas As DevComponents.DotNetBar.ButtonX
+    Private WithEvents ReflectionLabel1 As DevComponents.DotNetBar.Controls.ReflectionLabel
+    Private WithEvents ReflectionLabel2 As DevComponents.DotNetBar.Controls.ReflectionLabel
+    Private WithEvents ReflectionLabel3 As DevComponents.DotNetBar.Controls.ReflectionLabel
+    Private WithEvents ReflectionLabel4 As DevComponents.DotNetBar.Controls.ReflectionLabel
 End Class

@@ -432,5 +432,5 @@ Partial Class Nuevo_Producto
     Friend WithEvents lunitmed As System.Windows.Forms.Label
     Friend WithEvents picno As System.Windows.Forms.PictureBox
     Friend WithEvents picsi As System.Windows.Forms.PictureBox
-    Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
+    Private WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
 End Class

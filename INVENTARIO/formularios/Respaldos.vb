@@ -32,7 +32,7 @@ Public Class Respaldos
 
         nombrearchivo = "Respaldo" & dtrespaldo.Rows(0).Item(0).ToString & ".sql"
         ' Dim ruta As String = "D:\SISTEMAS DE LA UNIVERSIDAD\AUDITORIA DE SISTEMAS\INVENTARIO DE GASOLINERA CON MONITOREO DE BOMBAS AL FINAL DEL DIA\INVENTARIO\Respaldos\"
-        Dim ruta As String = "E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\Respaldos"
+        Dim ruta As String = "E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\Respaldos\"
         MsgBox("Esta es a ruta: " & ruta, MsgBoxStyle.Information, "Aviso de respaldo")
 
         Try
@@ -73,7 +73,7 @@ Public Class Respaldos
 
                 Dim nombrearchivo As String = dtrespados1.Rows(id).Item(2).ToString & ".sql"
                 ' Dim ruta As String = "D:\SISTEMAS DE LA UNIVERSIDAD\AUDITORIA DE SISTEMAS\INVENTARIO DE GASOLINERA CON MONITOREO DE BOMBAS AL FINAL DEL DIA\INVENTARIO\Respaldos\"
-                Dim ruta As String = "E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\Respaldos"
+                Dim ruta As String = "E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\Respaldos\"
                 comando = pathmysql & "\bin\mysql.exe"
                 comando.Replace("\\", "\")
                 arg = "mysql --user=root --password=root --host=localhost --database manuelbd < " & Chr(34) & ruta & nombrearchivo & Chr(34)

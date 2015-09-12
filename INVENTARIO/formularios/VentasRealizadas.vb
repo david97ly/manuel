@@ -18,7 +18,7 @@ Public Class VentasRealizadas
     Private Sub VentasRealizadas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MdiParent = mdiMain
         loadf = True
-        dtfacturaventa = tfacturaventa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+        dtfacturaventa = tfacturaventa.Consultar()
         tipof = "todos"
         cargarventas()
     End Sub
@@ -53,15 +53,13 @@ Public Class VentasRealizadas
                 Me.gridfacturaventas.Rows(0).Cells(4).Value = ""
                 Me.gridfacturaventas.Rows(0).Cells(5).Value = ""
                 Me.gridfacturaventas.Rows(0).Cells(6).Value = ""
-                Me.gridfacturaventas.Rows(0).Cells(7).Value = ""
-                Me.gridfacturaventas.Rows(0).Cells(8).Value = ""
             Else
                 Me.gridfacturaventas.RowCount = nf
             End If
 
             For i As Integer = 0 To dtfacturaventa.Rows.Count - 1
 
-                Me.gridfacturaventas.Rows(i).Cells(0).Value = dtfacturaventa.Rows(i).Item(1).ToString
+                Me.gridfacturaventas.Rows(i).Cells(0).Value = dtfacturaventa.Rows(i).Item(1).ToString 'para el codigo de la factura
 
                 If dtfacturaventa.Rows(i).Item(2).ToString = "Factura" Then
                     dtclientes = tclientescf.Consultar(" where idclientescf = " + dtfacturaventa.Rows(i).Item(3).ToString)
@@ -84,12 +82,13 @@ Public Class VentasRealizadas
 
                
 
-                Me.gridfacturaventas.Rows(i).Cells(1).Value = dtclientes.Rows(0).Item(1)
-                Me.gridfacturaventas.Rows(i).Cells(2).Value = dtfacturaventa.Rows(i).Item(2).ToString
-                Dim s As Date = dtfacturaventa.Rows(i).Item(5)
-                Me.gridfacturaventas.Rows(i).Cells(3).Value = s.Day.ToString + "/" + s.Month.ToString + "/" + s.Year.ToString
-                Me.gridfacturaventas.Rows(i).Cells(4).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(8)) + CDbl(dtfacturaventa.Rows(i).Item(10)) + CDbl(dtfacturaventa.Rows(i).Item(11)), 2)
-                Me.gridfacturaventas.Rows(i).Cells(5).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(6)), 2)
+                Me.gridfacturaventas.Rows(i).Cells(1).Value = dtclientes.Rows(0).Item(1) ' para el nombre de la factura
+                Me.gridfacturaventas.Rows(i).Cells(2).Value = dtfacturaventa.Rows(i).Item(2).ToString ' para el tipo de la factura
+                Dim s As Date = dtfacturaventa.Rows(i).Item(4)
+                Me.gridfacturaventas.Rows(i).Cells(3).Value = s.Day.ToString + "/" + s.Month.ToString + "/" + s.Year.ToString 'para la fecha
+                Me.gridfacturaventas.Rows(i).Cells(4).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(5)), 2) 'para el subtotal
+                Me.gridfacturaventas.Rows(i).Cells(5).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(7)), 2) ' para el iva
+                Me.gridfacturaventas.Rows(i).Cells(6).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(10)), 2) ' para el total
 
             Next
         Catch ex As Exception
@@ -111,20 +110,20 @@ Public Class VentasRealizadas
     End Sub
 
     Private Sub radiocomprobantes()
-        dtfacturaventa = tfacturaventa.Consultar(" where tipo = 'Comprobante de Credito fiscal' and codempresa = " + mdiMain.codigoempresa.ToString)
+        dtfacturaventa = tfacturaventa.Consultar(" where tipo = 'Comprobante de Credito fiscal' ")
         tipof = "Comprobante de Credito fiscal"
         cargarventas()
     End Sub
 
     Private Sub radiofacturas()
-        dtfacturaventa = tfacturaventa.Consultar(" where tipo = 'Factura' and codempresa = " + mdiMain.codigoempresa.ToString)
+        dtfacturaventa = tfacturaventa.Consultar(" where tipo = 'Factura'")
         tipof = "Factura"
         cargarventas()
     End Sub
 
     Private Sub radiotodos()
         If loadf = True Then
-            dtfacturaventa = tfacturaventa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+            dtfacturaventa = tfacturaventa.Consultar()
             tipof = "todos"
             cargarventas()
         End If
@@ -149,11 +148,11 @@ Public Class VentasRealizadas
                         Else
                             varbus = varbus.Remove(contvarbus - 1, 1)
 
-                            dtclientes = tclientes.Consultar(" where nombre like '%" + varbus + "%' and codempresa = " + mdiMain.codigoempresa.ToString)
+                            dtclientes = tclientes.Consultar(" where nombre like '%" + varbus + "%'  ")
                             If dtclientes.Rows.Count = 0 Then
-                                dtfacturaventa = tfacturaventa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and " + "(tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%')")
+                                dtfacturaventa = tfacturaventa.Consultar(" where tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%'")
                             Else
-                                dtfacturaventa = tfacturaventa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and " + "(tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%' or codcliente like '%" + dtclientes.Rows(0).Item(0).ToString + "%')")
+                                dtfacturaventa = tfacturaventa.Consultar(" where tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%' or codcliente like '%" + dtclientes.Rows(0).Item(0).ToString + "%'")
                             End If
 
                             If dtfacturaventa.Rows.Count <> 0 Then
@@ -167,9 +166,9 @@ Public Class VentasRealizadas
                     varbus += e.KeyChar
                     dtclientes = tclientes.Consultar(" where nombre like '%" + varbus + "%' and codempresa = " + mdiMain.codigoempresa.ToString)
                     If dtclientes.Rows.Count = 0 Then
-                        dtfacturaventa = tfacturaventa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and " + "(tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%')")
+                        dtfacturaventa = tfacturaventa.Consultar(" where tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%'")
                     Else
-                        dtfacturaventa = tfacturaventa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and " + "(tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%' or codcliente like '%" + dtclientes.Rows(0).Item(0).ToString + "%')")
+                        dtfacturaventa = tfacturaventa.Consultar(" where tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%' or codcliente like '%" + dtclientes.Rows(0).Item(0).ToString + "%'")
                     End If
 
                     If dtfacturaventa.Rows.Count <> 0 Then
@@ -236,15 +235,15 @@ Public Class VentasRealizadas
             a2 = dt2.Value.Year
             f2 = a2 + "-" + m2 + "-" + d2
             If Me.combotipo.Text = "Factura" Then
-                dtfacturaventa = tfacturaventa.Consultar(" where tipo = 'Factura' and codempresa = " + mdiMain.codigoempresa.ToString + " and fecha >= '" + f1 + "' and fecha <= '" + f2 + "'")
+                dtfacturaventa = tfacturaventa.Consultar(" where tipo = 'Factura' and  fecha >= '" + f1 + "' and fecha <= '" + f2 + "'")
                 tipof = "Factura"
                 cargarventas()
             ElseIf Me.combotipo.Text = "Comprovante de Credito fiscal" Then
-                dtfacturaventa = tfacturaventa.Consultar(" where tipo = 'Comprovante de Credito fiscal' and codempresa = " + mdiMain.codigoempresa.ToString + " and fecha >='" + f1 + "' and fecha <= '" + f2 + "'")
+                dtfacturaventa = tfacturaventa.Consultar(" where tipo = 'Comprovante de Credito fiscal' and fecha >='" + f1 + "' and fecha <= '" + f2 + "'")
                 tipof = "Comprovante de Credito fiscal"
                 cargarventas()
             ElseIf Me.radiotodo.Checked = True Then
-                dtfacturaventa = tfacturaventa.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and fecha >='" + f1 + "' and fecha <= '" + f2 + "'")
+                dtfacturaventa = tfacturaventa.Consultar(" where  fecha >='" + f1 + "' and fecha <= '" + f2 + "'")
                 tipof = "todos"
                 cargarventas()
             End If

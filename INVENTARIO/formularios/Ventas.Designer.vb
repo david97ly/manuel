@@ -26,10 +26,6 @@ Partial Class Ventas
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.comboformapago = New System.Windows.Forms.ComboBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.botguardar = New DevComponents.DotNetBar.ButtonX()
-        Me.btneliminar = New DevComponents.DotNetBar.ButtonX()
-        Me.botsalir = New DevComponents.DotNetBar.ButtonX()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.texcliente = New System.Windows.Forms.TextBox()
@@ -46,39 +42,29 @@ Partial Class Ventas
         Me.texcantidad = New System.Windows.Forms.TextBox()
         Me.texnombrep = New System.Windows.Forms.TextBox()
         Me.grubdescuento = New System.Windows.Forms.GroupBox()
-        Me.btnaplicar = New DevComponents.DotNetBar.ButtonX()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.radioindividual = New System.Windows.Forms.RadioButton()
-        Me.radiotodo = New System.Windows.Forms.RadioButton()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.texpdescuento = New System.Windows.Forms.TextBox()
         Me.botappdescuento = New System.Windows.Forms.Button()
         Me.checklibre = New System.Windows.Forms.CheckBox()
-        Me.botagregar = New DevComponents.DotNetBar.ButtonX()
         Me.texexentas = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.texnosujeta = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.texcotrans = New System.Windows.Forms.TextBox()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.texfovial = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
         Me.textotal = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.texiva = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.texdescuento = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.texsumas = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.gridcompra = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cantida = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nombr = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.preciu = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.preciod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.exentas = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tota = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.HolaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lson = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -88,23 +74,26 @@ Partial Class Ventas
         Me.textiraje = New System.Windows.Forms.TextBox()
         Me.BalloonTip1 = New DevComponents.DotNetBar.BalloonTip()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.checkimprimir = New System.Windows.Forms.CheckBox()
-        Me.texnrc = New System.Windows.Forms.TextBox()
-        Me.lnrc = New System.Windows.Forms.Label()
         Me.combotipo = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.boteliminar = New System.Windows.Forms.Button()
+        Me.botguardar = New System.Windows.Forms.Button()
+        Me.botagregar = New System.Windows.Forms.Button()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.texiva = New System.Windows.Forms.TextBox()
         Me.grubdescuento.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         CType(Me.gridcompra, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'comboformapago
         '
         Me.comboformapago.FormattingEnabled = True
         Me.comboformapago.Items.AddRange(New Object() {"Contado", "Credito"})
-        Me.comboformapago.Location = New System.Drawing.Point(130, 114)
+        Me.comboformapago.Location = New System.Drawing.Point(126, 89)
         Me.comboformapago.Margin = New System.Windows.Forms.Padding(4)
         Me.comboformapago.Name = "comboformapago"
         Me.comboformapago.Size = New System.Drawing.Size(115, 24)
@@ -114,63 +103,16 @@ Partial Class Ventas
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(23, 118)
+        Me.Label9.Location = New System.Drawing.Point(19, 93)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(102, 16)
         Me.Label9.TabIndex = 55
         Me.Label9.Text = "Forma de Pago"
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.botguardar)
-        Me.GroupBox1.Controls.Add(Me.btneliminar)
-        Me.GroupBox1.Controls.Add(Me.botsalir)
-        Me.GroupBox1.Location = New System.Drawing.Point(13, 581)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(551, 68)
-        Me.GroupBox1.TabIndex = 47
-        Me.GroupBox1.TabStop = False
-        '
-        'botguardar
-        '
-        Me.botguardar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.botguardar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.botguardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botguardar.Location = New System.Drawing.Point(7, 22)
-        Me.botguardar.Name = "botguardar"
-        Me.botguardar.Size = New System.Drawing.Size(186, 33)
-        Me.botguardar.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.botguardar.TabIndex = 88
-        Me.botguardar.Text = "Guardar"
-        '
-        'btneliminar
-        '
-        Me.btneliminar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btneliminar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.btneliminar.Location = New System.Drawing.Point(272, 19)
-        Me.btneliminar.Name = "btneliminar"
-        Me.btneliminar.Size = New System.Drawing.Size(108, 33)
-        Me.btneliminar.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.btneliminar.TabIndex = 89
-        Me.btneliminar.Text = "Eliminar"
-        '
-        'botsalir
-        '
-        Me.botsalir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.botsalir.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.botsalir.Location = New System.Drawing.Point(428, 19)
-        Me.botsalir.Name = "botsalir"
-        Me.botsalir.Size = New System.Drawing.Size(108, 33)
-        Me.botsalir.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.botsalir.TabIndex = 90
-        Me.botsalir.Text = "Salir"
-        '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(496, 82)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(492, 57)
         Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(266, 22)
@@ -179,7 +121,7 @@ Partial Class Ventas
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(444, 85)
+        Me.Label5.Location = New System.Drawing.Point(440, 60)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(49, 16)
@@ -188,7 +130,7 @@ Partial Class Ventas
         '
         'texcliente
         '
-        Me.texcliente.Location = New System.Drawing.Point(68, 82)
+        Me.texcliente.Location = New System.Drawing.Point(64, 57)
         Me.texcliente.Margin = New System.Windows.Forms.Padding(4)
         Me.texcliente.Name = "texcliente"
         Me.texcliente.Size = New System.Drawing.Size(144, 22)
@@ -197,7 +139,7 @@ Partial Class Ventas
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(17, 85)
+        Me.Label3.Location = New System.Drawing.Point(13, 60)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(49, 16)
@@ -206,7 +148,7 @@ Partial Class Ventas
         '
         'texnumfact
         '
-        Me.texnumfact.Location = New System.Drawing.Point(509, 48)
+        Me.texnumfact.Location = New System.Drawing.Point(505, 23)
         Me.texnumfact.Margin = New System.Windows.Forms.Padding(4)
         Me.texnumfact.Name = "texnumfact"
         Me.texnumfact.Size = New System.Drawing.Size(56, 22)
@@ -215,7 +157,7 @@ Partial Class Ventas
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(385, 50)
+        Me.Label2.Location = New System.Drawing.Point(381, 25)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(121, 16)
@@ -225,7 +167,7 @@ Partial Class Ventas
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(559, 154)
+        Me.Label16.Location = New System.Drawing.Point(555, 129)
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(39, 16)
@@ -234,7 +176,7 @@ Partial Class Ventas
         '
         'textotalp
         '
-        Me.textotalp.Location = New System.Drawing.Point(544, 174)
+        Me.textotalp.Location = New System.Drawing.Point(540, 149)
         Me.textotalp.Margin = New System.Windows.Forms.Padding(4)
         Me.textotalp.Name = "textotalp"
         Me.textotalp.Size = New System.Drawing.Size(88, 22)
@@ -243,7 +185,7 @@ Partial Class Ventas
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(354, 154)
+        Me.Label7.Location = New System.Drawing.Point(350, 129)
         Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(62, 16)
@@ -253,7 +195,7 @@ Partial Class Ventas
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(432, 154)
+        Me.Label6.Location = New System.Drawing.Point(428, 129)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(96, 16)
@@ -263,7 +205,7 @@ Partial Class Ventas
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(210, 154)
+        Me.Label1.Location = New System.Drawing.Point(206, 129)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(57, 16)
@@ -273,7 +215,7 @@ Partial Class Ventas
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(15, 176)
+        Me.Label8.Location = New System.Drawing.Point(11, 151)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(122, 16)
@@ -282,7 +224,7 @@ Partial Class Ventas
         '
         'texprecio
         '
-        Me.texprecio.Location = New System.Drawing.Point(439, 174)
+        Me.texprecio.Location = New System.Drawing.Point(435, 149)
         Me.texprecio.Margin = New System.Windows.Forms.Padding(4)
         Me.texprecio.Name = "texprecio"
         Me.texprecio.Size = New System.Drawing.Size(88, 22)
@@ -290,7 +232,7 @@ Partial Class Ventas
         '
         'texcantidad
         '
-        Me.texcantidad.Location = New System.Drawing.Point(349, 174)
+        Me.texcantidad.Location = New System.Drawing.Point(345, 149)
         Me.texcantidad.Margin = New System.Windows.Forms.Padding(4)
         Me.texcantidad.Name = "texcantidad"
         Me.texcantidad.Size = New System.Drawing.Size(85, 22)
@@ -298,7 +240,7 @@ Partial Class Ventas
         '
         'texnombrep
         '
-        Me.texnombrep.Location = New System.Drawing.Point(144, 174)
+        Me.texnombrep.Location = New System.Drawing.Point(140, 149)
         Me.texnombrep.Margin = New System.Windows.Forms.Padding(4)
         Me.texnombrep.Name = "texnombrep"
         Me.texnombrep.Size = New System.Drawing.Size(202, 22)
@@ -306,8 +248,6 @@ Partial Class Ventas
         '
         'grubdescuento
         '
-        Me.grubdescuento.Controls.Add(Me.btnaplicar)
-        Me.grubdescuento.Controls.Add(Me.GroupBox2)
         Me.grubdescuento.Controls.Add(Me.Label18)
         Me.grubdescuento.Controls.Add(Me.Label17)
         Me.grubdescuento.Controls.Add(Me.texpdescuento)
@@ -320,49 +260,6 @@ Partial Class Ventas
         Me.grubdescuento.TabIndex = 78
         Me.grubdescuento.TabStop = False
         Me.grubdescuento.Visible = False
-        '
-        'btnaplicar
-        '
-        Me.btnaplicar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnaplicar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.btnaplicar.Location = New System.Drawing.Point(454, 28)
-        Me.btnaplicar.Name = "btnaplicar"
-        Me.btnaplicar.Size = New System.Drawing.Size(108, 33)
-        Me.btnaplicar.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.btnaplicar.TabIndex = 87
-        Me.btnaplicar.Text = "Aplicar"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.radioindividual)
-        Me.GroupBox2.Controls.Add(Me.radiotodo)
-        Me.GroupBox2.Location = New System.Drawing.Point(237, 10)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(171, 58)
-        Me.GroupBox2.TabIndex = 41
-        Me.GroupBox2.TabStop = False
-        '
-        'radioindividual
-        '
-        Me.radioindividual.AutoSize = True
-        Me.radioindividual.Location = New System.Drawing.Point(6, 34)
-        Me.radioindividual.Name = "radioindividual"
-        Me.radioindividual.Size = New System.Drawing.Size(83, 20)
-        Me.radioindividual.TabIndex = 1
-        Me.radioindividual.Text = "Individual"
-        Me.radioindividual.UseVisualStyleBackColor = True
-        '
-        'radiotodo
-        '
-        Me.radiotodo.AutoSize = True
-        Me.radiotodo.Checked = True
-        Me.radiotodo.Location = New System.Drawing.Point(6, 13)
-        Me.radiotodo.Name = "radiotodo"
-        Me.radiotodo.Size = New System.Drawing.Size(59, 20)
-        Me.radiotodo.TabIndex = 0
-        Me.radiotodo.TabStop = True
-        Me.radiotodo.Text = "Todo"
-        Me.radiotodo.UseVisualStyleBackColor = True
         '
         'Label18
         '
@@ -405,29 +302,18 @@ Partial Class Ventas
         'checklibre
         '
         Me.checklibre.AutoSize = True
-        Me.checklibre.Location = New System.Drawing.Point(541, 118)
+        Me.checklibre.Location = New System.Drawing.Point(537, 93)
         Me.checklibre.Name = "checklibre"
         Me.checklibre.Size = New System.Drawing.Size(57, 20)
         Me.checklibre.TabIndex = 79
         Me.checklibre.Text = "Libre"
         Me.checklibre.UseVisualStyleBackColor = True
         '
-        'botagregar
-        '
-        Me.botagregar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.botagregar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.botagregar.Location = New System.Drawing.Point(1241, 138)
-        Me.botagregar.Name = "botagregar"
-        Me.botagregar.Size = New System.Drawing.Size(108, 33)
-        Me.botagregar.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005
-        Me.botagregar.TabIndex = 86
-        Me.botagregar.Text = "Agregar"
-        '
         'texexentas
         '
         Me.texexentas.Enabled = False
         Me.texexentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texexentas.Location = New System.Drawing.Point(725, 602)
+        Me.texexentas.Location = New System.Drawing.Point(721, 502)
         Me.texexentas.Margin = New System.Windows.Forms.Padding(4)
         Me.texexentas.Name = "texexentas"
         Me.texexentas.Size = New System.Drawing.Size(96, 24)
@@ -438,7 +324,7 @@ Partial Class Ventas
         '
         Me.Label20.AutoSize = True
         Me.Label20.BackColor = System.Drawing.Color.Transparent
-        Me.Label20.Location = New System.Drawing.Point(634, 607)
+        Me.Label20.Location = New System.Drawing.Point(630, 507)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(83, 16)
@@ -449,7 +335,7 @@ Partial Class Ventas
         '
         Me.texnosujeta.Enabled = False
         Me.texnosujeta.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texnosujeta.Location = New System.Drawing.Point(725, 512)
+        Me.texnosujeta.Location = New System.Drawing.Point(721, 468)
         Me.texnosujeta.Margin = New System.Windows.Forms.Padding(4)
         Me.texnosujeta.Name = "texnosujeta"
         Me.texnosujeta.Size = New System.Drawing.Size(96, 24)
@@ -460,62 +346,18 @@ Partial Class Ventas
         '
         Me.Label15.AutoSize = True
         Me.Label15.BackColor = System.Drawing.Color.Transparent
-        Me.Label15.Location = New System.Drawing.Point(626, 518)
+        Me.Label15.Location = New System.Drawing.Point(622, 474)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(96, 16)
         Me.Label15.TabIndex = 105
         Me.Label15.Text = "V.NO SUJETA"
         '
-        'texcotrans
-        '
-        Me.texcotrans.Enabled = False
-        Me.texcotrans.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texcotrans.Location = New System.Drawing.Point(725, 575)
-        Me.texcotrans.Margin = New System.Windows.Forms.Padding(4)
-        Me.texcotrans.Name = "texcotrans"
-        Me.texcotrans.Size = New System.Drawing.Size(96, 24)
-        Me.texcotrans.TabIndex = 104
-        Me.texcotrans.Text = "0.0"
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.BackColor = System.Drawing.Color.Transparent
-        Me.Label19.Location = New System.Drawing.Point(648, 581)
-        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(74, 16)
-        Me.Label19.TabIndex = 103
-        Me.Label19.Text = "COTRANS"
-        '
-        'texfovial
-        '
-        Me.texfovial.Enabled = False
-        Me.texfovial.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texfovial.Location = New System.Drawing.Point(725, 550)
-        Me.texfovial.Margin = New System.Windows.Forms.Padding(4)
-        Me.texfovial.Name = "texfovial"
-        Me.texfovial.Size = New System.Drawing.Size(96, 24)
-        Me.texfovial.TabIndex = 102
-        Me.texfovial.Text = "0.0"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.Location = New System.Drawing.Point(666, 555)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(54, 16)
-        Me.Label13.TabIndex = 101
-        Me.Label13.Text = "FOVIAL"
-        '
         'textotal
         '
         Me.textotal.Enabled = False
         Me.textotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.textotal.Location = New System.Drawing.Point(725, 629)
+        Me.textotal.Location = New System.Drawing.Point(721, 529)
         Me.textotal.Margin = New System.Windows.Forms.Padding(4)
         Me.textotal.Name = "textotal"
         Me.textotal.Size = New System.Drawing.Size(96, 24)
@@ -527,62 +369,18 @@ Partial Class Ventas
         Me.Label14.AutoSize = True
         Me.Label14.BackColor = System.Drawing.Color.Transparent
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(629, 634)
+        Me.Label14.Location = New System.Drawing.Point(625, 534)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(88, 16)
         Me.Label14.TabIndex = 99
         Me.Label14.Text = "Venta Total"
         '
-        'texiva
-        '
-        Me.texiva.Enabled = False
-        Me.texiva.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texiva.Location = New System.Drawing.Point(725, 480)
-        Me.texiva.Margin = New System.Windows.Forms.Padding(4)
-        Me.texiva.Name = "texiva"
-        Me.texiva.Size = New System.Drawing.Size(96, 24)
-        Me.texiva.TabIndex = 98
-        Me.texiva.Text = "0.0"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.BackColor = System.Drawing.Color.Transparent
-        Me.Label12.Location = New System.Drawing.Point(661, 486)
-        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(63, 16)
-        Me.Label12.TabIndex = 97
-        Me.Label12.Text = "IVA(13%)"
-        '
-        'texdescuento
-        '
-        Me.texdescuento.Enabled = False
-        Me.texdescuento.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texdescuento.Location = New System.Drawing.Point(725, 454)
-        Me.texdescuento.Margin = New System.Windows.Forms.Padding(4)
-        Me.texdescuento.Name = "texdescuento"
-        Me.texdescuento.Size = New System.Drawing.Size(96, 24)
-        Me.texdescuento.TabIndex = 96
-        Me.texdescuento.Text = "0.00"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Location = New System.Drawing.Point(650, 459)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(73, 16)
-        Me.Label11.TabIndex = 95
-        Me.Label11.Text = "Descuento"
-        '
         'texsumas
         '
         Me.texsumas.Enabled = False
         Me.texsumas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texsumas.Location = New System.Drawing.Point(725, 429)
+        Me.texsumas.Location = New System.Drawing.Point(721, 404)
         Me.texsumas.Margin = New System.Windows.Forms.Padding(4)
         Me.texsumas.Name = "texsumas"
         Me.texsumas.Size = New System.Drawing.Size(96, 24)
@@ -593,7 +391,7 @@ Partial Class Ventas
         '
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Location = New System.Drawing.Point(668, 434)
+        Me.Label10.Location = New System.Drawing.Point(664, 409)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(50, 16)
@@ -605,7 +403,8 @@ Partial Class Ventas
         Me.gridcompra.AllowUserToAddRows = False
         Me.gridcompra.AllowUserToDeleteRows = False
         Me.gridcompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridcompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cantida, Me.nombr, Me.preciu, Me.preciod, Me.exentas, Me.tota})
+        Me.gridcompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.cantida, Me.nombr, Me.preciu, Me.preciod, Me.exentas, Me.tota})
+        Me.gridcompra.ContextMenuStrip = Me.ContextMenuStrip1
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -615,12 +414,19 @@ Partial Class Ventas
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle1
         Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.gridcompra.Location = New System.Drawing.Point(12, 202)
+        Me.gridcompra.Location = New System.Drawing.Point(8, 177)
         Me.gridcompra.Name = "gridcompra"
         Me.gridcompra.ReadOnly = True
         Me.gridcompra.RowHeadersVisible = False
-        Me.gridcompra.Size = New System.Drawing.Size(802, 223)
+        Me.gridcompra.Size = New System.Drawing.Size(879, 223)
         Me.gridcompra.TabIndex = 111
+        '
+        'codigo
+        '
+        Me.codigo.HeaderText = "Codigo"
+        Me.codigo.Name = "codigo"
+        Me.codigo.ReadOnly = True
+        Me.codigo.Width = 75
         '
         'cantida
         '
@@ -655,16 +461,28 @@ Partial Class Ventas
         '
         'tota
         '
-        Me.tota.HeaderText = "Ventas Gravadas"
+        Me.tota.HeaderText = "Ventas Afectas"
         Me.tota.Name = "tota"
         Me.tota.ReadOnly = True
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HolaToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(160, 26)
+        '
+        'HolaToolStripMenuItem
+        '
+        Me.HolaToolStripMenuItem.Name = "HolaToolStripMenuItem"
+        Me.HolaToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.HolaToolStripMenuItem.Text = "Quitar Producto"
         '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.lson)
         Me.GroupBox3.Controls.Add(Me.Label22)
         Me.GroupBox3.Controls.Add(Me.grubdescuento)
-        Me.GroupBox3.Location = New System.Drawing.Point(13, 431)
+        Me.GroupBox3.Location = New System.Drawing.Point(9, 406)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
@@ -692,10 +510,10 @@ Partial Class Ventas
         '
         'progresimprimir
         '
-        Me.progresimprimir.Location = New System.Drawing.Point(144, 174)
+        Me.progresimprimir.Location = New System.Drawing.Point(140, 149)
         Me.progresimprimir.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.progresimprimir.Name = "progresimprimir"
-        Me.progresimprimir.Size = New System.Drawing.Size(487, 23)
+        Me.progresimprimir.Size = New System.Drawing.Size(502, 23)
         Me.progresimprimir.Step = 1
         Me.progresimprimir.TabIndex = 114
         Me.progresimprimir.Visible = False
@@ -712,7 +530,7 @@ Partial Class Ventas
         '
         'textiraje
         '
-        Me.textiraje.Location = New System.Drawing.Point(652, 45)
+        Me.textiraje.Location = New System.Drawing.Point(648, 20)
         Me.textiraje.Margin = New System.Windows.Forms.Padding(4)
         Me.textiraje.Name = "textiraje"
         Me.textiraje.Size = New System.Drawing.Size(151, 22)
@@ -723,48 +541,18 @@ Partial Class Ventas
         '
         Me.Label21.AutoSize = True
         Me.Label21.BackColor = System.Drawing.Color.Transparent
-        Me.Label21.Location = New System.Drawing.Point(605, 47)
+        Me.Label21.Location = New System.Drawing.Point(601, 22)
         Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(46, 16)
         Me.Label21.TabIndex = 115
         Me.Label21.Text = "Tiraje:"
         '
-        'checkimprimir
-        '
-        Me.checkimprimir.AutoSize = True
-        Me.checkimprimir.Location = New System.Drawing.Point(20, 562)
-        Me.checkimprimir.Name = "checkimprimir"
-        Me.checkimprimir.Size = New System.Drawing.Size(74, 20)
-        Me.checkimprimir.TabIndex = 117
-        Me.checkimprimir.Text = "Imprimir"
-        Me.checkimprimir.UseVisualStyleBackColor = True
-        '
-        'texnrc
-        '
-        Me.texnrc.Location = New System.Drawing.Point(271, 81)
-        Me.texnrc.Margin = New System.Windows.Forms.Padding(4)
-        Me.texnrc.Name = "texnrc"
-        Me.texnrc.Size = New System.Drawing.Size(165, 22)
-        Me.texnrc.TabIndex = 119
-        Me.texnrc.Visible = False
-        '
-        'lnrc
-        '
-        Me.lnrc.AutoSize = True
-        Me.lnrc.Location = New System.Drawing.Point(224, 85)
-        Me.lnrc.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lnrc.Name = "lnrc"
-        Me.lnrc.Size = New System.Drawing.Size(43, 16)
-        Me.lnrc.TabIndex = 118
-        Me.lnrc.Text = "N.R.C"
-        Me.lnrc.Visible = False
-        '
         'combotipo
         '
         Me.combotipo.FormattingEnabled = True
         Me.combotipo.Items.AddRange(New Object() {"Factura", "Comprobante de Credito fiscal"})
-        Me.combotipo.Location = New System.Drawing.Point(68, 37)
+        Me.combotipo.Location = New System.Drawing.Point(64, 12)
         Me.combotipo.Margin = New System.Windows.Forms.Padding(4)
         Me.combotipo.Name = "combotipo"
         Me.combotipo.Size = New System.Drawing.Size(115, 24)
@@ -774,24 +562,84 @@ Partial Class Ventas
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(27, 40)
+        Me.Label4.Location = New System.Drawing.Point(23, 15)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(36, 16)
         Me.Label4.TabIndex = 120
         Me.Label4.Text = "Tipo"
         '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.boteliminar)
+        Me.GroupBox1.Controls.Add(Me.botguardar)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 498)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(598, 69)
+        Me.GroupBox1.TabIndex = 122
+        Me.GroupBox1.TabStop = False
+        '
+        'boteliminar
+        '
+        Me.boteliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boteliminar.Location = New System.Drawing.Point(432, 21)
+        Me.boteliminar.Name = "boteliminar"
+        Me.boteliminar.Size = New System.Drawing.Size(159, 40)
+        Me.boteliminar.TabIndex = 1
+        Me.boteliminar.Text = "Quitar producto"
+        Me.boteliminar.UseVisualStyleBackColor = True
+        '
+        'botguardar
+        '
+        Me.botguardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botguardar.Location = New System.Drawing.Point(7, 23)
+        Me.botguardar.Name = "botguardar"
+        Me.botguardar.Size = New System.Drawing.Size(159, 40)
+        Me.botguardar.TabIndex = 0
+        Me.botguardar.Text = "Imprimir y guardar"
+        Me.botguardar.UseVisualStyleBackColor = True
+        '
+        'botagregar
+        '
+        Me.botagregar.Location = New System.Drawing.Point(703, 129)
+        Me.botagregar.Name = "botagregar"
+        Me.botagregar.Size = New System.Drawing.Size(107, 43)
+        Me.botagregar.TabIndex = 1
+        Me.botagregar.Text = "Agregar"
+        Me.botagregar.UseVisualStyleBackColor = True
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.Transparent
+        Me.Label12.Location = New System.Drawing.Point(657, 442)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(63, 16)
+        Me.Label12.TabIndex = 97
+        Me.Label12.Text = "IVA(13%)"
+        '
+        'texiva
+        '
+        Me.texiva.Enabled = False
+        Me.texiva.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.texiva.Location = New System.Drawing.Point(721, 436)
+        Me.texiva.Margin = New System.Windows.Forms.Padding(4)
+        Me.texiva.Name = "texiva"
+        Me.texiva.Size = New System.Drawing.Size(96, 24)
+        Me.texiva.TabIndex = 98
+        Me.texiva.Text = "0.0"
+        '
         'Ventas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(1355, 669)
+        Me.ClientSize = New System.Drawing.Size(896, 571)
+        Me.Controls.Add(Me.botagregar)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.combotipo)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.texnrc)
-        Me.Controls.Add(Me.lnrc)
-        Me.Controls.Add(Me.checkimprimir)
         Me.Controls.Add(Me.textiraje)
         Me.Controls.Add(Me.Label21)
         Me.Controls.Add(Me.progresimprimir)
@@ -801,16 +649,10 @@ Partial Class Ventas
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.texnosujeta)
         Me.Controls.Add(Me.Label15)
-        Me.Controls.Add(Me.texcotrans)
-        Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.texfovial)
-        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.textotal)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.texiva)
         Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.texdescuento)
-        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.texsumas)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.checklibre)
@@ -825,34 +667,30 @@ Partial Class Ventas
         Me.Controls.Add(Me.texnombrep)
         Me.Controls.Add(Me.comboformapago)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.texcliente)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.texnumfact)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.botagregar)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Ventas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Ventas"
-        Me.GroupBox1.ResumeLayout(False)
         Me.grubdescuento.ResumeLayout(False)
         Me.grubdescuento.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         CType(Me.gridcompra, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents comboformapago As System.Windows.Forms.ComboBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents texcliente As System.Windows.Forms.TextBox
@@ -869,9 +707,6 @@ Partial Class Ventas
     Friend WithEvents texcantidad As System.Windows.Forms.TextBox
     Friend WithEvents texnombrep As System.Windows.Forms.TextBox
     Friend WithEvents grubdescuento As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents radioindividual As System.Windows.Forms.RadioButton
-    Friend WithEvents radiotodo As System.Windows.Forms.RadioButton
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents texpdescuento As System.Windows.Forms.TextBox
@@ -881,16 +716,8 @@ Partial Class Ventas
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents texnosujeta As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents texcotrans As System.Windows.Forms.TextBox
-    Friend WithEvents Label19 As System.Windows.Forms.Label
-    Friend WithEvents texfovial As System.Windows.Forms.TextBox
-    Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents textotal As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents texiva As System.Windows.Forms.TextBox
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents texdescuento As System.Windows.Forms.TextBox
-    Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents texsumas As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents gridcompra As DevComponents.DotNetBar.Controls.DataGridViewX
@@ -903,20 +730,21 @@ Partial Class Ventas
     Friend WithEvents BalloonTip1 As DevComponents.DotNetBar.BalloonTip
     Friend WithEvents textiraje As System.Windows.Forms.TextBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
-    Friend WithEvents checkimprimir As System.Windows.Forms.CheckBox
+    Friend WithEvents combotipo As System.Windows.Forms.ComboBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents botguardar As System.Windows.Forms.Button
+    Friend WithEvents botagregar As System.Windows.Forms.Button
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents texiva As System.Windows.Forms.TextBox
+    Friend WithEvents boteliminar As System.Windows.Forms.Button
+    Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents HolaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents codigo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cantida As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents nombr As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents preciu As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents preciod As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents exentas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tota As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents texnrc As System.Windows.Forms.TextBox
-    Friend WithEvents lnrc As System.Windows.Forms.Label
-    Friend WithEvents combotipo As System.Windows.Forms.ComboBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Private WithEvents botguardar As DevComponents.DotNetBar.ButtonX
-    Private WithEvents btneliminar As DevComponents.DotNetBar.ButtonX
-    Private WithEvents botsalir As DevComponents.DotNetBar.ButtonX
-    Private WithEvents btnaplicar As DevComponents.DotNetBar.ButtonX
-    Private WithEvents botagregar As DevComponents.DotNetBar.ButtonX
 End Class

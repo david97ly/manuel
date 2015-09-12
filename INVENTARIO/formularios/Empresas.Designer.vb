@@ -328,7 +328,6 @@ Partial Class Empresas
         Me.grubrazon.Size = New System.Drawing.Size(25, 86)
         Me.grubrazon.TabIndex = 28
         Me.grubrazon.TabStop = False
-        Me.grubrazon.Visible = False
         '
         'lnrc
         '

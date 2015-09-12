@@ -73,27 +73,11 @@ Public Class compra
         mdiMain.teclas = False
     End Sub
 
-    Private Sub compra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
-        If guardado = False Then
-            If (e.KeyChar) = "P" Or (e.KeyChar) = "p" Then
-                Button3.Select()
-            ElseIf (e.KeyChar) = "A" Or (e.KeyChar) = "a" Then
-                Button4.Select()
-            ElseIf (e.KeyChar) = "B" Or (e.KeyChar) = "b" Then
-                Me.controlbombas.Select()
-            ElseIf (e.KeyChar) = "g" Or (e.KeyChar) = "G" Then
-                botguardar_Click_1(sender, e)
-            End If
-        End If
 
-
-
-    End Sub
 
 
     Private Sub compra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
-        Me.Button1.Select()
         Try
             MdiParent = mdiMain
             If donde <> "here" Then
@@ -101,7 +85,6 @@ Public Class compra
 
             Else
                 MdiParent = mdiMain
-                cargarpp()
             End If
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente razon: " & ex.Message, MsgBoxStyle.OkOnly, "Avise")
@@ -110,42 +93,7 @@ Public Class compra
 
     End Sub
 
-    Private Sub cargarpp()
-        dtproveedores1 = tproveedores1.Consultar(" where codempresa = '" & mdiMain.codigoempresa.ToString & "'")
-        dtproductos1 = tproductos1.Consultar(" where codempresa = '" & mdiMain.codigoempresa.ToString & "'")
-
-        Dim nfp1 As Short = dtproveedores1.Rows.Count
-        Dim nfp2 As Short = dtproductos1.Rows.Count
-
-
-        If nfp1 >= 1 Then
-            Me.texco1.Text = dtproveedores1.Rows(0).Item(0)
-            Me.texprovee1.Text = dtproveedores1.Rows(0).Item(1)
-            If nfp1 >= 2 Then
-                Me.texco2.Text = dtproveedores1.Rows(1).Item(0)
-                Me.texprovee2.Text = dtproveedores1.Rows(1).Item(1)
-                If nfp1 >= 3 Then
-                    Me.texco3.Text = dtproveedores1.Rows(2).Item(0)
-                    Me.texprovee3.Text = dtproveedores1.Rows(2).Item(1)
-                End If
-            End If
-        End If
-
-        If nfp2 >= 1 Then
-            Me.texco4.Text = dtproductos1.Rows(0).Item(0)
-            Me.texprod4.Text = dtproductos1.Rows(0).Item(1)
-            If nfp2 >= 2 Then
-                Me.texco5.Text = dtproductos1.Rows(1).Item(0)
-                Me.texprod5.Text = dtproductos1.Rows(1).Item(1)
-                If nfp2 >= 3 Then
-                    Me.texco6.Text = dtproductos1.Rows(2).Item(0)
-                    Me.texprod6.Text = dtproductos1.Rows(2).Item(1)
-                  
-                End If
-            End If
-        End If
-
-    End Sub
+  
     Private Sub cargardatos()
         Try
             Me.texproveedor.Text = dtproveedores.Rows(0).Item(1)
@@ -160,6 +108,7 @@ Public Class compra
         End Try
 
     End Sub
+
     Private Sub texproveedor_Click(sender As Object, e As EventArgs) Handles texproveedor.Click
         Try
             Proveedores.donde = "compras"
@@ -238,39 +187,6 @@ Public Class compra
 
   
 
-    Private Sub llenartanque(ByVal id As Short)
-        Dim detalle As DataTable
-        Dim cat As Double
-        If id = 1 Then
-            Me.checksuper.Checked = True
-            detalle = detallefacturacompra.Consultar(" where codfacturac = " & codfacturac & " and codproducto = " & 1)
-            cat = CDbl(detalle.Rows(0).Item(3))
-
-            Me.texs.Text = cat
-            Me.texs.Visible = True
-
-        ElseIf id = 2 Then
-            Me.checkregular.Checked = True
-            detalle = detallefacturacompra.Consultar(" where codfacturac = " & codfacturac & " and codproducto = " & 2)
-            cat = CDbl(detalle.Rows(0).Item(3))
-
-            Me.texr.Text = cat
-
-            Me.texr.Visible = True
-        ElseIf id = 3 Then
-            Me.checdiesel1.Checked = True
-            Me.checkdiesel2.Checked = True
-
-            detalle = detallefacturacompra.Consultar(" where codfacturac = " & codfacturac & " and codproducto = " & 3)
-            cat = CDbl(detalle.Rows(0).Item(3))
-
-            Me.texd1.Text = cat
-            Me.todo = cat
-            Me.texd2.Text = 0
-            Me.texd1.Visible = True
-            Me.texd2.Visible = True
-        End If
-    End Sub
 
 
     Private Sub insertardetalle()
@@ -340,7 +256,6 @@ Public Class compra
 
             privar()
             cargarfactura()
-            llenartanque(idproducto)
         Catch ex As Exception
             MsgBox("Ocurrio un error a la hora de insertar el articulo razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try
@@ -362,9 +277,7 @@ Public Class compra
             sumaf = 0
 
             Me.texsumas.Text = "0"
-            Me.texfovial.Text = "0"
             Me.texiva.Text = "0"
-            Me.texcotrans.Text = "0"
             Me.textotal.Text = "0"
             Me.texivauno.Text = "0"
 
@@ -486,27 +399,6 @@ Public Class compra
 
             Next
 
-            Me.texsumas.Text = ""
-            Me.texfovial.Text = ""
-            Me.texiva.Text = ""
-            Me.texcotrans.Text = ""
-            Me.textotal.Text = ""
-            Me.texivauno.Text = ""
-
-
-            Me.texsumas.Text = sumas1
-            Me.texfovial.Text = fovial2
-            Me.texiva.Text = iva2
-            Me.texivauno.Text = ivauno2
-            Me.texcotrans.Text = cotrans2
-            Me.textotal.Text = Math.Round(totalproducto2, 2)
-
-            'limpirando las variables globales
-            'sumas1 = 0
-            'iva2 = 0
-            'cotrans2 = 0
-            'fovial2 = 0
-            'totalproducto2 = 0
 
 
         Catch ex As Exception
@@ -534,21 +426,7 @@ Public Class compra
         End If
     End Function
 
-    Private Sub aplicardescuento()
-        Try
-            If radiotodo.Checked = True Then
-                If primeraf = True Then
-                    MsgBox("Tiene que haber insertado por lo menos un articulo para aplicar el descuento", MsgBoxStyle.OkOnly, "Aviso")
-                Else
-                    grubdescuento.Visible = True
-                    Me.texpdescuento.Focus()
-                End If
-            End If
-        Catch ex As Exception
-            MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
-        End Try
-
-    End Sub
+  
 
     Private Function combotipo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles combotipo.KeyPress
       
@@ -647,7 +525,6 @@ Public Class compra
             fovial2 = 0
             totalproducto2 = 0
             ivauno2 = 0
-            Button4.Select()
             Try
                 If primeraf = False Then
                     Dim tl1 As Double
@@ -705,10 +582,10 @@ Public Class compra
         Else
             MsgBox("Tiene que llenar los datos que estan en rojo", MsgBoxStyle.ApplicationModal, "Aviso")
         End If
-       
+
     End Sub
 
-    Private Sub btnaplicar_Click_1(sender As Object, e As EventArgs) Handles btnaplicar.Click
+    Private Sub btnaplicar_Click_1(sender As Object, e As EventArgs)
         subtotal1 = 0
         descuentof = 0
         subtotal2 = 0
@@ -717,12 +594,12 @@ Public Class compra
         subtotal3 = 0
         totalf = 0
         Try
-            Dim dtdescuento As Double = 0
+
             Dim dttotal As Double = 0
             For i As Integer = 0 To dtdetallefacturacompra.Rows.Count - 1
-                dtdescuento = CDbl(dtdetallefacturacompra.Rows(i).Item(8)) * CDbl(CDbl(Me.texpdescuento.Text.Trim) / 100)
 
-                dttotal = CDbl(dtdetallefacturacompra.Rows(i).Item(8)) - dtdescuento
+
+                dttotal = CDbl(dtdetallefacturacompra.Rows(i).Item(8))
 
                 consultar.Consultar(" update detallecompra set descuento = " + dtdescuento.ToString + ", preciodescuento = " + dttotal.ToString + " where codfacturac = " + codfacturac.ToString + " and coddetallefacturac = " + dtdetallefacturacompra.Rows(i).Item(0).ToString)
             Next
@@ -734,7 +611,7 @@ Public Class compra
 
     End Sub
   
-    Private Sub botguardar_Click_1(sender As Object, e As EventArgs) Handles botguardar.Click
+    Private Sub botguardar_Click_1(sender As Object, e As EventArgs)
         Try
             Dim ella As String = ""
             If guardado = False Then
@@ -751,7 +628,7 @@ Public Class compra
                     consultar.Consultar(" update productos set existencias = " + c.ToString + " where codproducto = '" + dtdetallefacturacompra.Rows(i).Item(2).ToString + "'")
                 Next
                 Me.totalfactu = Me.textotal.Text
-                consultar.Consultar(" update facturacompra set sumas = " & Me.texsumas.Text.ToString & ", iva = " & Me.texiva.Text.ToString & ", fovial = " & Me.texfovial.Text.ToString & ", cotrans = " & Me.texcotrans.Text.ToString & ", descuento = " & descuentof.ToString & ", total = " & Me.textotal.Text.ToString & ", unoretencion = " & Me.texivauno.Text.ToString & ", td1 = " & Me.texd1.Text.Trim.ToString & ", td2 = " & Me.texd2.Text.Trim.ToString & ", tr = " & Me.texr.Text.Trim.ToString & ", ts = " & Me.texs.Text.Trim.ToString & " where codfacturac = " & codfacturac)
+                consultar.Consultar(" update facturacompra set sumas = ")
 
                 If MsgBox(ella & combotipo.Text.ToString & " Se ingreso exitozamente" & vbCrLf _
                           & " Desea agregar otra compra?", MsgBoxStyle.YesNo, "Compra") = MsgBoxResult.Yes Then
@@ -777,7 +654,7 @@ Public Class compra
 
     End Sub
 
-    Private Sub botmodificar_Click_1(sender As Object, e As EventArgs) Handles botmodificar.Click
+    Private Sub botmodificar_Click_1(sender As Object, e As EventArgs)
         Try
             Dim id As Short = Me.gridcompra.CurrentCell.RowIndex
             Dim dtrdetalle As DataRow = dtdetallefacturacompra.Rows(id)
@@ -810,7 +687,7 @@ Public Class compra
         End Try
     End Sub
 
-    Private Sub botsalir_Click(sender As Object, e As EventArgs) Handles botsalir.Click
+    Private Sub botsalir_Click(sender As Object, e As EventArgs)
         Me.Close()
     End Sub
 
@@ -863,52 +740,10 @@ Public Class compra
         End If
     End Sub
 
-    Private Sub invalidarprov()
-        Me.Button1.Enabled = False
-        Me.Button2.Enabled = False
-        Me.Button3.Enabled = False
-    End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.idproveedor = Me.texco1.Text
-        Me.texproveedor.Text = Me.texprovee1.Text
-        Me.Button4.Select()
-        invalidarprov()
-    End Sub
+ 
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.idproveedor = Me.texco2.Text
-        Me.texproveedor.Text = Me.texprovee2.Text
-        Me.Button4.Select()
-        invalidarprov()
-    End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Me.idproveedor = Me.texco3.Text
-        Me.texproveedor.Text = Me.texprovee3.Text
-        Me.Button4.Select()
-        invalidarprov()
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Me.idproducto = Me.texco4.Text
-        Me.texnombrep.Text = Me.texprod4.Text
-        Me.texprecio.Text = Me.dtproductos1.Rows(0).Item(3)
-        Me.texprecio.Select()
-    End Sub
-
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Me.idproducto = Me.texco5.Text
-        Me.texnombrep.Text = Me.texprod5.Text
-        Me.texprecio.Text = Me.dtproductos1.Rows(1).Item(3)
-        Me.texprecio.Select()
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        Me.idproducto = Me.texco6.Text
-        Me.texnombrep.Text = Me.texprod6.Text
-        Me.texprecio.Text = Me.dtproductos1.Rows(2).Item(3)
-        Me.texprecio.Select()
-    End Sub
+ 
 
     Private Sub Button7_Click(sender As Object, e As EventArgs)
 
@@ -916,146 +751,7 @@ Public Class compra
         Me.texprecio.Select()
     End Sub
 
-    Private Sub texnombrep_TextChanged(sender As Object, e As EventArgs) Handles texnombrep.TextChanged
 
-    End Sub
+   
 
-    Private Sub texproveedor_TextChanged(sender As Object, e As EventArgs) Handles texproveedor.TextChanged
-
-    End Sub
-
-    Private Sub Button1_GotFocus(sender As Object, e As EventArgs) Handles Button1.GotFocus
-        Me.Button1.Height = 40
-        Me.Button1.Width = 175
-    End Sub
-
- 
-    Private Sub Button1_LostFocus(sender As Object, e As EventArgs) Handles Button1.LostFocus
-        Me.Button1.Height = 37
-        Me.Button1.Width = 147
-    End Sub
-
-    Private Sub Button2_GotFocus(sender As Object, e As EventArgs) Handles Button2.GotFocus
-        Me.Button2.Height = 40
-        Me.Button2.Width = 175
-    End Sub
-
-    Private Sub Button2_LostFocus(sender As Object, e As EventArgs) Handles Button2.LostFocus
-        Me.Button2.Height = 37
-        Me.Button2.Width = 147
-    End Sub
-
-    Private Sub Button3_GotFocus(sender As Object, e As EventArgs) Handles Button3.GotFocus
-        Me.Button3.Height = 40
-        Me.Button3.Width = 175
-    End Sub
-
-    Private Sub Button3_LostFocus(sender As Object, e As EventArgs) Handles Button3.LostFocus
-        Me.Button3.Height = 37
-        Me.Button3.Width = 147
-    End Sub
-
-    Private Sub Button4_GotFocus(sender As Object, e As EventArgs) Handles Button4.GotFocus
-        Me.Button4.Height = 40
-        Me.Button4.Width = 175
-    End Sub
-
-    Private Sub Button4_LostFocus(sender As Object, e As EventArgs) Handles Button4.LostFocus
-        Me.Button4.Height = 37
-        Me.Button4.Width = 147
-    End Sub
-
-    Private Sub Button5_GotFocus(sender As Object, e As EventArgs) Handles Button5.GotFocus
-        Me.Button5.Height = 40
-        Me.Button5.Width = 175
-    End Sub
-
-
-    Private Sub Button5_LostFocus(sender As Object, e As EventArgs) Handles Button5.LostFocus
-        Me.Button5.Height = 37
-        Me.Button5.Width = 147
-    End Sub
-
-    Private Sub Button6_GotFocus(sender As Object, e As EventArgs) Handles Button6.GotFocus
-        Me.Button6.Height = 40
-        Me.Button6.Width = 175
-    End Sub
-
-    Private Sub Button6_LostFocus(sender As Object, e As EventArgs) Handles Button6.LostFocus
-        Me.Button6.Height = 37
-        Me.Button6.Width = 147
-    End Sub
-
-    Private Sub Button7_GotFocus(sender As Object, e As EventArgs)
-        
-    End Sub
-
-    Private Sub Button7_LostFocus(sender As Object, e As EventArgs)
-     
-    End Sub
-
-    Dim mita, todo As Double
-    Private Sub texd1_KeyUp(sender As Object, e As KeyEventArgs) Handles texd1.KeyUp
-        Try
-            If Me.texd1.Text.Trim.ToString = "" Then
-                Me.texd2.Text = todo
-            Else
-                Dim tex As String = Me.texd1.Text.ToString
-                If CDbl(Me.texd1.Text) > todo Then
-                    Me.texd1.Text = tex.Substring(0, tex.Length - 1)
-                Else
-                    If cheklibred.Checked <> True Then
-                        If Me.texd1.Text = "" Then
-                            Me.texd1.Text = "0"
-                        Else
-
-                            mita = Math.Round(todo - CDbl(Me.texd1.Text), 3)
-
-                            Me.texd2.Text = mita
-
-                        End If
-                    End If
-                End If
-
-            End If
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub texd2_KeyUp(sender As Object, e As KeyEventArgs) Handles texd2.KeyUp
-        Try
-            If Me.texd2.Text.Trim.ToString = "" Then
-                texd1.Text = todo
-            Else
-                Dim tex As String = Me.texd2.Text.ToString
-                If CDbl(Me.texd2.Text) > todo Then
-                    Me.texd2.Text = tex.Substring(0, tex.Length - 1)
-                Else
-                    If cheklibred.Checked <> True Then
-                        If Me.texd2.Text = "" Then
-                            Me.texd2.Text = "0"
-                        Else
-                            mita = Math.Round(todo - CDbl(Me.texd2.Text), 3)
-
-                            Me.texd1.Text = mita
-
-                        End If
-                    End If
-                End If
-            End If
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-  
-    Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
-        Me.texd1.Text = Math.Round((todo / 2), 3)
-        Me.texd2.Text = Math.Round((todo / 2), 3)
-    End Sub
-
- 
 End Class

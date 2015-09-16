@@ -22,7 +22,7 @@ Partial Class compra
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.texnumfact = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -48,13 +48,6 @@ Partial Class compra
         Me.textotalp = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.checklibre = New System.Windows.Forms.CheckBox()
-        Me.gridcompra = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.cantida = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.nombr = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.preciu = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.preciod = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.exentas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tota = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.texnosujeta = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -66,16 +59,24 @@ Partial Class compra
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Highlighter1 = New DevComponents.DotNetBar.Validator.Highlighter()
         Me.texivauno = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
+        Me.text1retencion = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.botagregar = New System.Windows.Forms.Button()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.check1 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.boteliminar = New System.Windows.Forms.Button()
         Me.botguardar = New System.Windows.Forms.Button()
-        CType(Me.gridcompra, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gridcompra = New DevComponents.DotNetBar.Controls.DataGridViewX()
+        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cantida = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nombr = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.preciu = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.preciod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.exentas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tota = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.gridcompra, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label2
@@ -240,7 +241,7 @@ Partial Class compra
         '
         Me.Label10.AutoSize = True
         Me.Label10.BackColor = System.Drawing.Color.Transparent
-        Me.Label10.Location = New System.Drawing.Point(661, 394)
+        Me.Label10.Location = New System.Drawing.Point(740, 403)
         Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(50, 16)
@@ -251,7 +252,7 @@ Partial Class compra
         '
         Me.texsumas.Enabled = False
         Me.texsumas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texsumas.Location = New System.Drawing.Point(719, 389)
+        Me.texsumas.Location = New System.Drawing.Point(798, 398)
         Me.texsumas.Margin = New System.Windows.Forms.Padding(4)
         Me.texsumas.Name = "texsumas"
         Me.texsumas.Size = New System.Drawing.Size(96, 24)
@@ -262,7 +263,7 @@ Partial Class compra
         '
         Me.Label12.AutoSize = True
         Me.Label12.BackColor = System.Drawing.Color.Transparent
-        Me.Label12.Location = New System.Drawing.Point(653, 423)
+        Me.Label12.Location = New System.Drawing.Point(732, 432)
         Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(63, 16)
@@ -273,7 +274,7 @@ Partial Class compra
         '
         Me.texiva.Enabled = False
         Me.texiva.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texiva.Location = New System.Drawing.Point(718, 418)
+        Me.texiva.Location = New System.Drawing.Point(797, 427)
         Me.texiva.Margin = New System.Windows.Forms.Padding(4)
         Me.texiva.Name = "texiva"
         Me.texiva.Size = New System.Drawing.Size(96, 24)
@@ -285,7 +286,7 @@ Partial Class compra
         Me.Label14.AutoSize = True
         Me.Label14.BackColor = System.Drawing.Color.Transparent
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(622, 533)
+        Me.Label14.Location = New System.Drawing.Point(701, 542)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(88, 16)
@@ -296,7 +297,7 @@ Partial Class compra
         '
         Me.textotal.Enabled = False
         Me.textotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.textotal.Location = New System.Drawing.Point(718, 528)
+        Me.textotal.Location = New System.Drawing.Point(797, 537)
         Me.textotal.Margin = New System.Windows.Forms.Padding(4)
         Me.textotal.Name = "textotal"
         Me.textotal.Size = New System.Drawing.Size(96, 24)
@@ -333,70 +334,11 @@ Partial Class compra
         Me.checklibre.Text = "Libre"
         Me.checklibre.UseVisualStyleBackColor = False
         '
-        'gridcompra
-        '
-        Me.gridcompra.AllowUserToAddRows = False
-        Me.gridcompra.AllowUserToDeleteRows = False
-        Me.gridcompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridcompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cantida, Me.nombr, Me.preciu, Me.preciod, Me.exentas, Me.tota})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle2
-        Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.gridcompra.Location = New System.Drawing.Point(12, 157)
-        Me.gridcompra.Name = "gridcompra"
-        Me.gridcompra.ReadOnly = True
-        Me.gridcompra.RowHeadersVisible = False
-        Me.gridcompra.Size = New System.Drawing.Size(802, 216)
-        Me.gridcompra.TabIndex = 81
-        '
-        'cantida
-        '
-        Me.cantida.HeaderText = "Cantidad"
-        Me.cantida.Name = "cantida"
-        Me.cantida.ReadOnly = True
-        '
-        'nombr
-        '
-        Me.nombr.HeaderText = "Nombre del Producto"
-        Me.nombr.Name = "nombr"
-        Me.nombr.ReadOnly = True
-        Me.nombr.Width = 300
-        '
-        'preciu
-        '
-        Me.preciu.HeaderText = "Precio Unitario"
-        Me.preciu.Name = "preciu"
-        Me.preciu.ReadOnly = True
-        '
-        'preciod
-        '
-        Me.preciod.HeaderText = "Ventas       no sujetas"
-        Me.preciod.Name = "preciod"
-        Me.preciod.ReadOnly = True
-        '
-        'exentas
-        '
-        Me.exentas.HeaderText = "Ventas Exentas"
-        Me.exentas.Name = "exentas"
-        Me.exentas.ReadOnly = True
-        '
-        'tota
-        '
-        Me.tota.HeaderText = "Ventas Gravadas"
-        Me.tota.Name = "tota"
-        Me.tota.ReadOnly = True
-        '
         'Label15
         '
         Me.Label15.AutoSize = True
         Me.Label15.BackColor = System.Drawing.Color.Transparent
-        Me.Label15.Location = New System.Drawing.Point(619, 479)
+        Me.Label15.Location = New System.Drawing.Point(698, 488)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(96, 16)
@@ -407,7 +349,7 @@ Partial Class compra
         '
         Me.texnosujeta.Enabled = False
         Me.texnosujeta.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texnosujeta.Location = New System.Drawing.Point(718, 474)
+        Me.texnosujeta.Location = New System.Drawing.Point(797, 483)
         Me.texnosujeta.Margin = New System.Windows.Forms.Padding(4)
         Me.texnosujeta.Name = "texnosujeta"
         Me.texnosujeta.Size = New System.Drawing.Size(96, 24)
@@ -418,7 +360,7 @@ Partial Class compra
         '
         Me.Label20.AutoSize = True
         Me.Label20.BackColor = System.Drawing.Color.Transparent
-        Me.Label20.Location = New System.Drawing.Point(627, 507)
+        Me.Label20.Location = New System.Drawing.Point(706, 516)
         Me.Label20.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(83, 16)
@@ -429,7 +371,7 @@ Partial Class compra
         '
         Me.texexentas.Enabled = False
         Me.texexentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texexentas.Location = New System.Drawing.Point(718, 501)
+        Me.texexentas.Location = New System.Drawing.Point(797, 510)
         Me.texexentas.Margin = New System.Windows.Forms.Padding(4)
         Me.texexentas.Name = "texexentas"
         Me.texexentas.Size = New System.Drawing.Size(96, 24)
@@ -494,23 +436,23 @@ Partial Class compra
         '
         Me.texivauno.Enabled = False
         Me.texivauno.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.texivauno.Location = New System.Drawing.Point(717, 446)
+        Me.texivauno.Location = New System.Drawing.Point(796, 455)
         Me.texivauno.Margin = New System.Windows.Forms.Padding(4)
         Me.texivauno.Name = "texivauno"
         Me.texivauno.Size = New System.Drawing.Size(96, 24)
         Me.texivauno.TabIndex = 98
         Me.texivauno.Text = "0.0"
         '
-        'Label23
+        'text1retencion
         '
-        Me.Label23.AutoSize = True
-        Me.Label23.BackColor = System.Drawing.Color.Transparent
-        Me.Label23.Location = New System.Drawing.Point(654, 449)
-        Me.Label23.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(56, 16)
-        Me.Label23.TabIndex = 97
-        Me.Label23.Text = "IVA(1%)"
+        Me.text1retencion.AutoSize = True
+        Me.text1retencion.BackColor = System.Drawing.Color.Transparent
+        Me.text1retencion.Location = New System.Drawing.Point(733, 458)
+        Me.text1retencion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.text1retencion.Name = "text1retencion"
+        Me.text1retencion.Size = New System.Drawing.Size(35, 16)
+        Me.text1retencion.TabIndex = 97
+        Me.text1retencion.Text = "(1%)"
         '
         'Label8
         '
@@ -531,16 +473,16 @@ Partial Class compra
         Me.botagregar.Text = "Agregar"
         Me.botagregar.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'check1
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox1.Location = New System.Drawing.Point(625, 84)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(54, 20)
-        Me.CheckBox1.TabIndex = 101
-        Me.CheckBox1.Text = "(1%)"
-        Me.CheckBox1.UseVisualStyleBackColor = False
+        Me.check1.AutoSize = True
+        Me.check1.BackColor = System.Drawing.Color.Transparent
+        Me.check1.Location = New System.Drawing.Point(625, 84)
+        Me.check1.Name = "check1"
+        Me.check1.Size = New System.Drawing.Size(54, 20)
+        Me.check1.TabIndex = 101
+        Me.check1.Text = "(1%)"
+        Me.check1.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
@@ -572,18 +514,85 @@ Partial Class compra
         Me.botguardar.Text = "Guardar"
         Me.botguardar.UseVisualStyleBackColor = True
         '
+        'gridcompra
+        '
+        Me.gridcompra.AllowUserToAddRows = False
+        Me.gridcompra.AllowUserToDeleteRows = False
+        Me.gridcompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.gridcompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.cantida, Me.nombr, Me.preciu, Me.preciod, Me.exentas, Me.tota})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle3
+        Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.gridcompra.Location = New System.Drawing.Point(14, 159)
+        Me.gridcompra.Name = "gridcompra"
+        Me.gridcompra.ReadOnly = True
+        Me.gridcompra.RowHeadersVisible = False
+        Me.gridcompra.Size = New System.Drawing.Size(879, 223)
+        Me.gridcompra.TabIndex = 124
+        '
+        'codigo
+        '
+        Me.codigo.HeaderText = "Codigo"
+        Me.codigo.Name = "codigo"
+        Me.codigo.ReadOnly = True
+        Me.codigo.Width = 75
+        '
+        'cantida
+        '
+        Me.cantida.HeaderText = "Cantidad"
+        Me.cantida.Name = "cantida"
+        Me.cantida.ReadOnly = True
+        '
+        'nombr
+        '
+        Me.nombr.HeaderText = "Nombre del Producto"
+        Me.nombr.Name = "nombr"
+        Me.nombr.ReadOnly = True
+        Me.nombr.Width = 300
+        '
+        'preciu
+        '
+        Me.preciu.HeaderText = "Precio Unitario"
+        Me.preciu.Name = "preciu"
+        Me.preciu.ReadOnly = True
+        '
+        'preciod
+        '
+        Me.preciod.HeaderText = "Ventas       no sujetas"
+        Me.preciod.Name = "preciod"
+        Me.preciod.ReadOnly = True
+        '
+        'exentas
+        '
+        Me.exentas.HeaderText = "Ventas Exentas"
+        Me.exentas.Name = "exentas"
+        Me.exentas.ReadOnly = True
+        '
+        'tota
+        '
+        Me.tota.HeaderText = "Ventas Afectas"
+        Me.tota.Name = "tota"
+        Me.tota.ReadOnly = True
+        '
         'compra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.ClientSize = New System.Drawing.Size(830, 574)
+        Me.ClientSize = New System.Drawing.Size(907, 574)
+        Me.Controls.Add(Me.gridcompra)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.check1)
         Me.Controls.Add(Me.botagregar)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.texivauno)
-        Me.Controls.Add(Me.Label23)
+        Me.Controls.Add(Me.text1retencion)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.textiraje)
         Me.Controls.Add(Me.Label21)
@@ -591,7 +600,6 @@ Partial Class compra
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.texnosujeta)
         Me.Controls.Add(Me.Label15)
-        Me.Controls.Add(Me.gridcompra)
         Me.Controls.Add(Me.checklibre)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.textotalp)
@@ -625,14 +633,14 @@ Partial Class compra
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Compras"
         Me.TopMost = True
-        CType(Me.gridcompra, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        CType(Me.gridcompra, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents lson As System.Windows.Forms.Label
     Friend WithEvents Label22 As System.Windows.Forms.Label
@@ -642,7 +650,6 @@ End Sub
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents texnosujeta As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents gridcompra As DevComponents.DotNetBar.Controls.DataGridViewX
     Friend WithEvents checklibre As System.Windows.Forms.CheckBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents textotalp As System.Windows.Forms.TextBox
@@ -669,18 +676,20 @@ End Sub
     Friend WithEvents texnumfact As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents texivauno As System.Windows.Forms.TextBox
-    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents text1retencion As System.Windows.Forms.Label
+    Private WithEvents Highlighter1 As DevComponents.DotNetBar.Validator.Highlighter
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents check1 As System.Windows.Forms.CheckBox
+    Friend WithEvents botagregar As System.Windows.Forms.Button
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents boteliminar As System.Windows.Forms.Button
+    Friend WithEvents botguardar As System.Windows.Forms.Button
+    Friend WithEvents gridcompra As DevComponents.DotNetBar.Controls.DataGridViewX
+    Friend WithEvents codigo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cantida As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents nombr As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents preciu As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents preciod As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents exentas As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tota As System.Windows.Forms.DataGridViewTextBoxColumn
-    Private WithEvents Highlighter1 As DevComponents.DotNetBar.Validator.Highlighter
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
-    Friend WithEvents botagregar As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents boteliminar As System.Windows.Forms.Button
-    Friend WithEvents botguardar As System.Windows.Forms.Button
 End Class

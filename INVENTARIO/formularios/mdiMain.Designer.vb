@@ -70,6 +70,7 @@ Partial Class mdiMain
         Me.ButtonItem15 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem16 = New DevComponents.DotNetBar.ButtonItem()
         Me.tmnulo = New System.Windows.Forms.Timer(Me.components)
+        Me.timernuevaventa = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'timllamar
@@ -347,6 +348,10 @@ Partial Class mdiMain
         '
         Me.tmnulo.Interval = 5
         '
+        'timernuevaventa
+        '
+        Me.timernuevaventa.Interval = 5000
+        '
         'mdiMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -401,8 +406,9 @@ Partial Class mdiMain
     Private WithEvents ComboItem17 As DevComponents.Editors.ComboItem
     Private WithEvents ComboItem18 As DevComponents.Editors.ComboItem
     Private WithEvents RibbonTabItemGroup2 As DevComponents.DotNetBar.RibbonTabItemGroup
-    Friend WithEvents GalleryContainer3 As DevComponents.DotNetBar.GalleryContainer
-    Friend WithEvents LabelItem1 As DevComponents.DotNetBar.LabelItem
     Friend WithEvents tmnulo As System.Windows.Forms.Timer
+    Friend WithEvents timernuevaventa As System.Windows.Forms.Timer
+    Private WithEvents GalleryContainer3 As DevComponents.DotNetBar.GalleryContainer
+    Private WithEvents LabelItem1 As DevComponents.DotNetBar.LabelItem
 
 End Class

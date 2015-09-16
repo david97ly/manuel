@@ -47,9 +47,7 @@ Partial Class Compras_realizadas
         Me.Nombrproo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tipo1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fecha1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.descuento1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.total1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.boteliminar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.grubbusquedaprov.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -60,7 +58,6 @@ Partial Class Compras_realizadas
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.boteliminar)
         Me.GroupBox1.Controls.Add(Me.botnuevo)
         Me.GroupBox1.Controls.Add(Me.botsalir)
         Me.GroupBox1.Controls.Add(Me.botdetalle)
@@ -68,7 +65,7 @@ Partial Class Compras_realizadas
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(984, 78)
+        Me.GroupBox1.Size = New System.Drawing.Size(873, 78)
         Me.GroupBox1.TabIndex = 11
         Me.GroupBox1.TabStop = False
         '
@@ -84,7 +81,7 @@ Partial Class Compras_realizadas
         '
         'botsalir
         '
-        Me.botsalir.Location = New System.Drawing.Point(852, 25)
+        Me.botsalir.Location = New System.Drawing.Point(740, 23)
         Me.botsalir.Margin = New System.Windows.Forms.Padding(4)
         Me.botsalir.Name = "botsalir"
         Me.botsalir.Size = New System.Drawing.Size(124, 37)
@@ -115,7 +112,7 @@ Partial Class Compras_realizadas
         Me.grubbusquedaprov.Margin = New System.Windows.Forms.Padding(4)
         Me.grubbusquedaprov.Name = "grubbusquedaprov"
         Me.grubbusquedaprov.Padding = New System.Windows.Forms.Padding(4)
-        Me.grubbusquedaprov.Size = New System.Drawing.Size(975, 50)
+        Me.grubbusquedaprov.Size = New System.Drawing.Size(872, 50)
         Me.grubbusquedaprov.TabIndex = 10
         Me.grubbusquedaprov.TabStop = False
         '
@@ -165,7 +162,7 @@ Partial Class Compras_realizadas
         '
         'texbusqueda
         '
-        Me.texbusqueda.Location = New System.Drawing.Point(850, 15)
+        Me.texbusqueda.Location = New System.Drawing.Point(752, 17)
         Me.texbusqueda.Margin = New System.Windows.Forms.Padding(4)
         Me.texbusqueda.Name = "texbusqueda"
         Me.texbusqueda.Size = New System.Drawing.Size(117, 22)
@@ -174,7 +171,7 @@ Partial Class Compras_realizadas
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(772, 18)
+        Me.Label2.Location = New System.Drawing.Point(677, 20)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 16)
@@ -203,7 +200,7 @@ Partial Class Compras_realizadas
         Me.GroupBox2.Controls.Add(Me.dt1)
         Me.GroupBox2.Location = New System.Drawing.Point(14, 405)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(984, 75)
+        Me.GroupBox2.Size = New System.Drawing.Size(872, 75)
         Me.GroupBox2.TabIndex = 12
         Me.GroupBox2.TabStop = False
         '
@@ -261,7 +258,7 @@ Partial Class Compras_realizadas
         Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1013, 581)
+        Me.GroupPanel1.Size = New System.Drawing.Size(905, 581)
         '
         '
         '
@@ -299,7 +296,7 @@ Partial Class Compras_realizadas
         '
         Me.gridfacturacompras.AllowUserToAddRows = False
         Me.gridfacturacompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridfacturacompras.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.numero, Me.Nombrproo, Me.tipo1, Me.fecha1, Me.descuento1, Me.total1})
+        Me.gridfacturacompras.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.numero, Me.Nombrproo, Me.tipo1, Me.fecha1, Me.total1})
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -308,11 +305,11 @@ Partial Class Compras_realizadas
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.gridfacturacompras.DefaultCellStyle = DataGridViewCellStyle1
-        Me.gridfacturacompras.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.gridfacturacompras.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
         Me.gridfacturacompras.Location = New System.Drawing.Point(22, 98)
         Me.gridfacturacompras.Name = "gridfacturacompras"
         Me.gridfacturacompras.RowHeadersVisible = False
-        Me.gridfacturacompras.Size = New System.Drawing.Size(967, 301)
+        Me.gridfacturacompras.Size = New System.Drawing.Size(864, 301)
         Me.gridfacturacompras.TabIndex = 13
         '
         'numero
@@ -339,37 +336,21 @@ Partial Class Compras_realizadas
         Me.fecha1.Name = "fecha1"
         Me.fecha1.Width = 200
         '
-        'descuento1
-        '
-        Me.descuento1.HeaderText = "Descuentos"
-        Me.descuento1.Name = "descuento1"
-        '
         'total1
         '
         Me.total1.HeaderText = "Total"
         Me.total1.Name = "total1"
         Me.total1.Width = 80
         '
-        'boteliminar
-        '
-        Me.boteliminar.Location = New System.Drawing.Point(719, 25)
-        Me.boteliminar.Margin = New System.Windows.Forms.Padding(4)
-        Me.boteliminar.Name = "boteliminar"
-        Me.boteliminar.Size = New System.Drawing.Size(124, 37)
-        Me.boteliminar.TabIndex = 4
-        Me.boteliminar.Text = "Eliminar"
-        Me.boteliminar.UseVisualStyleBackColor = True
-        '
         'Compras_realizadas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1013, 581)
+        Me.ClientSize = New System.Drawing.Size(905, 581)
         Me.Controls.Add(Me.GroupPanel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Compras_realizadas"
-        Me.Opacity = 0.5R
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Compras Realizadas"
         Me.GroupBox1.ResumeLayout(False)
@@ -401,13 +382,11 @@ Partial Class Compras_realizadas
     Friend WithEvents dt1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents checfecha As System.Windows.Forms.CheckBox
     Friend WithEvents combotipo As System.Windows.Forms.ComboBox
-    Friend WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
     Friend WithEvents gridfacturacompras As DevComponents.DotNetBar.Controls.DataGridViewX
     Friend WithEvents numero As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Nombrproo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents tipo1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents fecha1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents descuento1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents total1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents boteliminar As System.Windows.Forms.Button
+    Private WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
 End Class

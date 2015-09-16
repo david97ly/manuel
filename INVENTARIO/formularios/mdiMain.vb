@@ -13,7 +13,7 @@ Public Class mdiMain
     Public productos As New clsProcesos
     Public dtproductos As DataTable
     Public dttablas As DataTable
-
+   
 
     'termina parte de los productos
 
@@ -21,8 +21,14 @@ Public Class mdiMain
     'ihabiliara las teclas de acceso rapido
     Public teclas As Boolean = True
     Public llama As String
-
+    Private contador As Short = 0
     Public anular As Boolean = False
+
+    'para la poscion en que aparecen'
+    Public py As Short = 0
+    Public px As Short = 0
+    Public ventanas As Short = 0
+    
     Public Sub llamar()
 
         Me.timllamar.Enabled = False
@@ -68,7 +74,7 @@ Public Class mdiMain
     Private Sub mdiMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Form1.Close()
         Me.WindowState() = FormWindowState.Maximized
-
+        'Me.timernuevaventa.Enabled = True
         cargarmenu()
        
 
@@ -139,6 +145,49 @@ Public Class mdiMain
    
 
     Private Sub tmnulo_Tick(sender As Object, e As EventArgs) Handles tmnulo.Tick
-        DetalleCompra.Show()
     End Sub
+
+    Private Sub timernuevaventa_Tick(sender As Object, e As EventArgs) Handles timernuevaventa.Tick
+
+        If contador > 10 Then
+            Me.timernuevaventa.Enabled = False
+        Else
+            If px = 0 Then
+                px = 1
+                py = 45
+            Else
+               
+                    px = px + 228
+                If contador = 5 Then
+                    py = py + 115
+                    px = 1
+                    contador = 0
+                    Me.timernuevaventa.Enabled = False
+                End If
+
+
+                End If
+                contador = contador + 1
+
+
+                'para las llamadas a los pedidos
+                Dim vn As New nventa
+                vn.NumeroOrden = contador
+                vn.px = Me.px
+            vn.py = Me.py
+            ventanas = ventanas + 1
+                vn.Show()
+            End If
+
+    End Sub
+
+    Public Sub setearventanas()
+        ventanas = ventanas - 1
+        If ventanas = 0 Then
+            Me.py = 0
+            Me.px = 0
+            Me.timernuevaventa.Enabled = True
+        End If
+    End Sub
+
 End Class

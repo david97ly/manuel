@@ -98,8 +98,9 @@ Public Class Ventas
     Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
         Me.texcliente.Select()
+        MdiParent = mdiMain
         Try
-                MdiParent = mdiMain
+
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente razon: " & ex.Message, MsgBoxStyle.OkOnly, "Avise")
         End Try

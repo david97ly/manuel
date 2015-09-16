@@ -15,10 +15,10 @@ Public Class Compras_realizadas
     Private Sub Compras_realizadas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Try
-            MdiParent = mdiMain
+
             loadf = True
             Me.gridfacturacompras.Height = 384
-            dtfacturacompra = tfacturacompra.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+            dtfacturacompra = tfacturacompra.Consultar()
             tipof = "todos"
             cargarcompras()
         Catch ex As Exception
@@ -54,7 +54,6 @@ Public Class Compras_realizadas
                 Me.gridfacturacompras.Rows(0).Cells(5).Value = ""
                 Me.gridfacturacompras.Rows(0).Cells(6).Value = ""
                 Me.gridfacturacompras.Rows(0).Cells(7).Value = ""
-                Me.gridfacturacompras.Rows(0).Cells(8).Value = ""
             Else
                 Me.gridfacturacompras.RowCount = nf
             End If
@@ -63,17 +62,17 @@ Public Class Compras_realizadas
 
                 Me.gridfacturacompras.Rows(i).Cells(0).Value = dtfacturacompra.Rows(i).Item(1).ToString
                 dtproveedor = tproveedor.Consultar(" where codproveedor = '" + dtfacturacompra.Rows(i).Item(3).ToString + "'")
-                If dtproveedor.Rows(0).Item(17) = "inactivo" Then
+                If dtproveedor.Rows(0).Item(9) = "inactivo" Then
                     Me.gridfacturacompras.Rows(i).Cells(1).Style.BackColor = Color.Red
                 Else
                     Me.gridfacturacompras.Rows(i).Cells(1).Style.BackColor = Color.White
                 End If
                 Me.gridfacturacompras.Rows(i).Cells(1).Value = dtproveedor.Rows(0).Item(1)
                 Me.gridfacturacompras.Rows(i).Cells(2).Value = dtfacturacompra.Rows(i).Item(2).ToString
-                Dim s As Date = dtfacturacompra.Rows(i).Item(5)
+                Dim s As Date = dtfacturacompra.Rows(i).Item(4)
                 Me.gridfacturacompras.Rows(i).Cells(3).Value = s.Day.ToString + "/" + s.Month.ToString + "/" + s.Year.ToString
-                Me.gridfacturacompras.Rows(i).Cells(4).Value = FormatNumber(CDbl(dtfacturacompra.Rows(i).Item(8)) + CDbl(dtfacturacompra.Rows(i).Item(10)) + CDbl(dtfacturacompra.Rows(i).Item(11)), 2)
-                Me.gridfacturacompras.Rows(i).Cells(5).Value = FormatNumber(CDbl(dtfacturacompra.Rows(i).Item(6)), 2)
+
+                Me.gridfacturacompras.Rows(i).Cells(4).Value = FormatNumber(CDbl(dtfacturacompra.Rows(i).Item(10)), 2)
                
             Next
         Catch ex As Exception
@@ -89,13 +88,14 @@ Public Class Compras_realizadas
     Private Sub botdetalle_Click(sender As Object, e As EventArgs) Handles botdetalle.Click
         Try
             Dim id As Short = Me.gridfacturacompras.CurrentCell.RowIndex
-            DetalleCompra.contador = id
-            DetalleCompra.dtfacturac = Me.dtfacturacompra
-            DetalleCompra.dtdetallefacturac = Me.dtdetallefacturacompra
-            DetalleCompra.dtproveedores = Me.dtproveedor
-            DetalleCompra.tipof = Me.tipof
-            DetalleCompra.frmcr = Me
-            DetalleCompra.Show()
+            DetalledelaCompra.contador = id
+            DetalledelaCompra.dtfacturac = Me.dtfacturacompra
+            DetalledelaCompra.dtdetallefacturac = Me.dtdetallefacturacompra
+            DetalledelaCompra.dtproveedores = Me.dtproveedor
+            DetalledelaCompra.tipof = Me.tipof
+            DetalledelaCompra.frmcr = Me
+            DetalledelaCompra.Show()
+            Me.Close()
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try
@@ -109,7 +109,7 @@ Public Class Compras_realizadas
 
     Private Sub radiocomprobantes()
         Try
-            dtfacturacompra = tfacturacompra.Consultar(" where tipo = 'Comprobante de Credito fiscal' and codempresa = " + mdiMain.codigoempresa.ToString)
+            dtfacturacompra = tfacturacompra.Consultar(" where tipo = 'Comprobante de Credito fiscal' ")
             tipof = "Comprovante de Credito fiscal"
             cargarcompras()
         Catch ex As Exception
@@ -119,7 +119,7 @@ Public Class Compras_realizadas
     End Sub
     Private Sub radiofacturas()
         Try
-            dtfacturacompra = tfacturacompra.Consultar(" where tipo = 'Factura' and codempresa = " + mdiMain.codigoempresa.ToString)
+            dtfacturacompra = tfacturacompra.Consultar(" where tipo = 'Factura' ")
             tipof = "Factura"
             cargarcompras()
         Catch ex As Exception
@@ -133,7 +133,7 @@ Public Class Compras_realizadas
         Try
             If fl <> False Then
                 If loadf = True Then
-                    dtfacturacompra = tfacturacompra.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+                    dtfacturacompra = tfacturacompra.Consultar()
                     tipof = "todos"
                     cargarcompras()
                 End If
@@ -164,11 +164,11 @@ Public Class Compras_realizadas
                             varbus = varbus.Remove(contvarbus - 1, 1)
                         Else
                             varbus = varbus.Remove(contvarbus - 1, 1)
-                            dtproveedor = tproveedor.Consultar(" where nombre like '%" + varbus + "%' and codempresa = '" + mdiMain.codigoempresa.ToString + "'")
+                            dtproveedor = tproveedor.Consultar(" where nombre like '%" + varbus + "%' ")
                             If dtproveedor.Rows.Count = 0 Then
-                                dtfacturacompra = tfacturacompra.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and " + "(tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturac like '%" & varbus & "%')")
+                                dtfacturacompra = tfacturacompra.Consultar(" where (tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturac like '%" & varbus & "%')")
                             Else
-                                dtfacturacompra = tfacturacompra.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and " + "(tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturac like '%" & varbus & "%' or codproveedor like '%" + dtproveedor.Rows(0).Item(0).ToString + "%')")
+                                dtfacturacompra = tfacturacompra.Consultar(" where (tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturac like '%" & varbus & "%' or codproveedor like '%" + dtproveedor.Rows(0).Item(0).ToString + "%')")
                             End If
 
                             If dtfacturacompra.Rows.Count <> 0 Then
@@ -180,11 +180,11 @@ Public Class Compras_realizadas
 
                 Else
                     varbus += e.KeyChar
-                    dtproveedor = tproveedor.Consultar(" where nombre like '%" + varbus + "%' and codempresa = '" + mdiMain.codigoempresa.ToString + "'")
+                    dtproveedor = tproveedor.Consultar(" where nombre like '%" + varbus + "%' ")
                     If dtproveedor.Rows.Count = 0 Then
-                        dtfacturacompra = tfacturacompra.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and" + " (tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturac like '%" & varbus & "%')")
+                        dtfacturacompra = tfacturacompra.Consultar(" where  (tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturac like '%" & varbus & "%')")
                     Else
-                        dtfacturacompra = tfacturacompra.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and" + " (tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturac like '%" & varbus & "%' or codproveedor like '%" + dtproveedor.Rows(0).Item(0).ToString + "%')")
+                        dtfacturacompra = tfacturacompra.Consultar(" where (tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturac like '%" & varbus & "%' or codproveedor like '%" + dtproveedor.Rows(0).Item(0).ToString + "%')")
                     End If
 
                     If dtfacturacompra.Rows.Count <> 0 Then
@@ -214,15 +214,15 @@ Public Class Compras_realizadas
             a2 = dt2.Value.Year
             f2 = a2 + "-" + m2 + "-" + d2
             If Me.combotipo.Text = "Factura" Then
-                dtfacturacompra = tfacturacompra.Consultar(" where tipo = 'Factura' and codempresa = " + mdiMain.codigoempresa.ToString + " and fecha >= '" + f1 + "' and fecha <= '" + f2 + "'")
+                dtfacturacompra = tfacturacompra.Consultar(" where tipo = 'Factura' and  fecha >= '" + f1 + "' and fecha <= '" + f2 + "'")
                 tipof = "Factura"
                 cargarcompras()
             ElseIf Me.combotipo.Text = "Comprovante de Credito fiscal" Then
-                dtfacturacompra = tfacturacompra.Consultar(" where tipo = 'Comprovante de Credito fiscal' and codempresa = " + mdiMain.codigoempresa.ToString + " and fecha >='" + f1 + "' and fecha <= '" + f2 + "'")
+                dtfacturacompra = tfacturacompra.Consultar(" where tipo = 'Comprovante de Credito fiscal' and  fecha >='" + f1 + "' and fecha <= '" + f2 + "'")
                 tipof = "Comprovante de Credito fiscal"
                 cargarcompras()
             ElseIf Me.radiotodo.Checked = True Then
-                dtfacturacompra = tfacturacompra.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and fecha >='" + f1 + "' and fecha <= '" + f2 + "'")
+                dtfacturacompra = tfacturacompra.Consultar(" where  fecha >='" + f1 + "' and fecha <= '" + f2 + "'")
                 tipof = "todos"
                 cargarcompras()
             End If
@@ -279,7 +279,7 @@ Public Class Compras_realizadas
     End Sub
 
 
-    Private Sub boteliminar_Click(sender As Object, e As EventArgs) Handles boteliminar.Click
+    Private Sub boteliminar_Click(sender As Object, e As EventArgs)
         Try
             Dim id As Short = Me.gridfacturacompras.CurrentCell.RowIndex
             Dim dl As New clsProcesos
@@ -324,7 +324,7 @@ Public Class Compras_realizadas
                     Dim cr As Decimal = CDec(dtfacturacompra.Rows(id).Item(20))
                     Dim cs As Decimal = CDec(dtfacturacompra.Rows(id).Item(21))
 
-                   
+
 
 
                     'para eliminanar la compra por completo
@@ -340,8 +340,11 @@ Public Class Compras_realizadas
         Catch ex As Exception
 
         End Try
-       
+
     End Sub
 
  
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

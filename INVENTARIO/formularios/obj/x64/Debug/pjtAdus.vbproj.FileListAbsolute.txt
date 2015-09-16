@@ -299,7 +299,6 @@ E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\p
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.compra.resources
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.Categoria.resources
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.Configuraciones.resources
-E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.DetalleCompra.resources
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.DetalleProducto.resources
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.DetalleVenta.resources
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.Form1.resources
@@ -332,3 +331,5 @@ E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\p
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.VentasDiarias.resources
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.VentasRealizadas.resources
 E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.vbproj.GenerateResource.Cache
+E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.DetalledelaCompra.resources
+E:\SISTEMA DEL HERMANO MANUEL\SYSTEMANUEL\INVENTARIO\formularios\obj\x64\Debug\pjtAdus.nventa.resources

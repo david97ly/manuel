@@ -174,10 +174,10 @@
     <Compile Include="Configuraciones.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DetalleCompra.Designer.vb">
-      <DependentUpon>DetalleCompra.vb</DependentUpon>
+    <Compile Include="DetalledelaCompra.Designer.vb">
+      <DependentUpon>DetalledelaCompra.vb</DependentUpon>
     </Compile>
-    <Compile Include="DetalleCompra.vb">
+    <Compile Include="DetalledelaCompra.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DetalleProducto.Designer.vb">
@@ -211,6 +211,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NumeroLetras.vb" />
+    <Compile Include="nventa.Designer.vb">
+      <DependentUpon>nventa.vb</DependentUpon>
+    </Compile>
+    <Compile Include="nventa.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PrintPageEventArgs.vb" />
     <Compile Include="Registroart.Designer.vb">
       <DependentUpon>Registroart.vb</DependentUpon>
@@ -399,8 +405,8 @@
     <EmbeddedResource Include="Configuraciones.resx">
       <DependentUpon>Configuraciones.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DetalleCompra.resx">
-      <DependentUpon>DetalleCompra.vb</DependentUpon>
+    <EmbeddedResource Include="DetalledelaCompra.resx">
+      <DependentUpon>DetalledelaCompra.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetalleProducto.resx">
       <DependentUpon>DetalleProducto.vb</DependentUpon>
@@ -416,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Kardex.resx">
       <DependentUpon>Kardex.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nventa.resx">
+      <DependentUpon>nventa.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registroart.resx">
       <DependentUpon>Registroart.vb</DependentUpon>

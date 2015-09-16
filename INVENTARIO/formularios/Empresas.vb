@@ -282,8 +282,12 @@ Public Class Empresas
     End Sub
 
     Private Sub botsalirdatos_Click_2(sender As Object, e As EventArgs) Handles botsalirdatos.Click
-        frmc.Visible = True
-        Me.Close()
+        Try
+            Me.Close()
+        Catch ex As Exception
+
+        End Try
+      
     End Sub
 
     Private Sub texcodigo_KeyPress1(sender As Object, e As KeyPressEventArgs)

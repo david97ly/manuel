@@ -146,11 +146,9 @@ Public Class Proveedores
                         contvarbus = varbus.Length
                         varbus = varbus.Remove(contvarbus - 1, 1)
                     End If
-                    If radiocodigo.Checked = True Then
-                        dtproveedores = proveedores.Consultar(" where codproveedor like '%" + varbus + "%'")
-                    Else
-                        dtproveedores = proveedores.Consultar(" where  nombre like '%" + varbus + "%'")
-                    End If
+
+                    dtproveedores = proveedores.Consultar(" where codproveedor like '%" + varbus + "%' or nombre like '%" + varbus + "%'")
+
 
                     If dtproveedores.Rows.Count <> 0 Then
 
@@ -158,11 +156,10 @@ Public Class Proveedores
                     End If
                 Else
                     varbus += e.KeyChar
-                    If radiocodigo.Checked = True Then
-                        dtproveedores = proveedores.Consultar(" where codproveedor like '%" + varbus + "%'")
-                    Else
-                        dtproveedores = proveedores.Consultar(" where nombre like '%" + varbus + "%'")
-                    End If
+
+                     dtproveedores = proveedores.Consultar(" where codproveedor like '%" + varbus + "%' or nombre like '%" + varbus + "%'")
+
+
                     If dtproveedores.Rows.Count <> 0 Then
                         cargargrid()
                     End If

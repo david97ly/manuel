@@ -200,16 +200,7 @@ Public Class Ventas
                         tcodf.Consultar("update tirajes set tirajeca = '" & Me.texnumfact.Text.Trim.ToString & "'")
                     End If
 
-                    If Me.llenara = False Then
-                        Dim ncc As Integer
-                        Dim dtncc As DataTable
-                        Dim consultar As New clsProcesos
-                        dtncc = consultar.Consultar(" select max(codcliente) from cliente")
-                        ncc = CInt(dtncc.Rows(0).Item(0))
-                        ncc += 1
-
-                        idcliente = ncc
-                    End If
+                 
                 End If
 
                 tventas.Insertar("'" & Me.texnumfact.Text.ToString.Trim & "','" & Me.combotipo.Text.ToString & "','" & idcliente & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & Me.comboformapago.Text.ToString & "','valida','" & Me.textiraje.Text.ToString & "'")

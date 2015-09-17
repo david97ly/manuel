@@ -31,9 +31,6 @@ Partial Class Clientes
         Me.botseleccionar = New DevComponents.DotNetBar.ButtonX()
         Me.botnuevo = New DevComponents.DotNetBar.ButtonX()
         Me.grubbusquedaprov = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.radiocodigo = New System.Windows.Forms.RadioButton()
-        Me.radionombre = New System.Windows.Forms.RadioButton()
         Me.radiojuridico = New System.Windows.Forms.RadioButton()
         Me.radionatural = New System.Windows.Forms.RadioButton()
         Me.texbusqueda = New System.Windows.Forms.TextBox()
@@ -46,7 +43,6 @@ Partial Class Clientes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.grubbusquedaprov.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         CType(Me.gridclientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -126,7 +122,6 @@ Partial Class Clientes
         'grubbusquedaprov
         '
         Me.grubbusquedaprov.BackColor = System.Drawing.Color.Transparent
-        Me.grubbusquedaprov.Controls.Add(Me.GroupBox2)
         Me.grubbusquedaprov.Controls.Add(Me.radiojuridico)
         Me.grubbusquedaprov.Controls.Add(Me.radionatural)
         Me.grubbusquedaprov.Controls.Add(Me.texbusqueda)
@@ -139,40 +134,6 @@ Partial Class Clientes
         Me.grubbusquedaprov.Size = New System.Drawing.Size(710, 87)
         Me.grubbusquedaprov.TabIndex = 6
         Me.grubbusquedaprov.TabStop = False
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.radiocodigo)
-        Me.GroupBox2.Controls.Add(Me.radionombre)
-        Me.GroupBox2.Location = New System.Drawing.Point(463, 12)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(237, 35)
-        Me.GroupBox2.TabIndex = 5
-        Me.GroupBox2.TabStop = False
-        '
-        'radiocodigo
-        '
-        Me.radiocodigo.AutoSize = True
-        Me.radiocodigo.Checked = True
-        Me.radiocodigo.Location = New System.Drawing.Point(8, 11)
-        Me.radiocodigo.Margin = New System.Windows.Forms.Padding(5)
-        Me.radiocodigo.Name = "radiocodigo"
-        Me.radiocodigo.Size = New System.Drawing.Size(77, 24)
-        Me.radiocodigo.TabIndex = 7
-        Me.radiocodigo.TabStop = True
-        Me.radiocodigo.Text = "Codigo"
-        Me.radiocodigo.UseVisualStyleBackColor = True
-        '
-        'radionombre
-        '
-        Me.radionombre.AutoSize = True
-        Me.radionombre.Location = New System.Drawing.Point(150, 10)
-        Me.radionombre.Margin = New System.Windows.Forms.Padding(5)
-        Me.radionombre.Name = "radionombre"
-        Me.radionombre.Size = New System.Drawing.Size(83, 24)
-        Me.radionombre.TabIndex = 6
-        Me.radionombre.Text = "Nombre"
-        Me.radionombre.UseVisualStyleBackColor = True
         '
         'radiojuridico
         '
@@ -302,8 +263,6 @@ Partial Class Clientes
         Me.GroupBox1.ResumeLayout(False)
         Me.grubbusquedaprov.ResumeLayout(False)
         Me.grubbusquedaprov.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         CType(Me.gridclientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -315,9 +274,6 @@ Partial Class Clientes
     Friend WithEvents radionatural As System.Windows.Forms.RadioButton
     Friend WithEvents texbusqueda As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents radiocodigo As System.Windows.Forms.RadioButton
-    Friend WithEvents radionombre As System.Windows.Forms.RadioButton
     Friend WithEvents gridclientes As DevComponents.DotNetBar.Controls.DataGridViewX
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents co As System.Windows.Forms.DataGridViewTextBoxColumn

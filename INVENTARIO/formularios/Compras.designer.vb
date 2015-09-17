@@ -22,7 +22,7 @@ Partial Class compra
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.texnumfact = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -156,7 +156,7 @@ Partial Class compra
         Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(266, 22)
-        Me.DateTimePicker1.TabIndex = 8
+        Me.DateTimePicker1.TabIndex = 4
         '
         'texnombrep
         '
@@ -172,7 +172,7 @@ Partial Class compra
         Me.texcantidad.Margin = New System.Windows.Forms.Padding(4)
         Me.texcantidad.Name = "texcantidad"
         Me.texcantidad.Size = New System.Drawing.Size(85, 22)
-        Me.texcantidad.TabIndex = 7
+        Me.texcantidad.TabIndex = 6
         '
         'texprecio
         '
@@ -180,7 +180,7 @@ Partial Class compra
         Me.texprecio.Margin = New System.Windows.Forms.Padding(4)
         Me.texprecio.Name = "texprecio"
         Me.texprecio.Size = New System.Drawing.Size(88, 22)
-        Me.texprecio.TabIndex = 18
+        Me.texprecio.TabIndex = 7
         '
         'Label1
         '
@@ -395,7 +395,7 @@ Partial Class compra
         Me.textiraje.Margin = New System.Windows.Forms.Padding(4)
         Me.textiraje.Name = "textiraje"
         Me.textiraje.Size = New System.Drawing.Size(151, 22)
-        Me.textiraje.TabIndex = 94
+        Me.textiraje.TabIndex = 3
         '
         'Label22
         '
@@ -469,7 +469,7 @@ Partial Class compra
         Me.botagregar.Location = New System.Drawing.Point(706, 108)
         Me.botagregar.Name = "botagregar"
         Me.botagregar.Size = New System.Drawing.Size(107, 43)
-        Me.botagregar.TabIndex = 100
+        Me.botagregar.TabIndex = 8
         Me.botagregar.Text = "Agregar"
         Me.botagregar.UseVisualStyleBackColor = True
         '
@@ -520,15 +520,15 @@ Partial Class compra
         Me.gridcompra.AllowUserToDeleteRows = False
         Me.gridcompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gridcompra.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.cantida, Me.nombr, Me.preciu, Me.preciod, Me.exentas, Me.tota})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle3
-        Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle1
+        Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
         Me.gridcompra.Location = New System.Drawing.Point(14, 159)
         Me.gridcompra.Name = "gridcompra"
         Me.gridcompra.ReadOnly = True

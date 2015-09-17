@@ -24,15 +24,12 @@ Partial Class Proveedores
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Proveedores))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.menuproveedores = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mdetalle = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ModificarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.grubbusquedaprov = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.radiocodigo = New System.Windows.Forms.RadioButton()
-        Me.radionombre = New System.Windows.Forms.RadioButton()
         Me.texbusqueda = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -51,7 +48,6 @@ Partial Class Proveedores
         Me.direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.menuproveedores.SuspendLayout()
         Me.grubbusquedaprov.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,7 +81,6 @@ Partial Class Proveedores
         'grubbusquedaprov
         '
         Me.grubbusquedaprov.BackColor = System.Drawing.Color.Transparent
-        Me.grubbusquedaprov.Controls.Add(Me.GroupBox2)
         Me.grubbusquedaprov.Controls.Add(Me.texbusqueda)
         Me.grubbusquedaprov.Controls.Add(Me.Label2)
         Me.grubbusquedaprov.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -96,40 +91,6 @@ Partial Class Proveedores
         Me.grubbusquedaprov.Size = New System.Drawing.Size(707, 76)
         Me.grubbusquedaprov.TabIndex = 2
         Me.grubbusquedaprov.TabStop = False
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.radiocodigo)
-        Me.GroupBox2.Controls.Add(Me.radionombre)
-        Me.GroupBox2.Location = New System.Drawing.Point(233, 7)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(229, 35)
-        Me.GroupBox2.TabIndex = 6
-        Me.GroupBox2.TabStop = False
-        '
-        'radiocodigo
-        '
-        Me.radiocodigo.AutoSize = True
-        Me.radiocodigo.Checked = True
-        Me.radiocodigo.Location = New System.Drawing.Point(8, 12)
-        Me.radiocodigo.Margin = New System.Windows.Forms.Padding(5)
-        Me.radiocodigo.Name = "radiocodigo"
-        Me.radiocodigo.Size = New System.Drawing.Size(77, 24)
-        Me.radiocodigo.TabIndex = 7
-        Me.radiocodigo.TabStop = True
-        Me.radiocodigo.Text = "Codigo"
-        Me.radiocodigo.UseVisualStyleBackColor = True
-        '
-        'radionombre
-        '
-        Me.radionombre.AutoSize = True
-        Me.radionombre.Location = New System.Drawing.Point(146, 12)
-        Me.radionombre.Margin = New System.Windows.Forms.Padding(5)
-        Me.radionombre.Name = "radionombre"
-        Me.radionombre.Size = New System.Drawing.Size(83, 24)
-        Me.radionombre.TabIndex = 6
-        Me.radionombre.Text = "Nombre"
-        Me.radionombre.UseVisualStyleBackColor = True
         '
         'texbusqueda
         '
@@ -263,15 +224,15 @@ Partial Class Proveedores
         Me.gridproveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gridproveedores.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.co, Me.nomp, Me.tip, Me.direccion})
         Me.gridproveedores.Cursor = System.Windows.Forms.Cursors.Hand
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gridproveedores.DefaultCellStyle = DataGridViewCellStyle1
-        Me.gridproveedores.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.gridproveedores.DefaultCellStyle = DataGridViewCellStyle3
+        Me.gridproveedores.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
         Me.gridproveedores.Location = New System.Drawing.Point(12, 155)
         Me.gridproveedores.Name = "gridproveedores"
         Me.gridproveedores.ReadOnly = True
@@ -332,8 +293,6 @@ Partial Class Proveedores
         Me.menuproveedores.ResumeLayout(False)
         Me.grubbusquedaprov.ResumeLayout(False)
         Me.grubbusquedaprov.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
@@ -350,9 +309,6 @@ Partial Class Proveedores
     Friend WithEvents texbusqueda As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents radiocodigo As System.Windows.Forms.RadioButton
-    Friend WithEvents radionombre As System.Windows.Forms.RadioButton
     Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
     Friend WithEvents Label1 As System.Windows.Forms.Label

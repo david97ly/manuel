@@ -171,39 +171,62 @@ Public Class Clientes
     Private Sub texbusqueda_KeyPress(sender As Object, e As KeyPressEventArgs) Handles texbusqueda.KeyPress
         Try
             f = False
-            If (Asc(e.KeyChar) = 13) Then
-            Else
-                If (Asc(e.KeyChar)) = System.Windows.Forms.Keys.Back Then
-                    Dim contvarbus As Short
-                    If varbus = "" Then
-                    Else
-                        contvarbus = varbus.Length
-                        varbus = varbus.Remove(contvarbus - 1, 1)
-                    End If
-                    If radiocodigo.Checked = True Then
-                        dtclientes = tclientes.Consultar(" where codcliente like '%" + varbus + "%'")
-                    Else
-                        dtclientes = tclientes.Consultar(" where nombre like '%" + varbus + "%'")
-                    End If
-
-
-                    If dtclientes.Rows.Count <> 0 Then
-                      
-                        cargargrid()
-                    End If
+            If radiojuridico.Checked Then
+                If (Asc(e.KeyChar) = 13) Then
                 Else
-                    varbus += e.KeyChar
-                    If radiocodigo.Checked = True Then
-                        dtclientes = tclientes.Consultar(" where codcliente like '%" + varbus + "%'")
+                    If (Asc(e.KeyChar)) = System.Windows.Forms.Keys.Back Then
+                        Dim contvarbus As Short
+                        If varbus = "" Then
+                        Else
+                            contvarbus = varbus.Length
+                            varbus = varbus.Remove(contvarbus - 1, 1)
+                        End If
+                        dtclientes = tclientes.Consultar(" where codcliente like '%" + varbus + "%' or nombre like '%" + varbus + "%'")
+
+
+                        If dtclientes.Rows.Count <> 0 Then
+
+                            cargargrid()
+                        End If
                     Else
-                        dtclientes = tclientes.Consultar(" where  nombre like '%" + varbus + "%'")
+                        varbus += e.KeyChar
+                        dtclientes = tclientes.Consultar(" where codcliente like '%" + varbus + "%' or nombre like '%" + varbus + "%'")
+
+                        If dtclientes.Rows.Count <> 0 Then
+
+                            cargargrid()
+                        End If
                     End If
-                    If dtclientes.Rows.Count <> 0 Then
-                     
-                        cargargrid()
+                End If
+            Else
+                If (Asc(e.KeyChar) = 13) Then
+                Else
+                    If (Asc(e.KeyChar)) = System.Windows.Forms.Keys.Back Then
+                        Dim contvarbus As Short
+                        If varbus = "" Then
+                        Else
+                            contvarbus = varbus.Length
+                            varbus = varbus.Remove(contvarbus - 1, 1)
+                        End If
+                        dtclientes = tclientesf.Consultar(" where idclientescf like '%" + varbus + "%' or cliente like '%" + varbus + "%'")
+
+
+                        If dtclientes.Rows.Count <> 0 Then
+
+                            cargargrid()
+                        End If
+                    Else
+                        varbus += e.KeyChar
+                        dtclientes = tclientesf.Consultar(" where idclientescf like '%" + varbus + "%' or cliente like '%" + varbus + "%'")
+
+                        If dtclientes.Rows.Count <> 0 Then
+
+                            cargargrid()
+                        End If
                     End If
                 End If
             End If
+           
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try

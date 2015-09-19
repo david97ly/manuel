@@ -124,6 +124,8 @@ Public Class Ventas
             Me.texnumfact.Text = dtfacturaventas.Rows(contador).Item(1)
             Me.DateTimePicker1.Value = dtfacturaventas.Rows(contador).Item(4).ToString
             Me.codfactura = dtfacturaventas.Rows(contador).Item(0)
+            Dim num As Double = CDbl(dtfacturaventas.Rows(contador).Item(10))
+            convertiraletras(num)
             cargarfactura()
         Catch ex As Exception
 
@@ -633,7 +635,7 @@ Public Class Ventas
         'xPos -= 528
         Dim numletras1 As New NumeroLetras
         Dim nl As String
-        numletras1.setnumero(dtfacturaventa.Rows(0).Item(13).ToString)
+        numletras1.setnumero(dtfacturaventa.Rows(0).Item(10).ToString)
         nl = numletras1.getnumero().ToString & " dolares "
 
         If numletras1.getdecimal() > 0 Then
@@ -950,11 +952,11 @@ Public Class Ventas
             Me.botguardar.Text = "Guardar"
 
 
-            'If Me.combotipo.Text = "Factura" Then
-            '    imprimir()
-            'Else
-            '    imprimecomprobante()
-            'End If
+            If Me.combotipo.Text = "Factura" Then
+                imprimir()
+            Else
+                imprimecomprobante()
+            End If
 
             'termina la tarea de imprimir
 
@@ -1135,27 +1137,8 @@ Public Class Ventas
                 End If
 
 
-
-                Dim numletras1 As New NumeroLetras
-                Dim nl As String
-                numletras1.setnumero(textotal.Text.ToString)
-                nl = numletras1.getnumero().ToString & " dolares "
-
-                If numletras1.getdecimal() > 0 Then
-                    Dim nn As String
-                    If numletras1.getdecimal() < 11 Then
-                        nn = numletras1.getdecimal() & "0"
-
-                        nl = nl & "con " & nn & "/100 cent"
-                    Else
-                        nl = nl & "con " & numletras1.getdecimal.ToString & "/100 cent"
-                    End If
-
-                Else
-                    nl = nl
-                End If
-
-                Me.lson.Text = nl
+                Dim num As Double = CDbl(Me.textotal.Text.ToString)
+                convertiraletras(num)
 
             Catch ex As Exception
                 MsgBox("ocurrio un error razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
@@ -1165,6 +1148,29 @@ Public Class Ventas
         End If
 
 
+    End Sub
+
+    Private Sub convertiraletras(ByVal numero As Double)
+        Dim numletras1 As New NumeroLetras
+        Dim nl As String
+        numletras1.setnumero(numero)
+        nl = numletras1.getnumero().ToString & " dolares "
+
+        If numletras1.getdecimal() > 0 Then
+            Dim nn As String
+            If numletras1.getdecimal() < 11 Then
+                nn = numletras1.getdecimal() & "0"
+
+                nl = nl & "con " & nn & "/100 cent"
+            Else
+                nl = nl & "con " & numletras1.getdecimal.ToString & "/100 cent"
+            End If
+
+        Else
+            nl = nl
+        End If
+
+        Me.lson.Text = nl
     End Sub
 
     Private Sub botsalir_Click_1(sender As Object, e As EventArgs)

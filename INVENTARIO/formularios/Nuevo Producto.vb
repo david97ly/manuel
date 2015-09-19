@@ -72,7 +72,7 @@ Public Class Nuevo_Producto
         End Try
 
     End Sub
-    Private Sub botguardar_Click(sender As Object, e As EventArgs) Handles botguardar.Click, texunidaddemedida.Enter
+    Private Sub botguardar_Click(sender As Object, e As EventArgs) Handles botguardar.Click
         Try
             If Me.picno.Visible <> True Or editar = True Then
 
@@ -283,4 +283,14 @@ Public Class Nuevo_Producto
         End If
     End Sub
 
+  
+
+    
+    Private Sub texunidaddemedida_KeyPress(sender As Object, e As KeyPressEventArgs) Handles texunidaddemedida.KeyPress
+        If (Asc(e.KeyChar)) = 13 Then
+            botguardar_Click(sender, e)
+        End If
+    End Sub
+
+    
 End Class

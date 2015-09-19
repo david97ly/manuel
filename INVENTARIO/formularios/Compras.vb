@@ -70,8 +70,18 @@ Public Class compra
 
     'para ver si esta siendo editado o no
     Public estado As String = "nuevo"
+    Private guardar As Boolean = False
 
     Private Sub compra_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+
+        If guardar = False Then
+            If MsgBox("Desea guardar el documento", MsgBoxStyle.YesNo, "aviso") = MsgBoxResult.Yes Then
+                botguardar_Click_1(sender, e)
+            End If
+        End If
+        
+
+
         mdiMain.teclas = False
     End Sub
 
@@ -111,6 +121,9 @@ Public Class compra
                 Me.check1.Checked = True
             End If
             Me.primeraf = False
+
+            Dim num As Double = CDbl(dtfacturacompra.Rows(0).Item(10))
+            convertirnumeroletras(num)
             cargarfactura()
 
             'Cuando todo ha salido bien hace los cargos a las existencias
@@ -472,30 +485,10 @@ Public Class compra
                     insertar()
                 End If
 
+                Dim num As Double = CDbl(Me.textotal.Text)
+                convertirnumeroletras(num)
 
-
-
-                Dim numletras1 As New NumeroLetras
-                Dim nl As String
-                numletras1.setnumero(textotal.Text.ToString)
-                nl = numletras1.getnumero().ToString & " dolares "
-
-                If numletras1.getdecimal() > 0 Then
-                    Dim nn As String
-                    If numletras1.getdecimal() < 11 Then
-                        nn = numletras1.getdecimal() & "0"
-
-                        nl = nl & "con " & nn & "/100 cent"
-                    Else
-                        nl = nl & "con " & numletras1.getdecimal.ToString & "/100 cent"
-                    End If
-
-                Else
-                    nl = nl
-                End If
-
-                Me.lson.Text = nl
-
+                
 
 
             Catch ex As Exception
@@ -507,8 +500,33 @@ Public Class compra
 
     End Sub
 
+    Private Sub convertirnumeroletras(ByVal numero As Double)
+        Dim numletras1 As New NumeroLetras
+        Dim nl As String
+        numletras1.setnumero(numero)
+        nl = numletras1.getnumero().ToString & " dolares "
+
+        If numletras1.getdecimal() > 0 Then
+            Dim nn As String
+            If numletras1.getdecimal() < 11 Then
+                nn = numletras1.getdecimal() & "0"
+
+                nl = nl & "con " & nn & "/100 cent"
+            Else
+                nl = nl & "con " & numletras1.getdecimal.ToString & "/100 cent"
+            End If
+
+        Else
+            nl = nl
+        End If
+
+        Me.lson.Text = nl
+
+    End Sub
+
     Private Sub botguardar_Click_1(sender As Object, e As EventArgs) Handles botguardar.Click
         Try
+            guardar = True
             Dim ella As String = ""
             If guardado = False Then
                 guardado = True
@@ -517,7 +535,7 @@ Public Class compra
                 Else
                     ella = "El "
                 End If
-              
+
                 Me.totalfactu = Me.textotal.Text
 
 
@@ -554,7 +572,7 @@ Public Class compra
                     Me.Close()
                 End If
 
-              
+
 
             End If
         Catch ex As Exception
@@ -571,7 +589,7 @@ Public Class compra
 
 
     Dim cantidad, preciot, totalp As Double
-  
+
 
     Private Sub textotalp_KeyUp(sender As Object, e As KeyEventArgs) Handles textotalp.KeyUp
         Try
@@ -584,7 +602,7 @@ Public Class compra
                     Me.totalp = CDbl(Me.textotalp.Text)
 
 
-                    Me.texprecio.Text = Math.Round(((totalp * 0.13) + totalp) / Me.cantidad, 2)
+                    Me.texprecio.Text = Math.Round(Me.totalp / Me.cantidad, 2)
 
                 End If
             End If
@@ -605,7 +623,7 @@ Public Class compra
                     Me.totalp = CDbl(Me.textotalp.Text)
 
 
-                    Me.texprecio.Text = Math.Round(((totalp * 0.13) + totalp) / Me.cantidad, 2)
+                    Me.texprecio.Text = Math.Round((totalp) / Me.cantidad, 2)
 
                 End If
             End If
@@ -624,10 +642,10 @@ Public Class compra
         End If
     End Sub
 
- 
 
 
- 
+
+
 
     Private Sub Button7_Click(sender As Object, e As EventArgs)
 
@@ -648,5 +666,9 @@ Public Class compra
         Catch ex As Exception
 
         End Try
+    End Sub
+
+    Private Sub texprecio_TextChanged(sender As Object, e As EventArgs) Handles texprecio.TextChanged
+
     End Sub
 End Class

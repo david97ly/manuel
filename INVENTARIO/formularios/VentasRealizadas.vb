@@ -86,9 +86,7 @@ Public Class VentasRealizadas
                 Me.gridfacturaventas.Rows(i).Cells(2).Value = dtfacturaventa.Rows(i).Item(2).ToString ' para el tipo de la factura
                 Dim s As Date = dtfacturaventa.Rows(i).Item(4)
                 Me.gridfacturaventas.Rows(i).Cells(3).Value = s.Day.ToString + "/" + s.Month.ToString + "/" + s.Year.ToString 'para la fecha
-                Me.gridfacturaventas.Rows(i).Cells(4).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(5)), 2) 'para el subtotal
-                Me.gridfacturaventas.Rows(i).Cells(5).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(7)), 2) ' para el iva
-                Me.gridfacturaventas.Rows(i).Cells(6).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(10)), 2) ' para el total
+                Me.gridfacturaventas.Rows(i).Cells(4).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(10)), 2) ' para el total
 
             Next
         Catch ex As Exception
@@ -164,7 +162,7 @@ Public Class VentasRealizadas
                 Else
 
                     varbus += e.KeyChar
-                    dtclientes = tclientes.Consultar(" where nombre like '%" + varbus + "%' and codempresa = " + mdiMain.codigoempresa.ToString)
+                    dtclientes = tclientes.Consultar(" where nombre like '%" + varbus + "%'")
                     If dtclientes.Rows.Count = 0 Then
                         dtfacturaventa = tfacturaventa.Consultar(" where tipo like '%" & varbus & "%' or formadepago like '%" & varbus & "%'  or numfacturav like '%" & varbus & "%'")
                     Else
@@ -272,43 +270,5 @@ Public Class VentasRealizadas
     End Sub
 
   
-    Private Sub boteliminar_Click(sender As Object, e As EventArgs) Handles boteliminar.Click
-        Dim id As Short = Me.gridfacturaventas.CurrentCell.RowIndex
-        Dim dl As New clsProcesos
-
-        If dtfacturaventa.Rows(id).Item(13).ToString = "0" Then
-            dl.Consultar(" delete from facturaventa where codfacturav = " & dtfacturaventa.Rows(id).Item(0))
-            dl.Consultar(" delete from detalleventa where codfacturav = " & dtfacturaventa.Rows(id).Item(0))
-
-            Dim dtcodf As DataTable
-            Dim tcodf As New clsProcesos
-            Dim n As String = ""
-            Dim n1 As Integer = 0
-
-            If dtfacturaventa.Rows(id).Item(2).ToString() = "Factura" Then
-
-                dtcodf = tcodf.Consultar("select max(tirajefa) from tirajes")
-
-                n = dtcodf.Rows(0).Item(0).ToString
-                n1 = CInt(n) - 1
-
-                tcodf.Consultar("update tirajes set tirajefa = '" & n1 & "'")
-
-            Else
-                dtcodf = tcodf.Consultar("select max(tirajeca) from tirajes")
-
-                n = dtcodf.Rows(0).Item(0).ToString
-                n1 = CInt(n) - 1
-
-                tcodf.Consultar("update tirajes set tirajeca = '" & n1 & "'")
-
-            End If
-
-
-            hacerconsulta()
-            cargarventas()
-        Else
-            MsgBox("Este documento no se puede eliminar solo se puede anular", MsgBoxStyle.Information, "Aviso")
-        End If
-    End Sub
+  
 End Class

@@ -22,7 +22,6 @@ Partial Class Compras_realizadas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.botnuevo = New System.Windows.Forms.Button()
         Me.botsalir = New System.Windows.Forms.Button()
@@ -42,12 +41,12 @@ Partial Class Compras_realizadas
         Me.dt2 = New System.Windows.Forms.DateTimePicker()
         Me.dt1 = New System.Windows.Forms.DateTimePicker()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.gridfacturacompras = New DevComponents.DotNetBar.Controls.DataGridViewX()
-        Me.numero = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombrproo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tipo1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fecha1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.total1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.gridfacturacompras = New System.Windows.Forms.DataGridView()
+        Me.num = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nompro = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.feh = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tototl = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.grubbusquedaprov.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -250,7 +249,6 @@ Partial Class Compras_realizadas
         '
         Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GroupPanel1.Controls.Add(Me.gridfacturacompras)
         Me.GroupPanel1.Controls.Add(Me.grubbusquedaprov)
         Me.GroupPanel1.Controls.Add(Me.GroupBox1)
         Me.GroupPanel1.Controls.Add(Me.GroupBox2)
@@ -294,59 +292,61 @@ Partial Class Compras_realizadas
         '
         'gridfacturacompras
         '
-        Me.gridfacturacompras.AllowUserToAddRows = False
+        Me.gridfacturacompras.AllowUserToOrderColumns = True
         Me.gridfacturacompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.gridfacturacompras.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.numero, Me.Nombrproo, Me.tipo1, Me.fecha1, Me.total1})
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.gridfacturacompras.DefaultCellStyle = DataGridViewCellStyle1
-        Me.gridfacturacompras.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
-        Me.gridfacturacompras.Location = New System.Drawing.Point(22, 98)
+        Me.gridfacturacompras.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.num, Me.nompro, Me.Tipo, Me.feh, Me.tototl})
+        Me.gridfacturacompras.Location = New System.Drawing.Point(17, 120)
+        Me.gridfacturacompras.MultiSelect = False
         Me.gridfacturacompras.Name = "gridfacturacompras"
         Me.gridfacturacompras.RowHeadersVisible = False
-        Me.gridfacturacompras.Size = New System.Drawing.Size(864, 301)
-        Me.gridfacturacompras.TabIndex = 13
+        Me.gridfacturacompras.Size = New System.Drawing.Size(872, 363)
+        Me.gridfacturacompras.TabIndex = 4
         '
-        'numero
+        'num
         '
-        Me.numero.HeaderText = "Numero"
-        Me.numero.Name = "numero"
-        Me.numero.Width = 75
+        Me.num.Frozen = True
+        Me.num.HeaderText = "Numero"
+        Me.num.Name = "num"
+        Me.num.ReadOnly = True
+        Me.num.Width = 75
         '
-        'Nombrproo
+        'nompro
         '
-        Me.Nombrproo.HeaderText = "Nombre Proveedor"
-        Me.Nombrproo.Name = "Nombrproo"
-        Me.Nombrproo.Width = 250
+        Me.nompro.Frozen = True
+        Me.nompro.HeaderText = "Nombre del Proveedor"
+        Me.nompro.Name = "nompro"
+        Me.nompro.ReadOnly = True
+        Me.nompro.Width = 250
         '
-        'tipo1
+        'Tipo
         '
-        Me.tipo1.HeaderText = "Tipo"
-        Me.tipo1.Name = "tipo1"
-        Me.tipo1.Width = 250
+        Me.Tipo.Frozen = True
+        Me.Tipo.HeaderText = "Tipo"
+        Me.Tipo.Name = "Tipo"
+        Me.Tipo.ReadOnly = True
+        Me.Tipo.Width = 250
         '
-        'fecha1
+        'feh
         '
-        Me.fecha1.HeaderText = "Fecha"
-        Me.fecha1.Name = "fecha1"
-        Me.fecha1.Width = 200
+        Me.feh.Frozen = True
+        Me.feh.HeaderText = "Fecha"
+        Me.feh.Name = "feh"
+        Me.feh.ReadOnly = True
+        Me.feh.Width = 200
         '
-        'total1
+        'tototl
         '
-        Me.total1.HeaderText = "Total"
-        Me.total1.Name = "total1"
-        Me.total1.Width = 80
+        Me.tototl.Frozen = True
+        Me.tototl.HeaderText = "Total"
+        Me.tototl.Name = "tototl"
+        Me.tototl.ReadOnly = True
         '
         'Compras_realizadas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(905, 581)
+        Me.Controls.Add(Me.gridfacturacompras)
         Me.Controls.Add(Me.GroupPanel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
@@ -382,11 +382,11 @@ Partial Class Compras_realizadas
     Friend WithEvents dt1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents checfecha As System.Windows.Forms.CheckBox
     Friend WithEvents combotipo As System.Windows.Forms.ComboBox
-    Friend WithEvents gridfacturacompras As DevComponents.DotNetBar.Controls.DataGridViewX
-    Friend WithEvents numero As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Nombrproo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents tipo1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents fecha1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents total1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Private WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
+    Friend WithEvents gridfacturacompras As System.Windows.Forms.DataGridView
+    Friend WithEvents num As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents nompro As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Tipo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents feh As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents tototl As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -66,6 +66,7 @@ Partial Class DetalledelaCompra
         Me.texnrc = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.textfecha = New System.Windows.Forms.TextBox()
+        Me.botpagar = New System.Windows.Forms.Button()
         CType(Me.gridcompra, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -85,7 +86,7 @@ Partial Class DetalledelaCompra
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle1
-        Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
+        Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.gridcompra.Location = New System.Drawing.Point(81, 153)
         Me.gridcompra.Name = "gridcompra"
         Me.gridcompra.ReadOnly = True
@@ -497,11 +498,23 @@ Partial Class DetalledelaCompra
         Me.textfecha.Size = New System.Drawing.Size(151, 20)
         Me.textfecha.TabIndex = 173
         '
+        'botpagar
+        '
+        Me.botpagar.BackColor = System.Drawing.Color.Orange
+        Me.botpagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botpagar.Location = New System.Drawing.Point(915, 13)
+        Me.botpagar.Name = "botpagar"
+        Me.botpagar.Size = New System.Drawing.Size(99, 40)
+        Me.botpagar.TabIndex = 174
+        Me.botpagar.Text = "Pagar"
+        Me.botpagar.UseVisualStyleBackColor = False
+        '
         'DetalledelaCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1039, 561)
+        Me.Controls.Add(Me.botpagar)
         Me.Controls.Add(Me.textfecha)
         Me.Controls.Add(Me.texnrc)
         Me.Controls.Add(Me.Label6)
@@ -586,4 +599,5 @@ Partial Class DetalledelaCompra
     Friend WithEvents textfecha As System.Windows.Forms.TextBox
     Friend WithEvents boteliminar As System.Windows.Forms.Button
     Friend WithEvents boteditar As System.Windows.Forms.Button
+    Friend WithEvents botpagar As System.Windows.Forms.Button
 End Class

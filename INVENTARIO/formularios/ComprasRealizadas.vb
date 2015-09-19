@@ -59,7 +59,10 @@ Public Class Compras_realizadas
             End If
 
             For i As Integer = 0 To dtfacturacompra.Rows.Count - 1
+                If dtfacturacompra.Rows(i).Item(11).ToString = "Credito" Then
+                    Me.gridfacturacompras.Rows(i).Cells(4).Style.BackColor = Color.Orange
 
+                End If
                 Me.gridfacturacompras.Rows(i).Cells(0).Value = dtfacturacompra.Rows(i).Item(1).ToString
                 dtproveedor = tproveedor.Consultar(" where codproveedor = '" + dtfacturacompra.Rows(i).Item(3).ToString + "'")
                 If dtproveedor.Rows(0).Item(9) = "inactivo" Then

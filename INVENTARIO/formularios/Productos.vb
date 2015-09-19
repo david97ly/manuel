@@ -42,6 +42,7 @@ Public Class Productos
 
             If donde = "ventas" Or donde = "compras" Or donde = "cambio" Or donde = "kardex" Then
                 ocultar()
+                MdiParent = mdiMain
             Else
                 MdiParent = mdiMain
             End If

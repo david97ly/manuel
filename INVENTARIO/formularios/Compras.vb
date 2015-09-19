@@ -72,31 +72,37 @@ Public Class compra
     Public estado As String = "nuevo"
     Private guardar As Boolean = False
 
-    Private Sub compra_Disposed(sender As Object, e As EventArgs) Handles Me.Disposed
+   
+    Private Sub compra_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
 
-        If guardar = False Then
-            If MsgBox("Desea guardar el documento", MsgBoxStyle.YesNo, "aviso") = MsgBoxResult.Yes Then
-                botguardar_Click_1(sender, e)
+        If estado = "editando" Then
+            If guardar = False Then
+                If MsgBox("Desea guardar el documento", MsgBoxStyle.YesNo, "aviso") = MsgBoxResult.Yes Then
+                    botguardar_Click_1(sender, e)
+                End If
             End If
+
+
+
+            mdiMain.teclas = False
         End If
-        
 
-
-        mdiMain.teclas = False
     End Sub
 
+   
 
 
 
     Private Sub compra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
+        MdiParent = mdiMain
         Try
-            MdiParent = mdiMain
+
             If donde <> "here" Then
                 cargardatos()
 
             Else
-                MdiParent = mdiMain
+
             End If
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente razon: " & ex.Message, MsgBoxStyle.OkOnly, "Avise")
@@ -563,7 +569,7 @@ Public Class compra
 
 
 
-                If MsgBox(ella & combotipo.Text.ToString & " Se ingreso exitozamente" & vbCrLf _
+                If MsgBox(ella & combotipo.Text.ToString & " Se ingreso exitosamente" & vbCrLf _
                           & " Desea agregar otra compra?", MsgBoxStyle.YesNo, "Compra") = MsgBoxResult.Yes Then
                     mdiMain.llama = "compra"
                     Me.Close()

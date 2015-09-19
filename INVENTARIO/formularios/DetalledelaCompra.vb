@@ -60,7 +60,11 @@ Public Class DetalledelaCompra
             Me.texivauno.Text = dtfacturac.Rows(contador).Item(12)
             Me.textotal.Text = dtfacturac.Rows(contador).Item(10)
 
-
+            If dtfacturac.Rows(contador).Item(11).ToString = "Credito" Then
+                Me.botpagar.visible = True
+            Else
+                Me.botpagar.visible = False
+            End If
           
 
 
@@ -225,5 +229,25 @@ Public Class DetalledelaCompra
 
 
 
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles botpagar.Click
+        If MsgBox("Esta seguro de efectuar esta acción", MsgBoxStyle.YesNo, "Aviso") = MsgBoxResult.Yes Then
+            Try
+                Dim codigofactura As String = dtfacturac.Rows(contador).Item(0).ToString
+                Dim consulta As New clsProcesos
+
+                consulta.Consultar(" update facturacompra set formadepago = 'Contado' where codfacturac = " & codigofactura)
+                Me.botpagar.Visible = False
+                hacerconsulta()
+                cargarfacturac()
+                MsgBox("La deuda se cancelo efectivamente", MsgBoxStyle.Information, "Exito")
+               
+            Catch ex As Exception
+                MsgBox("Ocurrio un error razon: " & ex.Message, MsgBoxStyle.Critical, "EROR")
+            End Try
+
+        End If
+       
     End Sub
 End Class

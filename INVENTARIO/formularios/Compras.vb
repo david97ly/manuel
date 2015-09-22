@@ -238,7 +238,7 @@ Public Class compra
             Dim totalfactura As Double = 0.0
 
 
-            detallefacturacompra.Insertar(CInt(Me.codfacturac).ToString & "," & idproducto & "," & CDbl(Me.texcantidad.Text).ToString & ",0," & prereal & ",0," & ventatotal & ", 0 ," & CDbl(Me.texprecio.Text))
+            detallefacturacompra.Insertar(CInt(Me.codfacturac).ToString & ",'" & idproducto & "'," & CDbl(Me.texcantidad.Text).ToString & ",0," & prereal & ",0," & ventatotal & ", 0 ," & CDbl(Me.texprecio.Text))
 
             privar()
 
@@ -292,7 +292,7 @@ Public Class compra
             For i As Integer = 0 To dtdetallefacturacompra.Rows.Count - 1
 
                  If Me.combotipo.Text <> "Factura" Then
-                    dtproducto = tproductos.Consultar(" where codproducto = " + CInt(dtdetallefacturacompra.Rows(i).Item(2)).ToString)
+                    dtproducto = tproductos.Consultar(" where codproducto = '" + dtdetallefacturacompra.Rows(i).Item(2).ToString & "'")
 
                     sumas += Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(7)), 2)
 
@@ -306,7 +306,7 @@ Public Class compra
 
 
                 Else
-                    dtproducto = tproductos.Consultar(" where codproducto = " + CInt(dtdetallefacturacompra.Rows(i).Item(2)).ToString)
+                    dtproducto = tproductos.Consultar(" where codproducto = '" + dtdetallefacturacompra.Rows(i).Item(2).ToString & "'")
 
                     sumas += Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(7)), 2)
 

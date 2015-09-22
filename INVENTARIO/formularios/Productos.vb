@@ -272,7 +272,7 @@ Public Class Productos
                 frmv.texprecio.Text = dtrproducto1.Item(3)
                 frmv.textotalp.SelectAll()
                 frmv.idproducto = dtrproducto1.Item(0)
-                Me.Hide()
+                Me.Close()
             ElseIf donde = "kardex" Then
                 frmk.dtrproductos = dtrproducto1
                 frmk.texnombrep.Text = dtrproducto1.Item(1)

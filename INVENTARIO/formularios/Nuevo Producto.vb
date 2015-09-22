@@ -162,7 +162,7 @@ Public Class Nuevo_Producto
                     tproductos.Insertar("'" & idprod + "','" & nombre & "','" & descripcion & "'," & preciounit & "," & preciopublic & ",0," & existencias & "," & idcategoria & ",'" & unidmede & "',1")
                     MsgBox("El producto se ingreso exitozamente", MsgBoxStyle.Information, "Exito")
                 Else
-                    tproductos.Actualizar(dtrprodedit.Item(0) & "|'" & nombre.ToString & "'|'" & descripcion.ToString & "'|" & CShort(preciounit.ToString) & "|" & CShort(preciopublic.ToString) & "|0|" & CShort(existencias.ToString) & "|" & idcategoria.ToString & "|'" & unidmede.ToString & "'|1")
+                    tproductos.Actualizar("'" & dtrprodedit.Item(0) & "'|'" & nombre.ToString & "'|'" & descripcion.ToString & "'|" & CDbl(preciounit.ToString) & "|" & CDbl(preciopublic.ToString) & "|0|" & CDbl(existencias.ToString) & "|" & idcategoria.ToString & "|'" & unidmede.ToString & "'|1")
 
 
                     MsgBox("El producto se actualizo exitozamente", MsgBoxStyle.Information, "Exito")

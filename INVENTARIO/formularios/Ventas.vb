@@ -74,9 +74,6 @@ Public Class Ventas
     Dim tipo As Boolean = True
 
 
-    Private Sub Ventas_Deactivate(sender As Object, e As EventArgs) Handles Me.Deactivate
-        salirnada()
-    End Sub
 
     Private Sub salirnada()
         Dim sender As Object
@@ -95,9 +92,15 @@ Public Class Ventas
         End If
     End Sub
 
+    Private Sub Ventas_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If guardado = False Then
+            salirnada()
+        End If
+
+    End Sub
+
     Private Sub Ventas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.CenterToScreen()
-        Me.texcliente.Select()
+         Me.CenterToScreen()
         MdiParent = mdiMain
         Try
 
@@ -108,8 +111,8 @@ Public Class Ventas
     End Sub
 
     Private Sub cargarcp()
-        dtclientes11 = tclientes1.Consultar(" where codempresa = '" & mdiMain.codigoempresa.ToString & "'")
-        dtproductos1 = tproductos1.Consultar(" where codempresa = '" & mdiMain.codigoempresa.ToString & "'")
+        dtclientes11 = tclientes1.Consultar()
+        dtproductos1 = tproductos1.Consultar()
 
         Dim nfp1 As Short = dtclientes11.Rows.Count
         Dim nfp2 As Short = dtproductos1.Rows.Count
@@ -171,11 +174,13 @@ Public Class Ventas
 
 
 
-                        If Not Me.texcliente.Text.ToString = "Consumidor Final" Then
+                        If Not Me.texcliente.Text.ToString = CStr("Consumidor Final").ToString Then
                             cf.Insertar("'" & Me.texcliente.Text.Trim.ToString & "'")
                             dtcf = consultar.Consultar("SELECT  max(idclientescf) FROM clientescf")
                             ncf = CInt(dtcf.Rows(0).Item(0))
                             idcliente = ncf
+                        Else
+                            idcliente = CInt(5403)
                         End If
 
 
@@ -249,7 +254,7 @@ Public Class Ventas
 
             End If
 
-            tdetalleventa.Insertar(CInt(Me.codfactura).ToString & "," & idproducto & "," & CDbl(Me.texcantidad.Text).ToString & ",0," & prereal & ",0," & ventatotal & ", 0 ," & CDbl(Me.texprecio.Text))
+            tdetalleventa.Insertar(CInt(Me.codfactura).ToString & ",'" & idproducto & "'," & CDbl(Me.texcantidad.Text).ToString & ",0," & prereal & ",0," & ventatotal & ", 0 ," & CDbl(Me.texprecio.Text))
             privar()
 
             cargarfactura()
@@ -295,7 +300,7 @@ Public Class Ventas
             For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
 
                 If Me.combotipo.Text <> "Factura" Then
-                    dtproducto = tproductos.Consultar(" where codproducto = " + CInt(dtdetalleventa.Rows(i).Item(2)).ToString)
+                    dtproducto = tproductos.Consultar(" where codproducto = '" + dtdetalleventa.Rows(i).Item(2).ToString & "'")
 
                     sumas += Math.Round(CDbl(dtdetalleventa.Rows(i).Item(7)), 2)
 
@@ -309,7 +314,7 @@ Public Class Ventas
 
 
                 Else
-                    dtproducto = tproductos.Consultar(" where codproducto = " + CInt(dtdetalleventa.Rows(i).Item(2)).ToString)
+                    dtproducto = tproductos.Consultar(" where codproducto = '" + dtdetalleventa.Rows(i).Item(2).ToString & "'")
 
                     sumas += Math.Round(CDbl(dtdetalleventa.Rows(i).Item(7)), 2)
 
@@ -356,6 +361,8 @@ Public Class Ventas
         pjtAdus.Productos.donde = "ventas"
         pjtAdus.Productos.frmv = Me
         pjtAdus.Productos.Show()
+
+        
         Me.textotalp.Select()
     End Sub
 
@@ -952,11 +959,11 @@ Public Class Ventas
             Me.botguardar.Text = "Guardar"
 
 
-            If Me.combotipo.Text = "Factura" Then
-                imprimir()
-            Else
-                imprimecomprobante()
-            End If
+            'If Me.combotipo.Text = "Factura" Then
+            '    imprimir()
+            'Else
+            '    imprimecomprobante()
+            'End If
 
             'termina la tarea de imprimir
 

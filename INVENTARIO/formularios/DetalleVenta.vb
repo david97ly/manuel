@@ -28,10 +28,10 @@ Public Class DetalleVenta
     Private Sub hacerconsulta()
         Try
             If tipof = "todos" Then
-                dtfacturav = tfacturav.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+                dtfacturav = tfacturav.Consultar()
                 Me.max = dtfacturav.Rows.Count - 1
             Else
-                dtfacturav = tfacturav.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString + " and tipo = '" + tipof + "'")
+                dtfacturav = tfacturav.Consultar(" where  tipo = '" + tipof + "'")
                 Me.max = dtfacturav.Rows.Count - 1
             End If
         Catch ex As Exception
@@ -46,52 +46,51 @@ Public Class DetalleVenta
                 hacerconsulta()
             End If
 
-            If dtfacturav.Rows(contador).Item(15).ToString <> "valida" Then
-                Me.linea1.Visible = True
-                Me.linea2.Visible = True
-                Me.botimprimir.Visible = True
-                Me.checimprimir.Visible = False
-            Else
-                Me.linea1.Visible = False
-                Me.linea2.Visible = False
-                Me.botimprimir.Visible = False
-                Me.checimprimir.Visible = True
-            End If
+          
 
             If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
                 dtclientes = tfcf.Consultar(" where idclientescf = " & dtfacturav.Rows(contador).Item(3).ToString)
+                Me.gruregis.Visible = False
             Else
-                dtclientes = tclientes.Consultar(" where codcliente = '" + dtfacturav.Rows(contador).Item(3).ToString + "' and codempresa = '" + mdiMain.codigoempresa.ToString + "'")
+                dtclientes = tclientes.Consultar(" where codcliente = " + dtfacturav.Rows(contador).Item(3).ToString)
+                Me.gruregis.Visible = True
             End If
 
 
 
             If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
-                Me.lnomproveedor.Text = dtclientes.Rows(0).Item(1)
+                Me.texcliente.Text = dtclientes.Rows(0).Item(1)
             Else
                 Me.texnit.Text = dtclientes.Rows(0).Item(2).ToString
                 Me.texnrc.Text = dtclientes.Rows(0).Item(3).ToString
-                Me.lnomproveedor.Text = dtclientes.Rows(0).Item(1).ToString
-                Me.lbdireccion.Text = dtclientes.Rows(0).Item(5).ToString
-                Me.lgiro.Text = dtclientes.Rows(0).Item(4).ToString
+                Me.texcliente.Text = dtclientes.Rows(0).Item(1).ToString
+
             End If
 
 
+            Me.texnumfactura.Text = dtfacturav.Rows(contador).Item(1)
+
+            'Me.textiraje.Text = dtfacturav.Rows(contador).Item(14)
+
+            Me.texformadepago.Text = dtfacturav.Rows(contador).Item(11)
+
+            Me.textipo.Text = dtfacturav.Rows(contador).Item(2)
+
+            Me.texfecha.Text = dtfacturav.Rows(contador).Item(4)
 
 
-            Me.ltipodefactura.Text = dtfacturav.Rows(contador).Item(2)
+            Me.texsumas.Text = dtfacturav.Rows(contador).Item(5)
+            Me.texiva.Text = dtfacturav.Rows(contador).Item(7)
+
             Me.textotal.Text = dtfacturav.Rows(contador).Item(10)
-            Me.lfecha.Text = dtfacturav.Rows(contador).Item(5)
-            Me.lformadepago.Text = dtfacturav.Rows(contador).Item(14)
-            Me.texnumero.Text = dtfacturav.Rows(contador).Item(1)
-            Me.texsumas.Text = dtfacturav.Rows(contador).Item(6)
-            Me.texdescuento.Text = dtfacturav.Rows(contador).Item(7)
-            Me.texiva.Text = dtfacturav.Rows(contador).Item(8)
-            Me.texnosujeta.Text = dtfacturav.Rows(contador).Item(9)
-            Me.texfovial.Text = dtfacturav.Rows(contador).Item(10)
-            Me.texcotrans.Text = dtfacturav.Rows(contador).Item(11)
-            Me.textotal.Text = dtfacturav.Rows(contador).Item(13)
-            Me.texiva1.Text = dtfacturav.Rows(contador).Item(15)
+
+            If dtfacturav.Rows(contador).Item(11).ToString = "Credito" Then
+                Me.botpagar.Visible = True
+            Else
+                Me.botpagar.Visible = False
+            End If
+
+          
 
             Dim numletras1 As New NumeroLetras
             Dim nl As String
@@ -128,34 +127,34 @@ Public Class DetalleVenta
 
 
             If nf = 0 Then
-                Me.gridcompra.RowCount = 1
-                Me.gridcompra.Rows(0).Cells(0).Value = ""
-                Me.gridcompra.Rows(0).Cells(1).Value = ""
-                Me.gridcompra.Rows(0).Cells(2).Value = ""
-                Me.gridcompra.Rows(0).Cells(3).Value = ""
-                Me.gridcompra.Rows(0).Cells(4).Value = ""
-                Me.gridcompra.Rows(0).Cells(5).Value = ""
-                Me.gridcompra.Rows(0).Cells(6).Value = ""
+                Me.gridventa.RowCount = 1
+                Me.gridventa.Rows(0).Cells(0).Value = ""
+                Me.gridventa.Rows(0).Cells(1).Value = ""
+                Me.gridventa.Rows(0).Cells(2).Value = ""
+                Me.gridventa.Rows(0).Cells(3).Value = ""
+                Me.gridventa.Rows(0).Cells(4).Value = ""
+                Me.gridventa.Rows(0).Cells(5).Value = ""
+                Me.gridventa.Rows(0).Cells(6).Value = ""
             Else
-                Me.gridcompra.RowCount = nf
+                Me.gridventa.RowCount = nf
             End If
 
             For i As Integer = 0 To dtdetallefacturav.Rows.Count - 1
-                dtproductos = tproductos.Consultar(" where codproducto = " + CInt(dtdetallefacturav.Rows(i).Item(2)).ToString)
-                Me.gridcompra.Rows(i).Cells(0).Value = dtproductos.Rows(0).Item(0)
-                Me.gridcompra.Rows(i).Cells(1).Value = dtproductos.Rows(0).Item(1)
-                Me.gridcompra.Rows(i).Cells(2).Value = dtproductos.Rows(0).Item(2)
-                Me.gridcompra.Rows(i).Cells(3).Value = dtdetallefacturav.Rows(i).Item(3)
-                Me.gridcompra.Rows(i).Cells(4).Value = dtdetallefacturav.Rows(i).Item(5)
-                Me.gridcompra.Rows(i).Cells(5).Value = dtdetallefacturav.Rows(i).Item(6)
-                Me.gridcompra.Rows(i).Cells(6).Value = dtdetallefacturav.Rows(i).Item(8)
+                dtproductos = tproductos.Consultar(" where codproducto = '" + dtdetallefacturav.Rows(i).Item(2).ToString & "'")
+                Me.gridventa.Rows(i).Cells(0).Value = dtproductos.Rows(0).Item(0) 'codigo del producto
+                Me.gridventa.Rows(i).Cells(2).Value = dtproductos.Rows(0).Item(1) 'nombre del producto
+                Me.gridventa.Rows(i).Cells(1).Value = dtdetallefacturav.Rows(i).Item(3) ' cantidad
+                Me.gridventa.Rows(i).Cells(3).Value = dtdetallefacturav.Rows(i).Item(9) ' precio
+                Me.gridventa.Rows(i).Cells(4).Value = "0"
+                Me.gridventa.Rows(i).Cells(5).Value = "0"
+                Me.gridventa.Rows(i).Cells(6).Value = dtdetallefacturav.Rows(i).Item(7)
             Next
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try
 
     End Sub
-    Private Sub botderecha_Click(sender As Object, e As EventArgs) Handles botderecha.Click
+    Private Sub botderecha_Click(sender As Object, e As EventArgs) Handles botdere.Click
         Try
             contador += 1
             If contador > max Then
@@ -171,7 +170,7 @@ Public Class DetalleVenta
 
     End Sub
 
-    Private Sub botizquierda_Click(sender As Object, e As EventArgs) Handles botizquierda.Click
+    Private Sub botizquierda_Click(sender As Object, e As EventArgs) Handles botiz.Click
         Try
             contador -= 1
             If contador < 0 Then
@@ -188,11 +187,11 @@ Public Class DetalleVenta
     End Sub
 
 
-    Private Sub botsalir_Click(sender As Object, e As EventArgs) Handles botsalir.Click
+    Private Sub botsalir_Click(sender As Object, e As EventArgs)
         Me.Close()
     End Sub
 
-    Private Sub boteditar_Click(sender As Object, e As EventArgs) Handles boteditar.Click
+    Private Sub boteditar_Click(sender As Object, e As EventArgs)
         Try
             Dim ad As New AnularDocumento
             ad.forma = Me
@@ -264,6 +263,7 @@ Public Class DetalleVenta
         End Try
 
     End Sub
+
     Public Sub duplicardocumento()
         Try
             'Insertando la venta nueva
@@ -575,7 +575,7 @@ Public Class DetalleVenta
         'para forma de pago
         yPos += 30
         xPos += 75
-        e.Graphics.DrawString(Me.lformadepago.Text.ToString, prFont, Brushes.Black, xPos, yPos)
+        e.Graphics.DrawString(Me.texformadepago.Text.ToString, prFont, Brushes.Black, xPos, yPos)
 
 
         yPos += 42
@@ -741,7 +741,7 @@ Public Class DetalleVenta
 
 
 
-    Private Sub botimprimir_Click(sender As Object, e As EventArgs) Handles botimprimir.Click
+    Private Sub botimprimir_Click(sender As Object, e As EventArgs)
         If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
             imprimir1()
         Else
@@ -750,15 +750,7 @@ Public Class DetalleVenta
     End Sub
 
 
-    Private Sub checimprimir_CheckedChanged(sender As Object, e As EventArgs) Handles checimprimir.CheckedChanged
-        If Me.botimprimir2.Visible = True Then
-            Me.botimprimir2.Visible = False
-        Else
-            Me.botimprimir2.Visible = True
-        End If
-    End Sub
-
-    Private Sub botimprimir2_Click(sender As Object, e As EventArgs) Handles botimprimir2.Click
+    Private Sub botimprimir2_Click(sender As Object, e As EventArgs)
         If MsgBox("Esta seguro que desea imprimir", MsgBoxStyle.YesNo, "Aviso") = MsgBoxResult.Yes Then
             If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
                 imprimir1()
@@ -768,4 +760,6 @@ Public Class DetalleVenta
         End If
 
     End Sub
+
+  
 End Class

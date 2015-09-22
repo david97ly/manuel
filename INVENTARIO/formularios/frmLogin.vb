@@ -38,8 +38,8 @@ Public Class frmLogin
     End Sub
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
-        'Me.texidusuario.Text = "admin"
-        'Me.texcontraseña.Text = "admin"
+        Me.texidusuario.Text = "admin"
+        Me.texcontraseña.Text = "admin"
     End Sub
   
     Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click

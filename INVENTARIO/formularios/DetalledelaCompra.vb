@@ -119,7 +119,7 @@ Public Class DetalledelaCompra
             End If
 
             For i As Integer = 0 To dtdetallefacturac.Rows.Count - 1
-                dtproductos = tproductos.Consultar(" where codproducto = " + CInt(dtdetallefacturac.Rows(i).Item(2)).ToString)
+                dtproductos = tproductos.Consultar(" where codproducto = '" + dtdetallefacturac.Rows(i).Item(2).ToString & "'")
                 Me.gridcompra.Rows(i).Cells(0).Value = dtproductos.Rows(0).Item(0)
                 Me.gridcompra.Rows(i).Cells(1).Value = dtdetallefacturac.Rows(i).Item(3)
                 Me.gridcompra.Rows(i).Cells(2).Value = dtproductos.Rows(0).Item(1)

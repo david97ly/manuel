@@ -259,14 +259,19 @@ Public Class VentasRealizadas
 
 
     Private Sub botdetalle_Click_1(sender As Object, e As EventArgs) Handles botdetalle.Click
-        Dim id As Short = Me.gridfacturaventas.CurrentCell.RowIndex
-        DetalleVenta.contador = id
-        DetalleVenta.dtfacturav = Me.dtfacturaventa
-        DetalleVenta.dtdetallefacturav = Me.dtdetallefacturaventa
-        DetalleVenta.dtclientes = Me.dtclientes
-        DetalleVenta.tipof = Me.tipof
-        DetalleVenta.frmvr = Me
-        DetalleVenta.Show()
+        Try
+            Dim id As Short = Me.gridfacturaventas.CurrentCell.RowIndex
+            DetalleVenta.contador = id
+            DetalleVenta.dtfacturav = Me.dtfacturaventa
+            DetalleVenta.dtdetallefacturav = Me.dtdetallefacturaventa
+            DetalleVenta.dtclientes = Me.dtclientes
+            DetalleVenta.tipof = Me.tipof
+            DetalleVenta.frmvr = Me
+            DetalleVenta.Show()
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
   

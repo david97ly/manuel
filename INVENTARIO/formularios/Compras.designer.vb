@@ -62,7 +62,7 @@ Partial Class compra
         Me.text1retencion = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.botagregar = New System.Windows.Forms.Button()
-        Me.check1 = New System.Windows.Forms.CheckBox()
+        Me.checuno = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.boteliminar = New System.Windows.Forms.Button()
         Me.botguardar = New System.Windows.Forms.Button()
@@ -473,16 +473,16 @@ Partial Class compra
         Me.botagregar.Text = "Agregar"
         Me.botagregar.UseVisualStyleBackColor = True
         '
-        'check1
+        'checuno
         '
-        Me.check1.AutoSize = True
-        Me.check1.BackColor = System.Drawing.Color.Transparent
-        Me.check1.Location = New System.Drawing.Point(625, 84)
-        Me.check1.Name = "check1"
-        Me.check1.Size = New System.Drawing.Size(54, 20)
-        Me.check1.TabIndex = 101
-        Me.check1.Text = "(1%)"
-        Me.check1.UseVisualStyleBackColor = False
+        Me.checuno.AutoSize = True
+        Me.checuno.BackColor = System.Drawing.Color.Transparent
+        Me.checuno.Location = New System.Drawing.Point(625, 84)
+        Me.checuno.Name = "checuno"
+        Me.checuno.Size = New System.Drawing.Size(54, 20)
+        Me.checuno.TabIndex = 101
+        Me.checuno.Text = "(1%)"
+        Me.checuno.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
@@ -528,7 +528,7 @@ Partial Class compra
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.gridcompra.DefaultCellStyle = DataGridViewCellStyle1
-        Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer), CType(CType(170, Byte), Integer))
+        Me.gridcompra.GridColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.gridcompra.Location = New System.Drawing.Point(14, 159)
         Me.gridcompra.Name = "gridcompra"
         Me.gridcompra.ReadOnly = True
@@ -588,7 +588,7 @@ Partial Class compra
         Me.ClientSize = New System.Drawing.Size(907, 574)
         Me.Controls.Add(Me.gridcompra)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.check1)
+        Me.Controls.Add(Me.checuno)
         Me.Controls.Add(Me.botagregar)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.texivauno)
@@ -679,7 +679,7 @@ Partial Class compra
     Friend WithEvents text1retencion As System.Windows.Forms.Label
     Private WithEvents Highlighter1 As DevComponents.DotNetBar.Validator.Highlighter
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents check1 As System.Windows.Forms.CheckBox
+    Friend WithEvents checuno As System.Windows.Forms.CheckBox
     Friend WithEvents botagregar As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents boteliminar As System.Windows.Forms.Button

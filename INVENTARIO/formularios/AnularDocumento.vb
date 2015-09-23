@@ -14,7 +14,11 @@
     End Sub
 
     Private Sub ButtonX3_Click(sender As Object, e As EventArgs) Handles ButtonX3.Click
-        forma.anularmanual()
+
         Me.Close()
+    End Sub
+
+    Private Sub AnularDocumento_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

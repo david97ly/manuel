@@ -59,6 +59,8 @@ Public Class VentasRealizadas
 
             For i As Integer = 0 To dtfacturaventa.Rows.Count - 1
 
+
+
                 Me.gridfacturaventas.Rows(i).Cells(0).Value = dtfacturaventa.Rows(i).Item(1).ToString 'para el codigo de la factura
 
                 If dtfacturaventa.Rows(i).Item(2).ToString = "Factura" Then
@@ -79,8 +81,8 @@ Public Class VentasRealizadas
                     End If
 
                 End If
+                Me.gridfacturaventas.Rows(0).Cells(0).Selected = True
 
-               
 
                 Me.gridfacturaventas.Rows(i).Cells(1).Value = dtclientes.Rows(0).Item(1) ' para el nombre de la factura
                 Me.gridfacturaventas.Rows(i).Cells(2).Value = dtfacturaventa.Rows(i).Item(2).ToString ' para el tipo de la factura
@@ -88,6 +90,10 @@ Public Class VentasRealizadas
                 Me.gridfacturaventas.Rows(i).Cells(3).Value = s.Day.ToString + "/" + s.Month.ToString + "/" + s.Year.ToString 'para la fecha
                 Me.gridfacturaventas.Rows(i).Cells(4).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(10)), 2) ' para el total
 
+                If dtfacturaventa.Rows(i).Item(11).ToString = "Credito" Then
+                    Me.gridfacturaventas.Rows(i).Cells(4).Style.BackColor = Color.Orange
+
+                End If
             Next
         Catch ex As Exception
 

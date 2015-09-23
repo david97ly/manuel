@@ -57,7 +57,7 @@ Public Class VentasCompras
         texsumacomprasfecha.Text = "$ " & compras1
 
         texventas2.Text = "$ " & ventascontado
-        texventascredito.Text = "$ " & ventascredito
+        texventascreditofecha.Text = "$ " & ventascredito
         texsumaventasfecha.Text = "$ " & ventas1
 
 

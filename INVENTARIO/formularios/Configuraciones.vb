@@ -12,88 +12,30 @@ Public Class Configuraciones
         Try
             dttiraje = tiraje.Consultar()
             If dttiraje.Rows.Count <> 0 Then
-                Dim desdef As String = dttiraje.Rows(0).Item(2).ToString
+                
 
-                Dim hastaf As String = dttiraje.Rows(0).Item(3).ToString
-
-                Dim actualf As String = dttiraje.Rows(0).Item(4).ToString
-
-                Dim numd As String = ""
-                Dim numh As String = ""
-
-                Dim rangof As Integer = 0
-
-                For i As Integer = 0 To desdef.Length - 1
-
-                    If i > 7 Then
-                        numd += desdef(i)
-                    End If
-
-                Next
-
-
-                For i As Integer = 0 To hastaf.Length - 1
-
-                    If i > 7 Then
-                        numh += hastaf(i)
-                    End If
-
-                Next
-
-                rangof = CInt(numh) - CInt(numd)
-
-
-                Dim resultado1 As Integer = CInt(actualf) * 100
-                resultado1 /= rangof
+                Dim resultado1 As Integer = CInt(dttiraje.Rows(0).Item(4)) * 100
+                resultado1 /= CInt(dttiraje.Rows(0).Item(3))
 
                 Me.progresf.Value = resultado1
 
-                Me.texdedef.Text = dttiraje.Rows(0).Item(2).ToString
-                Me.texhastaf.Text = dttiraje.Rows(0).Item(3).ToString
+                Me.texdedef.Text = dttiraje.Rows(0).Item(1) + dttiraje.Rows(0).Item(2).ToString
+                Me.texhastaf.Text = dttiraje.Rows(0).Item(1) + dttiraje.Rows(0).Item(3).ToString
                 Me.texactualf.Text = dttiraje.Rows(0).Item(4).ToString
 
 
                 ''aqui comienza el calculo para las de comprobantes
 
 
-                Dim desdec As String = dttiraje.Rows(0).Item(6).ToString
 
-                Dim hastac As String = dttiraje.Rows(0).Item(7).ToString
-
-                Dim actualc As String = dttiraje.Rows(0).Item(8).ToString
-
-                Dim numdc As String = ""
-                Dim numhc As String = ""
-
-                Dim rangoc As Integer = 0
-
-                For i As Integer = 0 To desdec.Length - 1
-
-                    If i > 7 Then
-                        numdc += desdec(i)
-                    End If
-
-                Next
-
-
-                For i As Integer = 0 To hastac.Length - 1
-
-                    If i > 7 Then
-                        numhc += hastac(i)
-                    End If
-
-                Next
-
-                rangoc = CInt(numhc) - CInt(numdc)
-
-
-                Dim resultado2 As Integer = CInt(actualc) * 100
-                resultado2 /= rangoc
+               
+                Dim resultado2 As Integer = CInt(dttiraje.Rows(0).Item(8)) * 100
+                resultado2 /= CInt(dttiraje.Rows(0).Item(7))
 
                 Me.progresccf.Value = resultado2
 
-                Me.texdesdeccf.Text = dttiraje.Rows(0).Item(6).ToString
-                Me.texhastaccf.Text = dttiraje.Rows(0).Item(7).ToString
+                Me.texdesdeccf.Text = dttiraje.Rows(0).Item(5) + dttiraje.Rows(0).Item(6).ToString
+                Me.texhastaccf.Text = dttiraje.Rows(0).Item(5) + dttiraje.Rows(0).Item(7).ToString
                 Me.texactualccf.Text = dttiraje.Rows(0).Item(8).ToString
             End If
 
@@ -105,50 +47,99 @@ Public Class Configuraciones
     End Sub
 
     Private Sub bothechof_Click(sender As Object, e As EventArgs) Handles bothechof.Click
-        Me.Width = 594
-        Dim str As String = ""
-        Dim str1 As String = CStr(Me.texndesdef.Text.Trim.ToString)
-        Dim num As String = ""
 
-        For i As Integer = 0 To str1.Length - 1
+        Dim tirajedesde As String = Me.texndesdef.Text.Trim.ToString
+        Dim tirajehasta As String = Me.texnhastaf.Text.Trim.ToString
 
-            If i > 7 Then
-                num += str1(i)
+        Dim Ndesdef As String = ""
+        Dim Nhastaf As String = ""
+        Dim tirajefactura As String = ""
+        Dim esnumerof As Boolean = True
+        Dim esnumeroc As Boolean = True
+
+        tirajedesde = StrReverse(tirajedesde)
+        tirajehasta = StrReverse(tirajehasta)
+
+        For i As Integer = 0 To tirajedesde.Length - 1
+
+            If IsNumeric(tirajedesde(i)) And esnumerof Then
+                Ndesdef += tirajedesde(i).ToString
             Else
-                str += str1(i)
+                tirajefactura += tirajedesde(i).ToString
+                esnumerof = False
             End If
 
         Next
 
-        Dim num1 As Integer = CInt(num)
-        num1 -= 1
+
+        For i As Integer = 0 To tirajehasta.Length - 1
+
+            If IsNumeric(tirajehasta(i)) And esnumeroc Then
+                Nhastaf += tirajehasta(i).ToString
+            Else
+                esnumeroc = False
+            End If
+
+        Next
+
+        Ndesdef = StrReverse(Ndesdef)
+        Nhastaf = StrReverse(Nhastaf)
+        tirajefactura = StrReverse(tirajefactura)
 
 
-        tirajeeliminar.Consultar(" Update tirajes set tirajefs = '" & str & "', tirajefd ='" & Me.texndesdef.Text.Trim.ToString & "',tirajefh ='" & Me.texnhastaf.Text.Trim.ToString & "', tirajefa ='" & num1 & "' where idtiraje =1")
+
+        Me.Width = 594
+     
+
+        tirajeeliminar.Consultar(" Update tirajes set tirajefs = '" & tirajefactura & "', tirajefd ='" & Ndesdef & "',tirajefh ='" & Nhastaf & "', tirajefa ='" & CInt(Ndesdef).ToString & "' where idtiraje =1")
     End Sub
 
     Private Sub bothechoccf_Click(sender As Object, e As EventArgs) Handles bothechoccf.Click
-        Me.Width = 594
+        Dim tirajedesde As String = Me.texndesdeccf.Text.Trim.ToString
+        Dim tirajehasta As String = Me.texnhastaccf.Text.Trim.ToString
 
-        Dim str As String = ""
-        Dim str1 As String = CStr ( Me.texndesdeccf .Text.Trim .ToString)
-        Dim num As String = ""
+        Dim Ndesdef As String = ""
+        Dim Nhastaf As String = ""
+        Dim tirajefactura As String = ""
+        Dim esnumerof As Boolean = True
+        Dim esnumeroc As Boolean = True
 
-        For i As Integer = 0 To str1.Length - 1
+        tirajedesde = StrReverse(tirajedesde)
+        tirajehasta = StrReverse(tirajehasta)
 
-            If i > 7 Then
-                num += str1(i)
+        For i As Integer = 0 To tirajedesde.Length - 1
+
+            If IsNumeric(tirajedesde(i)) And esnumerof Then
+                Ndesdef += tirajedesde(i).ToString
             Else
-                str += str1(i)
+                tirajefactura += tirajedesde(i).ToString
+                esnumerof = False
             End If
 
         Next
 
-        Dim num1 As Integer = CInt(num)
-        num1 -= 1
+
+        For i As Integer = 0 To tirajehasta.Length - 1
+
+            If IsNumeric(tirajehasta(i)) And esnumeroc Then
+                Nhastaf += tirajehasta(i).ToString
+            Else
+                esnumeroc = False
+            End If
+
+        Next
+
+        Ndesdef = StrReverse(Ndesdef)
+        Nhastaf = StrReverse(Nhastaf)
+        tirajefactura = StrReverse(tirajefactura)
 
 
-        tirajeeliminar.Consultar(" Update tirajes set tirajecs = ' " & str & "',tirajecd ='" & Me.texndesdeccf.Text.Trim.ToString & "',tirajech = '" & Me.texnhastaccf.Text.Trim.ToString & "', tirajeca = '" & num1 & "' where idtiraje = 1")
+
+        Me.Width = 594
+
+
+
+        tirajeeliminar.Consultar(" Update tirajes set tirajecs = ' " & tirajefactura & "',tirajecd ='" & Ndesdef & "',tirajech = '" & Nhastaf & "', tirajeca = '" & (CInt(Ndesdef)).ToString & "' where idtiraje = 1")
     End Sub
 
     Private Sub botnfacturas_Click(sender As Object, e As EventArgs) Handles botnfacturas.Click

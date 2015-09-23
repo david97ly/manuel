@@ -124,7 +124,7 @@ Public Class compra
             Me.textiraje.Text = dtfacturacompra.Rows(0).Item(14)
             Me.DateTimePicker1.Value = dtfacturacompra.Rows(0).Item(4).ToString
             If Me.dtfacturacompra.Rows(0).Item(11).ToString <> "0" Then
-                Me.check1.Checked = True
+                Me.checuno.Checked = True
             End If
             Me.primeraf = False
 
@@ -159,7 +159,7 @@ Public Class compra
 
     End Sub
 
-   
+
     Private Sub texnombrep_Click(sender As Object, e As EventArgs) Handles texnombrep.Click
         Try
             pjtAdus.Productos.donde = "compras"
@@ -177,7 +177,7 @@ Public Class compra
         Return True
     End Function
 
-   
+
     Private Sub insertar()
         Try
             If validar() Then
@@ -225,7 +225,7 @@ Public Class compra
 
     End Sub
 
-  
+
 
 
 
@@ -233,7 +233,7 @@ Public Class compra
         Try
 
 
-          Dim prereal As Double
+            Dim prereal As Double
             Dim ventatotal As Double = CDbl(Me.textotalp.Text.ToString)
             Dim totalfactura As Double = 0.0
 
@@ -252,7 +252,7 @@ Public Class compra
     Dim sumaf, sumac As Double
     Private Sub cargarfactura()
         Try
-           
+
             cantidadproducto = 0
             totalproducto = 0
             subtotal1 = 0
@@ -268,7 +268,7 @@ Public Class compra
             Me.textotal.Text = "0"
             Me.texivauno.Text = "0"
 
-          
+
 
             dtdetallefacturacompra = detallefacturacompra.Consultar(" where codfacturac = '" + codfacturac.ToString + "'")
             Dim nf As Short
@@ -291,7 +291,7 @@ Public Class compra
 
             For i As Integer = 0 To dtdetallefacturacompra.Rows.Count - 1
 
-                 If Me.combotipo.Text <> "Factura" Then
+                If Me.combotipo.Text <> "Factura" Then
                     dtproducto = tproductos.Consultar(" where codproducto = '" + dtdetallefacturacompra.Rows(i).Item(2).ToString & "'")
 
                     sumas += Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(7)), 2)
@@ -320,7 +320,7 @@ Public Class compra
 
 
                 End If
-            
+
 
 
             Next
@@ -333,7 +333,7 @@ Public Class compra
 
                 Me.texiva.Text = iva
 
-                If check1.Checked Then
+                If checuno.Checked Then
                     uno = Math.Round((sumas * 0.01), 2)
                     Me.textotal.Text = CDbl(sumas + iva + uno)
                     Me.texivauno.Text = uno
@@ -372,15 +372,15 @@ Public Class compra
         End If
     End Function
 
-  
+
 
     Private Function combotipo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles combotipo.KeyPress
-      
+
         Return False
 
     End Function
 
-  
+
 
     Private Sub combotipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles combotipo.SelectedIndexChanged
         tip = True
@@ -464,7 +464,7 @@ Public Class compra
 
     Private Sub botagregar_Click_1(sender As Object, e As EventArgs) Handles botagregar.Click
         If correcto() <> False Then
-         
+
             Try
                 If primeraf = False Then
                     Dim can As Double
@@ -473,16 +473,16 @@ Public Class compra
 
                     For i As Integer = 0 To dtdetallefacturacompra.Rows.Count - 1
                         If idproducto.ToString = dtdetallefacturacompra.Rows(i).Item(2).ToString Then
-                       
-                                can = Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
-                                tl = Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(7)) + CDbl(Me.textotalp.Text.Trim), 2)
+
+                            can = Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
+                            tl = Math.Round(CDbl(dtdetallefacturacompra.Rows(i).Item(7)) + CDbl(Me.textotalp.Text.Trim), 2)
 
 
-                                consultar.Consultar("update detallecompra set total = " & tl & ", cantidadunit = " & can.ToString & " where codfacturac = " & codfacturac.ToString & " and coddetallefacturac = " & dtdetallefacturacompra.Rows(i).Item(0).ToString)
+                            consultar.Consultar("update detallecompra set total = " & tl & ", cantidadunit = " & can.ToString & " where codfacturac = " & codfacturac.ToString & " and coddetallefacturac = " & dtdetallefacturacompra.Rows(i).Item(0).ToString)
 
-                                f = True
-                                cargarfactura()
-                            End If
+                            f = True
+                            cargarfactura()
+                        End If
                     Next
                     If f = False Then
                         insertar()
@@ -494,7 +494,7 @@ Public Class compra
                 Dim num As Double = CDbl(Me.textotal.Text)
                 convertirnumeroletras(num)
 
-                
+
 
 
             Catch ex As Exception
@@ -553,7 +553,7 @@ Public Class compra
                 'facturacompras.Insertar("'" & Me.texnumfact.Text.ToString.Trim & "','" & Me.combotipo.Text.ToString & "','" & idproveedor & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & Me.coboformadepago.Text.ToString & "',0,'valida','" & Me.textiraje.Text.ToString & "'")
 
 
-                If Me.check1.Checked Then
+                If Me.checuno.Checked Then
                     consultar.Consultar(" update facturacompra set numfacturac = '" & Me.texnumfact.Text.ToString.Trim & "', tipo = '" & Me.combotipo.Text.ToString & "', codproveedor = '" & idproveedor & "', fecha = '" & f & "', formadepago = '" & Me.coboformadepago.Text.ToString & "', tiraje = '" & Me.textiraje.Text.ToString & "', " & "sumas = " & Me.texsumas.Text.Trim.ToString & ", iva = " & Me.texiva.Text.Trim.ToString & ", total = " & Me.textotal.Text.Trim.ToString & ", unoretencion = " & Me.texivauno.Text.Trim.ToString & " where codfacturac = " & codfacturac)
                 Else
                     consultar.Consultar(" update facturacompra set numfacturac = '" & Me.texnumfact.Text.ToString.Trim & "', tipo = '" & Me.combotipo.Text.ToString & "', codproveedor = '" & idproveedor & "', fecha = '" & f & "', formadepago = '" & Me.coboformadepago.Text.ToString & "', tiraje = '" & Me.textiraje.Text.ToString & "', " & " sumas = " & Me.texsumas.Text.Trim.ToString & ", iva = " & Me.texiva.Text.Trim.ToString & ", total = " & Me.textotal.Text.Trim.ToString & ",  unoretencion = 0 where codfacturac = " & codfacturac)

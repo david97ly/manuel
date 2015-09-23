@@ -73,29 +73,21 @@ Public Class Ventas
 
     Dim tipo As Boolean = True
 
-
-
-    Private Sub salirnada()
-        Dim sender As Object
-        Dim e As EventArgs
-        If agregarv = True And guardado = False Then
-            If MsgBox("No a guardado los cambios desea guardar y salir", MsgBoxStyle.YesNo, "Aviso") = MsgBoxResult.Yes Then
-                Me.botguardar_Click(sender, e)
-                mdiMain.teclas = False
-            Else
-                Me.Close()
-                mdiMain.teclas = False
-            End If
-
-        Else
-            Me.Close()
-        End If
-    End Sub
+    Public estado As String = "insertando"
+    Public guardar As Boolean = False
+   
 
     Private Sub Ventas_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        If guardado = False Then
-            salirnada()
+        If estado = "editando" Then
+            If guardar = False Then
+                If MsgBox("Desea guardar el documento", MsgBoxStyle.YesNo, "aviso") = MsgBoxResult.Yes Then
+                    botguardar_Click(sender, e)
+                End If
+            End If
+
+            mdiMain.teclas = False
         End If
+
 
     End Sub
 
@@ -103,7 +95,9 @@ Public Class Ventas
          Me.CenterToScreen()
         MdiParent = mdiMain
         Try
-
+            If Me.donde <> "here" Then
+                cargardatos()
+            End If
         Catch ex As Exception
             MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente razon: " & ex.Message, MsgBoxStyle.OkOnly, "Avise")
         End Try
@@ -121,21 +115,38 @@ Public Class Ventas
 
     Private Sub cargardatos()
         Try
+            dtfacturaventas = tventas.Consultar(" where codfacturav = " & codfactura)
+            dtclientes = tclientes1.Consultar(" where codcliente = " & dtfacturaventas.Rows(0).Item(3))
+            Me.idcliente = dtclientes.Rows(0).Item(0)
             Me.texcliente.Text = dtclientes.Rows(0).Item(1)
-            Me.combotipo.Text = dtfacturaventas.Rows(contador).Item(11)
-            Me.comboformapago.Text = dtfacturaventas.Rows(contador).Item(12)
-            Me.texnumfact.Text = dtfacturaventas.Rows(contador).Item(1)
-            Me.DateTimePicker1.Value = dtfacturaventas.Rows(contador).Item(4).ToString
-            Me.codfactura = dtfacturaventas.Rows(contador).Item(0)
-            Dim num As Double = CDbl(dtfacturaventas.Rows(contador).Item(10))
+            Me.combotipo.Text = dtfacturaventas.Rows(0).Item(2)
+            Me.comboformapago.Text = dtfacturaventas.Rows(0).Item(11)
+            Me.texnumfact.Text = dtfacturaventas.Rows(0).Item(1)
+            Me.textiraje.Text = dtfacturaventas.Rows(0).Item(14)
+            Me.DateTimePicker1.Value = dtfacturaventas.Rows(0).Item(4).ToString
+          
+            Me.primeraf = False
+
+            Dim num As Double = CDbl(dtfacturaventas.Rows(0).Item(10))
             convertiraletras(num)
             cargarfactura()
-        Catch ex As Exception
 
+            'Cuando todo ha salido bien hace los cargos a las existencias
+            Dim c As Double = 0
+            For i As Integer = 0 To dtdetallefacturaventas.Rows.Count - 1
+                dtproducto = tproductos.Consultar(" where codproducto = '" + dtdetallefacturaventas.Rows(i).Item(2).ToString + "'")
+                c = CDbl(CDbl(dtproducto.Rows(0).Item(6)) - dtdetallefacturaventas.Rows(i).Item(3))
+                consultar.Consultar(" update productos set existencias = " + c.ToString + " where codproducto = '" + dtdetallefacturaventas.Rows(i).Item(2).ToString + "'")
+            Next
+
+        Catch ex As Exception
+            MsgBox("Ocurrio un error asegurese de haber llenado todos los campo correctamente", MsgBoxStyle.OkOnly, "Avise")
         End Try
 
     End Sub
 
+
+  
 
     Private Sub texnombrep_Click(sender As Object, e As EventArgs)
         Try
@@ -210,7 +221,8 @@ Public Class Ventas
                  
                 End If
 
-                tventas.Insertar("'" & Me.texnumfact.Text.ToString.Trim & "','" & Me.combotipo.Text.ToString & "','" & idcliente & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & Me.comboformapago.Text.ToString & "','valida','" & Me.textiraje.Text.ToString & "'")
+                'tventas.Insertar("'" & Me.texnumfact.Text.ToString.Trim & "','" & Me.combotipo.Text.ToString & "','" & idcliente & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & Me.comboformapago.Text.ToString & "','valida','" & Me.textiraje.Text.ToString & "'")
+                tventas.Insertar("'" & 0 & "','" & 0 & "','" & 0 & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & 0 & "','valida','" & 0 & "'")
                 dtcodfactura = consultar.Consultar("SELECT  Max(codfacturav) FROM facturaventa")
                 codfactura = dtcodfactura.Rows(0).Item(0)
                 insertardetalle()
@@ -446,7 +458,7 @@ Public Class Ventas
             If dtcodf.Rows(0).Item(0).ToString = "" Then
                 Me.texnumfact.Text = "1"
             Else
-                Me.texnumfact.Text = CInt(dtcodf.Rows(0).Item(0) + 1).ToString
+                Me.texnumfact.Text = CInt(dtcodf.Rows(0).Item(0)).ToString
             End If
 
         Catch ex As Exception
@@ -945,7 +957,18 @@ Public Class Ventas
 
 
 
-            MsgBox(imprimir2, MsgBoxStyle.Information)
+            'tventas.Insertar("'" & Me.texnumfact.Text.ToString.Trim & "','" & Me.combotipo.Text.ToString & "','" & idcliente & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & Me.comboformapago.Text.ToString & "','valida','" & Me.textiraje.Text.ToString & "'")
+
+            
+            Dim d, m, a, f As String
+            d = Me.DateTimePicker1.Value.Day
+            m = Me.DateTimePicker1.Value.Month
+            a = Me.DateTimePicker1.Value.Year
+            f = a + "-" + m + "-" + d
+
+
+            consultar.Consultar(" update facturaventa set numfacturav = '" & Me.texnumfact.Text.ToString.Trim & "', tipo = '" & Me.combotipo.Text.ToString & "', codcliente = '" & idcliente & "', fecha = '" & f & "', formadepago = '" & Me.comboformapago.Text.ToString & "', tiraje = '" & Me.textiraje.Text.ToString & "', " & " sumas = " & Me.texsumas.Text.Trim.ToString & ", iva = " & Me.texiva.Text.Trim.ToString & ", total = " & Me.textotal.Text.Trim.ToString & " where codfacturav = " & codfactura)
+
 
             Dim c As Double
             For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
@@ -954,16 +977,19 @@ Public Class Ventas
                 consultar.Consultar(" update productos set existencias = " & c.ToString & " where codproducto = '" & dtdetalleventa.Rows(i).Item(2).ToString & "'")
             Next
 
-            consultar.Consultar(" update facturaventa set sumas = " & Me.sumas & ", total =  " & Me.sumas & " where codfacturav = " & codfactura)
-
+            
             Me.botguardar.Text = "Guardar"
 
 
-            'If Me.combotipo.Text = "Factura" Then
-            '    imprimir()
-            'Else
-            '    imprimecomprobante()
-            'End If
+
+
+            If Me.combotipo.Text = "Factura" Then
+                'imprimir()
+                consultar.Consultar(" update tirajes set tirajefa = " & (CShort(Me.texnumfact.Text.Trim) + 1))
+            Else
+                'imprimecomprobante()
+                consultar.Consultar(" update tirajes set tirajeca = " & (CShort(Me.texnumfact.Text.Trim) + 1))
+            End If
 
             'termina la tarea de imprimir
 
@@ -975,7 +1001,7 @@ Public Class Ventas
             End If
 
 
-            If MsgBox(ella & combotipo.Text & " se guardo exitozamente!!" & vbCrLf _
+            If MsgBox(ella & combotipo.Text & " se guardo exitosamente!!" & vbCrLf _
                       & "Desea ingresar otra venta", MsgBoxStyle.YesNo, "Compra") = MsgBoxResult.Yes Then
                 mdiMain.llama = "venta"
                 Me.Close()
@@ -1180,9 +1206,7 @@ Public Class Ventas
         Me.lson.Text = nl
     End Sub
 
-    Private Sub botsalir_Click_1(sender As Object, e As EventArgs)
-        salirnada()
-    End Sub
+   
 
     Private Sub textotalp_KeyUp(sender As Object, e As KeyEventArgs) Handles textotalp.KeyUp
         Try

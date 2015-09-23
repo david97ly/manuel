@@ -295,7 +295,7 @@ Partial Class VentasRealizadas
         '
         'nombreprob
         '
-        Me.nombreprob.HeaderText = "Nombre del Proveedor"
+        Me.nombreprob.HeaderText = "Nombre del Cliente"
         Me.nombreprob.Name = "nombreprob"
         Me.nombreprob.ReadOnly = True
         Me.nombreprob.Width = 250

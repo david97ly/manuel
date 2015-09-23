@@ -57,7 +57,7 @@ Public Class DetalleProducto
 
     Private Sub boteliminar_Click(sender As Object, e As EventArgs) Handles boteliminar.Click
         If MsgBox("Seguro que quiere eliminar " & dtrproducto.Item(1).ToString, MsgBoxStyle.YesNo, "___....:::: AVISO :::...___") = MsgBoxResult.Yes Then
-            consulta.Consultar("update productos set valida = 0 where codproducto = " & dtrproducto.Item(0).ToString)
+            consulta.Consultar("update productos set valida = 0 where codproducto = '" & dtrproducto.Item(0).ToString & "'")
             MsgBox("El Producto " & dtrproducto.Item(1).ToString & " se elimino exitozamente: ", MsgBoxStyle.Information, "Exito")
             Me.Close()
         End If

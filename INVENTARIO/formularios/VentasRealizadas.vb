@@ -94,6 +94,13 @@ Public Class VentasRealizadas
                     Me.gridfacturaventas.Rows(i).Cells(4).Style.BackColor = Color.Orange
 
                 End If
+
+                If dtfacturaventa.Rows(i).Item(12).ToString = "invalida" Then
+                    Me.gridfacturaventas.Rows(i).Cells(4).Style.BackColor = Color.Red
+
+                End If
+
+
             Next
         Catch ex As Exception
 

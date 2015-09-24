@@ -77,7 +77,7 @@ Partial Class DetalleVenta
         Me.botanular = New System.Windows.Forms.Button()
         Me.botimprimir = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.grupboton = New System.Windows.Forms.GroupBox()
         Me.boteliminar = New System.Windows.Forms.Button()
         Me.texformadepago = New System.Windows.Forms.TextBox()
         Me.textipo = New System.Windows.Forms.TextBox()
@@ -92,11 +92,12 @@ Partial Class DetalleVenta
         Me.Label18 = New System.Windows.Forms.Label()
         Me.texnit = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
+        Me.lbanulada = New System.Windows.Forms.Label()
         CType(Me.gridcompra, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridViewX1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.gridventa, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.grupboton.SuspendLayout()
         Me.gruregis.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -580,18 +581,18 @@ Partial Class DetalleVenta
         Me.Button3.Text = "Salir"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'GroupBox2
+        'grupboton
         '
-        Me.GroupBox2.BackColor = System.Drawing.Color.Silver
-        Me.GroupBox2.Controls.Add(Me.boteliminar)
-        Me.GroupBox2.Controls.Add(Me.botanular)
-        Me.GroupBox2.Controls.Add(Me.botimprimir)
-        Me.GroupBox2.Controls.Add(Me.Button3)
-        Me.GroupBox2.Location = New System.Drawing.Point(78, 439)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(677, 78)
-        Me.GroupBox2.TabIndex = 195
-        Me.GroupBox2.TabStop = False
+        Me.grupboton.BackColor = System.Drawing.Color.Silver
+        Me.grupboton.Controls.Add(Me.boteliminar)
+        Me.grupboton.Controls.Add(Me.botanular)
+        Me.grupboton.Controls.Add(Me.botimprimir)
+        Me.grupboton.Controls.Add(Me.Button3)
+        Me.grupboton.Location = New System.Drawing.Point(78, 439)
+        Me.grupboton.Name = "grupboton"
+        Me.grupboton.Size = New System.Drawing.Size(677, 78)
+        Me.grupboton.TabIndex = 195
+        Me.grupboton.TabStop = False
         '
         'boteliminar
         '
@@ -655,9 +656,9 @@ Partial Class DetalleVenta
         '
         Me.botpagar.BackColor = System.Drawing.Color.Orange
         Me.botpagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botpagar.Location = New System.Drawing.Point(938, 14)
+        Me.botpagar.Location = New System.Drawing.Point(920, 14)
         Me.botpagar.Name = "botpagar"
-        Me.botpagar.Size = New System.Drawing.Size(99, 40)
+        Me.botpagar.Size = New System.Drawing.Size(117, 40)
         Me.botpagar.TabIndex = 206
         Me.botpagar.Text = "Pagar"
         Me.botpagar.UseVisualStyleBackColor = False
@@ -731,12 +732,24 @@ Partial Class DetalleVenta
         Me.Label17.TabIndex = 206
         Me.Label17.Text = "NIT"
         '
+        'lbanulada
+        '
+        Me.lbanulada.AutoSize = True
+        Me.lbanulada.Font = New System.Drawing.Font("Microsoft Sans Serif", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbanulada.ForeColor = System.Drawing.Color.Red
+        Me.lbanulada.Location = New System.Drawing.Point(678, 14)
+        Me.lbanulada.Name = "lbanulada"
+        Me.lbanulada.Size = New System.Drawing.Size(202, 42)
+        Me.lbanulada.TabIndex = 210
+        Me.lbanulada.Text = "ANULADA"
+        '
         'DetalleVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
         Me.ClientSize = New System.Drawing.Size(1037, 552)
+        Me.Controls.Add(Me.lbanulada)
         Me.Controls.Add(Me.gruregis)
         Me.Controls.Add(Me.Tiraje)
         Me.Controls.Add(Me.textiraje)
@@ -757,7 +770,7 @@ Partial Class DetalleVenta
         Me.Controls.Add(Me.texformadepago)
         Me.Controls.Add(Me.texsumas)
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.grupboton)
         Me.Controls.Add(Me.texiva)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.textotal)
@@ -775,7 +788,7 @@ Partial Class DetalleVenta
         CType(Me.gridventa, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
+        Me.grupboton.ResumeLayout(False)
         Me.gruregis.ResumeLayout(False)
         Me.gruregis.PerformLayout()
         Me.ResumeLayout(False)
@@ -832,7 +845,7 @@ Partial Class DetalleVenta
     Friend WithEvents botanular As System.Windows.Forms.Button
     Friend WithEvents botimprimir As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents grupboton As System.Windows.Forms.GroupBox
     Friend WithEvents texformadepago As System.Windows.Forms.TextBox
     Friend WithEvents textipo As System.Windows.Forms.TextBox
     Friend WithEvents botiz As System.Windows.Forms.Button
@@ -847,4 +860,5 @@ Partial Class DetalleVenta
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents texnit As System.Windows.Forms.TextBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents lbanulada As System.Windows.Forms.Label
 End Class

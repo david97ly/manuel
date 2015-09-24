@@ -23,8 +23,8 @@ Partial Class AnularDocumento
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
-        Me.ButtonX2 = New DevComponents.DotNetBar.ButtonX()
+        Me.botmanual = New DevComponents.DotNetBar.ButtonX()
+        Me.botcancelar = New DevComponents.DotNetBar.ButtonX()
         Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -38,8 +38,8 @@ Partial Class AnularDocumento
         '
         Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GroupPanel1.Controls.Add(Me.ButtonX3)
-        Me.GroupPanel1.Controls.Add(Me.ButtonX2)
+        Me.GroupPanel1.Controls.Add(Me.botmanual)
+        Me.GroupPanel1.Controls.Add(Me.botcancelar)
         Me.GroupPanel1.Controls.Add(Me.ButtonX1)
         Me.GroupPanel1.Controls.Add(Me.Label3)
         Me.GroupPanel1.Controls.Add(Me.Label2)
@@ -82,36 +82,36 @@ Partial Class AnularDocumento
         Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel1.TabIndex = 0
         '
-        'ButtonX3
+        'botmanual
         '
-        Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonX3.Location = New System.Drawing.Point(194, 134)
-        Me.ButtonX3.Name = "ButtonX3"
-        Me.ButtonX3.Size = New System.Drawing.Size(115, 40)
-        Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX3.TabIndex = 6
-        Me.ButtonX3.Text = "Manual"
+        Me.botmanual.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.botmanual.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.botmanual.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botmanual.Location = New System.Drawing.Point(194, 134)
+        Me.botmanual.Name = "ButtonX3"
+        Me.botmanual.Size = New System.Drawing.Size(115, 40)
+        Me.botmanual.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.botmanual.TabIndex = 6
+        Me.botmanual.Text = "Manual"
         '
-        'ButtonX2
+        'botcancelar
         '
-        Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
-        Me.ButtonX2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonX2.Location = New System.Drawing.Point(379, 134)
-        Me.ButtonX2.Name = "ButtonX2"
-        Me.ButtonX2.Size = New System.Drawing.Size(115, 40)
-        Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX2.TabIndex = 5
-        Me.ButtonX2.Text = "Cancelar"
+        Me.botcancelar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.botcancelar.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
+        Me.botcancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botcancelar.Location = New System.Drawing.Point(379, 134)
+        Me.botcancelar.Name = "ButtonX2"
+        Me.botcancelar.Size = New System.Drawing.Size(115, 40)
+        Me.botcancelar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.botcancelar.TabIndex = 5
+        Me.botcancelar.Text = "Cancelar"
         '
         'ButtonX1
         '
         Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground
         Me.ButtonX1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonX1.Location = New System.Drawing.Point(13, 134)
+        Me.ButtonX1.Location = New System.Drawing.Point(8, 134)
         Me.ButtonX1.Name = "ButtonX1"
         Me.ButtonX1.Size = New System.Drawing.Size(115, 40)
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -192,7 +192,7 @@ Partial Class AnularDocumento
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Private WithEvents GroupPanel1 As DevComponents.DotNetBar.Controls.GroupPanel
-    Private WithEvents ButtonX2 As DevComponents.DotNetBar.ButtonX
+    Private WithEvents botcancelar As DevComponents.DotNetBar.ButtonX
     Private WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
-    Private WithEvents ButtonX3 As DevComponents.DotNetBar.ButtonX
+    Private WithEvents botmanual As DevComponents.DotNetBar.ButtonX
 End Class

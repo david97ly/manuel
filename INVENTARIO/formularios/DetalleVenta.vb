@@ -76,6 +76,7 @@ Public Class DetalleVenta
                 Me.texnrc.Text = dtclientes.Rows(0).Item(3).ToString
                 Me.texcliente.Text = dtclientes.Rows(0).Item(1).ToString
                 factura = False
+
                 If dttiraje.Rows(0).Item(8).ToString = (CInt(dtfacturav.Rows(contador).Item(1).ToString) + 1).ToString Then
                     Me.boteliminar.Visible = True
                 Else
@@ -103,9 +104,29 @@ Public Class DetalleVenta
             Me.textotal.Text = dtfacturav.Rows(contador).Item(10)
 
             If dtfacturav.Rows(contador).Item(11).ToString = "Credito" Then
-                Me.botpagar.Visible = True
+                If dtfacturav.Rows(contador).Item(12).ToString = "invalida" Then
+                    Me.botpagar.Visible = False
+                Else
+                    Me.botpagar.Visible = True
+                   
+                End If
+
             Else
                 Me.botpagar.Visible = False
+            End If
+
+            If dtfacturav.Rows(contador).Item(6).ToString = "1" Then
+                Me.botpagar.Text = "Cancelado"
+                Me.botpagar.BackColor = Color.Green
+                Me.botpagar.Visible = True
+            End If
+
+            If dtfacturav.Rows(contador).Item(12).ToString = "invalida" Then
+                Me.lbanulada.Visible = True
+                Me.grupboton.Visible = False
+            Else
+                Me.lbanulada.Visible = False
+                Me.grupboton.Visible = True
             End If
 
 
@@ -230,20 +251,27 @@ Public Class DetalleVenta
             Dim tcodf As New clsProcesos
 
             If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
-                tcodf.Consultar("update tirajes set tirajefa = '" & nf & "'")
+                tcodf.Consultar("update tirajes set tirajefa = '" & nf + 1 & "'")
             Else
-                tcodf.Consultar("update tirajes set tirajeca = '" & nf & "'")
+                tcodf.Consultar("update tirajes set tirajeca = '" & nf + 1 & "'")
             End If
 
-            Dim f As String = Date.Today.Year.ToString + "-" + Date.Today.Month.ToString + "-" + Date.Today.Day.ToString
+            Dim dt As Date = CDate(dtfacturav.Rows(contador).Item(4))
+            Dim f As String = dt.Year.ToString + "-" + dt.Month.ToString + "-" + dt.Day.ToString
 
-            tfacturav.Insertar("'" & nf.ToString & "','" & dtfacturav.Rows(contador).Item(2).ToString & "','" & dtfacturav.Rows(contador).Item(3).ToString & "','" & dtfacturav.Rows(contador).Item(4).ToString & "','" & f.ToString & "'," & dtfacturav.Rows(contador).Item(6).ToString & "," & dtfacturav.Rows(contador).Item(7).ToString & "," & dtfacturav.Rows(contador).Item(8).ToString & "," & dtfacturav.Rows(contador).Item(9).ToString & "," & dtfacturav.Rows(contador).Item(10).ToString & "," & dtfacturav.Rows(contador).Item(11).ToString & "," & dtfacturav.Rows(contador).Item(12).ToString & "," & dtfacturav.Rows(contador).Item(13).ToString & ",'" & dtfacturav.Rows(contador).Item(14).ToString & "','valida','" & dtfacturav.Rows(contador).Item(16).ToString & "'")
-            'tventas.Insertar("'" & 0 & "','" & 0 & "','" & 0 & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & 0 & "','valida','" & 0 & "'")
-            Dim codf As Integer = CInt(dtfacturav.Rows(contador).Item(0)) + 1
+
+            tfacturav.Insertar("'" & nf.ToString & "','" & dtfacturav.Rows(contador).Item(2) & "','" & dtfacturav.Rows(contador).Item(3) & "','" & f & "'," & dtfacturav.Rows(contador).Item(5) & "," & dtfacturav.Rows(contador).Item(6) & "," & dtfacturav.Rows(contador).Item(7) & "," & dtfacturav.Rows(contador).Item(8) & "," & dtfacturav.Rows(contador).Item(9) & "," & dtfacturav.Rows(contador).Item(10) & ",'" & dtfacturav.Rows(contador).Item(11) & "','valida','" & dtfacturav.Rows(contador).Item(13) & "'")
+            Dim dtcodfactura As DataTable
+            Dim consultar As New clsProcesos
+
+            dtcodfactura = consultar.Consultar("SELECT  Max(codfacturav) FROM facturaventa")
+            codfactura = dtcodfactura.Rows(0).Item(0)
+
 
             For i As Integer = 0 To dtdetallefacturav.Rows.Count - 1
-                 'tdetalleventa.Insertar(CInt(Me.codfactura).ToString & ",'" & idproducto & "'," & CDbl(Me.texcantidad.Text).ToString & ",0," & prereal & ",0," & ventatotal & ", 0 ," & CDbl(Me.texprecio.Text))
-                tdetallefacturav.Insertar(codf.ToString & "," & dtdetallefacturav.Rows(i).Item(2).ToString & "," & dtdetallefacturav.Rows(i).Item(3).ToString & ",0," & dtdetallefacturav.Rows(i).Item(5).ToString & ",0,'" & dtdetallefacturav.Rows(i).Item(7).ToString & "'," & dtdetallefacturav.Rows(i).Item(8).ToString & "," & dtdetallefacturav.Rows(i).Item(9).ToString & "," & dtdetallefacturav.Rows(i).Item(10).ToString)
+                
+                tdetallefacturav.Insertar(codfactura.ToString & ",'" & dtdetallefacturav.Rows(i).Item(2).ToString & "'," & dtdetallefacturav.Rows(i).Item(3).ToString & "," & dtdetallefacturav.Rows(i).Item(4).ToString & "," & dtdetallefacturav.Rows(i).Item(5).ToString & "," & dtdetallefacturav.Rows(i).Item(6).ToString & ",'" & dtdetallefacturav.Rows(i).Item(7).ToString & "'," & dtdetallefacturav.Rows(i).Item(8).ToString & "," & dtdetallefacturav.Rows(i).Item(9).ToString)
+
             Next
             MsgBox("El docuemento se anulo exitozamente", MsgBoxStyle.Information, "Exito")
 
@@ -755,6 +783,60 @@ Public Class DetalleVenta
         End Try
 
 
+       
+    End Sub
+
+
+    Public Sub soloanular()
+        Try
+
+            dtdetallefacturav = tdetallefacturav.Consultar(" where codfacturav = " & codfactura)
+            Dim dtproducto As DataTable
+            Dim consultar As New clsProcesos
+            'Cuando todo ha salido bien hace los cargos a las existencias
+
+            Dim c As Double = 0
+
+            For i As Integer = 0 To dtdetallefacturav.Rows.Count - 1
+                dtproducto = tproductos.Consultar(" where codproducto = '" + dtdetallefacturav.Rows(i).Item(2).ToString + "'")
+                c = CDbl(CDbl(dtproducto.Rows(0).Item(6)) + dtdetallefacturav.Rows(i).Item(3))
+                consultar.Consultar(" update productos set existencias = " + c.ToString + " where codproducto = '" + dtdetallefacturav.Rows(i).Item(2).ToString + "'")
+            Next
+
+            consultar.Consultar("   UPDATE facturaventa SET  estado = 'invalida' where codfacturav = " & dtfacturav.Rows(contador).Item(0))
+
+
+            MsgBox("La venta fue anulada exitosamente ", MsgBoxStyle.Information, "EXITO")
+
+        Catch ex As Exception
+            MsgBox("Ocurrio un error al anular la venta, razon:" & ex.Message, MsgBoxStyle.Critical, "ERROR")
+        End Try
+    End Sub
+    Private Sub botanular_Click(sender As Object, e As EventArgs) Handles botanular.Click
+        pjtAdus.AnularDocumento.forma = Me
+        pjtAdus.AnularDocumento.Show()
+
+    End Sub
+
+    Private Sub botpagar_Click(sender As Object, e As EventArgs) Handles botpagar.Click
+        If botpagar.Text <> "Cancelado" Then
+            If MsgBox("Esta seguro de efectuar esta acción", MsgBoxStyle.YesNo, "Aviso") = MsgBoxResult.Yes Then
+                Try
+                    Dim codigofactura As String = dtfacturav.Rows(contador).Item(0).ToString
+                    Dim consulta As New clsProcesos
+
+                    consulta.Consultar(" update facturaventa set  descuento = 1 where codfacturav = " & codigofactura)
+                    Me.botpagar.Visible = False
+                    hacerconsulta()
+                    cargarfacturac()
+                    MsgBox("La deuda se cancelo efectivamente", MsgBoxStyle.Information, "Exito")
+
+                Catch ex As Exception
+                    MsgBox("Ocurrio un error razon: " & ex.Message, MsgBoxStyle.Critical, "EROR")
+                End Try
+
+            End If
+        End If
        
     End Sub
 End Class

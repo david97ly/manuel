@@ -28,6 +28,10 @@ Public Class VentasCompras
         Dim ventascontado As Double
         Dim ventascredito As Double
 
+        Dim deudapagadacompra As Double
+        Dim deudapagadventa As Double
+
+
         For i As Integer = 0 To dtfacturacompra.Rows.Count - 1
             compras1 += Math.Round(CDbl(dtfacturacompra.Rows(i).Item(10)), 2)
 
@@ -37,6 +41,9 @@ Public Class VentasCompras
 
             If dtfacturacompra.Rows(i).Item(11).ToString = "Credito" Then
                 comprascretito += Math.Round(CDbl(dtfacturacompra.Rows(i).Item(10)), 2)
+                If dtfacturacompra.Rows(i).Item(6).ToString = "1" Then
+                    deudapagadacompra += Math.Round(CDbl(dtfacturacompra.Rows(i).Item(10)), 2)
+                End If
             End If
         Next
 
@@ -49,6 +56,9 @@ Public Class VentasCompras
 
             If dtfacturaventa.Rows(i).Item(11).ToString = "Credito" Then
                 ventascredito += Math.Round(CDbl(dtfacturaventa.Rows(i).Item(10)), 2)
+                If dtfacturaventa.Rows(i).Item(6).ToString = "1" Then
+                    deudapagadventa += Math.Round(CDbl(dtfacturaventa.Rows(i).Item(10)), 2)
+                End If
             End If
         Next
 
@@ -60,7 +70,16 @@ Public Class VentasCompras
         texventascreditofecha.Text = "$ " & ventascredito
         texsumaventasfecha.Text = "$ " & ventas1
 
+        Me.texventacacelada1.Text = "$ " & deudapagadventa
+        Me.texcompracancelada1.Text = "$ " & deudapagadacompra
 
+        Dim cpc As Double = CDbl(comprascretito - deudapagadacompra)
+        Dim cpv As Double = CDbl(ventascredito - deudapagadventa)
+
+        Me.texcreditopendientecompra1.Text = cpc
+        Me.texcreditopendienteventa1.Text = cpv
+
+        Me.texcajadiario.Text = (deudapagadventa + ventascontado)
 
     End Sub
 
@@ -90,6 +109,10 @@ Public Class VentasCompras
         Dim ventascontado As Double
         Dim ventascredito As Double
 
+        Dim deudapagadacompra As Double
+        Dim deudapagadventa As Double
+
+
 
         dtfacturacompra = tfacturacompra.Consultar(" where fecha ='" & hoy & "'")
         dtfacturaventa = tfacturaventa.Consultar(" where fecha ='" & hoy & "'")
@@ -99,10 +122,14 @@ Public Class VentasCompras
 
             If dtfacturacompra.Rows(i).Item(11).ToString = "Contado" Then
                 comprascontado += Math.Round(CDbl(dtfacturacompra.Rows(i).Item(10)), 2)
+
             End If
 
             If dtfacturacompra.Rows(i).Item(11).ToString = "Credito" Then
                 comprascretito += Math.Round(CDbl(dtfacturacompra.Rows(i).Item(10)), 2)
+                If dtfacturacompra.Rows(i).Item(6).ToString = "1" Then
+                    deudapagadacompra += Math.Round(CDbl(dtfacturacompra.Rows(i).Item(10)), 2)
+                End If
             End If
 
         Next
@@ -116,6 +143,9 @@ Public Class VentasCompras
 
             If dtfacturaventa.Rows(i).Item(11).ToString = "Credito" Then
                 ventascredito += Math.Round(CDbl(dtfacturaventa.Rows(i).Item(10)), 2)
+                If dtfacturaventa.Rows(i).Item(6).ToString = "1" Then
+                    deudapagadventa += Math.Round(CDbl(dtfacturaventa.Rows(i).Item(10)), 2)
+                End If
             End If
 
         Next
@@ -127,8 +157,19 @@ Public Class VentasCompras
         Me.texventascredito.Text = "$ " & ventascredito
         Me.texventas.Text = "$ " & ventascontado
 
+        Me.texventacacelada.Text = "$ " & deudapagadventa
+        Me.texcompracancelada.Text = "$ " & deudapagadacompra
+
+        Dim cpc As Double = CDbl(comprascretito - deudapagadacompra)
+        Dim cpv As Double = CDbl(ventascredito - deudapagadventa)
+
+        Me.texcreditopendientecompra.Text = cpc
+        Me.texcreditopendienteventa.Text = cpv
+
+        Me.texcajadiario.Text = (deudapagadventa + ventascontado)
+
+
     End Sub
 
-  
   
 End Class

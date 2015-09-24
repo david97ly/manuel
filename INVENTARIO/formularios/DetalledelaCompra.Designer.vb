@@ -42,19 +42,19 @@ Partial Class DetalledelaCompra
         Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.gridcompra = New DevComponents.DotNetBar.Controls.DataGridViewX()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.boteliminar = New System.Windows.Forms.Button()
+        Me.boteditar = New System.Windows.Forms.Button()
+        Me.botguardar = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.botguardar = New System.Windows.Forms.Button()
-        Me.boteditar = New System.Windows.Forms.Button()
-        Me.boteliminar = New System.Windows.Forms.Button()
         Me.texivauno = New System.Windows.Forms.TextBox()
         Me.text1retencion = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.lson = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.lson = New System.Windows.Forms.Label()
         Me.texexentas = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.texnosujeta = New System.Windows.Forms.TextBox()
@@ -81,9 +81,9 @@ Partial Class DetalledelaCompra
         '
         Me.botpagar.BackColor = System.Drawing.Color.Orange
         Me.botpagar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botpagar.Location = New System.Drawing.Point(915, 13)
+        Me.botpagar.Location = New System.Drawing.Point(896, 13)
         Me.botpagar.Name = "botpagar"
-        Me.botpagar.Size = New System.Drawing.Size(99, 40)
+        Me.botpagar.Size = New System.Drawing.Size(118, 40)
         Me.botpagar.TabIndex = 174
         Me.botpagar.Text = "Pagar"
         Me.botpagar.UseVisualStyleBackColor = False
@@ -249,6 +249,37 @@ Partial Class DetalledelaCompra
         Me.GroupBox1.TabIndex = 162
         Me.GroupBox1.TabStop = False
         '
+        'boteliminar
+        '
+        Me.boteliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boteliminar.ForeColor = System.Drawing.Color.Red
+        Me.boteliminar.Location = New System.Drawing.Point(265, 16)
+        Me.boteliminar.Name = "boteliminar"
+        Me.boteliminar.Size = New System.Drawing.Size(159, 40)
+        Me.boteliminar.TabIndex = 2
+        Me.boteliminar.Text = "Eliminar"
+        Me.boteliminar.UseVisualStyleBackColor = True
+        '
+        'boteditar
+        '
+        Me.boteditar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.boteditar.Location = New System.Drawing.Point(6, 16)
+        Me.boteditar.Name = "boteditar"
+        Me.boteditar.Size = New System.Drawing.Size(159, 40)
+        Me.boteditar.TabIndex = 1
+        Me.boteditar.Text = "Editar"
+        Me.boteditar.UseVisualStyleBackColor = True
+        '
+        'botguardar
+        '
+        Me.botguardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botguardar.Location = New System.Drawing.Point(439, 16)
+        Me.botguardar.Name = "botguardar"
+        Me.botguardar.Size = New System.Drawing.Size(159, 40)
+        Me.botguardar.TabIndex = 0
+        Me.botguardar.Text = "Salir"
+        Me.botguardar.UseVisualStyleBackColor = True
+        '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -279,37 +310,6 @@ Partial Class DetalledelaCompra
         Me.Button3.TabIndex = 0
         Me.Button3.Text = "Salir"
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'botguardar
-        '
-        Me.botguardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botguardar.Location = New System.Drawing.Point(439, 16)
-        Me.botguardar.Name = "botguardar"
-        Me.botguardar.Size = New System.Drawing.Size(159, 40)
-        Me.botguardar.TabIndex = 0
-        Me.botguardar.Text = "Salir"
-        Me.botguardar.UseVisualStyleBackColor = True
-        '
-        'boteditar
-        '
-        Me.boteditar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.boteditar.Location = New System.Drawing.Point(6, 16)
-        Me.boteditar.Name = "boteditar"
-        Me.boteditar.Size = New System.Drawing.Size(159, 40)
-        Me.boteditar.TabIndex = 1
-        Me.boteditar.Text = "Editar"
-        Me.boteditar.UseVisualStyleBackColor = True
-        '
-        'boteliminar
-        '
-        Me.boteliminar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.boteliminar.ForeColor = System.Drawing.Color.Red
-        Me.boteliminar.Location = New System.Drawing.Point(265, 16)
-        Me.boteliminar.Name = "boteliminar"
-        Me.boteliminar.Size = New System.Drawing.Size(159, 40)
-        Me.boteliminar.TabIndex = 2
-        Me.boteliminar.Text = "Eliminar"
-        Me.boteliminar.UseVisualStyleBackColor = True
         '
         'texivauno
         '
@@ -345,6 +345,24 @@ Partial Class DetalledelaCompra
         Me.GroupBox3.TabIndex = 156
         Me.GroupBox3.TabStop = False
         '
+        'lson
+        '
+        Me.lson.AutoSize = True
+        Me.lson.Location = New System.Drawing.Point(52, 18)
+        Me.lson.Name = "lson"
+        Me.lson.Size = New System.Drawing.Size(29, 13)
+        Me.lson.TabIndex = 1
+        Me.lson.Text = "Son:"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(9, 18)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(29, 13)
+        Me.Label22.TabIndex = 0
+        Me.Label22.Text = "Son:"
+        '
         'Label24
         '
         Me.Label24.AutoSize = True
@@ -362,24 +380,6 @@ Partial Class DetalledelaCompra
         Me.Label25.Size = New System.Drawing.Size(29, 13)
         Me.Label25.TabIndex = 0
         Me.Label25.Text = "Son:"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(9, 18)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(29, 13)
-        Me.Label22.TabIndex = 0
-        Me.Label22.Text = "Son:"
-        '
-        'lson
-        '
-        Me.lson.AutoSize = True
-        Me.lson.Location = New System.Drawing.Point(52, 18)
-        Me.lson.Name = "lson"
-        Me.lson.Size = New System.Drawing.Size(29, 13)
-        Me.lson.TabIndex = 1
-        Me.lson.Text = "Son:"
         '
         'texexentas
         '

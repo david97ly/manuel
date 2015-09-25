@@ -22,6 +22,7 @@
         Respaldo = 19
         Configuraciones = 20
         Direccion = 21
+        notificaciones = 22
     End Enum
     Protected Property tbl()
         Get
@@ -109,6 +110,8 @@
                 Resultado = "configuraciones"
             Case 21
                 Resultado = "direccion"
+            Case 22
+                Resultado = "notificaciones"
         End Select
         Return Resultado
     End Function
@@ -157,6 +160,8 @@
                 Resultado = "id_config,tirage_fact,tirage_compro,tirage_fact_actual,tirage_compro_actual,numfact,numcompro,iva,cotrans,porce_iva_ret"
             Case 21
                 Resultado = "id_direcciones,direccion,id_municipio"
+            Case 22
+                Resultado = "idnoti,orden,tipo,cliente,cantidad,idfacturav"
         End Select
         Return Resultado
     End Function
@@ -205,6 +210,8 @@
                 Resultado = "id_config,tirage_fact,tirage_compro,tirage_fact_actual,tirage_compro_actual,numfact,numcompro,iva,cotrans,porce_iva_ret"
             Case 21
                 Resultado = "direccion,id_municipio"
+            Case 22
+                Resultado = "orden,tipo,cliente,cantidad,idfacturav"
         End Select
         Return Resultado
     End Function
@@ -376,6 +383,14 @@
                 Resultado.Add("id_direccion")
                 Resultado.Add("direccion")
                 Resultado.Add("idmunicipio")
+            Case 22
+                Resultado.Add("idnoti")
+                Resultado.Add("orden")
+                Resultado.Add("tipo")
+                Resultado.Add("cliente")
+                Resultado.Add("cantidad")
+                Resultado.Add("idfacturav")
+
         End Select
         Return Resultado
     End Function
@@ -424,6 +439,8 @@
                 Resultado = "id_config"
             Case 21
                 Resultado = "id_direcciones"
+            Case 21
+                Resultado = "idnoti"
         End Select
         Return Resultado
     End Function

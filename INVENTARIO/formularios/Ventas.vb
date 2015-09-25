@@ -95,6 +95,12 @@ Public Class Ventas
          Me.CenterToScreen()
         MdiParent = mdiMain
         Try
+
+            If mdiMain.super Then
+                Me.botguardar.Text = "Imprimir y Guardar"
+            Else
+                Me.botguardar.Text = "Guardar"
+            End If
             If Me.donde <> "here" Then
                 cargardatos()
             End If
@@ -978,8 +984,6 @@ Public Class Ventas
             Next
 
             
-            Me.botguardar.Text = "Guardar"
-
 
 
 
@@ -991,7 +995,28 @@ Public Class Ventas
                 consultar.Consultar(" update tirajes set tirajeca = " & (CShort(Me.texnumfact.Text.Trim) + 1))
             End If
 
+
+
             'termina la tarea de imprimir
+
+            If mdiMain.super <> True Then
+                Dim tnoti As New clsMaestros(clsNomTab.eTbl.notificaciones)
+
+                Dim dtnoti As DataTable
+                dtnoti = consultar.Consultar(" SELECT max(orden) FROM notificaciones ")
+                Dim orden As Short
+
+                If dtnoti.Rows.Count > 1 Then
+                    orden += CShort(dtnoti.Rows(0).Item(0) + 1)
+                Else
+                    orden = 1
+                End If
+
+
+
+                tnoti.Insertar(orden & ",'" & Me.combotipo.Text.ToString & "','" & Me.texcliente.Text & "'," & Me.textotal.Text.ToString & "," & codfactura)
+
+            End If
 
             If donde <> "here" Then
                 frmdv.modi = True

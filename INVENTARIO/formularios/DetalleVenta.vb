@@ -104,22 +104,22 @@ Public Class DetalleVenta
             Me.textotal.Text = dtfacturav.Rows(contador).Item(10)
 
             If dtfacturav.Rows(contador).Item(11).ToString = "Credito" Then
-                If dtfacturav.Rows(contador).Item(12).ToString = "invalida" Then
-                    Me.botpagar.Visible = False
-                Else
+
+                If dtfacturav.Rows(contador).Item(6).ToString = "1" Then
+                    Me.botpagar.Text = "Cancelado"
+                    Me.botpagar.BackColor = Color.Green
                     Me.botpagar.Visible = True
-                   
+                Else
+                    Me.botpagar.Text = "Pagar"
+                    Me.botpagar.BackColor = Color.Orange
+                    Me.botpagar.Visible = True
                 End If
 
             Else
                 Me.botpagar.Visible = False
             End If
 
-            If dtfacturav.Rows(contador).Item(6).ToString = "1" Then
-                Me.botpagar.Text = "Cancelado"
-                Me.botpagar.BackColor = Color.Green
-                Me.botpagar.Visible = True
-            End If
+            
 
             If dtfacturav.Rows(contador).Item(12).ToString = "invalida" Then
                 Me.lbanulada.Visible = True

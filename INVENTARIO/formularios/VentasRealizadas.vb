@@ -91,7 +91,12 @@ Public Class VentasRealizadas
                 Me.gridfacturaventas.Rows(i).Cells(4).Value = FormatNumber(CDbl(dtfacturaventa.Rows(i).Item(10)), 2) ' para el total
 
                 If dtfacturaventa.Rows(i).Item(11).ToString = "Credito" Then
-                    Me.gridfacturaventas.Rows(i).Cells(4).Style.BackColor = Color.Orange
+                    If dtfacturaventa.Rows(i).Item(6).ToString = "1" Then
+                        Me.gridfacturaventas.Rows(i).Cells(4).Style.BackColor = Color.Green
+                    Else
+                        Me.gridfacturaventas.Rows(i).Cells(4).Style.BackColor = Color.Orange
+                    End If
+
 
                 End If
 

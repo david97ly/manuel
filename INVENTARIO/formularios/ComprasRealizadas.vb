@@ -60,7 +60,12 @@ Public Class Compras_realizadas
 
             For i As Integer = 0 To dtfacturacompra.Rows.Count - 1
                 If dtfacturacompra.Rows(i).Item(11).ToString = "Credito" Then
-                    Me.gridfacturacompras.Rows(i).Cells(4).Style.BackColor = Color.Orange
+                    If dtfacturacompra.Rows(i).Item(6).ToString = "1" Then
+                        Me.gridfacturacompras.Rows(i).Cells(4).Style.BackColor = Color.Green
+                    Else
+                        Me.gridfacturacompras.Rows(i).Cells(4).Style.BackColor = Color.Orange
+                    End If
+
 
                 End If
                 Me.gridfacturacompras.Rows(i).Cells(0).Value = dtfacturacompra.Rows(i).Item(1).ToString

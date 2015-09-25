@@ -61,13 +61,19 @@ Public Class DetalledelaCompra
             Me.textotal.Text = dtfacturac.Rows(contador).Item(10)
 
             If dtfacturac.Rows(contador).Item(11).ToString = "Credito" Then
-                Me.botpagar.visible = True
-            Else
-                Me.botpagar.Visible = False
+
                 If dtfacturac.Rows(contador).Item(6).ToString = "1" Then
                     Me.botpagar.Text = "Cancelado"
                     Me.botpagar.BackColor = Color.Green
+                    Me.botpagar.Visible = True
+                Else
+                    Me.botpagar.Text = "Pagar"
+                    Me.botpagar.BackColor = Color.Orange
+                    Me.botpagar.Visible = True
                 End If
+            Else
+                Me.botpagar.Visible = False
+                
             End If
           
 

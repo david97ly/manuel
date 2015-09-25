@@ -23,63 +23,105 @@ Partial Class nventa
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.lcantidad = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.botatender = New System.Windows.Forms.Button()
         Me.timerhijo = New System.Windows.Forms.Timer(Me.components)
+        Me.gridventas = New System.Windows.Forms.DataGridView()
+        Me.botseleccionar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Ored = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.gridventas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'lcantidad
-        '
-        Me.lcantidad.AutoSize = True
-        Me.lcantidad.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lcantidad.Location = New System.Drawing.Point(1, 51)
-        Me.lcantidad.Name = "lcantidad"
-        Me.lcantidad.Size = New System.Drawing.Size(159, 25)
-        Me.lcantidad.TabIndex = 0
-        Me.lcantidad.Text = "Cantidad: $25"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1, 0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(25, 25)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "1"
-        '
-        'botatender
-        '
-        Me.botatender.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botatender.Location = New System.Drawing.Point(104, 0)
-        Me.botatender.Name = "botatender"
-        Me.botatender.Size = New System.Drawing.Size(107, 35)
-        Me.botatender.TabIndex = 2
-        Me.botatender.Text = "Atender"
-        Me.botatender.UseVisualStyleBackColor = True
         '
         'timerhijo
         '
         Me.timerhijo.Interval = 2000
         '
+        'gridventas
+        '
+        Me.gridventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.gridventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Ored, Me.Tipo, Me.cliente, Me.cantidad})
+        Me.gridventas.Location = New System.Drawing.Point(1, 54)
+        Me.gridventas.Name = "gridventas"
+        Me.gridventas.RowHeadersVisible = False
+        Me.gridventas.Size = New System.Drawing.Size(327, 146)
+        Me.gridventas.TabIndex = 0
+        '
+        'botseleccionar
+        '
+        Me.botseleccionar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botseleccionar.Location = New System.Drawing.Point(91, 217)
+        Me.botseleccionar.Name = "botseleccionar"
+        Me.botseleccionar.Size = New System.Drawing.Size(122, 32)
+        Me.botseleccionar.TabIndex = 1
+        Me.botseleccionar.Text = "ATENDER"
+        Me.botseleccionar.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(319, 24)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "NUEVAS VENTAS PENDIENTES"
+        '
+        'Ored
+        '
+        Me.Ored.Frozen = True
+        Me.Ored.HeaderText = "ORDEN"
+        Me.Ored.Name = "Ored"
+        Me.Ored.ReadOnly = True
+        Me.Ored.Width = 50
+        '
+        'Tipo
+        '
+        Me.Tipo.Frozen = True
+        Me.Tipo.HeaderText = "Tipo"
+        Me.Tipo.Name = "Tipo"
+        Me.Tipo.ReadOnly = True
+        Me.Tipo.Width = 75
+        '
+        'cliente
+        '
+        Me.cliente.Frozen = True
+        Me.cliente.HeaderText = "Cliente"
+        Me.cliente.Name = "cliente"
+        Me.cliente.ReadOnly = True
+        Me.cliente.Width = 150
+        '
+        'cantidad
+        '
+        Me.cantidad.Frozen = True
+        Me.cantidad.HeaderText = "Cantidad"
+        Me.cantidad.Name = "cantidad"
+        Me.cantidad.ReadOnly = True
+        Me.cantidad.Width = 50
+        '
         'nventa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(211, 75)
-        Me.Controls.Add(Me.botatender)
+        Me.ClientSize = New System.Drawing.Size(328, 261)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.lcantidad)
+        Me.Controls.Add(Me.botseleccionar)
+        Me.Controls.Add(Me.gridventas)
         Me.Name = "nventa"
         Me.Text = "nventa"
         Me.TopMost = True
+        CType(Me.gridventas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents lcantidad As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents botatender As System.Windows.Forms.Button
     Friend WithEvents timerhijo As System.Windows.Forms.Timer
+    Friend WithEvents gridventas As System.Windows.Forms.DataGridView
+    Friend WithEvents botseleccionar As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Ored As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Tipo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cliente As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cantidad As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

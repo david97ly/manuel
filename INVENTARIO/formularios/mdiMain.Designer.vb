@@ -350,7 +350,7 @@ Partial Class mdiMain
         '
         'timernuevaventa
         '
-        Me.timernuevaventa.Interval = 5000
+        Me.timernuevaventa.Enabled = True
         '
         'mdiMain
         '

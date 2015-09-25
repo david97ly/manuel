@@ -28,7 +28,25 @@ Public Class mdiMain
     Public py As Short = 0
     Public px As Short = 0
     Public ventanas As Short = 0
-    
+
+
+    Public grp As New clsMaestros(clsNomTab.eTbl.Grp)
+    Public grpusr As New clsMaestros(clsNomTab.eTbl.GrpUsr)
+
+    Public dtgrp As DataTable
+    Public dtgrpusr As DataTable
+
+
+    'para las notificaciones
+    Public cantidadf As Double
+    Public idfactura As Short
+    Public orden As Short
+
+    Public super As Boolean = True 'para determinar si es super usuario o no'
+
+    Public dtnoti As DataTable
+    Public tnoti As New clsMaestros(clsNomTab.eTbl.notificaciones)
+
     Public Sub llamar()
 
         Me.timllamar.Enabled = False
@@ -77,6 +95,17 @@ Public Class mdiMain
         'Me.timernuevaventa.Enabled = True
         cargarmenu()
        
+        dtgrpusr = grpusr.Consultar(" where idUsr = '" & usuario & "'")
+
+        dtgrp = grp.Consultar(" where IdGrp = " & dtgrpusr.Rows(0).Item(1).ToString)
+
+        If dtgrp.Rows(0).Item(1).ToString = "SUPER USUARIO" Then
+            timernuevaventa.Enabled = True
+            super = True
+        Else
+            timernuevaventa.Enabled = False
+            super = False
+        End If
 
 
     End Sub
@@ -91,8 +120,8 @@ Public Class mdiMain
 
         Me.Menu.MenuItems.Add("Salir")
         AgregarManejador(Me.Menu.MenuItems, 0)
-     
 
+       
     End Sub
 
     Private Sub AgregarManejador(ByVal menuItems As MenuItem.MenuItemCollection, ByVal nivel As Integer)
@@ -148,36 +177,25 @@ Public Class mdiMain
     End Sub
 
     Private Sub timernuevaventa_Tick(sender As Object, e As EventArgs) Handles timernuevaventa.Tick
+   
 
-        If contador > 10 Then
+        dtnoti = tnoti.Consultar()
+
+        If dtnoti.Rows.Count > 0 Then
+            'para las llamadas a los pedidos
+            Dim vn As New nventa
+
+            vn.Show()
+
+
             Me.timernuevaventa.Enabled = False
-        Else
-            If px = 0 Then
-                px = 1
-                py = 45
-            Else
-               
-                    px = px + 228
-                If contador = 5 Then
-                    py = py + 115
-                    px = 1
-                    contador = 0
-                    Me.timernuevaventa.Enabled = False
-                End If
+        End If
 
 
-                End If
-                contador = contador + 1
 
 
-                'para las llamadas a los pedidos
-                Dim vn As New nventa
-                vn.NumeroOrden = contador
-                vn.px = Me.px
-            vn.py = Me.py
-            ventanas = ventanas + 1
-                vn.Show()
-            End If
+           
+
 
     End Sub
 

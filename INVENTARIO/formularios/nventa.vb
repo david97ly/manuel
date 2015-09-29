@@ -22,7 +22,7 @@ Public Class nventa
         'Me.MdiParent = mdiMain
 
         Me.Location = New Point(px, py)
-        actualizargrid()
+
     End Sub
 
     Private Sub botatender_Click(sender As Object, e As EventArgs)
@@ -35,42 +35,6 @@ Public Class nventa
         Me.timerhijo.Enabled = False
     End Sub
 
-    Public Sub actualizargrid()
-        dtnoti = tnoti.Consultar
-        cargargrid()
-    End Sub
+    
 
-    Public Sub cargargrid()
-
-        Dim nf As Short
-        nf = dtnoti.Rows.Count
-
-
-
-        If nf = 0 Then
-            Me.gridventas.RowCount = 1
-            Me.gridventas.Rows(0).Cells(0).Value = ""
-            Me.gridventas.Rows(0).Cells(1).Value = ""
-            Me.gridventas.Rows(0).Cells(2).Value = ""
-            Me.gridventas.Rows(0).Cells(3).Value = ""
-
-
-        Else
-            Me.gridventas.RowCount = nf
-        End If
-
-        For i As Integer = 0 To dtnoti.Rows.Count - 1
-            Me.gridventas.Rows(i).Cells(0).Value = Me.dtnoti.Rows(i).Item(1)
-
-            Me.gridventas.Rows(i).Cells(1).Value = Me.dtnoti.Rows(i).Item(2)
-            Me.gridventas.Rows(i).Cells(2).Value = Me.dtnoti.Rows(i).Item(3)
-            Me.gridventas.Rows(i).Cells(3).Value = Me.dtnoti.Rows(i).Item(4)
-        Next
-    End Sub
-
-    Private Sub botseleccionar_Click(sender As Object, e As EventArgs) Handles botseleccionar.Click
-        Dim id As Short = Me.gridventas.CurrentCell.RowIndex
-        id = dtnoti.Rows(id).Item(5)
-        MsgBox("El codigo de la factura es: " & id)
-    End Sub
 End Class

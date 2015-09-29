@@ -56,6 +56,8 @@ Public Class mdiMain
             Ventas.Show()
         End If
 
+
+
     End Sub
 
   
@@ -100,12 +102,19 @@ Public Class mdiMain
         dtgrp = grp.Consultar(" where IdGrp = " & dtgrpusr.Rows(0).Item(1).ToString)
 
         If dtgrp.Rows(0).Item(1).ToString = "SUPER USUARIO" Then
+            actualizargrid()
             timernuevaventa.Enabled = True
+            Me.lnotis.Visible = True
+            Me.gridventas.Visible = True
             super = True
         Else
+            Me.lnotis.Visible = False
+            Me.gridventas.Visible = False
             timernuevaventa.Enabled = False
             super = False
         End If
+
+
 
 
     End Sub
@@ -177,25 +186,8 @@ Public Class mdiMain
     End Sub
 
     Private Sub timernuevaventa_Tick(sender As Object, e As EventArgs) Handles timernuevaventa.Tick
-   
 
-        dtnoti = tnoti.Consultar()
-
-        If dtnoti.Rows.Count > 0 Then
-            'para las llamadas a los pedidos
-            Dim vn As New nventa
-
-            vn.Show()
-
-
-            Me.timernuevaventa.Enabled = False
-        End If
-
-
-
-
-           
-
+        actualizargrid()
 
     End Sub
 
@@ -208,4 +200,65 @@ Public Class mdiMain
         End If
     End Sub
 
+
+
+    Public Sub actualizargrid()
+        dtnoti = tnoti.Consultar()
+        If dtnoti.Rows.Count > 0 Then
+            Me.lnotis.Visible = True
+            Me.gridventas.Visible = True
+            cargargrid()
+        Else
+            Me.lnotis.Visible = False
+            Me.gridventas.Visible = False
+
+        End If
+
+    End Sub
+
+    Public Sub cargargrid()
+
+        Dim nf As Short
+        nf = dtnoti.Rows.Count
+
+
+
+        If nf = 0 Then
+            Me.gridventas.RowCount = 1
+            Me.gridventas.Rows(0).Cells(0).Value = ""
+            Me.gridventas.Rows(0).Cells(1).Value = ""
+            Me.gridventas.Rows(0).Cells(2).Value = ""
+            Me.gridventas.Rows(0).Cells(3).Value = ""
+
+
+        Else
+            Me.gridventas.RowCount = nf
+        End If
+
+        For i As Integer = 0 To dtnoti.Rows.Count - 1
+            Me.gridventas.Rows(i).Cells(0).Value = Me.dtnoti.Rows(i).Item(1)
+
+            Me.gridventas.Rows(i).Cells(1).Value = Me.dtnoti.Rows(i).Item(2)
+            Me.gridventas.Rows(i).Cells(2).Value = Me.dtnoti.Rows(i).Item(3)
+            Me.gridventas.Rows(i).Cells(3).Value = Me.dtnoti.Rows(i).Item(4)
+        Next
+    End Sub
+
+
+
+
+    Private Sub seleccionar() Handles gridventas.DoubleClick
+        Dim id As Short = Me.gridventas.CurrentCell.RowIndex
+        'id = dtnoti.Rows(id).Item(5)
+        Dim consultar As New clsProcesos
+        consultar.Consultar(" delete from notificaciones where idnoti = " & dtnoti.Rows(id).Item(0))
+        actualizargrid()
+    End Sub
+
+
+    Private Sub gridventas_KeyPress(sender As Object, e As KeyPressEventArgs) Handles gridventas.KeyPress
+        If (Asc(e.KeyChar)) = 13 Then
+            seleccionar()
+        End If
+    End Sub
 End Class

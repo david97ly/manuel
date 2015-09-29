@@ -71,6 +71,13 @@ Partial Class mdiMain
         Me.ButtonItem16 = New DevComponents.DotNetBar.ButtonItem()
         Me.tmnulo = New System.Windows.Forms.Timer(Me.components)
         Me.timernuevaventa = New System.Windows.Forms.Timer(Me.components)
+        Me.gridventas = New System.Windows.Forms.DataGridView()
+        Me.Ored = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lnotis = New System.Windows.Forms.Label()
+        CType(Me.gridventas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'timllamar
@@ -352,17 +359,75 @@ Partial Class mdiMain
         '
         Me.timernuevaventa.Enabled = True
         '
+        'gridventas
+        '
+        Me.gridventas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.gridventas.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Ored, Me.Tipo, Me.cliente, Me.cantidad})
+        Me.gridventas.Location = New System.Drawing.Point(2, 136)
+        Me.gridventas.Name = "gridventas"
+        Me.gridventas.RowHeadersVisible = False
+        Me.gridventas.Size = New System.Drawing.Size(327, 146)
+        Me.gridventas.TabIndex = 1
+        Me.gridventas.Visible = False
+        '
+        'Ored
+        '
+        Me.Ored.Frozen = True
+        Me.Ored.HeaderText = "ORDEN"
+        Me.Ored.Name = "Ored"
+        Me.Ored.ReadOnly = True
+        Me.Ored.Width = 50
+        '
+        'Tipo
+        '
+        Me.Tipo.Frozen = True
+        Me.Tipo.HeaderText = "Tipo"
+        Me.Tipo.Name = "Tipo"
+        Me.Tipo.ReadOnly = True
+        Me.Tipo.Width = 75
+        '
+        'cliente
+        '
+        Me.cliente.Frozen = True
+        Me.cliente.HeaderText = "Cliente"
+        Me.cliente.Name = "cliente"
+        Me.cliente.ReadOnly = True
+        Me.cliente.Width = 150
+        '
+        'cantidad
+        '
+        Me.cantidad.Frozen = True
+        Me.cantidad.HeaderText = "Cantidad"
+        Me.cantidad.Name = "cantidad"
+        Me.cantidad.ReadOnly = True
+        Me.cantidad.Width = 50
+        '
+        'lnotis
+        '
+        Me.lnotis.AutoSize = True
+        Me.lnotis.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lnotis.Location = New System.Drawing.Point(5, 109)
+        Me.lnotis.Name = "lnotis"
+        Me.lnotis.Size = New System.Drawing.Size(319, 24)
+        Me.lnotis.TabIndex = 3
+        Me.lnotis.Text = "NUEVAS VENTAS PENDIENTES"
+        Me.lnotis.Visible = False
+        '
         'mdiMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightGray
         Me.ClientSize = New System.Drawing.Size(1022, 491)
+        Me.Controls.Add(Me.lnotis)
+        Me.Controls.Add(Me.gridventas)
         Me.IsMdiContainer = True
         Me.KeyPreview = True
         Me.Name = "mdiMain"
         Me.Text = "Menu"
+        CType(Me.gridventas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents ToolTip As System.Windows.Forms.ToolTip
@@ -410,5 +475,11 @@ Partial Class mdiMain
     Friend WithEvents timernuevaventa As System.Windows.Forms.Timer
     Private WithEvents GalleryContainer3 As DevComponents.DotNetBar.GalleryContainer
     Private WithEvents LabelItem1 As DevComponents.DotNetBar.LabelItem
+    Friend WithEvents gridventas As System.Windows.Forms.DataGridView
+    Friend WithEvents Ored As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Tipo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cliente As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cantidad As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lnotis As System.Windows.Forms.Label
 
 End Class

@@ -25,12 +25,12 @@ Partial Class nventa
         Me.components = New System.ComponentModel.Container()
         Me.timerhijo = New System.Windows.Forms.Timer(Me.components)
         Me.gridventas = New System.Windows.Forms.DataGridView()
-        Me.botseleccionar = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Ored = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.botseleccionar = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.gridventas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,26 +47,6 @@ Partial Class nventa
         Me.gridventas.RowHeadersVisible = False
         Me.gridventas.Size = New System.Drawing.Size(327, 146)
         Me.gridventas.TabIndex = 0
-        '
-        'botseleccionar
-        '
-        Me.botseleccionar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botseleccionar.Location = New System.Drawing.Point(91, 217)
-        Me.botseleccionar.Name = "botseleccionar"
-        Me.botseleccionar.Size = New System.Drawing.Size(122, 32)
-        Me.botseleccionar.TabIndex = 1
-        Me.botseleccionar.Text = "ATENDER"
-        Me.botseleccionar.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(319, 24)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "NUEVAS VENTAS PENDIENTES"
         '
         'Ored
         '
@@ -99,6 +79,26 @@ Partial Class nventa
         Me.cantidad.Name = "cantidad"
         Me.cantidad.ReadOnly = True
         Me.cantidad.Width = 50
+        '
+        'botseleccionar
+        '
+        Me.botseleccionar.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botseleccionar.Location = New System.Drawing.Point(91, 217)
+        Me.botseleccionar.Name = "botseleccionar"
+        Me.botseleccionar.Size = New System.Drawing.Size(122, 32)
+        Me.botseleccionar.TabIndex = 1
+        Me.botseleccionar.Text = "ATENDER"
+        Me.botseleccionar.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(319, 24)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "NUEVAS VENTAS PENDIENTES"
         '
         'nventa
         '

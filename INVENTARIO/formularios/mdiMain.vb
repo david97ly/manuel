@@ -203,7 +203,7 @@ Public Class mdiMain
 
 
     Public Sub actualizargrid()
-        dtnoti = tnoti.Consultar()
+        dtnoti = tnoti.Consultar(" order by orden")
         If dtnoti.Rows.Count > 0 Then
             Me.lnotis.Visible = True
             Me.gridventas.Visible = True
@@ -246,13 +246,28 @@ Public Class mdiMain
 
 
 
+    Dim dtfacturaventa As DataTable
+    Dim tfacturaventa As New clsMaestros(clsNomTab.eTbl.FacturaVenta)
+    Dim dtdetalleventa As DataTable
+    Dim tdetalle As New clsMaestros(clsNomTab.eTbl.DetalleFacturaV)
+    Dim dtclientes As DataTable
+    Dim tclientes As New clsMaestros(clsNomTab.eTbl.Clientes)
+    Dim tclientesf As New clsMaestros(clsNomTab.eTbl.clientescf)
 
     Private Sub seleccionar() Handles gridventas.DoubleClick
         Dim id As Short = Me.gridventas.CurrentCell.RowIndex
-        'id = dtnoti.Rows(id).Item(5)
+
+        dtfacturaventa = tfacturaventa.Consultar(" where codfacturav = " & dtnoti.Rows(id).Item(5))
+        DetalleVenta.donde = "noti"
+        DetalleVenta.dtfacturav = dtfacturaventa
+      
+        DetalleVenta.Show()
+
+        actualizargrid()
         Dim consultar As New clsProcesos
         consultar.Consultar(" delete from notificaciones where idnoti = " & dtnoti.Rows(id).Item(0))
-        actualizargrid()
+
+
     End Sub
 
 

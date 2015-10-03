@@ -366,7 +366,7 @@ Partial Class mdiMain
         Me.gridventas.Location = New System.Drawing.Point(2, 136)
         Me.gridventas.Name = "gridventas"
         Me.gridventas.RowHeadersVisible = False
-        Me.gridventas.Size = New System.Drawing.Size(327, 146)
+        Me.gridventas.Size = New System.Drawing.Size(331, 146)
         Me.gridventas.TabIndex = 1
         Me.gridventas.Visible = False
         '
@@ -405,7 +405,9 @@ Partial Class mdiMain
         'lnotis
         '
         Me.lnotis.AutoSize = True
+        Me.lnotis.BackColor = System.Drawing.Color.Transparent
         Me.lnotis.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lnotis.ForeColor = System.Drawing.Color.Blue
         Me.lnotis.Location = New System.Drawing.Point(5, 109)
         Me.lnotis.Name = "lnotis"
         Me.lnotis.Size = New System.Drawing.Size(319, 24)
@@ -417,10 +419,11 @@ Partial Class mdiMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.LightGray
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1022, 491)
         Me.Controls.Add(Me.lnotis)
         Me.Controls.Add(Me.gridventas)
+        Me.ForeColor = System.Drawing.Color.Black
         Me.IsMdiContainer = True
         Me.KeyPreview = True
         Me.Name = "mdiMain"

@@ -77,8 +77,9 @@ Public Class DetalledelaCompra
             End If
           
 
+            cargargrid()
 
-            If CShort(Me.textotal.Text.ToString) <> 0 Then
+            If CDbl(Me.textotal.Text.ToString) <> 0 Then
                 Dim numletras1 As New NumeroLetras
                 Dim nl As String
                 numletras1.setnumero(textotal.Text.ToString)
@@ -101,7 +102,7 @@ Public Class DetalledelaCompra
                 Me.lson.Text = nl
             End If
 
-            cargargrid()
+
         Catch ex As Exception
             MsgBox("Ocurrio un error al cargar los datos" + ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try

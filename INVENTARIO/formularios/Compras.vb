@@ -608,7 +608,7 @@ Public Class compra
                     Me.totalp = CDbl(Me.textotalp.Text)
 
 
-                    Me.texprecio.Text = Math.Round(Me.totalp / Me.cantidad, 2)
+                    Me.texprecio.Text = Math.Round(Me.totalp / Me.cantidad, 4)
 
                 End If
             End If
@@ -675,6 +675,10 @@ Public Class compra
     End Sub
 
     Private Sub texprecio_TextChanged(sender As Object, e As EventArgs) Handles texprecio.TextChanged
+
+    End Sub
+
+    Private Sub textotalp_TextChanged(sender As Object, e As EventArgs) Handles textotalp.TextChanged
 
     End Sub
 End Class

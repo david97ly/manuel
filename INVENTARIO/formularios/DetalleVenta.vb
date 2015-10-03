@@ -21,13 +21,19 @@ Public Class DetalleVenta
 
     Private dttiraje As DataTable
     Private ttiraje As New clsMaestros(clsNomTab.eTbl.tiraje)
+    Public donde As String = "aqui"
 
     'Variable para determinar si el documento actual es una factura o un comprobante
     Private factura As Boolean = True
     Private Sub DetalleCompra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MdiParent = mdiMain
-        hacerconsulta()
+
+
+        If donde <> "noti" Then
+            MdiParent = mdiMain
+            hacerconsulta()
+        End If
         cargarfacturac()
+
     End Sub
 
     Private Sub hacerconsulta()
@@ -47,112 +53,228 @@ Public Class DetalleVenta
     Public Sub cargarfacturac()
 
         Try
-            If modi = True Then
-                hacerconsulta()
-            End If
 
-          
-
-            If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
-                dtclientes = tfcf.Consultar(" where idclientescf = " & dtfacturav.Rows(contador).Item(3).ToString)
-                Me.gruregis.Visible = False
-            Else
-                dtclientes = tclientes.Consultar(" where codcliente = " + dtfacturav.Rows(contador).Item(3).ToString)
-                Me.gruregis.Visible = True
-            End If
-
-            dttiraje = ttiraje.Consultar()
-
-            If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
-                Me.texcliente.Text = dtclientes.Rows(0).Item(1)
-                factura = True
-                If dttiraje.Rows(0).Item(4).ToString = (CInt(dtfacturav.Rows(contador).Item(1).ToString) + 1).ToString Then
-                    Me.boteliminar.Visible = True
-                Else
-                    Me.boteliminar.Visible = False
-                End If
-            Else
-                Me.texnit.Text = dtclientes.Rows(0).Item(2).ToString
-                Me.texnrc.Text = dtclientes.Rows(0).Item(3).ToString
-                Me.texcliente.Text = dtclientes.Rows(0).Item(1).ToString
-                factura = False
-
-                If dttiraje.Rows(0).Item(8).ToString = (CInt(dtfacturav.Rows(contador).Item(1).ToString) + 1).ToString Then
-                    Me.boteliminar.Visible = True
-                Else
-                    Me.boteliminar.Visible = False
-                End If
-            End If
+            If donde = "noti" Then
 
 
-            Me.texnumfactura.Text = dtfacturav.Rows(contador).Item(1)
-
-            Me.textiraje.Text = dtfacturav.Rows(contador).Item(13)
-
-            dttiraje = ttiraje.Consultar()
-
-            Me.texformadepago.Text = dtfacturav.Rows(contador).Item(11)
-
-            Me.textipo.Text = dtfacturav.Rows(contador).Item(2)
-
-            Me.texfecha.Text = dtfacturav.Rows(contador).Item(4)
-
-
-            Me.texsumas.Text = dtfacturav.Rows(contador).Item(5)
-            Me.texiva.Text = dtfacturav.Rows(contador).Item(7)
-
-            Me.textotal.Text = dtfacturav.Rows(contador).Item(10)
-
-            If dtfacturav.Rows(contador).Item(11).ToString = "Credito" Then
-
-                If dtfacturav.Rows(contador).Item(6).ToString = "1" Then
-                    Me.botpagar.Text = "Cancelado"
-                    Me.botpagar.BackColor = Color.Green
-                    Me.botpagar.Visible = True
-                Else
-                    Me.botpagar.Text = "Pagar"
-                    Me.botpagar.BackColor = Color.Orange
-                    Me.botpagar.Visible = True
+                If modi = True Then
+                    hacerconsulta()
                 End If
 
-            Else
-                Me.botpagar.Visible = False
-            End If
+                Me.botdere.Visible = False
+                Me.botiz.Visible = False
 
-            
-
-            If dtfacturav.Rows(contador).Item(12).ToString = "invalida" Then
-                Me.lbanulada.Visible = True
-                Me.grupboton.Visible = False
-            Else
-                Me.lbanulada.Visible = False
-                Me.grupboton.Visible = True
-            End If
-
-
-
-            Dim numletras1 As New NumeroLetras
-            Dim nl As String
-            numletras1.setnumero(textotal.Text.ToString)
-            nl = numletras1.getnumero().ToString & " dolares "
-
-            If numletras1.getdecimal() > 0 Then
-                Dim nn As String
-                If numletras1.getdecimal() < 11 Then
-                    nn = numletras1.getdecimal() & "0"
-
-                    nl = nl & "con " & nn & "/100 cent"
+                If dtfacturav.Rows(0).Item(2).ToString = "Factura" Then
+                    dtclientes = tfcf.Consultar(" where idclientescf = " & dtfacturav.Rows(0).Item(3).ToString)
+                    Me.gruregis.Visible = False
                 Else
-                    nl = nl & "con " & numletras1.getdecimal.ToString & "/100 cent"
+                    dtclientes = tclientes.Consultar(" where codcliente = " + dtfacturav.Rows(0).Item(3).ToString)
+                    Me.gruregis.Visible = True
                 End If
 
+                dttiraje = ttiraje.Consultar()
+
+                If dtfacturav.Rows(0).Item(2).ToString = "Factura" Then
+                    Me.texcliente.Text = dtclientes.Rows(0).Item(1)
+                    factura = True
+                    If dttiraje.Rows(0).Item(4).ToString = (CInt(dtfacturav.Rows(0).Item(1).ToString) + 1).ToString Then
+                        Me.boteliminar.Visible = True
+                    Else
+                        Me.boteliminar.Visible = False
+                    End If
+                Else
+                    Me.texnit.Text = dtclientes.Rows(0).Item(2).ToString
+                    Me.texnrc.Text = dtclientes.Rows(0).Item(3).ToString
+                    Me.texcliente.Text = dtclientes.Rows(0).Item(1).ToString
+                    factura = False
+
+                    If dttiraje.Rows(0).Item(8).ToString = (CInt(dtfacturav.Rows(0).Item(1).ToString) + 1).ToString Then
+                        Me.boteliminar.Visible = True
+                    Else
+                        Me.boteliminar.Visible = False
+                    End If
+                End If
+
+
+                Me.texnumfactura.Text = dtfacturav.Rows(0).Item(1)
+
+                Me.textiraje.Text = dtfacturav.Rows(0).Item(13)
+
+                dttiraje = ttiraje.Consultar()
+
+                Me.texformadepago.Text = dtfacturav.Rows(0).Item(11)
+
+                Me.textipo.Text = dtfacturav.Rows(0).Item(2)
+
+                Me.texfecha.Text = dtfacturav.Rows(0).Item(4)
+
+
+                Me.texsumas.Text = dtfacturav.Rows(0).Item(5)
+                Me.texiva.Text = dtfacturav.Rows(0).Item(7)
+
+                Me.textotal.Text = dtfacturav.Rows(0).Item(10)
+
+                If dtfacturav.Rows(0).Item(11).ToString = "Credito" Then
+
+                    If dtfacturav.Rows(0).Item(6).ToString = "1" Then
+                        Me.botpagar.Text = "Cancelado"
+                        Me.botpagar.BackColor = Color.Green
+                        Me.botpagar.Visible = True
+                    Else
+                        Me.botpagar.Text = "Pagar"
+                        Me.botpagar.BackColor = Color.Orange
+                        Me.botpagar.Visible = True
+                    End If
+
+                Else
+                    Me.botpagar.Visible = False
+                End If
+
+
+
+                If dtfacturav.Rows(0).Item(12).ToString = "invalida" Then
+                    Me.lbanulada.Visible = True
+                    Me.grupboton.Visible = False
+                Else
+                    Me.lbanulada.Visible = False
+                    Me.grupboton.Visible = True
+                End If
+
+
+
+                Dim numletras1 As New NumeroLetras
+                Dim nl As String
+                numletras1.setnumero(textotal.Text.ToString)
+                nl = numletras1.getnumero().ToString & " dolares "
+
+                If numletras1.getdecimal() > 0 Then
+                    Dim nn As String
+                    If numletras1.getdecimal() < 11 Then
+                        nn = numletras1.getdecimal() & "0"
+
+                        nl = nl & "con " & nn & "/100 cent"
+                    Else
+                        nl = nl & "con " & numletras1.getdecimal.ToString & "/100 cent"
+                    End If
+
+                Else
+                    nl = nl
+                End If
+
+                Me.lson.Text = nl
+
+                cargargrid()
+
+
             Else
-                nl = nl
+                If modi = True Then
+                    hacerconsulta()
+                End If
+
+
+
+                If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
+                    dtclientes = tfcf.Consultar(" where idclientescf = " & dtfacturav.Rows(contador).Item(3).ToString)
+                    Me.gruregis.Visible = False
+                Else
+                    dtclientes = tclientes.Consultar(" where codcliente = " + dtfacturav.Rows(contador).Item(3).ToString)
+                    Me.gruregis.Visible = True
+                End If
+
+                dttiraje = ttiraje.Consultar()
+
+                If dtfacturav.Rows(contador).Item(2).ToString = "Factura" Then
+                    Me.texcliente.Text = dtclientes.Rows(0).Item(1)
+                    factura = True
+                    If dttiraje.Rows(0).Item(4).ToString = (CInt(dtfacturav.Rows(contador).Item(1).ToString) + 1).ToString Then
+                        Me.boteliminar.Visible = True
+                    Else
+                        Me.boteliminar.Visible = False
+                    End If
+                Else
+                    Me.texnit.Text = dtclientes.Rows(0).Item(2).ToString
+                    Me.texnrc.Text = dtclientes.Rows(0).Item(3).ToString
+                    Me.texcliente.Text = dtclientes.Rows(0).Item(1).ToString
+                    factura = False
+
+                    If dttiraje.Rows(0).Item(8).ToString = (CInt(dtfacturav.Rows(contador).Item(1).ToString) + 1).ToString Then
+                        Me.boteliminar.Visible = True
+                    Else
+                        Me.boteliminar.Visible = False
+                    End If
+                End If
+
+
+                Me.texnumfactura.Text = dtfacturav.Rows(contador).Item(1)
+
+                Me.textiraje.Text = dtfacturav.Rows(contador).Item(13)
+
+                dttiraje = ttiraje.Consultar()
+
+                Me.texformadepago.Text = dtfacturav.Rows(contador).Item(11)
+
+                Me.textipo.Text = dtfacturav.Rows(contador).Item(2)
+
+                Me.texfecha.Text = dtfacturav.Rows(contador).Item(4)
+
+
+                Me.texsumas.Text = dtfacturav.Rows(contador).Item(5)
+                Me.texiva.Text = dtfacturav.Rows(contador).Item(7)
+
+                Me.textotal.Text = dtfacturav.Rows(contador).Item(10)
+
+                If dtfacturav.Rows(contador).Item(11).ToString = "Credito" Then
+
+                    If dtfacturav.Rows(contador).Item(6).ToString = "1" Then
+                        Me.botpagar.Text = "Cancelado"
+                        Me.botpagar.BackColor = Color.Green
+                        Me.botpagar.Visible = True
+                    Else
+                        Me.botpagar.Text = "Pagar"
+                        Me.botpagar.BackColor = Color.Orange
+                        Me.botpagar.Visible = True
+                    End If
+
+                Else
+                    Me.botpagar.Visible = False
+                End If
+
+
+
+                If dtfacturav.Rows(contador).Item(12).ToString = "invalida" Then
+                    Me.lbanulada.Visible = True
+                    Me.grupboton.Visible = False
+                Else
+                    Me.lbanulada.Visible = False
+                    Me.grupboton.Visible = True
+                End If
+
+
+
+                Dim numletras1 As New NumeroLetras
+                Dim nl As String
+                numletras1.setnumero(textotal.Text.ToString)
+                nl = numletras1.getnumero().ToString & " dolares "
+
+                If numletras1.getdecimal() > 0 Then
+                    Dim nn As String
+                    If numletras1.getdecimal() < 11 Then
+                        nn = numletras1.getdecimal() & "0"
+
+                        nl = nl & "con " & nn & "/100 cent"
+                    Else
+                        nl = nl & "con " & numletras1.getdecimal.ToString & "/100 cent"
+                    End If
+
+                Else
+                    nl = nl
+                End If
+
+                Me.lson.Text = nl
+
+                cargargrid()
             End If
 
-            Me.lson.Text = nl
-
-            cargargrid()
         Catch ex As Exception
             MsgBox("Ocurrio un error al cargar los datos" + ex.Message, MsgBoxStyle.Critical, "Aviso")
         End Try

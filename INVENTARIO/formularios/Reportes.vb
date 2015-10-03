@@ -27,7 +27,7 @@ Public Class Reportes
             'Dim imagendemo As ItextSharp.text.Image 'Declaracion de una imagen
             Dim tablademo As New PdfPTable(6) 'declara la tabla con 4 Columnas
 
-            nombre = "InventarioGeneral" + dtempresa.Rows(0).Item(1).ToString + ".pdf"
+            nombre = "InventarioGeneral.pdf"
 
 
 
@@ -38,13 +38,13 @@ Public Class Reportes
             parrafo.Font = FontFactory.GetFont("Arial", 10, BOLDITALIC) 'Asigan fuente
 
 
-            parrafo.Add(dtempresa.Rows(0).Item(1) & vbCrLf & "Listado General de inventario con saldo al " & Date.Now.ToString & vbCrLf) 'Texto que se insertara
+            parrafo.Add("Listado General de inventario con saldo al " & Date.Now.ToString & vbCrLf) 'Texto que se insertara
             'parrafo.Add.FontFactory.("Sucursal: X    " & "  Area: Y        " & "Saldo al: FECHA    ")
 
             Documento.Add(parrafo) 'Agrega el parrafo al documento
             parrafo.Clear() 'Limpia el parrafo para que despues pueda ser utilizado nuevamente
             Documento.Add(New Paragraph(" "))
-            Documento.Add(New Paragraph(("      Sucursal: " + dtempresa.Rows(0).Item(1).ToString + "                                  " & "                                                                   " & "                      Saldo al: " + Date.Now + "                   "), FontFactory.GetFont("Arial", 8, BOLD))) 'Salto de linea
+            Documento.Add(New Paragraph(("      Empresa : Ferroelectrica San Jose " + "                                  " & "                                                                   " & "                      Saldo al: " + Date.Now + "                   "), FontFactory.GetFont("Arial", 8, BOLD))) 'Salto de linea
             ''Documento.Add(New Paragraph(" ")) 'Salto de linea
 
             ' imagendemo = ItextSharp.text.Image.GetInstance("imagendemo.jpg") 'Dirreccion a la imagen que se hace referencia
@@ -55,7 +55,7 @@ Public Class Reportes
 
             Documento.Add(New Paragraph(" ")) 'Salto de linea
             Dim celda As New pdf.PdfPCell
-            dtproductos = tproductos.Consultar(" where codempresa = " + mdiMain.codigoempresa.ToString)
+            dtproductos = tproductos.Consultar()
             tablademo.SetWidthPercentage({50, 150, 50, 50, 50, 50}, PageSize.A5) 'Ajusta el tamaño de cada columna
             tablademo.AddCell(New Paragraph("Codigo", FontFactory.GetFont("Arial", 10, BOLD))) 'Agrega COLUMNA1 con fuente ARIAL tamaño 5
             tablademo.AddCell(New Paragraph("                               Descripcion", FontFactory.GetFont("Arial", 10, BOLD))) 'Agrega COLUMNA1 con fuente ARIAL tamaño 8
@@ -72,7 +72,7 @@ Public Class Reportes
                 tablademo2.SetWidthPercentage({50, 150, 50, 50, 50, 50}, PageSize.A5) 'Ajusta el tamaño de cada columna
                 tablademo2.AddCell(New Paragraph(dtproductos.Rows(i).Item(0), FontFactory.GetFont("Arial", 10))) 'Agrega COLUMNA1 con fuente ARIAL tamaño 5
                 tablademo2.AddCell(New Paragraph("                               " + dtproductos.Rows(i).Item(1).ToString, FontFactory.GetFont("Arial", 10))) 'Agrega COLUMNA1 con fuente ARIAL tamaño 8
-                tablademo2.AddCell(New Paragraph(dtproductos.Rows(i).Item(10).ToString, FontFactory.GetFont("Arial", 10)))
+                tablademo2.AddCell(New Paragraph(dtproductos.Rows(i).Item(3).ToString, FontFactory.GetFont("Arial", 10)))
                 tablademo2.AddCell(New Paragraph(dtproductos.Rows(i).Item(6).ToString, FontFactory.GetFont("Arial", 10))) 'Agrega COLUMNA1 con fuente ARIAL tamaño 10
                 tablademo2.AddCell(New Paragraph(dtproductos.Rows(i).Item(3).ToString, FontFactory.GetFont("Arial", 10))) 'Agrega COLUMNA1 con fuente ARIAL tamaño 12
                 tablademo2.AddCell(New Paragraph(CDbl(CDbl(dtproductos.Rows(i).Item(6)) * CDbl(dtproductos.Rows(i).Item(3))).ToString, FontFactory.GetFont("Arial", 12))) 'Agrega COLUMNA1 con fuente ARIAL tamaño 12

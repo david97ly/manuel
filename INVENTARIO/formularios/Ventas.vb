@@ -77,6 +77,9 @@ Public Class Ventas
     Public guardar As Boolean = False
    
 
+    'Variable para el limite de ventas
+    Public numproductos As Short = 0
+
     Private Sub Ventas_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If estado = "editando" Then
             If guardar = False Then
@@ -381,7 +384,7 @@ Public Class Ventas
         pjtAdus.Productos.Show()
 
         
-        Me.textotalp.Select()
+        Me.texcantidad.Select()
     End Sub
 
    
@@ -947,6 +950,10 @@ Public Class Ventas
 
 
     Private Sub botguardar_Click(sender As Object, e As EventArgs) Handles botguardar.Click
+        guardardocumento()
+    End Sub
+
+    Private Sub guardardocumento()
         Try
             Me.guardado = True
             Dim ella As String = ""
@@ -965,7 +972,7 @@ Public Class Ventas
 
             'tventas.Insertar("'" & Me.texnumfact.Text.ToString.Trim & "','" & Me.combotipo.Text.ToString & "','" & idcliente & "','" & f & "'," & CDbl(0).ToString & "," & CDbl(0) & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & "," & CDbl(0).ToString & ",'" & Me.comboformapago.Text.ToString & "','valida','" & Me.textiraje.Text.ToString & "'")
 
-            
+
             Dim d, m, a, f As String
             d = Me.DateTimePicker1.Value.Day
             m = Me.DateTimePicker1.Value.Month
@@ -983,7 +990,7 @@ Public Class Ventas
                 consultar.Consultar(" update productos set existencias = " & c.ToString & " where codproducto = '" & dtdetalleventa.Rows(i).Item(2).ToString & "'")
             Next
 
-            
+
 
 
 
@@ -1004,17 +1011,22 @@ Public Class Ventas
 
                 Dim dtnoti As DataTable
                 dtnoti = consultar.Consultar(" SELECT max(orden) FROM notificaciones ")
-                Dim orden As Short
 
-                If dtnoti.Rows.Count > 1 Then
-                    orden += CShort(dtnoti.Rows(0).Item(0) + 1)
+                Dim ordenactual As Short
+               
+                If dtnoti.Rows(0).Item(0).ToString = Nothing Then
+                    ordenactual = 1
                 Else
-                    orden = 1
+                    ordenactual = CShort(dtnoti.Rows(0).Item(0))
+                    ordenactual += 1
                 End If
 
+                
 
 
-                tnoti.Insertar(orden & ",'" & Me.combotipo.Text.ToString & "','" & Me.texcliente.Text & "'," & Me.textotal.Text.ToString & "," & codfactura)
+
+                tnoti.Insertar(ordenactual & ",'" & Me.combotipo.Text.ToString & "','" & Me.texcliente.Text & "'," & Me.textotal.Text.ToString & "," & codfactura)
+
 
             End If
 
@@ -1134,75 +1146,84 @@ Public Class Ventas
     End Function
 
     Private Sub botagregar_Click(sender As Object, e As EventArgs) Handles botagregar.Click
+        contafactura += 1
+        If contafactura > 10 Then
+
+            If MsgBox("Ha sobrepasado el numero de productos por documento desea imprimir y guardar? ", MsgBoxStyle.YesNo, "LIMITE DE PRODUCTOS ALCANZADO") = MsgBoxResult.Yes Then
+                guardardocumento()
+            End If
+
+
+        Else
+
+
+
+            If correcto() <> False Then
+                agregarv = True
+
+                'limpirando las variables globales
 
 
 
 
-        If correcto() <> False Then
-            agregarv = True
-
-            'limpirando las variables globales
-          
 
 
+                Try
+                    If primeraf = False Then
+
+                        Dim can As Double
+                        Dim tl As Double
+                        Dim f As Boolean = False
+
+                        For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
+                            If idproducto = dtdetalleventa.Rows(i).Item(2).ToString Then
+
+                                If combotipo.Text.Trim.ToString <> "Factura" Then
+                                    can = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
+
+                                    Dim pr As Double = (CDbl(Me.texprecio.Text.Trim.ToString) * can)
+
+                                    Dim priva As Double = Math.Round((pr / 1.13), 2)
+
+                                    tl = priva
+
+                                Else
+                                    can = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
+                                    tl = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(7)) + CDbl(Me.textotalp.Text.Trim), 2)
+                                End If
 
 
-
-            Try
-                If primeraf = False Then
-
-                    Dim can As Double
-                    Dim tl As Double
-                    Dim f As Boolean = False
-
-                    For i As Integer = 0 To dtdetalleventa.Rows.Count - 1
-                        If idproducto = dtdetalleventa.Rows(i).Item(2).ToString Then
-
-                            If combotipo.Text.Trim.ToString <> "Factura" Then
-                                can = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
-
-                                Dim pr As Double = (CDbl(Me.texprecio.Text.Trim.ToString) * can)
-
-                                Dim priva As Double = Math.Round((pr / 1.13), 2)
-
-                                tl = priva
-
-                            Else
-                                can = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(3) + CDbl(Me.texcantidad.Text)), 2)
-                                tl = Math.Round(CDbl(dtdetalleventa.Rows(i).Item(7)) + CDbl(Me.textotalp.Text.Trim), 2)
+                                consultar.Consultar("update detalleventa set total = " & tl & ", cantidadunit = " & can.ToString & " where codfacturav = " & codfactura.ToString & " and coddetallefacturav = " & dtdetalleventa.Rows(i).Item(0).ToString)
+                                f = True
+                                privar()
+                                cargarfactura()
                             End If
-
-                            
-                            consultar.Consultar("update detalleventa set total = " & tl & ", cantidadunit = " & can.ToString & " where codfacturav = " & codfactura.ToString & " and coddetallefacturav = " & dtdetalleventa.Rows(i).Item(0).ToString)
-                            f = True
-                            privar()
-                            cargarfactura()
+                        Next
+                        If f = False Then
+                            If CInt(dtrproductos.Item(6)) < CInt(Me.texcantidad.Text.Trim) Then
+                                MsgBox("No cuenta con susficientes existencias de este produto para realizar la transaccion", MsgBoxStyle.Critical, "Aviso")
+                            Else
+                                insertar()
+                            End If
                         End If
-                    Next
-                    If f = False Then
+                    Else
                         If CInt(dtrproductos.Item(6)) < CInt(Me.texcantidad.Text.Trim) Then
                             MsgBox("No cuenta con susficientes existencias de este produto para realizar la transaccion", MsgBoxStyle.Critical, "Aviso")
                         Else
                             insertar()
                         End If
                     End If
-                Else
-                    If CInt(dtrproductos.Item(6)) < CInt(Me.texcantidad.Text.Trim) Then
-                        MsgBox("No cuenta con susficientes existencias de este produto para realizar la transaccion", MsgBoxStyle.Critical, "Aviso")
-                    Else
-                        insertar()
-                    End If
-                End If
 
 
-                Dim num As Double = CDbl(Me.textotal.Text.ToString)
-                convertiraletras(num)
+                    Dim num As Double = CDbl(Me.textotal.Text.ToString)
+                    convertiraletras(num)
 
-            Catch ex As Exception
-                MsgBox("ocurrio un error razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
-            End Try
-        Else
-            MsgBox("Tiene que llenar todos los campos que esten en rojo", MsgBoxStyle.ApplicationModal, "Aviso")
+                Catch ex As Exception
+                    MsgBox("ocurrio un error razon: " + ex.Message, MsgBoxStyle.Critical, "Aviso")
+                End Try
+            Else
+                MsgBox("Tiene que llenar todos los campos que esten en rojo", MsgBoxStyle.ApplicationModal, "Aviso")
+            End If
         End If
 
 
